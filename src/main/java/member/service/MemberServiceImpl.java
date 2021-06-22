@@ -12,6 +12,24 @@ import java.util.Map;
 public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberDAO memberDAO;
+    
+	@Override
+	public void join(MemberDTO memberDTO) {
+		memberDAO.join(memberDTO);
+		
+	}
+
+	@Override
+	public String checkId(String id) {
+		MemberDTO memberDTO = memberDAO.checkId(id);
+		
+		if(memberDTO == null) {
+			return "non_exist"; //사용 가능
+		}else {
+			return "exist"; //아이디가 존재 - 사용 불가능
+		}
+
+	}
 
     @Override
     public String login(Map<String, String> map, HttpSession session) {

@@ -5,6 +5,11 @@ import member.bean.MemberDTO;
 import java.util.Map;
 
 public interface MemberDAO {
+	
+	public void join(MemberDTO memberDTO);
+
+	public MemberDTO checkId(String id);
+	
     public MemberDTO login(Map<String, String> map);
 
 	public void changePwd(Map<String, String> map);

@@ -1,9 +1,16 @@
 package member.service;
 
 import javax.servlet.http.HttpSession;
+
+import member.bean.MemberDTO;
+
 import java.util.Map;
 
 public interface MemberService {
+	
+	public void join(MemberDTO memberDTO);
+
+	public String checkId(String id);
 
     public String login(Map<String, String> map, HttpSession session);
 
