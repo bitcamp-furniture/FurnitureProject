@@ -1,0 +1,12 @@
+insert into review values(seq_review.nextval,'sefsd', '123','소파',3,'넘 좋아유','소파.png',sysdate);
+
+
+insert into review values(seq_review.nextval,'56664', '123','소파',3,'sdfsdfdsf','소파.png',sysdate);
+
+
+insert into review values(seq_review.nextval,'sefsd', '123','소파',3,'넘 좋아유','소파.png',sysdate);
+insert into review values(seq_review.nextval,'dsfsd', '123','소파',5,'최고의 소파!추천합니다','소파.png',sysdate);
+insert into review values(seq_review.nextval,'ㅁㅁㅁㅁㅁ', '123','소파',5,'ㄴㅇㄷ홋ㄹ돘','소파.png',sysdate);
+insert into review values(seq_review.nextval,'66666', '123','소파',5,'66666','소파.png',sysdate);
+insert into review values(seq_review.nextval,'ㅑㅑㅑㅛㅅㅎ호', '123','소파',5,'1111111','소파.png',sysdate);
+insert into review values(seq_review.nextval,'sefsd', '123','소파',3,'넘 좋아유','소파.png',sysdate);

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import furniture.bean.ProductDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.ReviewDTO;
 
@@ -56,6 +57,11 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 	@Override
 	public List<ReviewDTO> reviewListTop5() {
 		return sqlSession.selectList("productSQL.reviewListTop5");
+	}
+
+	@Override
+	public List<ProductDTO> getBestSeller() {
+		return sqlSession.selectList("productSQL.getBestSeller");
 	}
 
 

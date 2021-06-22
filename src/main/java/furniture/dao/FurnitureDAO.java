@@ -3,6 +3,7 @@ package furniture.dao;
 import java.util.List;
 import java.util.Map;
 
+import furniture.bean.ProductDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.ReviewDTO;
 
@@ -21,5 +22,7 @@ public interface FurnitureDAO {
 	public int getTotalReview();
 
 	public List<ReviewDTO> reviewListTop5();
+
+	public List<ProductDTO> getBestSeller();
 
 }

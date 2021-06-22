@@ -41,7 +41,7 @@
 	<select id="reviewListTop5" resultType="review">
 		  SELECT *
 		  FROM REVIEW
-		  WHERE ROWNUM &lt;= 5
+		  WHERE ROWNUM &lt;= 6
 		  ORDER BY review_stars desc	
     </select> 
 
@@ -49,4 +49,10 @@
 	<select id="getTotalReview" resultType="int">
 		select count(*) from review
 	</select>
+	
+		<!--베스트 셀러 -->
+	<select id="getBestSeller" resultType="product">
+		select * from product
+	</select>
+	
 </mapper>

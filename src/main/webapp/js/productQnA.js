@@ -170,22 +170,21 @@ function review_paging(pg) {
 				})).appendTo($('#review_list_table'));
 				
 				$('<tr/>').append($('<td/>', {
-					width: '250px',
-					height: '250px',
+					
 					rowspan: 5
 				}).append($('<img/>',{
-					style: 'width: 10px; height: 10px;',
-					src: items.review_image // '/furniture/storage/'+
+					width: '250',
+					src: '/furniture/storage/' + items.review_image // +
 				}))).appendTo($('#review_list_table'));
 				
 				$('<tr/>', {
 					height: '30px'
 				}).append($('<td/>', {
-					width: '50%',
+					width: '30%',
 					align: 'right',
 					text: writerEmail.slice(0, 2)+'***'
 				})).append($('<td/>', {
-					width: '50%',
+					width: '30%',
 					align: 'right',
 					text: items.created_at
 				})).appendTo($('#review_list_table'));

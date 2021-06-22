@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import furniture.bean.ProductDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
@@ -42,10 +43,9 @@ public class FurnitureController {
 	@RequestMapping(value = "/main/productQnAWrite", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView productQnAWrite(@ModelAttribute Product_qnaDTO product_qnaDTO) {
+		// 추후 세션에서 값 받아와  입력
 		product_qnaDTO.setEmail("emailmail");
-		/* product_qnaDTO.setId(100); */
 		product_qnaDTO.setProduct_id("35345");
-		/* product_qnaDTO.setReply(0); */
 
 		furnitureService.productQnAWrite(product_qnaDTO);
 
@@ -101,5 +101,18 @@ public class FurnitureController {
 		mav.setViewName("jsonView");
 		return mav;
 	}
+	
+	// 메인 페이지 ...베스트셀러 가져오기
+	   @ResponseBody
+	   @RequestMapping(value = "/main/getBestSeller", method = RequestMethod.POST)
+	   public ModelAndView getBestSeller() {
+	      List<ProductDTO> getBestSeller = furnitureService.getBestSeller();
+	      ModelAndView mav = new ModelAndView();
+	      mav.addObject("getBestSeller", getBestSeller);
+	      mav.setViewName("jsonView");
+	      return mav;
+	   }
+
+
 
 }
