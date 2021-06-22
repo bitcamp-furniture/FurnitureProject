@@ -47,7 +47,7 @@
                             <div class="header__top__left">
                                 <ul>  
                                     <c:if test="${sessionScope.memEmail == null }">
-                                        <li><a href="#">회원가입</a> </li>
+                                        <li><a href="/furniture/member/joinPage">회원가입</a> </li>
                                         <li><a href="/furniture/member/loginForm">로그인</a> </li>
                                         <li><a href="/furniture/profile/profile">마이페이지</a> </li>
                                     </c:if>
