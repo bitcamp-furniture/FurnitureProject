@@ -1,0 +1,93 @@
+-- 상품 문의 테이블 + 댓글
+create table product_qna (
+   id NUMBER primary key, -- 기본키, 문의seq
+   email varchar2(50), -- 이메일=아이디 ... 누가 문의를 남겼는지
+   product_id VARCHAR2(80), -- 제품명 ... 어떤 상품에 대한 문의인지 
+   qna_subject varchar2(100),  -- 문의의 제목
+   qna_content varchar2(500), -- 문의의 내용
+   created_atQ date, -- 질문등록일
+   reply number, -- 댓글 수
+   qna_answer varchar2(500), -- 답변
+   created_atA date -- 답변등록일
+);
+create sequence seq_product_qna nocycle nocache;
+
+
+-- 리뷰 테이블
+create table REVIEW (
+id NUMBER, -- seq
+email varchar2(50), -- 작성자
+product_id NUMBER, -- 상품코드(DB검색용)
+product_name varchar2(80), -- 상품명(출력용)
+review_stars NUMBER, -- 별점(1~5)
+review_content varchar2(200), --리뷰 내용
+review_image varchar2(100), -- 리뷰 이미지
+created_at date -- 등록일
+); 
+create sequence seq_review nocycle nocache;
+
+
+
+
+--상품 테이블
+CREATE TABLE product(
+id NUMBER PRIMARY KEY, -- seq 
+product_name VARCHAR2(50), -- 제품명
+product_code VARCHAR2(50), --제품코드
+product_price NUMBER, --가격
+product_category_name VARCHAR2(50), -- 카테고리명
+product_category1 VARCHAR2(50), -- 카테고리1
+product_category2 VARCHAR2(50),-- 카테고리2
+product_img_thumb VARCHAR2(500),
+product_img_detail VARCHAR2(500),
+stock NUMBER --재고
+);
+--상품 seq문
+CREATE SEQUENCE seq_product nocycle nocache;
+
+---------------------------------------------------------------
+
+insert into product values (seq_product.nextval, '잠이솔솔 침대', 5000000, '소파베드', '침대', '침대.png','');
+insert into product values (seq_product.nextval, '푹신한 소파', 8000000, '패브릭소파', '소파', '소파.png','');
+insert into product values (seq_product.nextval, '튼튼 책장', 4000000, '큐브형수납',' 책장/선반유닛', '책장.png','');
+insert into product values (seq_product.nextval, '밥잘먹는 식탁', 3000000, '책상/컴퓨터책상', '식탁/책상', '밥상.png','');
+insert into product values (seq_product.nextval, '책책책 수납장', 1000000, '거실장/찬장', '수납장/장식장', '수납장.png','');
+insert into product values (seq_product.nextval, '더사더사 옷장', 2000000, '여닫이옷장', '옷장', '옷장.png','');
+insert into product values (seq_product.nextval, '너도나도 앉아의자', 4000000, '사무용의자', '의자', '의자.png','');
+insert into product values (seq_product.nextval, '희희', 2000000, '수납형침대', '침대', '침대.png','');
+
+---------------------------------------------------------------
+
+-- 회원 테이블
+create table member(
+id NUMBER primary key, -- 기본키
+email varchar2(60), -- 이메일 = 아이디
+name varchar2(30), -- 이름
+password varchar2(30), -- 비밀번호(암호화 필수)
+phone varchar2(50), -- 핸드폰번호
+zipcode varchar2(50), -- 우편번호
+addr1 varchar2(200), -- 주소1
+addr2 varchar2(200), -- 주소2
+bir_yy varchar2(10), -- 생일 연도
+bir_mm varchar2(10), -- 생일 월
+bir_dd varchar2(10), -- 생일 일
+point varchar2(100), -- 포인트
+kakaoId varchar2(20), -- 카카오아이디
+created_at date -- 생성일
+);
+create sequence seq_member nocycle nocache;
+
+
+-- 장바구니, 위시리스트
+CREATE TABLE cart(
+	id NUMBER PRIMARY KEY,               
+	member_id VARCHAR2(80),  -- 회원아이디
+	product_id VARCHAR2(80), -- 상품아이디
+	product_count NUMBER -- 상품개수
+);
+
+create table wishlist(
+	id NUMBER PRIMARY KEY,               
+	member_id VARCHAR2(80),  -- 회원아이디
+	product_id VARCHAR2(80) -- 상품아이디
+);

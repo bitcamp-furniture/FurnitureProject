@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="productSQL">
+
+	<!-- 상품 문의 write -->
+	<insert id="productQnAWrite" parameterType="qna">
+		insert into
+		product_qna values(seq_productQna.nextval, #{email}, #{product_id},
+		#{qna_subject}, #{qna_content}, sysdate, 0)
+	</insert>
+	
+	<!-- 상품 문의 전체 리스트 -->
+	<select id="productQnAList" resultType="qna">
+		select * from product_qna
+	</select>
+
+	<!-- 상품 문의 리스트 + 페이징 -->
+	<select id="productQnAListPaging" resultType="qna" parameterType="java.util.Map">
+ 		select * from 
+		(select rownum rn, tt.* from 
+		(select * from product_qna order by id desc)tt
+		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
+	</select>
+
+	<!-- 상품 문의 총 글수 -->
+	<select id="getTotalQNA" resultType="int">
+		select count(*) from product_qna
+	</select>
+
+	<!-- 리뷰 전체 리스트 + 페이징 -->
+	<select id="reviewList" resultType="review" parameterType="java.util.Map">
+ 		select * from 
+		(select rownum rn, tt.* from 
+		(select * from review order by id desc)tt
+		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
+	</select>
+
+	<!-- 리뷰 top 5 -->
+	<select id="reviewListTop5" resultType="review">
+		  SELECT *
+		  FROM REVIEW
+		  WHERE ROWNUM &lt;= 5
+		  ORDER BY review_stars desc	
+    </select> 
+
+	<!-- 상품 리뷰 총 글수 -->
+	<select id="getTotalReview" resultType="int">
+		select count(*) from review
+	</select>
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+
+	<resources mapping="/category/resources/**" location="/category/resources/" />
+	<resources mapping="/category/image/**" location="/category/image/" />
+	<resources mapping="/category/js/**" location="/category/js/" />
+	<resources mapping="/category/storage/**" location="/category/storage/" />
+	<resources mapping="/category/css/**" location="/category/css/" />
+	<resources mapping="/category/fonts/**" location="/category/fonts/" />
+	<resources mapping="/category/view/**" location="/category/view/" />
+
+	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/js/**" location="/js/" />
+	<resources mapping="/image/**" location="/image/" />
+	<resources mapping="/storage/**" location="/storage/" />
+	<resources mapping="/css/**" location="/css/" />
+	<resources mapping="/img/**" location="/img/" />
+	<resources mapping="/sass/**" location="/sass/" />
+	<resources mapping="/fonts/**" location="/fonts/" />
+	<resources mapping="/Source/**" location="/Source/" />
+	<resources mapping="/main/**" location="/main/" />
+	
+	<resources mapping="/profile/**" location="/profile/" />
+
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<beans:bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0"/>
+	</beans:bean>
+	
+	<!-- fileUpload -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="5000000"/> <!-- 5mb -->
+	</beans:bean>
+	
+	
+	<!-- JSON -->
+	<beans:bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<beans:property name="contentType" value="text/html;charset=UTF-8"/>
+	</beans:bean>
+	
+	
+	<context:component-scan base-package="com.mvc.furniture" />
+	<context:component-scan base-package="category.controller" />
+	<context:component-scan base-package="furniture.controller" />
+	<context:component-scan base-package="profile.controller" />
+	<context:component-scan base-package="member.controller" />
+
+	
+</beans:beans>

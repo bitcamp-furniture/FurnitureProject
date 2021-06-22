@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<typeAliases>
+		<typeAlias type="category.bean.CategoryDTO" alias="category"/>
+      	<typeAlias type="furniture.bean.Product_qnaDTO" alias="qna"/>      	
+      	<typeAlias type="furniture.bean.ReviewDTO" alias="review"/>      	
+		<typeAlias type="profile.bean.ProfileDTO" alias="profile"/>
+		<typeAlias type="profile.bean.AskDTO" alias="ask"/>
+		<typeAlias type="member.bean.MemberDTO" alias="member"/>
+		
+
+	</typeAliases>
+	
+</configuration>
+
+
+
+
+
+
+
+
+
+

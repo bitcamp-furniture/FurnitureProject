@@ -1,0 +1,57 @@
+.profile {
+    padding: 10px;    
+    border-radius: 7px;;        
+    background: #ffffff;}
+
+#profile-tap1-content1,
+#profile-tap2-content2,
+#profile-tap3-content3,
+#profile-tap4-content4,
+#profile-tap5-content5 {
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;}
+
+#profile-tap1,
+#profile-tap2,
+#profile-tap3,
+#profile-tap4,
+#profile-tap5 {
+      display: none;}
+
+#profile-tap1-label,
+#profile-tap2-label,
+#profile-tap3-label,
+#profile-tap4-label,
+#profile-tap5-label {
+    display: inline-block;
+    padding: 15px 25px;
+    font-weight: 600;
+    color: #bbb;
+    border: 1px solid transparent;}
+
+#profile-tap1-label:hover,
+#profile-tap2-label:hover,
+#profile-tap3-label:hover,
+#profile-tap4-label:hover,
+#profile-tap5-label:hover {
+    color: #2e9cdf;
+    cursor: pointer;}
+
+/*input 클릭시, label 스타일*/
+#profile-tap1:checked + label,
+#profile-tap2:checked + label,
+#profile-tap3:checked + label,
+#profile-tap4:checked + label,
+#profile-tap5:checked + label {
+      color: #555;
+      border: 1px solid #ddd;
+      border-bottom: 2px solid #2e9cdf;
+      border-top: 1px solid #ffffff;}
+
+#profile-tap1:checked ~ #profile-tap1-content1,
+#profile-tap2:checked ~ #profile-tap1-content1,
+#profile-tap3:checked ~ #profile-tap1-content1,
+#profile-tap4:checked ~ #profile-tap1-content1,
+#profile-tap5:checked ~ #profile-tap1-content1 {
+    display: block;}

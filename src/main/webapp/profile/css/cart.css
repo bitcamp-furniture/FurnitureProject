@@ -1,0 +1,34 @@
+.cart-bag-title h1, .cart-bag-title button{
+	display: inline;
+}
+.cart-checkout-title h4 {
+	display: inline;
+}
+
+
+.cart-bag-title button{
+float: right;
+}
+.cart-line{
+background-color: black;
+height: 2px;
+margin: 50px 0px;
+}
+
+.cart-checkout-title{
+float: left;
+}
+.cart-checkout-sum{
+float: right;
+
+}
+.cart-checkout-totalsum{
+            display: block;
+            content: "";
+            clear: both;
+            margin-bottom: 100px;
+}
+
+.cart-checkout-btn-wrap button{
+}
+
