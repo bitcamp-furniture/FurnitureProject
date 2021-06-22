@@ -11,6 +11,7 @@
 		<typeAlias type="profile.bean.ProfileDTO" alias="profile"/>
 		<typeAlias type="profile.bean.AskDTO" alias="ask"/>
 		<typeAlias type="member.bean.MemberDTO" alias="member"/>
+		<typeAlias type="furniture.bean.ProductDTO" alias="product"/>     	
 		
 
 	</typeAliases>

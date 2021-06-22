@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
@@ -106,135 +105,142 @@
         <div class="container">
                <h2>Weekly Best Seller</h2>
                <br>
+                     
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+            
+            
+               
+            <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/침대.png">
+                        <div class="product__item__pic set-bg" id="product__item__pic1">
                             <div class="product__label">
-                                <span>카테고리</span>
+                                <span id="product_item_category_span1"></span>
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="/furniture/main/productView">잠이솔솔 침대</a></h6>
-                            <div class="product__item__price">₩ 5,000,000</div>
+                            <h6><a href="/furniture/main/productView" id="product_item_text_a1"></a></h6>
+                            <div class="product__item__price" id="product_item_price_div1"></div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <a href="#" >Wish List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" id="product__item__pic2">
+                            <div class="product__label">
+                                <span id="product_item_category_span2"></span>
+                            </div>
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href="#" id="product_item_text_a2"></a></h6>
+                            <div class="product__item__price" id="product_item_price_div2"></div>
+                            <div class="cart_add">
+                                <a href="#" >Wish List</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/소파.png">
+                        <div class="product__item__pic set-bg" id="product__item__pic3">
                             <div class="product__label">
-                                <span>카테고리</span>
+                                <span id="product_item_category_span3"></span>
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#">푹신한 소파</a></h6>
-                            <div class="product__item__price">₩ 8,000,000</div>
+                            <h6><a href="#" id="product_item_text_a3"></a></h6>
+                            <div class="product__item__price" id="product_item_price_div3"></div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <a href="#" >Wish List</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/책장.png">
+                        <div class="product__item__pic set-bg" id="product__item__pic4">
                             <div class="product__label">
-                                <span>카테고리</span>
+                                <span id="product_item_category_span4"></span>
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#">튼튼 책장</a></h6>
-                            <div class="product__item__price">₩ 4,000,000</div>
+                            <h6><a href="#" id="product_item_text_a4"></a></h6>
+                            <div class="product__item__price" id="product_item_price_div4"></div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <a href="#" >Wish List</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/밥상.png">
+                        <div class="product__item__pic set-bg" id="product__item__pic5">
                             <div class="product__label">
-                                <span>카테고리</span>
+                                <span id="product_item_category_span5"></span>
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#">밥잘먹는식탁</a></h6>
-                            <div class="product__item__price">₩ 3,000,000</div>
+                            <h6><a href="#" id="product_item_text_a5"></a></h6>
+                            <div class="product__item__price" id="product_item_price_div5"></div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <a href="#" >Wish List</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/수납장.png">
+                        <div class="product__item__pic set-bg" id="product__item__pic6">
                             <div class="product__label">
-                                <span>카테고리</span>
+                                <span id="product_item_category_span6"></span>
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#">책책책 수납장</a></h6>
-                            <div class="product__item__price">₩ 1,000,000</div>
+                            <h6><a href="#" id="product_item_text_a6"></a></h6>
+                            <div class="product__item__price" id="product_item_price_div6"></div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <a href="#" >Wish List</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/옷장.png">
+                        <div class="product__item__pic set-bg" id="product__item__pic7">
                             <div class="product__label">
-                                <span>카테고리</span>
+                                <span id="product_item_category_span7"></span>
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#">더사더사 옷장</a></h6>
-                            <div class="product__item__price">₩ 2,000,000</div>
+                            <h6><a href="#" id="product_item_text_a7"></a></h6>
+                            <div class="product__item__price" id="product_item_price_div7"></div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <a href="#" >Wish List</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/의자.png">
+                        <div class="product__item__pic set-bg" id="product__item__pic8">
                             <div class="product__label">
-                                <span>카테고리</span>
+                                <span id="product_item_category_span8"></span>
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#">너도나도 앉아의자</a></h6>
-                            <div class="product__item__price">₩ 4,000,000</div>
+                            <h6><a href="#" id="product_item_text_a8"></a></h6>
+                            <div class="product__item__price" id="product_item_price_div8"></div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <a href="#" >Wish List</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/침대.png">
-                            <div class="product__label">
-                                <span>카테고리</span>
-                            </div>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">희희</a></h6>
-                            <div class="product__item__price">₩ 2,000,000</div>
-                            <div class="cart_add">
-                                <a href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
+                
             </div>
         </div>
     </section>
@@ -245,63 +251,132 @@
     
 <!-- ///////////////////////////////////////////////////////////////////상품평 DB에서 긁어오기 ... 
    append사용? 혹은 하나하나  class명으로 긁어오기 -->
-<!-- REVIEW -->
-    <!-- Testimonial Section Begin -->
-    <div>
-    ${reviewListTop5}
-    </div>
+   
+   <!-- REVIEW -->
+     <!-- Testimonial Section Begin -->
     <section class="testimonial spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-title">
-                        <span>BEST REVIEWS</span>
-                        <h2>상품평</h2>
+                        <span>Testimonial</span>
+                        <h2>Our client say</h2>
                     </div>
                 </div>
             </div>
-            
             <div class="row">
-                <div class="testimonial__slider owl-carousel" id="reviewTop5">
-                
-            <c:if test="${reviewListTop5!=null}">
-               <c:forEach var="reviewDTO" items="${reviewListTop5}"> 
-               
-               
-                               <!-- 5개씩 -->
-                  <div class="col-lg-6">
+                <div class="testimonial__slider owl-carousel">
+                    <div class="col-lg-6">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    ${reviewDTO.review_image}
+                                    <img src="/furniture/storage/review (1).jpg" alt="" width="70px" height="70px">
                                 </div>
                                 <div class="testimonial__author__text">
-                                    <h5>${reviewDTO.email}</h5>
-                                    <span>${reviewDTO.product_id}</span>
+                                    <h5 class="write_email_h5_1"></h5>
+                                    <span class="product_name_span_1"></span>
                                 </div>
                             </div>
-                            <div class="rating">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
+                            <div class="rating_1">
                             </div>
-                            <p>${reviewDTO.review_content}</p>
+                            <p class="review_content_p_1"></p>
                         </div>
                     </div>
-
-               </c:forEach>  
-            </c:if>
-
-                </div> <!-- testimonial__slider owl-carousel -->
-            </div> <!-- row -->
-            
+                    
+                     <div class="col-lg-6">
+                        <div class="testimonial__item">
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="/furniture/storage/review (2).jpg" alt="" width="70px" height="70px">
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5 class="write_email_h5_2"></h5>
+                                    <span class="product_name_span_2"></span>
+                                </div>
+                            </div>
+                            <div class="rating_2">
+                            </div>
+                            <p class="review_content_p_2"></p>
+                        </div>
+                    </div> 
+                      
+                      <div class="col-lg-6">
+                        <div class="testimonial__item">
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="/furniture/storage/review (3).jpg" alt="" width="70px" height="70px">
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5 class="write_email_h5_3"></h5>
+                                    <span class="product_name_span_3"></span>
+                                </div>
+                            </div>
+                            <div class="rating_3">
+                                <span class="icon_star"></span>
+                                <span class="icon_star"></span>
+                                <span class="icon_star"></span>
+                                <span class="icon_star"></span>
+                                <span class="icon_star"></span>
+                            </div>
+                            <p class="review_content_p_3"></p>
+                        </div>
+                    </div> 
+                      <div class="col-lg-6">
+                        <div class="testimonial__item">
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="/furniture/storage/review (4).jpg" alt="" width="70px" height="70px">
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5 class="write_email_h5_4"></h5>
+                                    <span class="product_name_span_4"></span>
+                                </div>
+                            </div>
+                            <div class="rating_4">
+                            </div>
+                            <p class="review_content_p_4"></p>
+                        </div>
+                    </div> 
+                    
+                      <div class="col-lg-6">
+                        <div class="testimonial__item">
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="/furniture/storage/review (5).jpg" alt="" width="70px" height="70px">
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5 class="write_email_h5_5"></h5>
+                                    <span class="product_name_span_5"></span>
+                                </div>
+                            </div>
+                            <div class="rating_5">
+                            </div>
+                            <p class="review_content_p_5"></p>
+                        </div>
+                    </div> 
+                    
+                    <div class="col-lg-6">
+                        <div class="testimonial__item">
+                            <div class="testimonial__author">
+                                <div class="testimonial__author__pic">
+                                    <img src="/furniture/storage/review (6).jpg" alt="" width="70px" height="70px">
+                                </div>
+                                <div class="testimonial__author__text">
+                                    <h5 class="write_email_h5_6"></h5>
+                                    <span class="product_name_span_6"></span>
+                                </div>
+                            </div>
+                            <div class="rating_6">
+                            </div>
+                            <p class="review_content_p_6"></p>
+                        </div>
+                    </div> 
+                    
+                </div>
+            </div>
         </div>
     </section>
-    
     <!-- Testimonial Section End -->
-
      <!-- Instagram Section Begin -->
     <section class="instagram spad">
         <div class="container">
@@ -370,10 +445,9 @@
                 </div>
             </div>
         </div>
-        <div class="map__iframe">
-           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.207136148256!2d127.02213775088205!3d37.50303247971076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca158ae940859%3A0xe06b7199c296fc2e!2z7ISc7Jq47Yq567OE7IucIOyEnOy0iOq1rCDshJzstIg064-ZIOqwleuCqOuMgOuhnCA0NTk!5e0!3m2!1sko!2skr!4v1623303859695!5m2!1sko!2skr" 
-            height="300" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" ></iframe>
-            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d10784.188505644011!2d19.053119335158936!3d47.48899529453826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1543907528304" height="300" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
+       <div class="map__iframe">
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.207136148256!2d127.02213775088205!3d37.50303247971076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!3m2!1sen!2sus!4v1462581622087"  
+              height="300" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" ></iframe>
         </div>
     </div>
     <!-- Map End -->

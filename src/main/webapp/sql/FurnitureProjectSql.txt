@@ -14,6 +14,8 @@ create sequence seq_product_qna nocycle nocache;
 
 
 -- 리뷰 테이블
+
+
 create table REVIEW (
 id NUMBER, -- seq
 email varchar2(50), -- 작성자
@@ -35,14 +37,13 @@ id NUMBER PRIMARY KEY, -- seq
 product_name VARCHAR2(50), -- 제품명
 product_code VARCHAR2(50), --제품코드
 product_price NUMBER, --가격
-product_category_name VARCHAR2(50), -- 카테고리명
 product_category1 VARCHAR2(50), -- 카테고리1
-product_category2 VARCHAR2(50),-- 카테고리2
+product_category2 VARCHAR2(50)-- 카테고리2
 product_img_thumb VARCHAR2(500),
 product_img_detail VARCHAR2(500),
 stock NUMBER --재고
 );
---상품 seq문
+상품 seq문
 CREATE SEQUENCE seq_product nocycle nocache;
 
 ---------------------------------------------------------------
