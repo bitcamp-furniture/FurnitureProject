@@ -44,9 +44,6 @@
 			border: 0;
 			outline: 0;
 		}
-		<%--.kakao {
-			margin: 10%
-		}--%>
 		.btn-round {
 			border-radius: 3rem;
 		}

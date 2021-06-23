@@ -26,7 +26,7 @@
 			<div class="profile" style="text-align:left">
 				<input id="profile-tap1" class="profile-tap1" type="button" name="tabs" onclick="location.href = '/furniture/profile/mypage'" >
 			    <label  id="profile-tap1-label" for="profile-tap1">자기정보</label>
-			 
+			    
 			    <input id="profile-tap2" type="radio" name="tabs" onclick="location.href = '/furniture/profile/cart'">
 			    <label  id="profile-tap2-label" for="profile-tap2">장바구니</label>
 			

@@ -50,18 +50,18 @@
 			<div class="mypagePrivateBirth" id="mypagePrivateModifyBirth" style="float: left;">생년월일</div>
 			<input type="text" id="mypagePrivateModifyBir_yy" placeholder="년(4자)" style="float: left;">
 	        
-	            <div style="float: left; display: block;">
-	                <select id="mypagePrivateModifyBir_mm" style="float: left; display: block;">
-	                    <option value="00">월</option>
-	                    <option value="01">1</option>
-	                    <option value="02">2</option>
-	                    <option value="03">3</option>
-	                    <option value="04">4</option>
-	                    <option value="05">5</option>
-	                    <option value="06">6</option>
-	                    <option value="07">7</option>
-	                    <option value="08">8</option>
-	                    <option value="09">9</option>                                    
+	            <div id="mypagePrivateModifyBir_mm" style="float: left; display: block;">
+	                <select class="mypagePrivateModifyBir_mm" style="float: left; display: block;">
+	                    <option>월</option>
+	                    <option value="1">1</option>
+	                    <option value="2">2</option>
+	                    <option value="3">3</option>
+	                    <option value="4">4</option>
+	                    <option value="5">5</option>
+	                    <option value="6">6</option>
+	                    <option value="7">7</option>
+	                    <option value="8">8</option>
+	                    <option value="9">9</option>                                    
 	                    <option value="10">10</option>
 	                    <option value="11">11</option>
 	                    <option value="12">12</option>
@@ -83,6 +83,7 @@
 	<input type="button" value="저장" id="mypagePrivateModifyBtn">
 	</div>
 </div>
+<br><br>
 <!-- 구분선 -->
 <hr class="profile__divider">
 
@@ -119,6 +120,7 @@
 		<div><input type="button" value="저장" id="mypageContactModifyBtn"></div>
 	</div>
 </div>
+<br><br>
 <hr class="profile__divider">
 
 <!-- 비밀번호 구분제목-->
@@ -129,21 +131,28 @@
 	<button class="mypagePasswordOpenBtn" id="mypagePasswordOpenBtn" type="button">수정</button>
 	<div>
 		<div class="mypagePasswordPassword" id="mypagePasswordPassword">비밀번호</div>
-		<div id="password"></div>
+		<input type="password" id="password" disabled></div>
 	</div>
 </div>
 
 <div id="mypagePasswordModify">
 	<button class="mypagePasswordClosingBtn" id="mypagePasswordClosingBtn" type="button">닫기</button>
 	<div>
-		<div class="mypagePasswordPassword" id="mypagePasswordPassword">비밀번호</div>
-		<input type="text" id="mypagePasswordModifyPassword">
+		<div class="mypagePasswordPassword" id="mypagePasswordPassword">현재 비밀번호</div>
+		<input type="password" id="mypagePasswordModifyCurrentPassword">
+	</div>
+	<div>
+		<div class="mypagePasswordPassword" id="mypagePasswordPassword">새 비밀번호</div>
+		<input type="password" id="mypagePasswordModifyNewPassword">
+	</div>
+	<div>
+		<div class="mypagePasswordPassword" id="mypagePasswordPassword">비밀번호 확인</div>
+		<input type="password" id="mypagePasswordModifyCheckPassword">
 	</div>
 	<div id="mypagePasswordDiv"></div>
 	<input type="button" value="저장" id="mypagePasswordModifyBtn">
-	</div>
 </div>
-
+<br><br>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
