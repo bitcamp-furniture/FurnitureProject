@@ -88,79 +88,80 @@
                             </li>
                              <li><a href="#">침대</a>
                                 <ul class="dropdown">
-                                    <li><a href="./shop-details.html">침대</a></li>
-                                    <li><a href="./shoping-cart.html">소파베드</a></li>
-                                    <li><a href="./checkout.html">수납형 침대</a></li>
-                                    <li><a href="./wisslist.html">간이침대</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=소파베드">소파베드</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=수납형침대">수납형 침대</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=간이침대">간이침대</a></li>
                                 </ul>
                             </li>
                         
                              <li><a href="#">소파</a>
                                 <ul class="dropdown">
-                                    <li><a href="./shop-details.html">패브릭 소파</a></li>
-                                    <li><a href="./shoping-cart.html">모듈식 소파</a></li>
-                                    <li><a href="./checkout.html">가죽 소파</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=패브릭소파">패브릭 소파</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=모듈식소파">모듈식 소파</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=가죽소파">가죽 소파</a></li>
                                 </ul>
                             </li>
                         
                              <li><a href="#">책장/선반</a>
                                 <ul class="dropdown">
-                                    <li><a href="./shop-details.html">큐브형 수납</a></li>
-                                    <li><a href="./shoping-cart.html">선반유닛</a></li>
-                                    <li><a href="./checkout.html">책장</a></li>
-                                    <li><a href="./wisslist.html">수납선반</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=큐브형수납">큐브형 수납</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=선반유닛">선반유닛</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=책장">책장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=수납선반">수납선반</a></li>
                                 </ul>
                             </li>
 
                              <li><a href="#">식탁/책상</a>
                                 <ul class="dropdown">
-                                    <li><a href="./shop-details.html">책상/컴퓨터 책상</a></li>
-                                    <li><a href="./shoping-cart.html">침대 협탁</a></li>
-                                    <li><a href="./checkout.html">식탁 세트</a></li>
-                                    <li><a href="./wisslist.html">화장대</a></li>
-                                    <li><a href="./wisslist.html">카페 테이블</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=책상/컴퓨터책상">책상/컴퓨터 책상</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=침대협탁">침대 협탁</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=식탁세트">식탁 세트</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=화장대">화장대</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=카페테이블">카페 테이블</a></li>
                                 </ul>
                             </li>
                         
                              <li><a href="#">수납장/장식장</a>
                                 <ul class="dropdown">
-                                    <li><a href="./shop-details.html">거실장/찬장</a></li>
-                                    <li><a href="./shoping-cart.html">장식장</a></li>
-                                    <li><a href="./checkout.html">수납장</a></li>
-                                    <li><a href="./wisslist.html">서랍장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=거실장/찬장">거실장/찬장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=장식장">장식장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=수납장">수납장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=서랍장">서랍장</a></li>
                                 </ul>
                             </li>
                         
-                             <li><a href="#">옷장</a>
+    						<li><a href="#">옷장</a>
                                 <ul class="dropdown">
-                                    <li><a href="./shop-details.html">여닫이 옷장</a></li>
-                                    <li><a href="./shoping-cart.html">미닫이 옷장</a></li>
-                                    <li><a href="./checkout.html">거울 옷장</a></li>
-                                    <li><a href="./wisslist.html">드레스룸 옷장</a></li>
-                                    <li><a href="./wisslist.html">선반형 옷장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=여닫이 옷장">여닫이 옷장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=미닫이 옷장">미닫이 옷장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=패거울 옷장">거울 옷장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=드레스룸 옷장">드레스룸 옷장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=선반형 옷장">선반형 옷장</a></li>
                                 </ul>
                             </li>
                         
                              <li><a href="#">의자</a>
                                 <ul class="dropdown">
-                                    <li><a href="./shop-details.html">사무용 의자</a></li>
-                                    <li><a href="./shoping-cart.html">식탁의자</a></li>
-                                    <li><a href="./checkout.html">스툴/벤치</a></li>
-                                    <li><a href="./wisslist.html">바 의자</a></li>
-                                    <li><a href="./wisslist.html">카페 의자</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=패사무용 의자">사무용 의자</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=식탁의자">식탁의자</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=스툴/벤치">스툴/벤치</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=바의자">바 의자</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=카페 의자">카페 의자</a></li>
                                 </ul>
                             </li>
+                            
+                            <!-- 추후 링크 수정 필요 -->
                             <li><a href="#">고객지원</a>
                             <ul class="dropdown">
-                                    <li><a href="./shop-details.html">공지</a></li>
-                                    <li><a href="./shoping-cart.html">FAQ</a></li>
-                                    <li><a href="./checkout.html">이벤트</a></li>
-                                    <li><a href="./wisslist.html">문의사항</a></li>
-                                    <li><a href="./wisslist.html">고객센터</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=공지">공지</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=FAQ">FAQ</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=이벤트">이벤트</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=문의사항">문의사항</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=고객센터">고객센터</a></li>
                                 </ul>
                              </li>
                         </ul>
-                    </nav>
+                        </nav>
                 </div>
             </div>
         </div>
