@@ -624,7 +624,7 @@ $('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn4').c
 	
 	//주소 유효성 검사
 	else if($("#addr1").val() == "") {
-		document.getElementById("addressDiv").innerText = "상세주소를 입력하세요.";
+		document.getElementById("addressDiv").innerText = "주소를 입력하세요.";
 		$("#addr1").focus();	
 		$('#addressDiv').css('color', 'red');
 		$('#addressDiv').css('font-size', '12.5px');
@@ -709,7 +709,7 @@ $('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn4').o
 			console.log(err);
 		}
 		
-    });
+    })
                 
 });
     
@@ -722,6 +722,19 @@ function checkCode(){
     //alert($(".mail_check_input").val());
     //alert(code);
     
+	if(code == $(".mail_check_input").val()) {
+		$('#mailCheckDiv').css('color', '#223894');
+		$('#mailCheckDiv').css('font-size', '12.5px');
+		
+		$('.page-btn5').css('display', 'block');
+		$('.page-btn5').css('border-radius', '5px');
+		$('.page-btn5').css('border', 'none');
+		$('.page-btn5').css('transition', 'all 0.5s');
+		$('.page-btn5').css('background', '#223894');
+		$('.page-btn5').css('color', 'white');
+	}
+    
+$('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn5').click(function(){
 	if(code != $(".mail_check_input").val()) {
 		document.getElementById("mailCheckDiv").innerText = "인증번호가 틀렸습니다.";
 		$(".mail_check_input").focus();	
@@ -738,42 +751,31 @@ function checkCode(){
 		return false;
 		
 		}
-	
-	if(code == $(".mail_check_input").val()) {
-		$('#mailCheckDiv').css('color', '#223894');
-		$('#mailCheckDiv').css('font-size', '12.5px');
-		
-		$('.page-btn5').css('display', 'block');
-		$('.page-btn5').css('border-radius', '5px');
-		$('.page-btn5').css('border', 'none');
-		$('.page-btn5').css('transition', 'all 0.5s');
-		$('.page-btn5').css('background', '#223894');
-		$('.page-btn5').css('color', 'white');
-	}
+	});
+
 
 }
 
-function checkCode(){
-    var inputCode = $(".mail_check_input").val();//입력코드    
-    var checkResult = code;
-	
-	if(code == $(".mail_check_input").val()) {
-		$('#mailCheckDiv').css('color', '#223894');
-		$('#mailCheckDiv').css('font-size', '12.5px');
-		
-		$('.page-btn5').css('display', 'block');
-		$('.page-btn5').css('border-radius', '5px');
-		$('.page-btn5').css('border', 'none');
-		$('.page-btn5').css('transition', 'all 0.5s');
-		$('.page-btn5').css('background', '#223894');
-		$('.page-btn5').css('color', 'white');
-	}
-}
+//function checkCode(){
+//    var inputCode = $(".mail_check_input").val();//입력코드    
+//    var checkResult = code;
+//	
+//	if(code == $(".mail_check_input").val()) {
+//		$('#mailCheckDiv').css('color', '#223894');
+//		$('#mailCheckDiv').css('font-size', '12.5px');
+//		
+//		$('.page-btn5').css('display', 'block');
+//		$('.page-btn5').css('border-radius', '5px');
+//		$('.page-btn5').css('border', 'none');
+//		$('.page-btn5').css('transition', 'all 0.5s');
+//		$('.page-btn5').css('background', '#223894');
+//		$('.page-btn5').css('color', 'white');
+//	}
+//}
 
 
 //생년월일
-function checkBir(){
-//$('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn6').click(function(){
+$('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn6').click(function(){
 	var year = $("#bir_yy").val();
 	var month = $("#bir_mm").val();
 	var day = $("#bir_dd").val();
@@ -919,7 +921,42 @@ function checkBir(){
 		
 		}
 		
-	 else if ($("#bir_yy").val() || $("#bir_mm option:selected").val() || $("#bir_dd").val()){
+/*	else if ($("#bir_yy").val() || $("#bir_dd").val()){
+			$("#birthDiv").val("");
+			
+			$('.page-btn6').css('display', 'block');
+			$('.page-btn6').css('border-radius', '5px');
+			$('.page-btn6').css('border', 'none');
+			$('.page-btn6').css('transition', 'all 0.5s');
+			$('.page-btn6').css('background', '#223894');
+			$('.page-btn6').css('color', 'white');
+			
+			return true;
+			
+		}*/
+		
+
+	}
+
+});
+
+function checkBir(){	
+	if (!$("#bir_yy").val() || !$("#bir_mm option:selected").val() || !$("#bir_dd").val()){
+		$('#birthDiv').css('color', 'red');
+		$('#birthDiv').css('font-size', '12.5px');
+		
+		$('.page-btn6').css('display', 'block');
+		$('.page-btn6').css('border-radius', '5px');
+		$('.page-btn6').css('border', 'none');
+		$('.page-btn6').css('transition', 'all 0.5s');
+		$('.page-btn6').css('background', '#c4c4c4');
+		$('.page-btn6').css('color', 'white');
+		
+		return false;
+		
+		}
+	
+	else if ($("#bir_yy").val() || $("#bir_mm option:selected").val() || $("#bir_dd").val()){
 		$("#birthDiv").val("");
 		
 		$('.page-btn6').css('display', 'block');
@@ -932,9 +969,7 @@ function checkBir(){
 		return true;
 		
 		}
-
-	}
-
+	
 }
 
 

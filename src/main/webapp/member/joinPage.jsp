@@ -345,7 +345,7 @@ input::placeholder {
 <form id="joinForm" style="width:550px; height:800px;">
 <div class="container">
 <div class="joinPage row">
-<div class="wrap col-lg-12">
+<div class="wrap col-lg-12" style="height:58px;">
     <div class="main-bn" style="width:550px; height:800px;">
         <div class="slider">
             <div class="slides">
