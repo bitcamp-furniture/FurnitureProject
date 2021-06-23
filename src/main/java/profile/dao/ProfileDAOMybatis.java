@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.ProfileDTO;
 
@@ -31,6 +32,26 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	@Override
 	public int getTotalA() {
 		return sqlSession.selectOne("profileSQL.getTotalA");
+	}
+
+	@Override
+	public MemberDTO getMember(int id) {
+		return sqlSession.selectOne("profileSQL.getMember", id);
+	}
+
+	@Override
+	public void updateMember(Map<String, String> map) {
+		sqlSession.update("profileSQL.updateMember", map);
+	}
+
+	@Override
+	public void updateContact(Map<String, String> map) {
+		sqlSession.update("profileSQL.updateContact", map);
+	}
+
+	@Override
+	public void updatePassword(Map<String, String> map) {
+		sqlSession.update("profileSQL.updatePassword", map);
 	}
 
 }

@@ -25,5 +25,21 @@
  	<select id="getTotalA"  resultType="Integer">
  		select count(*) as count from ask
  	</select>
+ 	
+ 	<select id="getMember" parameterType="Integer" resultType="member">
+ 		select * from member where id=#{id}
+ 	</select>
 	
+	<update id="updateMember" parameterType="java.util.Map">
+		update member set name=#{name}, bir_yy=#{bir_yy}, bir_mm=#{bir_mm}, bir_dd=#{bir_dd}, 
+		zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2} where id=#{id}
+	</update>
+	
+	<update id="updateContact" parameterType="java.util.Map">
+		update member set phone=#{phone} where id=#{id}
+	</update>
+	
+	<update id="updatePassword" parameterType="java.util.Map">
+		update member set password=#{password} where id=#{id}
+	</update>
  </mapper>
