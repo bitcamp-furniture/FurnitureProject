@@ -19,10 +19,7 @@
 	transition:800ms ease all;
 	outline:none;
 }
-#mypageContact h4{
-	display:inline;
-	position:relative;
-}
+
 .mypageContactModifyOpenBtn{
 	position:absolute;
 	top: 0px;
@@ -94,8 +91,8 @@
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
-  	top: 0px;
-	left: 150px;
+  top: 0px;
+  left: 150px;
 }
 
 
@@ -112,6 +109,37 @@
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
-  	top: 0px;
-	left: 150px;
+  top: 0px;
+  left: 150px;
 }
+
+.mypagePrivateName, .mypagePrivateBirth, .mypagePrivateAddress, .mypageContactPhone, .mypageContactEmail, .mypagePasswordPassword {
+	display: inline-block;
+    width: 100px;
+    height: 30px;
+    /* border: 1px solid blue; */
+}
+#mypagePrivateModifyBirth{
+	display: inline-block;
+    width: 100px;
+    height: 25px;
+    /* border: 1px solid blue; */
+}
+#name, #birth, #address, #phone, #email, #password {
+	display: inline-block;
+    width: 600px;
+    height: 30px;
+    /* border: 1px solid blue; */
+}
+#mypagePrivateModifyBir_yy, #mypagePrivateModifyBir_mmBox, #mypagePrivateModifyBir_dd{
+	margin-left: 3px;
+}
+#mypagePrivateModifyZipcode{
+	width: 6%;
+	text-align: center;
+}
+.nice-select{
+	height: 30px;
+	line-height: 30px;
+}
+
