@@ -12,24 +12,36 @@ $(function(){
 		success: function(data){
 			$.each(data.list, function(index, items){
 				$('<tr/>').append($('<td/>',{
-					align:'center',
+					align:'&nbsp;center',
 					text: items.seq
 				})).append($('<td/>',{
-					align:'center',
+					align:'&nbsp;center',
 					text: items.ask_category
 				})).append($('<td/>',{
+				}).append($('<a/>',{
+					href: '#',
 					align:'center',
-					text: items.subject
-				})).append($('<td/>',{
-					align:'center',
+					text: items.subject,
+					id: 'subjectA'
+				}))
+				).append($('<td/>',{
+					align:'&nbsp;center',
 					text: items.created_at
 				})).append($('<td/>',{
-					align:'center',
+					align:'&nbsp;center',
 					text: items.reply
 				})).appendTo($('#askListTable'));
 				
 		});//each
 		
+			$(document).on('click','#subjectA', function(){
+				//alert($(this).parent().prev().prev().text());
+				
+				var seq = $(this).parent().prev().prev().text();
+				window.open("/furniture/profile/askView?seq="+seq+"&pg="+$('#pg').val(), "a", "width=800, height=500, left=100, top=50");
+				
+				});	
+			
 		$('#boardPagingDiv').html(data.askPaging.pagingHTML);
 	
 		},
