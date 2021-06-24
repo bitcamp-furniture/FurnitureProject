@@ -113,6 +113,7 @@
   left: 150px;
 }
 
+
 .mypagePrivateName, .mypagePrivateBirth, .mypagePrivateAddress, .mypageContactPhone, .mypageContactEmail, .mypagePasswordPassword {
 	display: inline-block;
     width: 100px;
@@ -142,4 +143,37 @@
 	height: 30px;
 	line-height: 30px;
 }
-
+#mypageBirthDiv{
+	margin-top: 10px;
+}
+#mypageAddressDiv, #mypagePhoneDiv, #mypagePasswordDiv{
+	color: red;
+	font-size: 10pt;
+	font-weight: bold;
+}
+#password{
+	width: 8%;
+	padding-left: 10px;
+	border: none;
+}
+#mypagePrivateModifyBtn, #mypageContactModifyBtn, #mypagePasswordModifyBtn{
+	width: 40%;
+	height: 40px;
+	color: #fff;
+	background: #223894;
+	font-size: 16px;
+	border: none;
+	border-radius: 20px;
+	transition: 0.3s;
+	position: absolute;
+	margin: 2% 0 0 30%;
+	transform: translate(-50%,-50%);
+	cursor: pointer;
+}
+#addSearchBtn{
+	background: #fff;
+	border: 1px solid black;
+}
+#mypagePrivateModifyAddr2{
+	width: 30%;
+}
