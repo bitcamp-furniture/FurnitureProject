@@ -193,7 +193,7 @@ $('#mypagePrivateModifyBtn').click(function(){
 			},
 			success: function(){
 				alert('성공');
-				location.href='/furniture/profile/mypage';
+				location.href='/furniture/profile/profile';
 			},
 			error: function(err){
 				console.log(err);
@@ -246,7 +246,7 @@ $('#mypageContactModifyBtn').click(function(){
 			},
 			success: function(){
 				alert('성공');
-				location.href='/furniture/profile/mypage';
+				location.href='/furniture/profile/profile';
 			},
 			error: function(err){
 				console.log(err);
@@ -332,7 +332,7 @@ $('#mypagePasswordModifyBtn').click(function(){
 			},
 			success: function(){
 				alert('성공');
-				location.href='/furniture/profile/mypage';
+				location.href='/furniture/profile/profile';
 			},
 			error: function(err){
 				console.log(err);
