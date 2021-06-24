@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.AskPaging;
 import profile.dao.ProfileDAO;
@@ -49,6 +50,26 @@ public class ProfileServiceImpl implements ProfileService {
 		askPaging.makePagingHTML();
 		
 		return askPaging;
+	}
+
+	@Override
+	public MemberDTO getMember(int id) {
+		return profileDAO.getMember(id);
+	}
+
+	@Override
+	public void updateMember(Map<String, String> map) {
+		profileDAO.updateMember(map);
+	}
+
+	@Override
+	public void updateContact(Map<String, String> map) {
+		profileDAO.updateContact(map);
+	}
+
+	@Override
+	public void updatePassword(Map<String, String> map) {
+		profileDAO.updatePassword(map);
 	}
 
 }

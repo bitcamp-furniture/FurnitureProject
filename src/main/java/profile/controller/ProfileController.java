@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.AskPaging;
 import profile.bean.ProfileDTO;
@@ -40,7 +42,11 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(value="mypage", method=RequestMethod.GET)
-	public String mypage(Model model) {
+	public String mypage(Model model, HttpSession session) {
+		int id = (Integer) session.getAttribute("memId");
+		//System.out.println("id="+id);
+		
+		model.addAttribute("id", id);
 		model.addAttribute("display", "/profile/profile.jsp");
 		model.addAttribute("askdisplay", "/profile/mypage.jsp");
 		return "/index";
@@ -130,7 +136,37 @@ public class ProfileController {
 		return mav;
 	}
 	
+//----------------------------------------------------------------
+//한사람의 정보 가져오기
+	@RequestMapping(value="getMember", method=RequestMethod.POST)
+    @ResponseBody
+    public MemberDTO getMember(@RequestParam int id) {
+        return profileService.getMember(id);
+    }
 	
+//----------------------------------------------------------------
+//회원 정보 수정
+	@RequestMapping(value="updateMember", method=RequestMethod.POST)
+    @ResponseBody
+    public void updateMember(@RequestParam Map<String, String> map) {
+        profileService.updateMember(map);
+    }
+	
+//----------------------------------------------------------------
+//회원 정보 수정
+	@RequestMapping(value="updateContact", method=RequestMethod.POST)
+    @ResponseBody
+    public void updateContact(@RequestParam Map<String, String> map) {
+        profileService.updateContact(map);
+    }
+	
+//----------------------------------------------------------------
+//회원 정보 수정
+	@RequestMapping(value="updatePassword", method=RequestMethod.POST)
+    @ResponseBody
+    public void updatePassword(@RequestParam Map<String, String> map) {
+        profileService.updatePassword(map);
+    }
 	
 
 }

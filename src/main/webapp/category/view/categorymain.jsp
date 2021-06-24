@@ -23,12 +23,13 @@
                             <span>편안한 침대</span>
                             <h2>숙면보장<br />푹신푹신한 침대</h2>
                             <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
+                            <a href="http://localhost:8080/furniture/category/view/selectList?category=%EC%86%8C%ED%8C%8C%EB%B2%A0%EB%93%9C" class="primary-btn">SHOP NOW</a>
                         </div>
                     </div>
-                    
+     
+     <%--추천가구리스트를 자동으로 옆으로 이동하는 액션이 있는 부분이고 : 클릭을 하면 상품상세 페이지로 이동할 예정 --%>              
     <!-- Categories Section Begin -->
-    <section class="categories">
+  <%--<section class="categories">
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
@@ -60,159 +61,9 @@
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Categories Section End -->
-
-    <!-- Featured Section Begin -->
-    <section class="featured spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="featured__title">
-                        <h2>이케저케 가구들</h2>
-                    </div>
-                    <div class="featured__controls">
-                        <ul>
-                            <li class="active" data-filter="*">모두</li>
-                            <!-- <li data-filter=".oranges">거실</li>
-                            <li data-filter=".fresh-meat">주방</li>
-                            <li data-filter=".vegetables">침실</li>
-                            <li data-filter=".fastfood">베란다</li> -->
-                            <li data-filter=".living-room">거실</li>
-                            <li data-filter=".kitchen">주방</li>
-                            <li data-filter=".bedroom">침실</li>
-                            <li data-filter=".veranda">베란다</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row featured__filter">
-                <div class="col-lg-3 col-md-4 col-sm-6 mix living-room">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/furniture/category/image/featured/거실_소파.png">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>DB로가격넣어</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix bedroom living-room">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/furniture/category/image/featured/거실_의자.png">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>DB로가격넣어</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix living-room">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/furniture/category/image/featured/거실_청소기.png">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                               <!--  <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>DB로가격넣어</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix veranda">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/furniture/category/image/featured/베란다_세탁기.png">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>DB로가격넣어</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix kitchen">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/furniture/category/image/featured/주방_냉장고.gif">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>DB로가격넣어</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix bedroom living-room">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/furniture/category/image/featured/침실_공기.png">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>DB로가격넣어</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix living-room bedroom">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/furniture/category/image/featured/침실_에어컨.png">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>DB로가격넣어</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix bedroom">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="/furniture/category/image/featured/침실_침대.png">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <!-- <li><a href="#"><i class="fa fa-retweet"></i></a></li> -->
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>DB로가격넣어</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Featured Section End -->
-    
-
+    </section> --%>
+    	<%--맨 밑에 상품 광고 배너 넣을 곳 --%>
+    	<br><br>
     <!-- Banner Begin -->
     <div class="banner">
         <div class="container">
@@ -230,14 +81,19 @@
             </div>
         </div>
     </div>
-    <!-- Banner End -->
  
-    <!-- Latest Product Section End -->
-              
-                </div>
-            </div>
+    <!-- Categories Section End -->
+		<br><br>
+  		<div class="featured__title">
+          <h2>남다른 퀄리티의 IKEZKE</h2>
         </div>
-    </section>
+	<%-- 전체상품리스트 6개만 넣어두고 페이징 할 곳 --%> 
+	<div id="cover_product_list">
+    	<div class="row" id="product_list"></div>
+
+    </div>        
+    
+
     <!-- Hero Section End -->
 
     <!-- Js Plugins -->
@@ -249,3 +105,35 @@
     <script src="/furniture/category/js/mixitup.min.js"></script>
     <script src="/furniture/category/js/owl.carousel.min.js"></script>
     <script src="/furniture/category/js/main.js"></script>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">  
+ window.onload=(function() {
+	$.ajax({
+		type:'post',
+		url:'/furniture/category/view/getAllList',
+		dataType: 'json',
+		success:function(data){
+			//console.log(JSON.stringify(data));
+			console.log(data); 
+			$('#product_list').remove();
+			$('<div/>',{class: "row",id:"product_list"}).appendTo($('#cover_product_list'));
+			/*console.log(JSON.stringify(data));*/
+	         $.each(data,function(index,items){
+       	  
+	        	$('<div/>', {class: "col-lg-4 col-md-6 col-sm-6"}).append($('<div/>', {class:"product__item"}).append($('<div/>',{class:"product__item__pic set-bg"})
+	            		  .append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/category/storage/"+items.product_img_thumb}))
+	                      .append($('<ul/>',{class:"product__item__pic__hover"})
+	                            .append($('<li/>').append($('<a/>', {href:"#"}).append($('<i/>',{class:"fa fa-heart"}))))	
+	                      
+	                      )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>',{id:"product_name",text: items.product_name})
+	                        .append($('<a/>',{href: '#'}))).append($('<h5/>',{id:"product_price",text: items.product_price.toLocaleString()+"원"}))))
+	                      .appendTo($("#product_list"));
+	          });
+		},
+		error: function(err) {
+			console.log("얼리스트 오류남");
+		}
+	});
+}); 
+</script>
+    

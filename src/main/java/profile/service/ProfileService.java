@@ -1,7 +1,9 @@
 package profile.service;
 
 import java.util.List;
+import java.util.Map;
 
+import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.AskPaging;
 
@@ -12,5 +14,13 @@ public interface ProfileService {
 	public List<AskDTO> getAskList(String pg);
 
 	public AskPaging askPaging(String pg);
+
+	public MemberDTO getMember(int id);
+
+	public void updateMember(Map<String, String> map);
+
+	public void updateContact(Map<String, String> map);
+
+	public void updatePassword(Map<String, String> map);
 
 }

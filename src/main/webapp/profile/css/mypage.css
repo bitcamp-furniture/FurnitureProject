@@ -19,10 +19,7 @@
 	transition:800ms ease all;
 	outline:none;
 }
-#mypageContact h4{
-	display:inline;
-	position:relative;
-}
+
 .mypageContactModifyOpenBtn{
 	position:absolute;
 	top: 0px;
@@ -94,8 +91,8 @@
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
-  	top: 0px;
-	left: 150px;
+  top: 0px;
+  left: 150px;
 }
 
 
@@ -112,11 +109,11 @@
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
-  	top: 0px;
-	left: 150px;
+  top: 0px;
+  left: 150px;
 }
 
-/* -------------------------------------------------------------------------- */
+
 .mypagePrivateName, .mypagePrivateBirth, .mypagePrivateAddress, .mypageContactPhone, .mypageContactEmail, .mypagePasswordPassword {
 	display: inline-block;
     width: 100px;
@@ -146,6 +143,7 @@
 	height: 30px;
 	line-height: 30px;
 }
+<<<<<<< HEAD
 #mypageBirthDiv{
 	margin-top: 10px;
 }
