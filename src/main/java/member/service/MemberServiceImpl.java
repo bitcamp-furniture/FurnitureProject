@@ -20,8 +20,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public String checkId(String id) {
-		MemberDTO memberDTO = memberDAO.checkId(id);
+	public String checkId(String email) {
+		MemberDTO memberDTO = memberDAO.checkId(email);
 		
 		if(memberDTO == null) {
 			return "non_exist"; //사용 가능
