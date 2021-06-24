@@ -35,6 +35,7 @@ public class ProfileController {
 	@RequestMapping(value="profile", method=RequestMethod.GET)
 	public String profile(Model model) {
 		model.addAttribute("display", "/profile/profile.jsp");
+		model.addAttribute("askdisplay", "/profile/order.jsp");
 		return "/index";
 	}
 	
