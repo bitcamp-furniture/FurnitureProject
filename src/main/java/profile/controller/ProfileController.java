@@ -35,22 +35,25 @@ public class ProfileController {
 	ProfileService profileService;
 	
 	@RequestMapping(value="profile", method=RequestMethod.GET)
-	public String profile(Model model) {
+	public String profile(Model model, HttpSession session) {
+		int id = (Integer) session.getAttribute("memId");
+		
+		model.addAttribute("id", id);
 		model.addAttribute("display", "/profile/profile.jsp");
 		model.addAttribute("askdisplay", "/profile/order.jsp");
 		return "/index";
 	}
 	
-	@RequestMapping(value="mypage", method=RequestMethod.GET)
-	public String mypage(Model model, HttpSession session) {
-		int id = (Integer) session.getAttribute("memId");
-		//System.out.println("id="+id);
-		
-		model.addAttribute("id", id);
-		model.addAttribute("display", "/profile/profile.jsp");
-		model.addAttribute("askdisplay", "/profile/mypage.jsp");
-		return "/index";
-	}
+//	@RequestMapping(value="mypage", method=RequestMethod.GET)
+//	public String mypage(Model model, HttpSession session) {
+//		int id = (Integer) session.getAttribute("memId");
+//		//System.out.println("id="+id);
+//		
+//		model.addAttribute("id", id);
+//		model.addAttribute("display", "/profile/profile.jsp");
+//		model.addAttribute("askdisplay", "/profile/mypage.jsp");
+//		return "/index";
+//	}
 	
 	@RequestMapping(value="cart", method=RequestMethod.GET)
 	public String cart(Model model) {
