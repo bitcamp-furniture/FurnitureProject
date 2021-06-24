@@ -50,7 +50,7 @@
 					<div style="width: 100; height: 200; overflow: auto;">
 					<pre style="white-space: pre-line; word-break: normal;">
 					<span id="contentSpan"></span>
-					<img id="image1" width="400" height="300">
+					<img id="image1" width="400" height="300" alt="No Image">
 					</pre>
 					</div>
 				</td>

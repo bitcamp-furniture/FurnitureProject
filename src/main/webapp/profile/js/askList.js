@@ -12,12 +12,13 @@ $(function(){
 		success: function(data){
 			$.each(data.list, function(index, items){
 				$('<tr/>').append($('<td/>',{
-					align:'&nbsp;center',
+					align:'center',
 					text: items.seq
 				})).append($('<td/>',{
-					align:'&nbsp;center',
+					align:'center',
 					text: items.ask_category
 				})).append($('<td/>',{
+					align:'center'
 				}).append($('<a/>',{
 					href: '#',
 					align:'center',
@@ -25,10 +26,10 @@ $(function(){
 					id: 'subjectA'
 				}))
 				).append($('<td/>',{
-					align:'&nbsp;center',
+					align:'center',
 					text: items.created_at
 				})).append($('<td/>',{
-					align:'&nbsp;center',
+					align:'center',
 					text: items.reply
 				})).appendTo($('#askListTable'));
 				

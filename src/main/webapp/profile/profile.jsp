@@ -384,7 +384,7 @@
 						<button class="askBtn" id="askBtn" type="button">1:1문의 쓰기</button>
 						<br> <br> <input type="hidden" id="pg" value="${pg }">
 						<table class="ask table" id="askListTable" border="1"
-							bordercolor="#2F3894" width="800" cellpadding="5" cellspacing="0"
+							bordercolor="#2F3894" cellpadding="5" cellspacing="0"
 							frame="hsides" rules="rows">
 							<tr>
 								<th style="text-align: center;">글 번호</th>
