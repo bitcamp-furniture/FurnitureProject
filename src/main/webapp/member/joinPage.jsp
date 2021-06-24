@@ -429,9 +429,9 @@ input::placeholder {
 			                        <input class="phone" id="phone" name="phone" placeholder="휴대폰번호 입력" formcontrolname="phone" autocorrect="off" autocapitalize="none" type="text"><br><br>
 			                        <div id="phoneDiv"></div><br><br><br>
 			                        <p class="addTitle" style="font-size:13.5px">주소</p>
-			                        <input class="postcode" id="zipcode" name="zipcode" placeholder="" formcontrolname="zipcode" autocorrect="off" autocapitalize="none" type="text" style="width:270px">
+			                        <input class="postcode" id="zipcode" name="zipcode" placeholder="" formcontrolname="zipcode" autocorrect="off" autocapitalize="none" type="text" style="width:270px" readonly>
 			                       	<input type="button" class="addSearchBtn" value="우편번호 찾기" onclick="execDaumPostcode()" style="text-align:center;"><br><br>
-			                        <input class="address" id="addr1" name="addr1" placeholder="" formcontrolname="addr1" autocorrect="off" autocapitalize="none" type="text"><br><br>
+			                        <input class="address" id="addr1" name="addr1" placeholder="" formcontrolname="addr1" autocorrect="off" autocapitalize="none" type="text" readonly><br><br>
 			                        <input class="detailAddress" id="addr2" name="addr2" placeholder="상세주소 입력" formcontrolname="addr2" autocorrect="off" autocapitalize="none" type="text"><br><br>
 			                        <input class="extraAddress" id="extraAddress" formcontrolname="addr2" autocorrect="off" autocapitalize="none" type="hidden">
 			                        <div id="addressDiv"></div><br>

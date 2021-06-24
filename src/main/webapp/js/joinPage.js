@@ -717,7 +717,7 @@ $('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn4').o
 function checkCode(){
 //$('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn5').click(function(){
     var inputCode = $(".mail_check_input").val();//입력코드    
-    var checkResult = code;//비교 결과
+    //var checkResult = code;//비교 결과
     
     //alert($(".mail_check_input").val());
     //alert(code);

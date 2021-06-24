@@ -56,7 +56,7 @@
                                         <li><a href="/furniture/profile/profile">마이페이지</a></li>
                                     </c:if>
                                     <c:if test="${sessionScope.memEmail != null }">
-                                        <c:if test="${member.verify == 9 }">
+                                        <c:if test="${memberDAO.verify == 9 }">
                                         <li><a href="/furniture/member/logout">로그아웃</a> </li>
                                         <li><a href="/furniture/member/adminPage">관리자페이지</a></li>
                                         </c:if>
@@ -86,11 +86,7 @@
         </div>
         <div class="container">
             <div class="row">
-<<<<<<< HEAD
                 <div class="col-lg-12" style="height:58.8px;">
-=======
-                <div class="col-lg-12" style="height: 58px;">
->>>>>>> 624a35b926272b65883cef6e295151e5eab6192b
                     <nav class="header__menu mobile-menu">
                         <ul>
                         <li><a href="/furniture/category/view/category">전체상품보기</a>
