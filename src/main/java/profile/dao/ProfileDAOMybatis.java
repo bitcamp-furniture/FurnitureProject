@@ -35,6 +35,11 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
+	public AskDTO getAsk(String seq) {
+		return sqlSession.selectOne("profileSQL.getAsk", Integer.parseInt(seq));
+	}
+
+	@Override
 	public MemberDTO getMember(int id) {
 		return sqlSession.selectOne("profileSQL.getMember", id);
 	}
@@ -53,5 +58,7 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	public void updatePassword(Map<String, String> map) {
 		sqlSession.update("profileSQL.updatePassword", map);
 	}
+
+
 
 }

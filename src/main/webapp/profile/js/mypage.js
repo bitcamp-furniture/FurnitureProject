@@ -56,7 +56,7 @@ $(document).ready(function(){
 				$('#address').text(data.addr1 + data.addr2);
 				$('#phone').text(data.phone);
 				$('#email').text(data.email);
-				$('#password').text(data.password);
+				$('#password').val(data.password);
 				
 
 			},
@@ -107,13 +107,10 @@ $('#mypagePrivateModifyOpenBtn').click(function(){
 		dataType: 'json',
 		success: function(data){
 			//alert(JSON.stringify(data));
-			alert(data.bir_mm);
 			$('#mypagePrivateModifyName').attr('value', data.name);
 			$('#mypagePrivateModifyBir_yy').attr('value', data.bir_yy);
-			//$('#mypagePrivateModifyBir_mm').prop('selected', true);
-			//$('#mypagePrivateModifyBir_mm option:eq(2)').prop('selected', true);
-			$('#mypagePrivateModifyBir_mm option[value='+data.bir_mm+']').prop('selected','selected');
-			//$('#mypagePrivateModifyBir_mm').val(data.bir_mm);
+			$('.current').text(data.bir_mm);
+			$('.mypagePrivateModifyBir_mm').val(data.bir_mm).prop('select', true);
 			$('#mypagePrivateModifyBir_dd').attr('value', data.bir_dd);
 			$('#mypagePrivateModifyZipcode').attr('value', data.zipcode);
 			$('#mypagePrivateModifyAddr1').attr('value', data.addr1);
@@ -132,11 +129,12 @@ $('#mypagePrivateModifyOpenBtn').click(function(){
 $('#mypagePrivateModifyBtn').click(function(){
 	var getName = /^[가-힣]{2,6}$/;
 	var year = $("#mypagePrivateModifyBir_yy").val();
-	var month = $("#mypagePrivateModifyBir_mm").val();
+	var month = $(".mypagePrivateModifyBir_mm").val();
 	var day = $("#mypagePrivateModifyBir_dd").val();
 	var today = new Date();
 	var yearNow = today.getFullYear();
 	var adultYear = yearNow-20;
+	
 	
 	$('#mypageNameDiv').empty();
 	$('#mypageBirthDiv').empty();
@@ -145,37 +143,38 @@ $('#mypagePrivateModifyBtn').click(function(){
 	//이름 유효성 검사
 	if($('#mypagePrivateModifyName').val()==''){
 		$('#mypageNameDiv').text('이름을 입력해주시기 바랍니다');
+		$('#mypageNameDiv').css('font-size','10pt');
 	} else if(!getName.test($("#mypagePrivateModifyName").val())) {
 		document.getElementById("mypageNameDiv").innerText = "잘못된 이름을 입력하셨습니다.";
 	} 
 	
 	//생년월일 유효성 검사
-	else if (year < 1900 || year > adultYear) {
-		document.getElementById("mypageBirthDiv").innerText = "연도를 확인하세요. "+adultYear+"년생 이전 출생자만 등록 가능합니다.";
-	} else if(year == ''){
+	else if(year == ''){
 		$('#mypageBirthDiv').text('태어난 년도를 입력해주시기 바랍니다');
-	} else if(month == ''){
+		$('#mypageBirthDiv').css('font-size','10pt');
+	}else if (year < 1900 || year > adultYear) {
+		document.getElementById("mypageBirthDiv").innerText = "연도를 확인하세요. "+adultYear+"년생 이전 출생자만 등록 가능합니다.";
+		$('#mypageBirthDiv').css('font-size','10pt');
+	} else if(month == '월'){
 		$('#mypageBirthDiv').text('태어난 월을 입력해주시기 바랍니다');
+		$('#mypageBirthDiv').css('font-size','10pt');
 	} else if(day == ''){
 		$('#mypageBirthDiv').text('태어난 일을 입력해주시기 바랍니다');
-	} else if (month < 1 || month > 12) {
-		document.getElementById("mypageBirthDiv").innerText = "달은 1월부터 12월까지 입력 가능합니다.";
+		$('#mypageBirthDiv').css('font-size','10pt');
 	} else if (day < 1 || day > 31) {
 		document.getElementById("mypageBirthDiv").innerText = "일은 1일부터 31일까지 입력가능합니다.";
+		$('#mypageBirthDiv').css('font-size','10pt');
 	} else if ((month==4 || month==6 || month==9 || month==11) && day==31) {
 		document.getElementById("mypageBirthDiv").innerText = month+"월은 31일이 존재하지 않습니다.";
+		$('#mypageBirthDiv').css('font-size','10pt');
 	} else if (month == 2) {
 		var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
 		if (day>29 || (day==29 && !isleap)) {
 			 document.getElementById("mypageBirthDiv").innerText = year + "년 2월은  " + day + "일이 없습니다.";
+			 $('#mypageBirthDiv').css('font-size','10pt');
 		}
 			 
-			 
-			 
-			 
 	//주소 유효성 검사
-	}else if($("#mypagePrivateModifyZipcode").val() == "") {
-		$('#mypageAddressDiv').text('우편번호 찾기를 통해서 주소를 입력해 주세요.');
 	} else if($("#mypagePrivateModifyAddr2").val() == "") {
 		$('#mypageAddressDiv').text('상세주소를 입력하세요.');
 		$("#mypagePrivateModifyAddr2").focus();	
@@ -186,7 +185,7 @@ $('#mypagePrivateModifyBtn').click(function(){
 			data: {'id': $('#id').val(),
 				   'name': $('#mypagePrivateModifyName').val(),
 				   'bir_yy': $('#mypagePrivateModifyBir_yy').val(),
-				   'bir_mm': $('#mypagePrivateModifyBir_mm').val(),
+				   'bir_mm': $('.mypagePrivateModifyBir_mm').val(),
 				   'bir_dd': $('#mypagePrivateModifyBir_dd').val(),
 				   'zipcode': $('#mypagePrivateModifyZipcode').val(),
 				   'addr1': $('#mypagePrivateModifyAddr1').val(),
@@ -202,6 +201,7 @@ $('#mypagePrivateModifyBtn').click(function(){
 			}
 		}); //ajax
 		
+		$('#mypageBirthDiv').css('font-size','10pt');
 		return false;
 	} //if
 	
@@ -230,6 +230,8 @@ $('#mypageContactModifyOpenBtn').click(function(){
 //연락처 저장 버튼 클릭시
 $('#mypageContactModifyBtn').click(function(){
 	var phone = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+	
+	$('#mypagePhoneDiv').empty();
 	
 	if($('#mypageContactModifyPhone').val()==''){
 		$('#mypagePhoneDiv').text('핸드폰번호를 입력해주시기 바랍니다');
@@ -277,14 +279,56 @@ $('#mypagePrivateModifyOpenBtn').click(function(){
 //------------------------------------------------------------
 //비밀번호 저장 버튼 클릭시
 $('#mypagePasswordModifyBtn').click(function(){
-	if($('#mypagePasswordModifyPassword').val()==''){
+	var pwd = $("#mypagePasswordModifyCurrentPassword").val();
+	var newPwd = $("#mypagePasswordModifyNewPassword").val();
+	var checkPwd = $("#mypagePasswordModifyCheckPassword").val();
+	var num = newPwd.search(/[0-9]/g);
+	var eng = newPwd.search(/[a-z]/ig);
+	var eng2 = newPwd.search(/[A-Z]/ig);
+	var spe = newPwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+	
+	$('#mypagePasswordDiv').empty();
+	
+	if(pwd == ''){
 		$('#mypagePasswordDiv').text('비밀번호를 입력해주시기 바랍니다');
+	} else {
+		$.ajax({
+			url: '/furniture/profile/getMember',
+			type: 'post',
+			data: 'id=' +$('#id').val(),
+			dataType: 'json',
+			success: function(data){
+				//alert(JSON.stringify(data));
+				if(pwd != data.password){
+					$('#mypagePasswordDiv').text('현재 비밀번호를 확인해주시기 바랍니다');
+				}
+			},
+			error: function(err){
+				console.log(err);
+				alert('실패');
+			}
+		}); //ajax
+	}
+	
+	
+	if(newPwd == '') {
+		document.getElementById("mypagePasswordDiv").innerText = "새로운 비밀번호를 입력해주세요.";
+	} else if(newPwd.length < 8 || newPwd.length > 12){
+		document.getElementById("mypagePasswordDiv").innerText = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
+	} else if(checkPwd == '') {
+		document.getElementById("mypagePasswordDiv").innerText = "비밀번호 재확인을 위해 비밀번호를 다시 입력해주세요.";
+	} else if(newPwd.search(/\s/) != -1){
+		document.getElementById("mypagePasswordDiv").innerText = "비밀번호는 공백 없이 입력해주세요.";
+	} else if(num < 0 || eng < 0 || eng2 < 0 || spe < 0){
+		document.getElementById("mypagePasswordDiv").innerText = "영문 대 소문자, 숫자, 특수문자를 혼합하여 입력해주세요.";
+	} else if(newPwd != checkPwd){ 
+	    document.getElementById("mypagePasswordDiv").innerText = "비밀번호가 동일하지 않습니다.";
 	} else{
 		$.ajax({
 			url: '/furniture/profile/updatePassword',
 			type: 'post',
 			data: {'id': $('#id').val(),
-				   'password': $('#mypagePasswordModifyPassword').val(),
+				   'password': newPwd,
 			},
 			success: function(){
 				alert('성공');
@@ -350,8 +394,3 @@ function execDaumPostcode() {
     }).open();
 	
 }
-
-
-
-
-

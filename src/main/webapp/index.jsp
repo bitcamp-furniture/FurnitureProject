@@ -47,13 +47,13 @@
                             <div class="header__top__left">
                                 <ul>  
                                     <c:if test="${sessionScope.memEmail == null }">
-                                        <li><a href="/furniture/member/joinPage">회원가입</a> </li>
-                                        <li><a href="/furniture/member/loginForm">로그인</a> </li>
-                                        <li><a href="/furniture/profile/profile">마이페이지</a> </li>
+                                        <li><a href="/furniture/member/joinPage">회원가입</a></li>
+                                        <li><a href="/furniture/member/loginForm">로그인</a></li>
+                                        <li><a href="/furniture/profile/profile">마이페이지</a></li>
                                     </c:if>
                                     <c:if test="${sessionScope.memEmail != null }">
-                                        <li><a href="/furniture/member/logout">로그아웃</a> </li>
-                                        <li><a href="/furniture/profile/profile">마이페이지</a> </li>
+                                        <li><a href="/furniture/member/logout">로그아웃</a></li>
+                                        <li><a href="/furniture/profile/profile">마이페이지</a></li>
                                     </c:if>
                                 </ul>
                             </div>
@@ -80,7 +80,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" style="height:58.8px;">
                     <nav class="header__menu mobile-menu">
                         <ul>
                         <li><a href="/furniture/category/view/category">전체상품보기</a>

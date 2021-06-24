@@ -35,21 +35,25 @@ public class ProfileController {
 	ProfileService profileService;
 	
 	@RequestMapping(value="profile", method=RequestMethod.GET)
-	public String profile(Model model) {
-		model.addAttribute("display", "/profile/profile.jsp");
-		return "/index";
-	}
-	
-	@RequestMapping(value="mypage", method=RequestMethod.GET)
-	public String mypage(Model model, HttpSession session) {
+	public String profile(Model model, HttpSession session) {
 		int id = (Integer) session.getAttribute("memId");
-		//System.out.println("id="+id);
 		
 		model.addAttribute("id", id);
 		model.addAttribute("display", "/profile/profile.jsp");
-		model.addAttribute("askdisplay", "/profile/mypage.jsp");
+		model.addAttribute("askdisplay", "/profile/order.jsp");
 		return "/index";
 	}
+	
+//	@RequestMapping(value="mypage", method=RequestMethod.GET)
+//	public String mypage(Model model, HttpSession session) {
+//		int id = (Integer) session.getAttribute("memId");
+//		//System.out.println("id="+id);
+//		
+//		model.addAttribute("id", id);
+//		model.addAttribute("display", "/profile/profile.jsp");
+//		model.addAttribute("askdisplay", "/profile/mypage.jsp");
+//		return "/index";
+//	}
 	
 	@RequestMapping(value="cart", method=RequestMethod.GET)
 	public String cart(Model model) {
@@ -134,6 +138,30 @@ public class ProfileController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="askView", method=RequestMethod.GET)
+	public String boardView(@RequestParam String seq, //나에게 들어오는 데이터: seq, pg
+							@RequestParam String pg,
+							Model model) { //데이터 2개를 나에게 준다
+
+		model.addAttribute("seq", seq); //seq를 모델에 넣어줌
+		model.addAttribute("pg", pg);
+		
+		/* model.addAttribute("display", "/profile/askView.jsp"); */
+		return "/profile/askView";
+	}
+	
+	@RequestMapping(value="getAskView", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getImageboardView(@RequestParam String seq) { //데이터 2개를 나에게 준다
+		AskDTO askDTO = profileService.getAsk(seq);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("askDTO",askDTO);
+		mav.setViewName("jsonView");
+		return mav;
+		
+	}	
 	
 //----------------------------------------------------------------
 //한사람의 정보 가져오기

@@ -15,6 +15,8 @@ public interface ProfileService {
 
 	public AskPaging askPaging(String pg);
 
+	public AskDTO getAsk(String seq);
+
 	public MemberDTO getMember(int id);
 
 	public void updateMember(Map<String, String> map);
@@ -22,5 +24,6 @@ public interface ProfileService {
 	public void updateContact(Map<String, String> map);
 
 	public void updatePassword(Map<String, String> map);
+
 
 }

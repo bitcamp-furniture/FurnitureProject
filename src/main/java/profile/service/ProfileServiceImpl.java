@@ -53,6 +53,11 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
+	public AskDTO getAsk(String seq) {
+		return profileDAO.getAsk(seq);
+	}
+	
+	@Override
 	public MemberDTO getMember(int id) {
 		return profileDAO.getMember(id);
 	}
