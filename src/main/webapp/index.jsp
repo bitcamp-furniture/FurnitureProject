@@ -80,7 +80,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" style="height: 58px;">
                     <nav class="header__menu mobile-menu">
                         <ul>
                         <li><a href="/furniture/category/view/category">전체상품보기</a>
