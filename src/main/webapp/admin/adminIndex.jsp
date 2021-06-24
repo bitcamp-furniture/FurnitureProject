@@ -146,13 +146,13 @@
 
 
 	<div id="section_admin">
-      <c:if test="${empty adminDisplay }">
-         <jsp:include page="/admin/adminIndexDisplay.jsp" />
-      </c:if>
-      <c:if test="${not empty adminDisplay }">
-         <jsp:include page="${adminDisplay }" />
-      </c:if>
-   </div>
+		<c:if test="${empty adminDisplay }">
+			<jsp:include page="/admin/adminIndexDisplay.jsp" />
+		</c:if>
+		<c:if test="${not empty adminDisplay }">
+			<jsp:include page="${adminDisplay }" />
+		</c:if>
+	</div>
 
 
 </body>

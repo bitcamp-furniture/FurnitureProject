@@ -31,31 +31,83 @@ create sequence seq_review nocycle nocache;
 
 
 
+---------------------------------------------------------------
+카테고리 1과 2로 나눈 이유
+
+ - 카테고리 테이블에 컬럼으로 카테고리1(101, 102, 201, 202...)과 카테고리2(100, 200, 300...)가 들어감
+ - 100, 200, 300 은 대 분류이고 100(ex.침대) 분류 안에 101(ex.2층형침대), 102(ex.1층형침대), 103(ex.수납형침대)... 가 들어감
+->그래서 셀렉트 시 100으로 검색하면 101, 102, 103... 전부가 나옴
+->셀렉트 시 101 로 검색하면 2층형 침대만 나옴.
+---------------------------------------------------------------
+옵션이랑 이미지가 문제다
+
+[이미지]
+- 디테일에 여러개 들어가니까 행이 여러개 생긴다.
+=> 상품 이미지 테이블 따로 뺍니다
+
+[옵션]
+방법1.색깔만 조인하는 방법도 있다
+방법2.옵션테이블을 뺀다
+방법3.옵션을 아예없애는 방법
+방법4.상품별로 다르 입력하면 코드를 색깔별로 아예다르게 하는방법
+=>옵션을 하나(색깔)만 넣을것. 그 옵션별로 하나씩 행이 들어간다.
+그러면 옵션별로 상품코드가 다 같고, 그걸로 묶을 수 있다.
+
+그럼 기능별로 알아보기
+1.등록은 insert니까 신경쓸게없고
+
+2.이미지연결은
+제품명 = 제품코드, 그리고 제품코드를 이미지테이블에서 쓴다 왜 제품명안쓰냐고? 기니까
+옵션만 다른 같은 상품이면 상품코드가 같으니까 그걸로
+
+3.판매가되면 = where 상품코드랑 and 옵션 -> 재고 -n
+-----------------------------------------------------------------
+
 --상품 테이블
 CREATE TABLE product(
-id NUMBER PRIMARY KEY, -- seq 
+id NUMBER PRIMARY KEY, -- seq
 product_name VARCHAR2(50), -- 제품명
-product_code VARCHAR2(50), --제품코드
-product_price NUMBER, --가격
-product_category1 VARCHAR2(50), -- 카테고리1
-product_category2 VARCHAR2(50)-- 카테고리2
-product_img_thumb VARCHAR2(500),
-product_img_detail VARCHAR2(500),
-stock NUMBER --재고
-);
-상품 seq문
+product_code VARCHAR2(50), -- 제품코드 ex.BED_UNIT2_
+product_price NUMBER, -- 가격
+product_category_name VARCHAR2(50), -- 카테고리명
+product_category1 NUMBER, -- 카테고리1
+product_category2 NUMBER,-- 카테고리2
+product_color VARCHAR2(10), -- 색깔 약어 B W R S P
+stock NUMBER); --재고
+
+--상품 seq문
 CREATE SEQUENCE seq_product nocycle nocache;
 
----------------------------------------------------------------
+-----------------------------------------------------------------
 
-insert into product values (seq_product.nextval, '잠이솔솔 침대', 5000000, '소파베드', '침대', '침대.png','');
-insert into product values (seq_product.nextval, '푹신한 소파', 8000000, '패브릭소파', '소파', '소파.png','');
-insert into product values (seq_product.nextval, '튼튼 책장', 4000000, '큐브형수납',' 책장/선반유닛', '책장.png','');
-insert into product values (seq_product.nextval, '밥잘먹는 식탁', 3000000, '책상/컴퓨터책상', '식탁/책상', '밥상.png','');
-insert into product values (seq_product.nextval, '책책책 수납장', 1000000, '거실장/찬장', '수납장/장식장', '수납장.png','');
-insert into product values (seq_product.nextval, '더사더사 옷장', 2000000, '여닫이옷장', '옷장', '옷장.png','');
-insert into product values (seq_product.nextval, '너도나도 앉아의자', 4000000, '사무용의자', '의자', '의자.png','');
-insert into product values (seq_product.nextval, '희희', 2000000, '수납형침대', '침대', '침대.png','');
+--이미지 테이블
+CREATE TABLE product_image(
+id NUMBER PRIMARY KEY,
+product_code  VARCHAR2(50), --상품코드
+product_img_thumb VARCHAR2(500), -- 썸네일 사진
+product_img_detail VARCHAR2(500) -- 디테일 사진
+);
+
+--이미지 seq 문
+CREATE SEQUENCE seq_product_image nocycle nocache;
+
+-----------------------------------------------------------------
+
+--카테고리 테이블
+create table category(
+stage NUMBER, --depth
+catename VARCHAR2(50), --카테고리명
+product_category1 NUMBER PRIMARY KEY, --카테고리1, 기본키
+product_category2 NUMBER --카테고리2
+);
+
+drop table product;
+commit;
+select * from USER_SEQUENCES;
+drop sequence seq_product;
+
+---------------------------------------------------------------
+insert into .xlsx
 
 ---------------------------------------------------------------
 
@@ -94,6 +146,7 @@ create table wishlist(
 );
 
 
+<<<<<<< HEAD
 -- 문의 테이블
 create table ask(
 seq NUMBER primary key, -- 문의번호
@@ -108,3 +161,20 @@ image1 varchar2(200),
 created_at date -- 생성일
 );
 create sequence seq_ask nocycle nocache;
+=======
+
+-- 이벤트
+CREATE TABLE event (
+	id NUMBER PRIMARY KEY, 		
+	event_subject VARCHAR2(100),	-- 이벤트 제목
+	event_content VARCHAR2(500),	-- 내용(리스트에 출력)
+	event_startDate date,			-- 시작 날짜
+	event_endDate date,				-- 종료 날짜
+	event_category VARCHAR2(80),	-- 카테고리명(대상 물건 설정, view에서 해당 리스트 출력)
+	event_img_banner VARCHAR2(100),	-- 배너용 이미지 1개
+	event_img_detail VARCHAR2(100)	-- 디테일 이미지 2개 고정
+);
+create sequence seq_event nocycle nocache;
+
+
+>>>>>>> solee_event01
