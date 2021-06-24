@@ -479,15 +479,15 @@ input::placeholder {
 			                            <span class="box">
 			                                <select id="bir_mm" name="bir_mm" style="width:60px;">
 			                                    <option>월</option>
-			                                    <option value="01">1</option>
-			                                    <option value="02">2</option>
-			                                    <option value="03">3</option>
-			                                    <option value="04">4</option>
-			                                    <option value="05">5</option>
-			                                    <option value="06">6</option>
-			                                    <option value="07">7</option>
-			                                    <option value="08">8</option>
-			                                    <option value="09">9</option>                                    
+			                                    <option value="1">1</option>
+			                                    <option value="2">2</option>
+			                                    <option value="3">3</option>
+			                                    <option value="4">4</option>
+			                                    <option value="5">5</option>
+			                                    <option value="6">6</option>
+			                                    <option value="7">7</option>
+			                                    <option value="8">8</option>
+			                                    <option value="9">9</option>                                    
 			                                    <option value="10">10</option>
 			                                    <option value="11">11</option>
 			                                    <option value="12">12</option>
@@ -518,6 +518,7 @@ input::placeholder {
 											<li class="content2">발급된 쿠폰의 상세 내용은 마이 > 쿠폰에서 확인하세요.</li>
 											<li class="content3">쿠폰, 멤버십 등 신규 회원을 위한 혜택은 여기에 모아 소개해드려요.</li>
 										</ul><br>
+										<img id="coupon" src="/furniture/img/coupon.png" alt="kakao" width="440" height="396" style="align:center;"><br>
 			                        <div class="page-btn">
 			                        	<div class="page-btn7" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block">추천상품 보러가기</div>
 			                        	<div class="page-btn8" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block">쇼핑하러가기</div>
