@@ -55,12 +55,6 @@
                                         <li><a href="/furniture/member/logout">로그아웃</a></li>
                                         <li><a href="/furniture/profile/profile">마이페이지</a></li>
                                     </c:if>
-                                    <c:if test="${sessionScope.memEmail != null }">
-                                        <c:if test="${memberDAO.verify == 9 }">
-                                        <li><a href="/furniture/member/logout">로그아웃</a> </li>
-                                        <li><a href="/furniture/member/adminPage">관리자페이지</a></li>
-                                        </c:if>
-                                    </c:if>
                                 </ul>
                             </div>
                             <div class="header__logo">
