@@ -4,4 +4,15 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="eventSQL">
 
+	<select id="getEventList" parameterType="java.util.Map" resultType="event">
+		select * from 
+		(select rownum rn, tt.* from 
+		(select * from event order by id desc)tt
+		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
+	</select>
+	
+	<select id="getTotalEventList" resultType="int">
+		select count(*) from event
+	</select>
+	
 </mapper>

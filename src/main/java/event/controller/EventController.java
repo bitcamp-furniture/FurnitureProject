@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import event.bean.EventDTO;
+import event.bean.EventListPaging;
 import event.service.EventService;
 
 // 판매자 이벤트 관리
@@ -30,13 +32,28 @@ public class EventController {
 	
 	@RequestMapping(value = "/eventList", method = RequestMethod.GET)
 	public String eventList(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
-		System.out.println("??");
 		model.addAttribute("pg", pg);
 		model.addAttribute("adminDisplay", "/admin/event/eventListAdmin.jsp");
 		
-		return "../adminIndex";
+		return "/admin/adminIndex";
 	}
 
+	
+	@ResponseBody
+	@RequestMapping(value = "/getEventList", method = RequestMethod.POST)
+	public ModelAndView getEventList(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
+		List<EventDTO> eventList = eventService.getEventList(pg);
+		EventListPaging eventListPaging = eventService.eventListPaging(pg);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("eventList", eventList);
+		mav.addObject("pg", pg);
+		mav.addObject("eventListPaging", eventListPaging);
+
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
 	
 
 

@@ -7,6 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import event.bean.EventDTO;
+import event.bean.EventListPaging;
 import event.dao.EventDAO;
 import furniture.bean.ProductDTO;
 import furniture.bean.Product_qnaDTO;
@@ -19,33 +21,33 @@ import furniture.dao.FurnitureDAO;
 public class EventServiceImpl implements EventService {
 	@Autowired
 	private EventDAO eventDAO;
+	@Autowired
+	private EventListPaging eventListPaging;
 
-/*
-	// 리뷰 리스트 ... 상품id를 담아가야 함
 	@Override
-	public List<ReviewDTO> reviewList(String pg) {
-		//1페이지당 3개씩
-	      int endNum = Integer.parseInt(pg)*3;
-	      int startNum = endNum-2;
-	      
-	      Map<String, Integer> map = new HashMap<String, Integer>();
-	      map.put("startNum", startNum);
-	      map.put("endNum", endNum);
-		  return furnitureDAO.reviewList(map);
+	public List<EventDTO> getEventList(String pg) {
+		//1페이지당 5개씩
+		int endNum = Integer.parseInt(pg)*5;
+		int startNum = endNum-4;
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		
+		return eventDAO.getEventList(map);
 	}
 
 	@Override
-	public Review_paging review_paging(String pg) {
-		int totalA = furnitureDAO.getTotalReview();// 총글수
+	public EventListPaging eventListPaging(String pg) {
+		int totalA = eventDAO.getTotalEventList();// 총글수
 
-		review_paging.setCurrentPage(Integer.parseInt(pg));// 현재페이지
-		review_paging.setPageBlock(3);
-		review_paging.setPageSize(3);
-		review_paging.setTotalA(totalA);
-		review_paging.makePagingHTML();
- 
-		return review_paging;
+		eventListPaging.setCurrentPage(Integer.parseInt(pg));// 현재페이지
+		eventListPaging.setPageBlock(3);
+		eventListPaging.setPageSize(5);
+		eventListPaging.setTotalA(totalA);
+		eventListPaging.makePagingHTML();
+
+		return eventListPaging;
 	}
 
-*/
 }
