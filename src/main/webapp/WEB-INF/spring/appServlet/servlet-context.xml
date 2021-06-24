@@ -34,6 +34,7 @@
 	<resources mapping="/main/**" location="/main/" />
 	
 	<resources mapping="/profile/**" location="/profile/" />
+	<resources mapping="/admin/**" location="/admin/" />
 
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
@@ -59,6 +60,7 @@
 	
 	<context:component-scan base-package="com.mvc.furniture" />
 	<context:component-scan base-package="category.controller" />
+	<context:component-scan base-package="event.controller" />
 	<context:component-scan base-package="furniture.controller" />
 	<context:component-scan base-package="profile.controller" />
 	<context:component-scan base-package="member.controller" />
