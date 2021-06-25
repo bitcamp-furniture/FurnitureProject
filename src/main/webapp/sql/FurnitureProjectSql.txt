@@ -79,6 +79,7 @@ stock NUMBER); --재고
 CREATE SEQUENCE seq_product nocycle nocache;
 
 -----------------------------------------------------------------
+<<<<<<< HEAD
 
 --이미지 테이블
 CREATE TABLE product_image(
@@ -106,6 +107,35 @@ commit;
 select * from USER_SEQUENCES;
 drop sequence seq_product;
 
+=======
+
+--이미지 테이블
+CREATE TABLE product_image(
+id NUMBER PRIMARY KEY,
+product_code  VARCHAR2(50), --상품코드
+product_img_thumb VARCHAR2(500), -- 썸네일 사진
+product_img_detail VARCHAR2(500) -- 디테일 사진
+);
+
+--이미지 seq 문
+CREATE SEQUENCE seq_product_image nocycle nocache;
+
+-----------------------------------------------------------------
+
+--카테고리 테이블
+create table category(
+stage NUMBER, --depth
+catename VARCHAR2(50), --카테고리명
+product_category1 NUMBER PRIMARY KEY, --카테고리1, 기본키
+product_category2 NUMBER --카테고리2
+);
+
+drop table product;
+commit;
+select * from USER_SEQUENCES;
+drop sequence seq_product;
+
+>>>>>>> e0379ce39bce2e817a553c76cfb3e9107a1262ac
 ---------------------------------------------------------------
 insert into .xlsx
 
@@ -144,6 +174,7 @@ create table wishlist(
 	member_id VARCHAR2(80),  -- 회원아이디
 	product_id VARCHAR2(80) -- 상품아이디
 );
+<<<<<<< HEAD
 
 
 <<<<<<< HEAD
@@ -178,3 +209,5 @@ create sequence seq_event nocycle nocache;
 
 
 >>>>>>> solee_event01
+=======
+>>>>>>> e0379ce39bce2e817a553c76cfb3e9107a1262ac
