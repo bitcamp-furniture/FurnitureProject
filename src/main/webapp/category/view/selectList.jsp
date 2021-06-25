@@ -21,18 +21,18 @@
    #paging{
       margin: 5px;
       padding : 2px 11px;
-      color: blue;
+      color: darkblue;
       cursor: pointer;
    }
    #paging:hover{
-      background-color: blue;      
+      background-color: darkblue;      
       color: white;
       border-radius: 5px;
    }
    #currentPaging{
       margin: 5px;
       padding : 2px 11px;
-      background-color: blue;      
+      background-color: darkblue;      
       color: white;
       border-radius: 5px;
       cursor: pointer;
