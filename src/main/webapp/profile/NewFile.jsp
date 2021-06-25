@@ -3,11 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
 <style type="text/css">
       td {
         border: 1px solid #333333; }
@@ -64,7 +68,6 @@
     <td class="tg-0lax">
     <input type="text" size="30" name="subject" id="subject" placeholder="제목 입력">
     <div id="subjectDiv"></div>
-	<div id="subject_cnt"></div>
     </td>
   </tr>
   
@@ -72,14 +75,15 @@
     <td class="tg-0lax">내용</td>
     <td class="tg-0lax">
   <textarea cols="50" rows="15" name="content" id="content" placeholder="내용 입력"></textarea>
-    <div id="contentDiv"></div>
+  <div id="content_cnt">(0 / 100)</div>
+  <div id="contentDiv"></div>
     </td>
   </tr>
   
   <tr>
     <td class="tg-0lax">이미지</td>
     <td class="tg-0lax">
-    <input type="file" name="img[]" multiple size="50" id="file">
+    <input type="file" name="img[]" multiple size="50">
     </td>
   </tr>
   
@@ -97,17 +101,16 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- <script src="js/wishlist.js"></script> -->
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#subject').on('keyup', function() {
-        //$('#subject_cnt').html("("+$(this).val().length+" / 25)");
+    $('#content').on('keyup', function() {
+        $('#content_cnt').html("("+$(this).val().length+" / 100)");
 
-        if($(this).val().length > 25) {
-         	  $(this).val($(this).val().substring(0, 25));
-          //  $('#content_cnt').html("(25 / 25)");
-            swal("제목은 25글자를 초과할 수 없습니다");
+        if($(this).val().length > 100) {
+            $(this).val($(this).val().substring(0, 100));
+            $('#content_cnt').html("(100 / 100)");
+            alert("좀만");
         }
     });
 });
@@ -155,9 +158,7 @@ $('#askWriteBtn').click(function(){
 		contentType:false,
 		data: formData,
 		success: function(){
-			swal("등록 완료", "문의가 등록되었습니다", "success");
-			//self.close();
-			window.opener.location.reload();
+			alert('등록 완료');
 			self.close();
 			
 		},

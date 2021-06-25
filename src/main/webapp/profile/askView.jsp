@@ -80,6 +80,9 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(function(){
+			if($('#image1').val == ''){
+				$('#image1').display=none;
+			}
 			$.ajax({
 				type : 'post',
 				url : '/furniture/profile/getAskView',
