@@ -344,7 +344,7 @@
 					<div role="tabpanel" class="tab-pane fade" id="order">
 						<%--order tap--%>
 						<form id="orderDeleteForm" method="post" action="imageboardDelete">
-							<input type="hidden" id="pg" value="">
+							<input type="hidden" id="orderPg" value="">
 							<table class="order table" id="orderListTable">
 								<tr>
 									<th>주문번호</th>
@@ -382,10 +382,10 @@
 						<h5>(Off-time 12:00 ~ 14:00, 토/일/공휴일 휴무)</h5>
 						<h6>한번 등록한 상담내용은 수정이 불가능합니다.</h6>
 						<button class="askBtn" id="askBtn" type="button">1:1문의 쓰기</button>
-						<br> <br> <input type="hidden" id="pg" value="${pg }">
-						<table class="ask table" id="askListTable" border="1"
-							bordercolor="#2F3894" cellpadding="5" cellspacing="0"
-							frame="hsides" rules="rows">
+						<br> <br>
+						<input type="hidden" id="askPg" value="${askPg }">
+						<table class="ask table" id="askListTable" border="1" bordercolor="#2F3894" cellpadding="5" 
+						cellspacing="0" frame="hsides" rules="rows">
 							<tr>
 								<th style="text-align: center;">글 번호</th>
 								<th style="text-align: center;">상담구분</th>
@@ -395,8 +395,7 @@
 							</tr>
 
 						</table>
-						<div id="boardPagingDiv"
-							style="float: left; width: 750px; text-align: center;"></div>
+						<div id="askPagingDiv" style="float: left; width: 750px; text-align: center;"></div>
 
 					</div>
 					<%--askList tap end--%>

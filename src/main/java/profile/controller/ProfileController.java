@@ -117,20 +117,20 @@ public class ProfileController {
 
 	@RequestMapping(value="getAskList", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView getAskList(@RequestParam(required = false, defaultValue = "1") String pg,
+	public ModelAndView getAskList(@RequestParam(required = false, defaultValue = "1") String askPg,
 			HttpSession session, HttpServletResponse response) {
 		//1페이지당 5개씩
-		List<AskDTO> list = profileService.getAskList(pg);
+		List<AskDTO> list = profileService.getAskList(askPg);
 		
 		//페이징 처리
-		AskPaging askPaging = profileService.askPaging(pg);
+		AskPaging askPaging = profileService.askPaging(askPg);
 				
 //		//세션
 //		String memId = (String) session.getAttribute("memId");
 //		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("askPaging", askPaging);
-		mav.addObject("pg", pg);
+		mav.addObject("askPg", askPg);
 		mav.addObject("list", list);
 //		mav.addObject("memId", memId);
 		
