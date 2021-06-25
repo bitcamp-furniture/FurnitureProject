@@ -28,18 +28,15 @@
     	<div class="wishlist-list col-lg-12">
     		<div class="wishlist-list-container" id="wishlist-list-container">
     			<div class="parent">
-    			<a  href=#><img class="wishlist-list-img" src="img/tiger.png"></a>
-    			<button class="imgbtn" type="button">되냐?</button>
+    				<a  href=#><img class="wishlist-list-img" src="img/tiger.png"></a>
+    				<button class="imgbtn" type="button">되냐?</button>
     			</div >
-    			<div class="parent2">
-    			<a  href=#><img class="wishlist-list-img" src="img/tiger.png"></a>
-    			<button class="imgbtn2" type="button">되냐?</button>
-    			</div>
     		</div>
-    			<div class="wishlist-list-delete">
-    				<button class="wishlist-list-delete-btn">전체삭제</button>
-    			</div>
+   			<div class="wishlist-list-delete">
+   				<button class="wishlist-list-delete-btn">전체삭제</button>
+   			</div>
     	</div>
+
     </div><%--row end --%>
 </div><%--container end --%>
 
