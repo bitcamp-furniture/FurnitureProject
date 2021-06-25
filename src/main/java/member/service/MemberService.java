@@ -10,7 +10,7 @@ public interface MemberService {
 	
 	public void join(MemberDTO memberDTO);
 
-	public String checkId(String id);
+	public String checkId(String email);
 
     public String login(Map<String, String> map, HttpSession session);
 

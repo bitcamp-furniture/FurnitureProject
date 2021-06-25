@@ -345,7 +345,7 @@ input::placeholder {
 <form id="joinForm" style="width:550px; height:800px;">
 <div class="container">
 <div class="joinPage row">
-<div class="wrap col-lg-12">
+<div class="wrap col-lg-12" style="height:58px;">
     <div class="main-bn" style="width:550px; height:800px;">
         <div class="slider">
             <div class="slides">
@@ -429,9 +429,9 @@ input::placeholder {
 			                        <input class="phone" id="phone" name="phone" placeholder="휴대폰번호 입력" formcontrolname="phone" autocorrect="off" autocapitalize="none" type="text"><br><br>
 			                        <div id="phoneDiv"></div><br><br><br>
 			                        <p class="addTitle" style="font-size:13.5px">주소</p>
-			                        <input class="postcode" id="zipcode" name="zipcode" placeholder="" formcontrolname="zipcode" autocorrect="off" autocapitalize="none" type="text" style="width:270px">
+			                        <input class="postcode" id="zipcode" name="zipcode" placeholder="" formcontrolname="zipcode" autocorrect="off" autocapitalize="none" type="text" style="width:270px" readonly>
 			                       	<input type="button" class="addSearchBtn" value="우편번호 찾기" onclick="execDaumPostcode()" style="text-align:center;"><br><br>
-			                        <input class="address" id="addr1" name="addr1" placeholder="" formcontrolname="addr1" autocorrect="off" autocapitalize="none" type="text"><br><br>
+			                        <input class="address" id="addr1" name="addr1" placeholder="" formcontrolname="addr1" autocorrect="off" autocapitalize="none" type="text" readonly><br><br>
 			                        <input class="detailAddress" id="addr2" name="addr2" placeholder="상세주소 입력" formcontrolname="addr2" autocorrect="off" autocapitalize="none" type="text"><br><br>
 			                        <input class="extraAddress" id="extraAddress" formcontrolname="addr2" autocorrect="off" autocapitalize="none" type="hidden">
 			                        <div id="addressDiv"></div><br>
@@ -518,6 +518,7 @@ input::placeholder {
 											<li class="content2">발급된 쿠폰의 상세 내용은 마이 > 쿠폰에서 확인하세요.</li>
 											<li class="content3">쿠폰, 멤버십 등 신규 회원을 위한 혜택은 여기에 모아 소개해드려요.</li>
 										</ul><br>
+										<img id="coupon" src="/furniture/img/coupon.png" alt="kakao" width="440" height="396" style="align:center;"><br>
 			                        <div class="page-btn">
 			                        	<div class="page-btn7" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block">추천상품 보러가기</div>
 			                        	<div class="page-btn8" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block">쇼핑하러가기</div>

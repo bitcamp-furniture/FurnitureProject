@@ -8,7 +8,7 @@ public interface MemberDAO {
 	
 	public void join(MemberDTO memberDTO);
 
-	public MemberDTO checkId(String id);
+	public MemberDTO checkId(String email);
 	
     public MemberDTO login(Map<String, String> map);
 

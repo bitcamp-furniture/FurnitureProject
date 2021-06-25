@@ -26,6 +26,10 @@
  		select count(*) as count from ask
  	</select>
  	
+ 	<select id="getAsk" parameterType="int" resultType="ask">
+       select * from ask where seq=#{seq}
+    </select>
+ 	
  	<select id="getMember" parameterType="Integer" resultType="member">
  		select * from member where id=#{id}
  	</select>
