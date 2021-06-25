@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="/furniture/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/furniture/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/furniture/css/index.css" type="text/css">
-        <link rel="stylesheet" href="/furniture/category/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/furniture/category/css/style.css" type="text/css">
     
     
     

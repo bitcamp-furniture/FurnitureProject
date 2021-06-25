@@ -51,9 +51,13 @@
                                         <li><a href="/furniture/member/loginForm">로그인</a></li>
                                         <li><a href="/furniture/profile/profile">마이페이지</a></li>
                                     </c:if>
-                                    <c:if test="${sessionScope.memEmail != null }">
+                                    <c:if test="${sessionScope.memEmail != null && sessionScope.verify == null}">
                                         <li><a href="/furniture/member/logout">로그아웃</a></li>
                                         <li><a href="/furniture/profile/profile">마이페이지</a></li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.verify == 9 }">
+                                        <li><a href="/furniture/member/logout">로그아웃</a></li>
+                                        <li><a href="/furniture/member/adminIndex">관리자페이지</a></li>
                                     </c:if>
                                 </ul>
                             </div>
