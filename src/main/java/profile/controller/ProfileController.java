@@ -117,20 +117,20 @@ public class ProfileController {
 
 	@RequestMapping(value="getAskList", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView getAskList(@RequestParam(required = false, defaultValue = "1") String pg,
+	public ModelAndView getAskList(@RequestParam(required = false, defaultValue = "1") String askPg,
 			HttpSession session, HttpServletResponse response) {
 		//1페이지당 5개씩
-		List<AskDTO> list = profileService.getAskList(pg);
+		List<AskDTO> list = profileService.getAskList(askPg);
 		
 		//페이징 처리
-		AskPaging askPaging = profileService.askPaging(pg);
+		AskPaging askPaging = profileService.askPaging(askPg);
 				
 //		//세션
 //		String memId = (String) session.getAttribute("memId");
 //		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("askPaging", askPaging);
-		mav.addObject("pg", pg);
+		mav.addObject("askPg", askPg);
 		mav.addObject("list", list);
 //		mav.addObject("memId", memId);
 		
@@ -138,6 +138,30 @@ public class ProfileController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="askView", method=RequestMethod.GET)
+	public String boardView(@RequestParam String seq, //나에게 들어오는 데이터: seq, pg
+							@RequestParam String pg,
+							Model model) { //데이터 2개를 나에게 준다
+
+		model.addAttribute("seq", seq); //seq를 모델에 넣어줌
+		model.addAttribute("pg", pg);
+		
+		/* model.addAttribute("display", "/profile/askView.jsp"); */
+		return "/profile/askView";
+	}
+	
+	@RequestMapping(value="getAskView", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getImageboardView(@RequestParam String seq) { //데이터 2개를 나에게 준다
+		AskDTO askDTO = profileService.getAsk(seq);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("askDTO",askDTO);
+		mav.setViewName("jsonView");
+		return mav;
+		
+	}	
 	
 //----------------------------------------------------------------
 //한사람의 정보 가져오기

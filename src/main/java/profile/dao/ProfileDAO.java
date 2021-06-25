@@ -14,6 +14,8 @@ public interface ProfileDAO {
 
 	public int getTotalA();
 
+	public AskDTO getAsk(String seq);
+
 	public MemberDTO getMember(int id);
 
 	public void updateMember(Map<String, String> map);
@@ -21,5 +23,6 @@ public interface ProfileDAO {
 	public void updateContact(Map<String, String> map);
 
 	public void updatePassword(Map<String, String> map);
+
 
 }
