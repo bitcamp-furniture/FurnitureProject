@@ -25,18 +25,18 @@ public class EventListPaging {
 		if(endPage > totalP) endPage = totalP;
 		
 		if(startPage > pageBlock)
-			pagingHTML.append("<span id='paging' onclick='review_paging("+(startPage-1)+")'>[이전]</span>");
+			pagingHTML.append("<span id='paging' onclick='getEventList("+(startPage-1)+")'>◀</span>");
 		
 		for(int i=startPage; i<=endPage; i++) {
 			if(i==currentPage) {
-				pagingHTML.append("[ <span id='currentPaging' onclick='review_paging("+i+")'>"+i+"</span> ]");
+				pagingHTML.append("<span id='currentPaging' onclick='getEventList("+i+")'>"+i+"</span>");
 			}else {
-				pagingHTML.append("[ <span id='paging' onclick='review_paging("+i+")'>"+i+"</span> ]");
+				pagingHTML.append("<span id='paging' onclick='getEventList("+i+")'>"+i+"</span>");
 			}
 		}//for
 		
 		if(endPage < totalP)
-			pagingHTML.append("<span id='paging' onclick='review_paging("+(endPage+1)+")'>[다음]</span>");
+			pagingHTML.append("<span id='paging' onclick='getEventList("+(endPage+1)+")'>▶</span>");
 	}
 
 	

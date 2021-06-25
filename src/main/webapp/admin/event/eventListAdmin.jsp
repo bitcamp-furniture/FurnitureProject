@@ -1,9 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!-- 이벤트 목록을 판매자가 관리. 이벤트 삭제 등 -->
-    
-    
-    <br>
+<style type="text/css">
+#paging {
+	margin: 5px;
+	padding: 5px 11px;
+	color: darkblue;
+	cursor: pointer;
+}
+
+#paging:hover {
+	background-color: darkblue;
+	color: white;
+	border-radius: 5px;
+}
+
+#currentPaging {
+	margin: 5px;
+	padding: 5px 11px;
+	background-color: darkblue;
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+}
+</style>
+
+
+<br>
     <input type="hidden" id="pg" value="${pg }" >
 	<div >
 		<table class="event_list" align="center" cellpadding="8"></table>
@@ -26,6 +49,9 @@ function getEventList(pg) {
 		dataType: 'json',
 		success: function(data) {
 			console.log(data);
+			
+		    $('.event_list tr:gt(0)').remove();
+		    $('.event_list tr:eq(0)').remove();
 			
 			$.each(data.eventList, function(index,items){
 				$('<tr/>').append($('<td/>',{
