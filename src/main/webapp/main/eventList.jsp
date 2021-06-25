@@ -63,11 +63,12 @@ function getEventList(pg) {
 				.append($('<a/>', {
 					href: '#'
 				}).append($('<img/>', {
-					src: items.event_img_banner
+					style: 'width: 400px; height: 200px',
+					src: "/furniture/storage/event/"+items.event_img_banner
 				})))).appendTo($('.event_list'));
 				
 				$('<tr/>').append($('<td/>',{
-					style: 'color: darkblue; width: 400px; height: 80px; font-size: 1.3em; font-weight: bold; margin: 5px;',
+					style: 'color: darkblue; width: 400px; font-size: 1.3em; font-weight: bold;',
 					text: items.event_subject
 				}))
 				.appendTo($('.event_list'));

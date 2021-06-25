@@ -161,7 +161,7 @@
     /*--------------------------
         Select
     ----------------------------*/
-    $("select").niceSelect();
+    $(".product__details__text  select").niceSelect();
 
     /*------------------
 		Magnific

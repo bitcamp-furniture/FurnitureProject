@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="/furniture/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/furniture/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/furniture/css/index.css" type="text/css">
-        <link rel="stylesheet" href="/furniture/category/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/furniture/category/css/style.css" type="text/css">
     
     
     
@@ -78,15 +78,15 @@
     
   
     
-    
-   <!--      <section class="hero">
+    <!-- 
+      <section class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__bed">                    
                             <a>주문 관리(list)</a>
-                           주문 1건의 내역 (view) 
+                           	주문 1건의 내역 (view) 
                         </div>
                         <div class="hero__categories__sofa">                    
                             <a>상품 관리(list) </a>
@@ -125,9 +125,9 @@
                            </ul>
                         </div>
                         <div class="hero__categories__chair">                    
-                            <a>이벤트 관리</a>
+                            <a href="/furniture/admin/event/eventList">이벤트 관리</a>
                             <ul>
-                               <li>이벤트 등록</li>
+                               <li><a href="/furniture/admin/event/eventWrite">이벤트 등록</a></li>
                                
                            </ul>
                         </div>

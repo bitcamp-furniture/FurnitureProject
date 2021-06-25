@@ -29,7 +29,7 @@
 <br>
     <input type="hidden" id="pg" value="${pg }" >
 	<div >
-		<table class="event_list" align="center" cellpadding="8"></table>
+		<table class="event_list" align="center" cellpadding="8" border="0"></table>
 	</div>
     <br>
     <div align="center" id="eventListPagingDiv"></div>
@@ -61,7 +61,8 @@ function getEventList(pg) {
 				.append($('<a/>', {
 					href: '#'
 				}).append($('<img/>', {
-					src: items.event_img_banner
+					style: 'width: 400px; height: 200px',
+					src: "/furniture/storage/event/"+items.event_img_banner
 				})))).appendTo($('.event_list'));
 				
 				$('<tr/>').append($('<td/>',{
@@ -74,10 +75,21 @@ function getEventList(pg) {
 					text: items.event_content
 				}))
 				.appendTo($('.event_list'));
+				
 				$('<tr/>').append($('<td/>',{
 					style: 'color: darkblue;',
-					text: items.event_startDate + " ~ " + items.event_endDate
-				}))
+					text: items.event_startDate + " ~ " + items.event_endDate,
+				}).append($('<input/>', {
+					type: 'button', 
+					value: '삭제',
+					class: 'deleteEventBtn',
+					style: 'float:right; display:inline-block;'
+				})).append($('<input/>', {
+					type: 'hidden',
+					value: items.id,
+					class: 'eventId',
+					id: 'event_' + items.id 
+				})))
 				.appendTo($('.event_list'));
 				
 				$('<tr/>').append($('<td/>', {
@@ -86,18 +98,40 @@ function getEventList(pg) {
 					style: 'border-bottom: 1px solid lightgray;'
 				})).appendTo($('.event_list'));
 				
+				
 			});//each 
 
+				$('.deleteEventBtn').click(function() {
+					var id = $(this).siblings(".eventId").val();
+					//alert($(this).siblings(".eventId").val());
+					
+					$.ajax({
+						type: 'post',
+						url: '/furniture/admin/event/deleteEvent',
+						data: { 'id' :  id },
+						success: function() {
+							alert('삭제되었습니다^^');
+							getEventList(1);
+						},
+						error: function(err) {
+					    	console.log(err);
+						}
+
+					});
+				});
 			
             $('#eventListPagingDiv').html(data.eventListPaging.pagingHTML);
-
 		},
 		error: function(err) {
 	    	console.log(err);
 		}
 	});
 
-}
+} // getEventList
+
+
+
+
 </script>	
 
 

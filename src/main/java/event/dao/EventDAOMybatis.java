@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import event.bean.EventDTO;
 
-
 @Repository
 @Transactional
 public class EventDAOMybatis implements EventDAO {
@@ -27,6 +26,15 @@ public class EventDAOMybatis implements EventDAO {
 		return sqlSession.selectOne("eventSQL.getTotalEventList");
 	}
 
+	@Override
+	public void deleteEvent(String id) {
+		sqlSession.delete("eventSQL.deleteEvent", id);
+	}
 
+	@Override
+	public void eventWrite(EventDTO eventDTO) {
+		sqlSession.insert("eventSQL.eventWrite", eventDTO);
+
+	}
 
 }

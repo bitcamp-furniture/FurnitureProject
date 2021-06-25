@@ -26,14 +26,14 @@ public class EventServiceImpl implements EventService {
 
 	@Override
 	public List<EventDTO> getEventList(String pg) {
-		//1페이지당 5개씩
-		int endNum = Integer.parseInt(pg)*5;
-		int startNum = endNum-4;
-		
+		// 1페이지당 5개씩
+		int endNum = Integer.parseInt(pg) * 5;
+		int startNum = endNum - 4;
+
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
-		
+
 		return eventDAO.getEventList(map);
 	}
 
@@ -48,6 +48,18 @@ public class EventServiceImpl implements EventService {
 		eventListPaging.makePagingHTML();
 
 		return eventListPaging;
+	}
+
+	@Override
+	public void deleteEvent(String id) {
+		eventDAO.deleteEvent(id);
+	}
+
+	// 이벤트 등록
+	@Override
+	public void eventWrite(EventDTO eventDTO) {
+		eventDAO.eventWrite(eventDTO);
+
 	}
 
 }

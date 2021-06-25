@@ -15,4 +15,21 @@
 		select count(*) from event
 	</select>
 	
+	<delete id="deleteEvent" parameterType="String">
+		delete event where id=#{id} 
+	</delete>
+	
+	<!-- 이벤트 등록 -->
+   <insert id="eventWrite" parameterType="event">
+      insert into event values(seq_event.nextval
+                           , #{event_subject}
+                           , #{event_content}
+                           , #{event_startDate}
+                           , #{event_endDate}
+                           , #{event_category}
+                           , #{event_img_banner}
+                           , #{event_img_detail}
+                           )
+   </insert>
+	
 </mapper>
