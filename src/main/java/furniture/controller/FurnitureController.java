@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import event.bean.EventDTO;
+import event.bean.EventListPaging;
+import event.service.EventService;
 import furniture.bean.ProductDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.Product_qna_paging;
@@ -29,6 +32,9 @@ import furniture.service.FurnitureService;
 public class FurnitureController {
 	@Autowired
 	private FurnitureService furnitureService;
+	@Autowired
+	private EventService eventService;
+
 
 	// 상품 상세컷 ... DB연결, 상품id 필요
 	@RequestMapping(value = "/main/productView", method = RequestMethod.GET)
@@ -114,5 +120,28 @@ public class FurnitureController {
 	   }
 
 
+		// 메인 - 이벤트 페이지
+		@RequestMapping(value = "/main/event", method = RequestMethod.GET)
+		public String event(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
 
+			model.addAttribute("pg", pg);
+			model.addAttribute("display", "/main/eventList.jsp");
+			return "/index";
+		}
+		
+		@ResponseBody
+		@RequestMapping(value = "/main/getEventList", method = RequestMethod.POST)
+		public ModelAndView getEventList(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
+			List<EventDTO> eventList = eventService.getEventList(pg);
+			EventListPaging eventListPaging = eventService.eventListPaging(pg);
+			
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("eventList", eventList);
+			mav.addObject("pg", pg);
+			mav.addObject("eventListPaging", eventListPaging);
+
+			mav.setViewName("jsonView");
+			return mav;
+		}
+		
 }
