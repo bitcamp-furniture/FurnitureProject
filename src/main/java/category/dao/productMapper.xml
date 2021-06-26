@@ -21,7 +21,7 @@
 	<![CDATA[
 			select * from 
 			(select rownum rn, tt. * from 
-	 		(select * from product where product_category1 like '%'||#{category}||'%'
+	 		(select * from product where PRODUCT_CATEGORY_NAME=#{category}
 	 		order by id asc)tt) 
 	 		where rn >= #{startNum} and rn <= #{endNum}
 		]]>
@@ -42,13 +42,13 @@
     
     <!-- 선택한 카테고리 리스트 뿌리기 -->
 	<select id="getSelectList" parameterType="java.util.Map" resultType="product">
-		select * from product where product_category1 like '%'||#{category}||'%'
+		select * from product where PRODUCT_CATEGORY_NAME=#{category}
 	</select>
 	
 	
 	<!--product안에 있는 모든 것들 갯수  -->
 	<select id="getTotalProduct" parameterType="String" resultType="int">
-		select count(*) from product where product_category1 like '%'||#{category}||'%'
+		select count(*) from product where PRODUCT_CATEGORY_NAME=#{category}
 	</select>
 	
  </mapper>

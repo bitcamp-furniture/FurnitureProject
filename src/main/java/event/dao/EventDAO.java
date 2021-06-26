@@ -15,4 +15,8 @@ public interface EventDAO {
 
 	public void eventWrite(EventDTO eventDTO);
 
+	public EventDTO getEventView(String id);
+
+	public List<EventDTO> AllListBanner();
+
 }

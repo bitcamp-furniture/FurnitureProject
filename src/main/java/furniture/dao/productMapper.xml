@@ -52,7 +52,10 @@
 	
 		<!--베스트 셀러 -->
 	<select id="getBestSeller" resultType="product">
-		select * from product
+		SELECT *
+		FROM product
+		WHERE ROWNUM &lt;= 8 and product_color='B'
+		ORDER BY PRODUCT_PRICE desc	
 	</select>
 	
 </mapper>

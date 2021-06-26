@@ -37,7 +37,7 @@
                             <ul>
                                <li id="sofa1">패브릭소파</li>
                                <li id="sofa2">모듈식소파</li>
-                               <li id="sofa3">천연/인조가죽 소파</li>
+                               <li id="sofa3">천연/인조가죽소파</li>
                            </ul>
                         </div>
                         <div class="hero__categories__bookshelf">
@@ -70,7 +70,7 @@
                            </ul>
                         </div>
                         <div class="hero__categories__clothes">
-                        	<div class="hero__categories__clothes1"><a>옷장</a></div>                    
+                           <div class="hero__categories__clothes1"><a>옷장</a></div>                    
                             <ul>
                                <li id="clothes1">여닫이옷장</li>
                                <li id="clothes2">미닫이옷장</li>
@@ -80,7 +80,7 @@
                            </ul>
                         </div>
                         <div class="hero__categories__chair">
-                        	<div class="hero__categories__chair1"><a>의자</a></div>                              
+                           <div class="hero__categories__chair1"><a>의자</a></div>                              
                             <ul>
                                <li id="chair1">사무용의자</li>
                                <li id="chair2">식탁의자</li>

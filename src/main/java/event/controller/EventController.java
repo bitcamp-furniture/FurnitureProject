@@ -63,7 +63,7 @@ public class EventController {
 
 	}
 
-	// 이벤트 등록 페이지 뷰~~ 만들어야댐 이미지도 받고
+	// 이벤트 등록
 	@ResponseBody
 	@RequestMapping(value = "/eventWrite", method = RequestMethod.POST)
 	public void eventWrite(@ModelAttribute EventDTO eventDTO, @RequestParam MultipartFile event_banner,

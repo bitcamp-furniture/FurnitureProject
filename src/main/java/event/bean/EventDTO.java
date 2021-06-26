@@ -18,7 +18,7 @@ public class EventDTO {
 	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern = "yyyy.MM.dd")
 	private Date event_endDate; // 종료날짜
 	
-	// 카테고리: select * from product where product_category1='침대' or product_category2='침대';
+	// 카테고리: select * from product where product_category_name='침대' or product_category2='침대';
 	private String event_category; // 카테고리 이름으로 이벤트에 등록 >> 대상 아이템 리스트를 아래에 출력
 	
 	private String event_img_banner; // 광고 배너용 이미지
