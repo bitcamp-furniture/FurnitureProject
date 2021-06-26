@@ -10,6 +10,10 @@
 	<context:component-scan base-package="category.bean" />
 	<context:component-scan base-package="category.dao" />
 	
+	<context:component-scan base-package="event.service" />
+	<context:component-scan base-package="event.dao" />
+	<context:component-scan base-package="event.bean" />
+
 	<context:component-scan base-package="furniture.service" />
 	<context:component-scan base-package="furniture.bean" />
 	<context:component-scan base-package="furniture.dao" />

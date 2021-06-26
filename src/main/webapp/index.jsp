@@ -153,11 +153,11 @@
                             <!-- 추후 링크 수정 필요 -->
                             <li><a href="#">고객지원</a>
                             <ul class="dropdown">
-                                    <li><a href="/furniture/category/view/selectList?category=공지">공지</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=FAQ">FAQ</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=이벤트">이벤트</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=문의사항">문의사항</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=고객센터">고객센터</a></li>
+                                    <li><a href="/furniture/">공지</a></li>
+                                    <li><a href="/furniture/">FAQ</a></li>
+                                    <li><a href="/furniture/main/event">이벤트</a></li>
+                                    <li><a href="/furniture/">문의사항</a></li>
+                                    <li><a href="/furniture/">고객센터</a></li>
                                 </ul>
                              </li>
                         </ul>

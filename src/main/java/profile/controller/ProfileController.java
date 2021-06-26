@@ -142,11 +142,11 @@ public class ProfileController {
 	
 	@RequestMapping(value="askView", method=RequestMethod.GET)
 	public String boardView(@RequestParam String seq, //나에게 들어오는 데이터: seq, pg
-							@RequestParam String pg,
+							@RequestParam String askPg,
 							Model model) { //데이터 2개를 나에게 준다
 
 		model.addAttribute("seq", seq); //seq를 모델에 넣어줌
-		model.addAttribute("pg", pg);
+		model.addAttribute("askPg", askPg);
 		
 		/* model.addAttribute("display", "/profile/askView.jsp"); */
 		return "/profile/askView";

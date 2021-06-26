@@ -145,4 +145,3 @@ create table wishlist(
 	product_code VARCHAR2(80) -- 상품아이디
 );
 create sequence seq_wishlist nocycle nocache;
-
