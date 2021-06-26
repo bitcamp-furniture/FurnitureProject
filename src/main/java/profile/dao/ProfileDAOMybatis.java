@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.ProfileDTO;
+import profile.bean.WishlistDTO;
 
 @Repository
 @Transactional
@@ -57,6 +58,11 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	@Override
 	public void updatePassword(Map<String, String> map) {
 		sqlSession.update("profileSQL.updatePassword", map);
+	}
+
+	@Override
+	public List<WishlistDTO> getWishlist(int id) {
+		return sqlSession.selectList("profileSQL.getWishlist", id);
 	}
 
 

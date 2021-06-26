@@ -8,21 +8,8 @@
 
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<style type="text/css">
-.listBtn {
-   box-shadow:inset 0px 1px 0px 0px #ffffff;
-   background-color:#2F3894;
-   border-radius:6px;
-   border:1px solid #dcdcdc;
-   display:inline-block;
-   cursor:pointer;
-   color:#ffff;
-   font-family:Arial;
-   font-size:13px;
-   font-weight:bold;
-   padding:6px 24px;
-}
-</style>
+<link rel="stylesheet" href="css/askView.css">
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -78,31 +65,7 @@
 	</form>
 	<input class="listBtn" type="button" value="목록" onclick="window.open('','_self').close();">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		$(function(){
-			$.ajax({
-				type : 'post',
-				url : '/furniture/profile/getAskView',
-				data : 'seq=' + $('#seq').val(),
-				dataType : 'json',
-				success : function(data){
-					//alert(data);
-					$('#image1').attr('src', 'storage/' + data.askDTO.image1);
-					$('#ask_categorySpan').text(data.askDTO.ask_category);
-					$('#subjectSpan').text(data.askDTO.subject);
-					$('#seqSpan').text(data.askDTO.seq);
-					$('#emailSpan').text(data.askDTO.email);
-					$('#contentSpan').text(data.askDTO.content);
-					$('#nameSpan').text(data.askDTO.name);
-					$('#created_atSpan').text(data.askDTO.created_at);
-					$('#order_numberSpan').text(data.askDTO.order_number);
+	<script src = "./js/askView.js"></script>
 
-				},
-				error : function(err){
-					console.log(err);
-				}
-			});
-		});
-	</script>
 </body>
 </html>
