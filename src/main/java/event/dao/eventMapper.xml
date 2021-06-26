@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="eventSQL">
+
+	<select id="getEventList" parameterType="java.util.Map" resultType="event">
+		select * from 
+		(select rownum rn, tt.* from 
+		(select * from event order by id desc)tt
+		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
+	</select>
+	
+	<select id="getTotalEventList" resultType="int">
+		select count(*) from event
+	</select>
+	
+	<delete id="deleteEvent" parameterType="String">
+		delete event where id=#{id} 
+	</delete>
+	
+	<!-- 이벤트 등록 -->
+   <insert id="eventWrite" parameterType="event">
+      insert into event values(seq_event.nextval
+                           , #{event_subject}
+                           , #{event_content}
+                           , #{event_startDate}
+                           , #{event_endDate}
+                           , #{event_category}
+                           , #{event_img_banner}
+                           , #{event_img_detail}
+                           )
+   </insert>
+	
+</mapper>
