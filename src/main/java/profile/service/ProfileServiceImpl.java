@@ -83,4 +83,9 @@ public class ProfileServiceImpl implements ProfileService {
 		return profileDAO.getWishlist(id);
 	}
 
+	@Override
+	public List<String> getWishlistImage(String member_id) {
+		return profileDAO.getWishlistImage(member_id);
+	}
+
 }
