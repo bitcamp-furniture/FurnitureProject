@@ -65,6 +65,11 @@ public class ProfileDAOMybatis implements ProfileDAO {
 		return sqlSession.selectList("profileSQL.getWishlist", id);
 	}
 
+	@Override
+	public List<String> getWishlistImage(String member_id) {
+		return sqlSession.selectList("profileSQL.getWishlistImage", member_id);
+	}
+
 
 
 }

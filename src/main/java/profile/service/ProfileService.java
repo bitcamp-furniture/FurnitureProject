@@ -28,6 +28,8 @@ public interface ProfileService {
 
 	public List<WishlistDTO> getWishlist(int id);
 
+	public List<String> getWishlistImage(String member_id);
+
 
 
 }

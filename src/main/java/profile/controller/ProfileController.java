@@ -205,7 +205,7 @@ public class ProfileController {
 		
 		List<WishlistDTO> list = profileService.getWishlist(id);
 		
-		
+
 		
 		System.out.println(list);
         
@@ -216,5 +216,26 @@ public class ProfileController {
 		mav.setViewName("jsonView");
 		return mav;
     }
+	
+	//----------------------------------------------------------------
+	//찜목록이미지
+		@RequestMapping(value="getWishlistImage", method=RequestMethod.POST)
+	    @ResponseBody
+	    public ModelAndView getWishlistImage(@RequestParam String member_id) {
+			System.out.println("id = "+member_id);
+			
+			List<String> list = profileService.getWishlistImage(member_id);
+			
+
+			
+			System.out.println(list);
+	        
+	        ModelAndView mav = new ModelAndView();
+			//mav.addObject("pg", pg);
+			mav.addObject("list", list);
+			//mav.addObject("imageboardPaging", imageboardPaging);
+			mav.setViewName("jsonView");
+			return mav;
+	    }
 
 }

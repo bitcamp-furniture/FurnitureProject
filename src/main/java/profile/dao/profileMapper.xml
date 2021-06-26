@@ -51,7 +51,7 @@
 		select * from wishlist where member_id=#{id}
 	</select>
 	
-	<select id="getWishlistImage" parameterType="int" resultType="String">
+	<select id="getWishlistImage" parameterType="String" resultType="String">
 		select product_img_thumb from product_image where product_code=(
 			select product_code from wishlist where member_id=#{id}
 		)
