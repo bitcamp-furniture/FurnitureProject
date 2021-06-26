@@ -6,6 +6,7 @@ import java.util.Map;
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.AskPaging;
+import profile.bean.WishlistDTO;
 
 public interface ProfileService {
 
@@ -24,6 +25,9 @@ public interface ProfileService {
 	public void updateContact(Map<String, String> map);
 
 	public void updatePassword(Map<String, String> map);
+
+	public List<WishlistDTO> getWishlist(int id);
+
 
 
 }

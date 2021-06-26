@@ -29,7 +29,7 @@
     		<div class="wishlist-list-container" id="wishlist-list-container">
     			<div class="parent">
     				<a  href=#><img class="wishlist-list-img" src="img/tiger.png"></a>
-    				<button class="imgbtn" type="button">되냐?</button>
+    				<button class="wishlistDeletebutton" type="button">되냐?</button>
     			</div >
     		</div>
    			<div class="wishlist-list-delete">

@@ -243,7 +243,8 @@
 							},
 							success: function(){
 								alert('성공');
-								location.href='/furniture/index.jsp';
+								
+								/* location.href='/furniture/index.jsp'; */
 							},
 							error: function(err){
 								console.log(err);

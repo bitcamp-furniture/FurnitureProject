@@ -64,7 +64,7 @@
 						aria-controls="mypage" role="tab" data-toggle="tab">자기정보</a></li>
 					<li role="presentation"><a href="#cart" aria-controls="cart"
 						role="tab" data-toggle="tab">장바구니</a></li>
-					<li role="presentation"><a href="#wishList"
+					<li role="presentation" id="wishlist-tap"><a href="#wishList"
 						aria-controls="wishList" role="tab" data-toggle="tab">위시리스트</a></li>
 					<li role="presentation"><a href="#order" aria-controls="order"
 						role="tab" data-toggle="tab">구매내역</a></li>
@@ -313,21 +313,30 @@
 								<div class="wishlist-title col-lg-12">
 									<div class="wishlist-title-h1">
 										<h1>위시리스트</h1>
+										<button class="wishlistTotalDeletebutton">전체삭제</button>
 									</div>
 								</div>
 								<div class="wishlist-list col-lg-12">
-									<div class="wishlist-list-container"
-										id="wishlist-list-container">
-										<div class="parent">
-											<a href=#>
-												<img class="wishlist-list-img" src="img/tiger.png">
-											</a>
-											<button class="wishlistDeletebutton" type="button">되냐?</button>
-										</div>
+									<div class="wishlist-list-container" id="wishlist-list-container">
+										<ul>
+											<li>
+												<div class=imgDiv>
+													<a href=#>
+														<img class="wishlist-list-img" src="img/tiger.png">
+													</a>
+													<button class="wishlistDeletebutton" type="button">X</button>
+												</div>
+											</li>
+											
+							
+										</ul>
 									</div>
-									<div class="wishlist-list-delete">
-										<button class="wishlistTotalDeletebutton">전체삭제</button>
-									</div>
+								</div>
+								
+								
+								
+									
+
 								</div>
 							</div>
 							<%--row end --%>
@@ -416,7 +425,7 @@
 	<script src="js/profile.js"></script>
 	<script type="text/javascript" src="js/mypage.js"></script>
 	<script type="text/javascript" src="js/cart.js"></script>
-	<script type="text/javascript" src="js/wishList.js"></script>
+	<script type="text/javascript" src="js/wishlist.js"></script>
 	<script type="text/javascript" src="js/order.js"></script>
 	<script type="text/javascript" src="js/askList.js"></script>
 

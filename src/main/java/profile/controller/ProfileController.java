@@ -26,6 +26,7 @@ import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.AskPaging;
 import profile.bean.ProfileDTO;
+import profile.bean.WishlistDTO;
 import profile.service.ProfileService;
 
 @Controller
@@ -195,5 +196,25 @@ public class ProfileController {
         profileService.updatePassword(map);
     }
 	
+//----------------------------------------------------------------
+//찜목록
+	@RequestMapping(value="getWishlist", method=RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView getWishlist(@RequestParam int id) {
+		System.out.println("id = "+id);
+		
+		List<WishlistDTO> list = profileService.getWishlist(id);
+		
+		
+		
+		System.out.println(list);
+        
+        ModelAndView mav = new ModelAndView();
+		//mav.addObject("pg", pg);
+		mav.addObject("list", list);
+		//mav.addObject("imageboardPaging", imageboardPaging);
+		mav.setViewName("jsonView");
+		return mav;
+    }
 
 }
