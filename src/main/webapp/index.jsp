@@ -96,18 +96,18 @@
                         
                              <li><a href="#">소파</a>
                                 <ul class="dropdown">
-                                    <li><a href="/furniture/category/view/selectList?category=패브릭소파">패브릭 소파</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=모듈식소파">모듈식 소파</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=가죽소파">가죽 소파</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=패브릭소파">패브릭소파</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=모듈식소파">모듈식소파</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=천연/인조가죽소파">천연/인조가죽 소파</a></li>
                                 </ul>
                             </li>
                         
                              <li><a href="#">책장/선반</a>
                                 <ul class="dropdown">
-                                    <li><a href="/furniture/category/view/selectList?category=큐브형수납">큐브형 수납</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=큐브형수납">큐브형수납</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=선반유닛">선반유닛</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=책장">책장</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=수납선반">수납선반</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=수납선반/유닛">수납선반/유닛</a></li>
                                 </ul>
                             </li>
 
@@ -130,34 +130,34 @@
                                 </ul>
                             </li>
                         
-    						<li><a href="#">옷장</a>
+                      <li><a href="#">옷장</a>
                                 <ul class="dropdown">
-                                    <li><a href="/furniture/category/view/selectList?category=여닫이 옷장">여닫이 옷장</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=미닫이 옷장">미닫이 옷장</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=패거울 옷장">거울 옷장</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=드레스룸 옷장">드레스룸 옷장</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=선반형 옷장">선반형 옷장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=여닫이옷장">여닫이 옷장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=미닫이옷장">미닫이 옷장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=거울옷장">거울 옷장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=드레스룸옷장">드레스룸 옷장</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=선반형옷장">선반형 옷장</a></li>
                                 </ul>
                             </li>
                         
                              <li><a href="#">의자</a>
                                 <ul class="dropdown">
-                                    <li><a href="/furniture/category/view/selectList?category=패사무용 의자">사무용 의자</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=사무용의자">사무용 의자</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=식탁의자">식탁의자</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=스툴/벤치">스툴/벤치</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=바의자">바 의자</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=카페 의자">카페 의자</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=카페의자">카페 의자</a></li>
                                 </ul>
                             </li>
                             
                             <!-- 추후 링크 수정 필요 -->
                             <li><a href="#">고객지원</a>
                             <ul class="dropdown">
-                                    <li><a href="/furniture/">공지</a></li>
-                                    <li><a href="/furniture/">FAQ</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=공지">공지</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=FAQ">FAQ</a></li>
                                     <li><a href="/furniture/main/event">이벤트</a></li>
-                                    <li><a href="/furniture/">문의사항</a></li>
-                                    <li><a href="/furniture/">고객센터</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=문의사항">문의사항</a></li>
+                                    <li><a href="/furniture/category/view/selectList?category=고객센터">고객센터</a></li>
                                 </ul>
                              </li>
                         </ul>
@@ -170,7 +170,7 @@
 
 
 
-	<div id="section">
+   <div id="section">
       <c:if test="${empty display }">
          <jsp:include page="/main/indexDisplay.jsp" />
       </c:if>
@@ -194,20 +194,20 @@
                     <div class="footer__widget">
                         <h6>WORKING HOURS
                         <p class="text-white">
-							<br>
-							IKEA 코리아 
-							<br>
-							주소 : (우) 14352 경기도 광명시 일직로 17 IKEA광명점
-							<br>
-							사업자 등록번호 : 106-86-82871 사업자정보확인
-							<br>
-							대표자 : 프레드릭 요한손
-							<br>
-							통신판매업 신고 : 2018-경기광명-0209
-							<br>
-							TEL : 1670-4532
-							</p>
-						</h6>
+                     <br>
+                     IKEA 코리아 
+                     <br>
+                     주소 : (우) 14352 경기도 광명시 일직로 17 IKEA광명점
+                     <br>
+                     사업자 등록번호 : 106-86-82871 사업자정보확인
+                     <br>
+                     대표자 : 프레드릭 요한손
+                     <br>
+                     통신판매업 신고 : 2018-경기광명-0209
+                     <br>
+                     TEL : 1670-4532
+                     </p>
+                  </h6>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
@@ -229,7 +229,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer__newslatter">
                         <h6>CUSTOMER SERVICE CENTER</h6>
-                       	<h2 class="text-white">1577-1577</h2>
+                          <h2 class="text-white">1577-1577</h2>
                         <p>고객센터 영업시간 10:00 ~ 18:00 </p>
                         <%--subscribe 하는  form 삭제 --%>
                     </div>

@@ -16,4 +16,6 @@ public interface EventService {
 
 	public void eventWrite(EventDTO eventDTO);
 
+	public EventDTO getEventView(String id);
+
 }

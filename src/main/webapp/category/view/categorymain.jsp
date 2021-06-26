@@ -27,42 +27,7 @@
                         </div>
                     </div>
      
-     <%--추천가구리스트를 자동으로 옆으로 이동하는 액션이 있는 부분이고 : 클릭을 하면 상품상세 페이지로 이동할 예정 --%>              
-    <!-- Categories Section Begin -->
-  <%--<section class="categories">
-        <div class="container">
-            <div class="row">
-                <div class="categories__slider owl-carousel">
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/furniture/category/image/categories/cat-1.jpg">
-                            <h5><a href="#">Fresh Fruit</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/furniture/category/image/categories/cat-2.jpg">
-                            <h5><a href="#">Dried Fruit</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/furniture/category/image/categories/cat-3.jpg">
-                            <h5><a href="#">Vegetables</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/furniture/category/image/categories/cat-4.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="/furniture/category/image/categories/cat-5.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --%>
-    	<%--맨 밑에 상품 광고 배너 넣을 곳 --%>
+
     	<br><br>
     <!-- Banner Begin -->
     <div class="banner">
@@ -70,12 +35,12 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="/furniture/category/image/banner/banner-1.jpg" alt="">
+                        <img class="category_banner1" src="/furniture/category/"+${banner1 } alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="/furniture/category/image/banner/banner-2.jpg" alt="">
+                        <img class="category_banner2" src="/furniture/category/"+${banner2 } alt="">
                     </div>
                 </div>
             </div>

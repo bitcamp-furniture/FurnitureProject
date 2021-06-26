@@ -37,4 +37,9 @@ public class EventDAOMybatis implements EventDAO {
 
 	}
 
+	@Override
+	public EventDTO getEventView(String id) {
+		return sqlSession.selectOne("eventSQL.getEventView", id);
+	}
+
 }

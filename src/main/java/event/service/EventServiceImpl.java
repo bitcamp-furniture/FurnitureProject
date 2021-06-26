@@ -62,4 +62,9 @@ public class EventServiceImpl implements EventService {
 
 	}
 
+	@Override
+	public EventDTO getEventView(String id) {
+		return eventDAO.getEventView(id);
+	}
+
 }

@@ -144,4 +144,20 @@ public class FurnitureController {
 			return mav;
 		}
 		
+		
+		// 메인 - 이벤트 페이지
+		@RequestMapping(value = "/main/eventView", method = RequestMethod.GET)
+		public String eventView(@RequestParam(required = false, defaultValue = "1") String eventPg, String id, Model model) {
+			// 이벤트 DTO를 가지고 가야 한다.
+			EventDTO eventDTO = eventService.getEventView(id);
+			
+			model.addAttribute("id", id);
+			model.addAttribute("eventDTO", eventDTO);
+			model.addAttribute("eventPg", eventPg);
+			model.addAttribute("display", "/main/eventView.jsp");
+			return "/index";
+		}
+		
+
+		
 }

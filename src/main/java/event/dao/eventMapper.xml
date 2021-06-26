@@ -20,16 +20,19 @@
 	</delete>
 	
 	<!-- 이벤트 등록 -->
-   <insert id="eventWrite" parameterType="event">
-      insert into event values(seq_event.nextval
-                           , #{event_subject}
-                           , #{event_content}
-                           , #{event_startDate}
-                           , #{event_endDate}
-                           , #{event_category}
-                           , #{event_img_banner}
-                           , #{event_img_detail}
-                           )
-   </insert>
+	<insert id="eventWrite" parameterType="event">
+	   insert into event values(seq_event.nextval
+	                        , #{event_subject}
+	                        , #{event_content}
+	                        , #{event_startDate}
+	                        , #{event_endDate}
+	                        , #{event_category}
+	                        , #{event_img_banner}
+	                        , #{event_img_detail}
+	                        )
+	</insert>
 	
+	<select id="getEventView" parameterType="String" resultType="event">
+		select * from event where id=#{id} 
+	</select>
 </mapper>
