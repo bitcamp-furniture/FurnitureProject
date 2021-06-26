@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.AskPaging;
+import profile.bean.WishlistDTO;
 import profile.dao.ProfileDAO;
 
 @Service
@@ -75,6 +76,11 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	public void updatePassword(Map<String, String> map) {
 		profileDAO.updatePassword(map);
+	}
+
+	@Override
+	public List<WishlistDTO> getWishlist(int id) {
+		return profileDAO.getWishlist(id);
 	}
 
 }

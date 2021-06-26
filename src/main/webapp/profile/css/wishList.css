@@ -19,31 +19,39 @@
 	width: 300px;
 	height: 300px;
 }
-.parent{
-	position:relative;
-	display:inline;
-	width: 300px;
-	height: 300px;
-}
-.parent2{
-	position:relative;
-	display:inline;
-	width: 300px;
-	height: 300px;
+
+img{
+	display: inline-block;
 }
 
-.imgbtn{
+.wishlistDeletebutton{
+	display: inline;
+	left: 82%;
+	width: 50px;
+	height: 50px;
+	border:0;
+	font-size:30pt;
+	padding: 0;
 	position: absolute;
-	left: 120px;
-	top:100px;
 }
-.imgbtn2{
-	position: absolute;
-	left: 200px;
-	top: 10px;
-}
+
 .wishlist-list-container{
 	display: block;
     content: "";
     clear: both;
+}
+.wishlistTotalDeletebutton{
+	border:0;
+	float: right;
+}
+.imgDiv{
+	display: inline-block;
+	position:relative;
+	margin: 10px;
+}
+ul {
+	list-style:none;
+}
+li {
+	float: left;
 }

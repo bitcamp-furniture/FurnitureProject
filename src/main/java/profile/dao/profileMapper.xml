@@ -46,4 +46,14 @@
 	<update id="updatePassword" parameterType="java.util.Map">
 		update member set password=#{password} where id=#{id}
 	</update>
+	
+	<select id="getWishlist" parameterType="int" resultType="wishlist">
+		select * from wishlist where member_id=#{id}
+	</select>
+	
+	<select id="getWishlistImage" parameterType="int" resultType="String">
+		select product_img_thumb from product_image where product_code=(
+			select product_code from wishlist where member_id=#{id}
+		)
+	</select>
  </mapper>
