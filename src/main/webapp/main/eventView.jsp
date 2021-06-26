@@ -100,8 +100,8 @@
 		<%-- <div id="eventContent">${eventDTO.event_content }</div> --%>
 
 		<br>
+		<hr>
 		<br>
-
 		<div class="cover_product_list" id="cover_product_list">
 			<div class="row" id="product_list"></div>
 			<%--이곳은 상품을 클릭한 리스트들이 들어온다 --%>
