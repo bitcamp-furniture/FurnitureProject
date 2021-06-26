@@ -56,7 +56,7 @@ function showPopup(){
 
 	window.open("popup.jsp","popOpen","width="+nWidth+",height="+nHeight+", left="+xPos+", top="+yPos+", toolbars=no, resizable=no, scrollbars=no");
 	
-	// 새로고침 방지 ( Ctrl+R, Ctrl+N, F5 )
+	//새로고침 방지 ( Ctrl+R, Ctrl+N, F5 )
     if ( event.ctrlKey == true && ( event.keyCode == 78 || event.keyCode == 82 ) || event.keyCode == 116) {
          event.keyCode = 0;
          event.cancelBubble = true;
@@ -211,7 +211,7 @@ function checkAgree(){
 
 
 //이메일 중복검사
-function checkId(){	
+$("#email").focusout(function(){
 	var idCheck = $('.email').val();// idCheck 변수
 	var btnLogin = $('.page-btn1');
 	  
@@ -226,6 +226,9 @@ function checkId(){
 			
 			if(data == 'exist'){
 				$('#joinForm #emailDiv').text('사용 불가능한 아이디입니다.');
+				$('#emailDiv').css('color', 'red');
+				$('#emailDiv').css('font-size', '12.5px');
+				
 				$('.page-btn1').attr('disabled', true);
 				
 			} else if(!getMail.test($("#email").val())|| $("#email").val() == ""){ //이메일 입력 시 공백을 넣으면 return false
@@ -312,7 +315,7 @@ function checkId(){
 	});
 
   
-}
+});
 
 
 //이메일
@@ -473,7 +476,7 @@ function checkPwd(){
 		    return false;
 	    
 	    }else if($("#password").val() != ($("#repassword").val())){ 
-		    document.getElementById("passwordDiv").innerText = "비밀번호가 동일하지 않습니다.";
+		    document.getElementById("repasswordDiv").innerText = "비밀번호가 동일하지 않습니다.";
 		    $("#repasswordDiv").val("");
 		    $("#repasswordDiv").focus();
 			$('#repasswordDiv').css('color', 'red');
@@ -506,7 +509,7 @@ function checkPwd(){
 
 
 //이름
-function checkName(){
+$("#name").focusout(function(){
 //$('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn3').click(function(){
 	var getName = /^[가-힣]{2,6}$/;
 	$('#nameDiv').empty();
@@ -559,7 +562,7 @@ function checkName(){
 	    return true;
 	}
 	
-}
+});
 
 //휴대폰번호,주소
 $('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn4').click(function(){
@@ -672,7 +675,7 @@ $('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn4').c
 	
 });
 
-function checkAddPhone(){
+function checkAddrPhone(){
 	if(!$("#zipcode").val() == "" || !$("#addr1").val() == "" || !$("#addr2").val() == ""){
 		$('.page-btn4').css('display', 'block');
 		$('.page-btn4').css('border-radius', '5px');
@@ -714,7 +717,7 @@ $('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn4').o
 });
     
 //이메일 인증번호 비교
-function checkCode(){
+$('#mail_check_input').focusout(function(){
 //$('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn5').click(function(){
     var inputCode = $(".mail_check_input").val();//입력코드    
     //var checkResult = code;//비교 결과
@@ -723,6 +726,7 @@ function checkCode(){
     //alert(code);
     
 	if(code == $(".mail_check_input").val()) {
+		document.getElementById("mailCheckDiv").innerText = "인증번호가 일치합니다.";
 		$('#mailCheckDiv').css('color', '#223894');
 		$('#mailCheckDiv').css('font-size', '12.5px');
 		
@@ -754,7 +758,7 @@ $('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn5').c
 	});
 
 
-}
+});
 
 
 //생년월일
