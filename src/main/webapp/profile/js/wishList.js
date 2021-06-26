@@ -17,9 +17,30 @@ $('#wishlist-tap').click(function(){
 						data: 'member_id=' + items.member_id,
 						dataType: 'json',
 						success: function(data){
-							alert(JSON.stringify(data));
+							$.each(data.list, function(index, items){
+								alert(JSON.stringify(items));
 							
-							
+								$('<li/>',{
+									
+								}).append($('<div/>',{
+									class: 'imgDiv'
+								}).append($('<a/>',{
+									href: '#'
+									//id: 'subjectA',
+								}).append($('<img>',{
+									class: 'wishlist-list-img',
+									src: '/furniture/img/'+items
+									
+								}))).append($('<button/>',{
+									class: 'wishlistDeletebutton',
+									type: 'button',
+									text: 'X'
+								}))).appendTo($('#wishlist-list-container-ul'));
+								
+								
+								
+								
+							}); //each
 							
 						},
 						error: function(err){
@@ -27,7 +48,7 @@ $('#wishlist-tap').click(function(){
 							alert('실패');
 						}
 					}); //ajax
-				});
+				}); //each
 				
 				
 				
