@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import category.bean.ProductPaging;
+import category.service.ProductService;
 import event.bean.EventDTO;
 import event.bean.EventListPaging;
 import event.service.EventService;
@@ -34,6 +36,8 @@ public class FurnitureController {
 	private FurnitureService furnitureService;
 	@Autowired
 	private EventService eventService;
+	@Autowired
+	private ProductService productService;
 
 
 	// 상품 상세컷 ... DB연결, 상품id 필요
@@ -99,7 +103,6 @@ public class FurnitureController {
 	@ResponseBody
 	@RequestMapping(value = "/main/reviewListTop5", method = RequestMethod.POST)
 	public ModelAndView reviewListTop5() {
-		System.out.println("Controller");
 		List<ReviewDTO> reviewListTop5 = furnitureService.reviewListTop5();
 //		System.out.println(reviewListTop5);
 		ModelAndView mav = new ModelAndView();
@@ -158,6 +161,24 @@ public class FurnitureController {
 			return "/index";
 		}
 		
+		
+		   // 이벤트 view에서 해당 카테고리의 리스트를 가져오는 메소드 + 페이징 작업중
+		   @ResponseBody
+		   @RequestMapping(value = "/main/getCategoryList", method = RequestMethod.POST)
+		   public ModelAndView getCategoryList(@RequestParam(required = false, defaultValue = "1") String pg,
+		                              @RequestParam String category) { // category='수납형침대'
+		      ModelAndView mav = new ModelAndView();
+
+		      List<ProductDTO> selectList = productService.selectList(pg, category);
+		      ProductPaging productPaging = productService.productPaging(pg,category);
+		      mav.addObject("pg", pg);
+		      mav.addObject("selectList", selectList);
+		      mav.addObject("productPaging", productPaging);
+		      
+		      mav.setViewName("jsonView");
+		      return mav;
+		   }
+
 
 		
 }

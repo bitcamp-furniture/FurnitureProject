@@ -59,12 +59,17 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public void eventWrite(EventDTO eventDTO) {
 		eventDAO.eventWrite(eventDTO);
-
 	}
 
 	@Override
 	public EventDTO getEventView(String id) {
 		return eventDAO.getEventView(id);
 	}
+	
+	@Override
+   public List<EventDTO> AllListBanner() {
+      return eventDAO.AllListBanner();
+   
+   }
 
 }

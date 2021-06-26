@@ -18,4 +18,6 @@ public interface EventService {
 
 	public EventDTO getEventView(String id);
 
+	public List<EventDTO> AllListBanner();
+
 }

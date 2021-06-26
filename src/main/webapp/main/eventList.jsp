@@ -61,7 +61,7 @@ function getEventList(pg) {
 					style: 'width: 400px;'
 				})
 				.append($('<a/>', {
-					href: '#'
+					href: '/furniture/main/eventView?id='+items.id+'&eventPg='+pg
 				}).append($('<img/>', {
 					style: 'width: 400px; height: 200px',
 					src: "/furniture/storage/event/"+items.event_img_banner
