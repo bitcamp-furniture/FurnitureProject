@@ -61,15 +61,23 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
-	public List<WishlistDTO> getWishlist(int id) {
-		return sqlSession.selectList("profileSQL.getWishlist", id);
+	public List<WishlistDTO> getWishlist(Map<String, Object> map) {
+		return sqlSession.selectList("profileSQL.getWishlist", map);
 	}
 
 	@Override
-	public List<String> getWishlistImage(String member_id) {
-		return sqlSession.selectList("profileSQL.getWishlistImage", member_id);
+	public void choiceDelete(int id) {
+		sqlSession.delete("profileSQL.choiceDelete", id);
 	}
 
+	@Override
+	public void totalDelete(String memberId) {
+		sqlSession.delete("profileSQL.totalDelete", memberId);
+	}
 
+	@Override
+	public int getTotalWishlist() {
+		return sqlSession.selectOne("profileSQL.getTotalWishlist");
+	}
 
 }

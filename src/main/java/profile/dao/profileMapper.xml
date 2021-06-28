@@ -47,13 +47,26 @@
 		update member set password=#{password} where id=#{id}
 	</update>
 	
-	<select id="getWishlist" parameterType="int" resultType="wishlist">
-		select * from wishlist where member_id=#{id}
+	<select id="getWishlist" parameterType="java.util.Map" resultType="wishlist">
+		select * from
+			(select rownum rn, tt. * from
+					(select w.id, w.member_id, w.product_code, p.product_img_thumb from wishlist w
+					 inner join product_image p
+					 on w.product_code=p.product_code
+					 where w.member_id = #{id} order by id desc)tt
+			)where rn between #{startNum} and #{endNum}
 	</select>
-	
-	<select id="getWishlistImage" parameterType="String" resultType="String">
-		select product_img_thumb from product_image where product_code in(
-			select product_code from wishlist where member_id=#{id}
-		)
+
+	<delete id="choiceDelete" parameterType="int">
+		delete from wishlist where id=#{id}
+	</delete>
+
+	<delete id="totalDelete" parameterType="String">
+		delete from wishlist where member_id=#{memberId}
+	</delete>
+
+	<select id="getTotalWishlist"  resultType="Integer">
+		select count(*) as count from wishlist
 	</select>
+
  </mapper>
