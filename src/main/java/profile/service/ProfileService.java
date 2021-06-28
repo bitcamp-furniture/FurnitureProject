@@ -7,6 +7,7 @@ import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.AskPaging;
 import profile.bean.WishlistDTO;
+import profile.bean.WishlistPaging;
 
 public interface ProfileService {
 
@@ -26,10 +27,11 @@ public interface ProfileService {
 
 	public void updatePassword(Map<String, String> map);
 
-	public List<WishlistDTO> getWishlist(int id);
+	public List<WishlistDTO> getWishlist(String id, String wishlistPg);
 
-	public List<String> getWishlistImage(String member_id);
+	public void choiceDelete(int id);
 
+	public void totalDelete(String memberId);
 
-
+	public WishlistPaging wishlistPaging(String wishlistPg);
 }

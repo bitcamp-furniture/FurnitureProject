@@ -11,6 +11,7 @@ import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.AskPaging;
 import profile.bean.WishlistDTO;
+import profile.bean.WishlistPaging;
 import profile.dao.ProfileDAO;
 
 @Service
@@ -19,6 +20,9 @@ public class ProfileServiceImpl implements ProfileService {
 	ProfileDAO profileDAO;
 	@Autowired
 	AskPaging askPaging;
+	@Autowired
+	WishlistPaging wishlistPaging;
+
 
 	@Override
 	public void askWrite(AskDTO askDTO) {
@@ -79,13 +83,39 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public List<WishlistDTO> getWishlist(int id) {
-		return profileDAO.getWishlist(id);
+	public List<WishlistDTO> getWishlist(String id, String wishlistPg) {
+		int endNum = Integer.parseInt(wishlistPg)*9;
+		int startNum = endNum-8;
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		map.put("id", id);
+
+		return profileDAO.getWishlist(map);
 	}
 
 	@Override
-	public List<String> getWishlistImage(String member_id) {
-		return profileDAO.getWishlistImage(member_id);
+	public void choiceDelete(int id) {
+		profileDAO.choiceDelete(id);
+	}
+
+	@Override
+	public void totalDelete(String memberId) {
+		profileDAO.totalDelete(memberId);
+	}
+
+	@Override
+	public WishlistPaging wishlistPaging(String wishlistPg) {
+		int totalA = profileDAO.getTotalWishlist();
+
+		wishlistPaging.setCurrentPage(Integer.parseInt(wishlistPg)); //현재 페이지
+		wishlistPaging.setPageBlock(3);
+		wishlistPaging.setPageSize(9);
+		wishlistPaging.setTotalA(totalA);
+		wishlistPaging.makePagingHTML();
+
+		return wishlistPaging;
 	}
 
 }

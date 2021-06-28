@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -25,8 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.AskPaging;
-import profile.bean.ProfileDTO;
 import profile.bean.WishlistDTO;
+import profile.bean.WishlistPaging;
 import profile.service.ProfileService;
 
 @Controller
@@ -38,8 +37,10 @@ public class ProfileController {
 	@RequestMapping(value="profile", method=RequestMethod.GET)
 	public String profile(Model model, HttpSession session) {
 		int id = (Integer) session.getAttribute("memId");
+		String name = (String) session.getAttribute("memName");
 		
 		model.addAttribute("id", id);
+		model.addAttribute("name", name);
 		model.addAttribute("display", "/profile/profile.jsp");
 		model.addAttribute("askdisplay", "/profile/order.jsp");
 		return "/index";
@@ -200,42 +201,39 @@ public class ProfileController {
 //찜목록
 	@RequestMapping(value="getWishlist", method=RequestMethod.POST)
     @ResponseBody
-    public ModelAndView getWishlist(@RequestParam int id) {
-		//System.out.println("id = "+id);
-		
-		List<WishlistDTO> list = profileService.getWishlist(id);
-		
+    public ModelAndView getWishlist(@RequestParam String id,
+									@RequestParam(required = false, defaultValue="1") String wishlistPg) {
 
-		
-		System.out.println(list);
-        
+		List<WishlistDTO> list = profileService.getWishlist(id, wishlistPg);
+		//System.out.println("list = "+list);
+
+		//페이징 처리
+		WishlistPaging wishlistPaging = profileService.wishlistPaging(wishlistPg);
+
         ModelAndView mav = new ModelAndView();
-		//mav.addObject("pg", pg);
+		mav.addObject("wishlistPg", wishlistPg);
 		mav.addObject("list", list);
-		//mav.addObject("imageboardPaging", imageboardPaging);
+		mav.addObject("wishlistPaging", wishlistPaging);
 		mav.setViewName("jsonView");
 		return mav;
     }
-	
-	//----------------------------------------------------------------
-	//찜목록이미지
-		@RequestMapping(value="getWishlistImage", method=RequestMethod.POST)
-	    @ResponseBody
-	    public ModelAndView getWishlistImage(@RequestParam String member_id) {
-			System.out.println("id = "+member_id);
-			
-			List<String> list = profileService.getWishlistImage(member_id);
-			
 
-			
-			System.out.println(list);
-	        
-	        ModelAndView mav = new ModelAndView();
-			//mav.addObject("pg", pg);
-			mav.addObject("list", list);
-			//mav.addObject("imageboardPaging", imageboardPaging);
-			mav.setViewName("jsonView");
-			return mav;
-	    }
+//----------------------------------------------------------------
+//찜목록 선택삭제
+	@RequestMapping(value="choiceDelete", method=RequestMethod.POST)
+	@ResponseBody
+	public void choiceDelete(@RequestParam int id) {
+		//System.out.println("id = "+id);
+		profileService.choiceDelete(id);
+	}
+
+//----------------------------------------------------------------
+//찜목록 선택삭제
+	@RequestMapping(value="totalDelete", method=RequestMethod.POST)
+	@ResponseBody
+	public void totalDelete(@RequestParam String memberId) {
+		//System.out.println("memberId = "+ memberId);
+		profileService.totalDelete(memberId);
+	}
 
 }

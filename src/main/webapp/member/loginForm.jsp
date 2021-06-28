@@ -216,6 +216,49 @@
 		return false;
 
 	});
+
+	//------------------------------------------------------
+	//enter
+	$("#password").keydown(function(key) {
+		if (key.keyCode == 13) {
+			//alert("엔터키를 눌렀습니다.");
+
+			$('#emailDiv').empty();
+			$('#pwdDiv').empty();
+
+			if($('#email').val() === ''){
+				$('#emailDiv').html('아이디(이메일)를 입력해주세요');
+				$("#email").focus();
+			} else if($('#password').val() === '') {
+				$('#pwdDiv').text('비밀번호를 입력해주세요');
+			} else {
+				$.ajax({
+					url: '/furniture/member/login',
+					type: 'post',
+					data: {'email': $('#email').val(),
+						'password': $('#password').val()
+					},
+					dataType: 'text',
+					success: function(data){
+						alert(data);
+						if(data == 'success') {
+							location.href='/furniture/index.jsp';
+						} else {
+							//alert('로그인 실패하였습니다');
+							$('#pwdDiv').text('가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.');
+						}
+					},
+					error: function(err){
+						console.log(err);
+						alert('로그인 실패');
+					}
+				}); //ajax
+			}
+
+			return false;
+		}
+	});
+
 	//------------------------------------------------------
 	//카카오톡 로그인
 	$('#kakaoImg').click(function(){

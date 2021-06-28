@@ -25,9 +25,11 @@ public interface ProfileDAO {
 
 	public void updatePassword(Map<String, String> map);
 
-	public List<WishlistDTO> getWishlist(int id);
+	public List<WishlistDTO> getWishlist(Map<String, Object> map);
 
-	public List<String> getWishlistImage(String member_id);
+	public void choiceDelete(int id);
 
+	public void totalDelete(String memberId);
 
+	public int getTotalWishlist();
 }
