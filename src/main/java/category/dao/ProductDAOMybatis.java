@@ -37,7 +37,18 @@ public class ProductDAOMybatis implements ProductDAO{
 	//모든 상품 총합을 가져오는 메소드
 	@Override
 	public int getTotalProduct(String category) {
-		return sqlSession.selectOne("productSQL.getTotalProduct",category);
+		return sqlSession.selectOne("productSQL.getTotalProduct", category);
+	}
+
+	// 검색 결과 리트스를 가져오는 메소드
+	@Override
+	public List<ProductDTO> searchList(Map<Object, Object> map) {
+		return sqlSession.selectList("productSQL.searchList", map);
+	}
+
+	@Override
+	public int getSearchProduct(String keyword) {
+		return sqlSession.selectOne("productSQL.getSearchProduct", keyword);
 	}
 
 

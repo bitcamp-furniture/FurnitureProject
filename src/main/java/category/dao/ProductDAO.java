@@ -16,5 +16,9 @@ public interface ProductDAO {
 	public List<ProductDTO> selectList(Map<Object, Object> map);
 	//총 토탈
 	public int getTotalProduct(String category);
+	
+	public List<ProductDTO> searchList(Map<Object, Object> map);
+	
+	public int getSearchProduct(String keyword);
 
 }

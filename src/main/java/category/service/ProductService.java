@@ -24,6 +24,10 @@ public interface ProductService {
 
 	public ProductPaging productPaging(String pg, String category);
 
+	public List<ProductDTO> searchList(String pg, String keyword);
+
+	public ProductPaging productSearchPaging(String pg, String keyword);
+
 
 
 }

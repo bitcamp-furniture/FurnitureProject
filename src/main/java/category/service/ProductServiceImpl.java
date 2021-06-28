@@ -72,6 +72,33 @@ public class ProductServiceImpl implements ProductService
 		return productPaging;
 	}
 
+	// 검색 키워드로 리스트 리턴
+	@Override
+	public List<ProductDTO> searchList(String pg, String keyword) {
+		//1페이지당 9개씩
+		int endNum = Integer.parseInt(pg)*9;
+		int startNum = endNum-8;
+		
+		Map<Object,Object> map = new HashMap<Object,Object>();
+		map.put("keyword", keyword);
+		map.put("startNum",startNum);
+		map.put("endNum",endNum);
+		return productDAO.searchList(map);	
+	}
+
+	@Override
+	public ProductPaging productSearchPaging(String pg, String keyword) {
+		int totalA  = productDAO.getSearchProduct(keyword);
+		
+		//여기 부분 수정해야댐(페이지 플록은 5개 정도로만해보고 페이지 사이즈는 9면 될라나?)
+		productPaging.setCurrentPage(Integer.parseInt(pg));
+		productPaging.setPageBlock(3);
+		productPaging.setPageSize(9);
+		productPaging.setTotalA(totalA);
+		productPaging.makePagingHTML();
+		return productPaging;
+	}
+
 
 
 }

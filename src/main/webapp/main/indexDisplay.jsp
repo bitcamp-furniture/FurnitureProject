@@ -31,7 +31,7 @@
                         <div class="col-lg-8">
                             <div class="hero__text">
                                 <h2>주방가구 기획전 </h2>
-                                <a href="#" class="primary-btn">보러가기</a>
+                                <a href="/furniture/main/eventView?id=46" class="primary-btn">보러가기</a>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <div class="col-lg-8">
                             <div class="hero__text">
                                 <h2>침실가구 기획전</h2>
-                                <a href="#" class="primary-btn">보러가기</a>
+                                <a href="/furniture/main/eventView?id=47" class="primary-btn">보러가기</a>
                             </div>
                         </div>
                     </div>

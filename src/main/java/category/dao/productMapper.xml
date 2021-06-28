@@ -54,4 +54,21 @@
 		select count(*) from product where PRODUCT_CATEGORY_NAME=#{category}
 	</select>
 	
+	<!-- 검색 키워드 + 페이징 -->
+	<select id="searchList" parameterType="java.util.Map" resultType="product">
+	<![CDATA[
+			select * from 
+			(select rownum rn, tt. * from 
+	 		(select * from product 
+				where product_name like '%'||#{keyword}||'%'
+				order by id desc)tt) 
+	 		where rn >= #{startNum} and rn <= #{endNum}
+		]]>
+	</select>
+	
+	<!-- 검색 글 갯수 -->
+	<select id="getSearchProduct" parameterType="String" resultType="int">
+		select count(*) from product where PRODUCT_NAME like '%'||#{keyword}||'%'
+	</select>
+	
  </mapper>

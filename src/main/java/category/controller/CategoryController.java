@@ -155,4 +155,36 @@ public class CategoryController {
 	      mav.setViewName("jsonView");
 	      return mav;
 	   }
+	   
+		// 헤더에서 키워드 검색 시 페이지 이동하는 메소드
+		@RequestMapping(value = "/search",method=RequestMethod.GET)
+		public String search(@RequestParam(required = false, defaultValue = "1") String pg,
+							 @RequestParam String keyword,
+										   Model model)
+		{
+			model.addAttribute("pg", pg);
+			model.addAttribute("keyword", keyword);
+			model.addAttribute("display", "/category/view/category.jsp");
+			model.addAttribute("categorydisplay", "/category/view/search.jsp");
+			return "/index";
+		}
+
+		// 선택 상품을 리스트로 가져오는 메소드 + 페이징 작업중
+		@ResponseBody
+		@RequestMapping(value = "/getSearchList", method = RequestMethod.POST)
+		public ModelAndView getSearchList(@RequestParam(required = false, defaultValue = "1") String pg,
+										  @RequestParam String keyword) {
+			ModelAndView mav = new ModelAndView();
+			
+			List<ProductDTO> searchList = productService.searchList(pg, keyword);
+			ProductPaging productSearchPaging = productService.productSearchPaging(pg,keyword);
+			mav.addObject("pg", pg);
+			mav.addObject("keyword", keyword);
+			mav.addObject("searchList", searchList);
+			mav.addObject("productSearchPaging", productSearchPaging);
+			
+			mav.setViewName("jsonView");
+			return mav;
+		}
 }
+
