@@ -327,8 +327,6 @@
 													<button class="wishlistDeletebutton" type="button">X</button>
 												</div>
 											</li>
-											
-							
 										</ul>
 									</div>
 								</div>
@@ -336,13 +334,11 @@
 								
 								
 									
-
-								</div>
 							</div>
 							<%--row end --%>
 						</div>
 						<%--container end --%>
-
+					
 					</div>
 					<%--wishList tap end--%>
 
@@ -404,13 +400,13 @@
 
 					</div>
 					<%--askList tap end--%>
-
+				</div><%--tap content --%>
 				</div>
 
 
 			</div>
-		</div>
-	</div>
+			</div>
+
 
 
 
