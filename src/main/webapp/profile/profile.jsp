@@ -323,26 +323,29 @@
 								<div class="wishlist-list col-lg-12">
 									<div class="wishlist-list-container" id="wishlist-list-container">
 										<ul id="wishlist-list-container-ul">
-											<!-- <li class=wishlistLi>
-												<div class=imgDiv>
-													<a href=#>
-														<img class="wishlist-list-img" src="img/tiger.png">
-													</a>
-													<button class="wishlistDeletebutton" type="button">X</button>
-												</div>
-											</li> -->
+
 										</ul>
 									</div>
 								</div>
 								<div id="wishlistPagingDiv" style="float: left; width: 1000px; text-align: center"></div>
-								</div>
+
+
+
+										
+
+
+								
+								
+								
+
+
 							</div>
 							<%--row end --%>
 
 
 						</div>
 						<%--container end --%>
-
+					
 					</div>
 					<%--wishList tap end--%>
 
@@ -404,13 +407,13 @@
 
 					</div>
 					<%--askList tap end--%>
-
+				</div><%--tap content --%>
 				</div>
 
 
 			</div>
-		</div>
-	</div>
+			</div>
+
 
 
 
