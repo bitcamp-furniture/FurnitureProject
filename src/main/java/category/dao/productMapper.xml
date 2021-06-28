@@ -21,8 +21,11 @@
 	<![CDATA[
 			select * from 
 			(select rownum rn, tt. * from 
-	 		(select * from product where PRODUCT_CATEGORY_NAME=#{category}
-	 		order by id asc)tt) 
+	 		(select distinct PRODUCT_CODE, id, PRODUCT_PRICE, PRODUCT_CATEGORY_NAME, PRODUCT_CATEGORY1, PRODUCT_CATEGORY2, PRODUCT_COLOR   from product 
+				where PRODUCT_CATEGORY1=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
+				or
+				PRODUCT_CATEGORY2=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
+				order by id desc)tt) 
 	 		where rn >= #{startNum} and rn <= #{endNum}
 		]]>
 	</select>
