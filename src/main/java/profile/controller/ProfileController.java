@@ -201,7 +201,7 @@ public class ProfileController {
 	@RequestMapping(value="getWishlist", method=RequestMethod.POST)
     @ResponseBody
     public ModelAndView getWishlist(@RequestParam int id) {
-		System.out.println("id = "+id);
+		//System.out.println("id = "+id);
 		
 		List<WishlistDTO> list = profileService.getWishlist(id);
 		

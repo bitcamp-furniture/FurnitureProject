@@ -318,15 +318,8 @@
 								</div>
 								<div class="wishlist-list col-lg-12">
 									<div class="wishlist-list-container" id="wishlist-list-container">
-										<ul>
-											<li>
-												<div class=imgDiv>
-													<a href=#>
-														<img class="wishlist-list-img" src="img/tiger.png">
-													</a>
-													<button class="wishlistDeletebutton" type="button">X</button>
-												</div>
-											</li>
+										<ul id="wishlist-list-container-ul">
+
 										</ul>
 									</div>
 								</div>
