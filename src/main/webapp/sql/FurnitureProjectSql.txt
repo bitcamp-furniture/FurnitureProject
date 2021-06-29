@@ -71,9 +71,8 @@ product_code VARCHAR2(50), -- 제품코드 ex.BED_UNIT2_
 product_price NUMBER, -- 가격
 product_category_name VARCHAR2(50), -- 카테고리명
 product_category1 NUMBER, -- 카테고리1
-product_category2 NUMBER,-- 카테고리2
-product_color VARCHAR2(10), -- 색깔 약어 B W R S P
-stock NUMBER); --재고
+product_category2 NUMBER-- 카테고리2
+);
 
 --상품 seq문
 CREATE SEQUENCE seq_product nocycle nocache;
@@ -88,8 +87,26 @@ product_img_thumb VARCHAR2(500), -- 썸네일 사진
 product_img_detail VARCHAR2(500) -- 디테일 사진
 );
 
---이미지 seq 문
-CREATE SEQUENCE seq_product_image nocycle nocache;
+--이미지 seq 문 
+--CREATE SEQUENCE seq_product_image nocycle nocache; 
+-- 이미지 시퀀스 삭제해주세요
+
+drop sequence seq_product_image;
+
+
+-----------------------------------------------------------------
+--옵션테이블
+CREATE TABLE option_color(
+option_seq NUMBER PRIMARY KEY, --seq
+id NUMBER PRIMARY KEY, --product ID
+color VARCHAR2(50), -- 컬러
+stock NUMBER  --재고
+); 
+
+-- option_seq
+CREATE SEQUENCE option_seq nocycle nocache; 
+
+
 
 -----------------------------------------------------------------
 
