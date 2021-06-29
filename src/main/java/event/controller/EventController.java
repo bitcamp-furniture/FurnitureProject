@@ -33,7 +33,7 @@ public class EventController {
 	@RequestMapping(value = "/event/eventList", method = RequestMethod.GET)
 	public String eventList(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
 		model.addAttribute("pg", pg);
-		model.addAttribute("adminDisplay", "/admin/event/eventListAdmin.jsp");
+		model.addAttribute("display", "/admin/event/eventListAdmin.jsp");
 
 		return "/admin/adminIndex";
 	}
@@ -58,7 +58,7 @@ public class EventController {
 	@RequestMapping(value = "/event/eventWriteForm", method = RequestMethod.GET) // Resolver를 타고 가지말아라
 	public String categoryAllList(Model model) {
 
-		model.addAttribute("adminDisplay", "/admin/event/eventWriteForm.jsp");
+		model.addAttribute("display", "/admin/event/eventWriteForm.jsp");
 		return "/admin/adminIndex";
 
 	}
@@ -114,7 +114,7 @@ public class EventController {
 	// 관리자 - 공지사항
 	@RequestMapping(value = "/notice/noticeList", method = RequestMethod.GET)
 	public String notice(Model model) {
-		model.addAttribute("adminDisplay", "/admin/notice/noticeList.jsp");
+		model.addAttribute("display", "/admin/notice/noticeList.jsp");
 		return "/admin/adminIndex";
 	}
 

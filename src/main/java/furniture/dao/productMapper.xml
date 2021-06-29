@@ -50,7 +50,7 @@
 		select count(*) from review
 	</select>
 	
-		<!--베스트 셀러 -->
+	<!--베스트 셀러 -->
 	<select id="getBestSeller" resultType="product">
 		select * from 
 		(select rownum rn, tt.* from 
