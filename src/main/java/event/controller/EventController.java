@@ -24,13 +24,13 @@ import event.service.EventService;
 
 // 판매자 이벤트 관리
 @Controller
-@RequestMapping(value = "/admin/event")
+@RequestMapping(value = "/admin")
 public class EventController {
 	@Autowired
 	private EventService eventService;
 
 	// eventListAdmin를 여는 메소드
-	@RequestMapping(value = "/eventList", method = RequestMethod.GET)
+	@RequestMapping(value = "/event/eventList", method = RequestMethod.GET)
 	public String eventList(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
 		model.addAttribute("pg", pg);
 		model.addAttribute("adminDisplay", "/admin/event/eventListAdmin.jsp");
@@ -40,7 +40,7 @@ public class EventController {
 
 	// DB에서 pg값을 가지고 가서 이벤트의 리스트를 긁어오는 메소드
 	@ResponseBody
-	@RequestMapping(value = "/getEventList", method = RequestMethod.POST)
+	@RequestMapping(value = "/event/getEventList", method = RequestMethod.POST)
 	public ModelAndView getEventList(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
 		List<EventDTO> eventList = eventService.getEventList(pg);
 		EventListPaging eventListPaging = eventService.eventListPaging(pg);
@@ -55,7 +55,7 @@ public class EventController {
 	}
 
 	// 이벤트 등록 adminDisplay랑 연결
-	@RequestMapping(value = "/eventWriteForm", method = RequestMethod.GET) // Resolver를 타고 가지말아라
+	@RequestMapping(value = "/event/eventWriteForm", method = RequestMethod.GET) // Resolver를 타고 가지말아라
 	public String categoryAllList(Model model) {
 
 		model.addAttribute("adminDisplay", "/admin/event/eventWriteForm.jsp");
@@ -65,7 +65,7 @@ public class EventController {
 
 	// 이벤트 등록
 	@ResponseBody
-	@RequestMapping(value = "/eventWrite", method = RequestMethod.POST)
+	@RequestMapping(value = "/event/eventWrite", method = RequestMethod.POST)
 	public void eventWrite(@ModelAttribute EventDTO eventDTO, @RequestParam MultipartFile event_banner,
 			@RequestParam("event_detail[]") List<MultipartFile> list, Model model) {
 		String filePath = "C:\\code\\Spring\\workspace\\FurnitureProject\\src\\main\\webapp\\storage\\event";
@@ -104,9 +104,21 @@ public class EventController {
 
 	// 리스트 삭제
 	@ResponseBody
-	@RequestMapping(value = "/deleteEvent", method = RequestMethod.POST)
+	@RequestMapping(value = "/event/deleteEvent", method = RequestMethod.POST)
 	public void deleteEvent(@RequestParam String id) {
 		eventService.deleteEvent(id);
 	}
 
+	
+
+	// 관리자 - 공지사항
+	@RequestMapping(value = "/notice/noticeList", method = RequestMethod.GET)
+	public String notice(Model model) {
+		model.addAttribute("adminDisplay", "/admin/notice/noticeList.jsp");
+		return "/admin/adminIndex";
+	}
+
+	
+	
+	
 }
