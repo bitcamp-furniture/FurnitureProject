@@ -9,15 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("admin")
 public class AdminController {
 	
-	
-	//회원가입 창 띄우기
-	@RequestMapping(value="/dashBoard", method=RequestMethod.GET)
-	public ModelAndView joinPage() {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("display", "/admin/dashBoard.jsp");
-		mav.setViewName("/adminIndex");
-		
-		return mav;
+	//관리자페이지 창 띄우기
+	@RequestMapping(value="/adminIndex", method=RequestMethod.GET)
+	public String joinPage() {
+		return "/admin/adminIndex";
 	}
 
 }

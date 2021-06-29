@@ -1,171 +1,252 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title> IKEZKE </title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="/furniture/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/furniture/css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="/furniture/css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="/furniture/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="/furniture/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/furniture/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="/furniture/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="/furniture/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="/furniture/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="/furniture/css/index.css" type="text/css">
-    <link rel="stylesheet" href="/furniture/category/css/style.css" type="text/css">
-    
-    
-    
+<title>IKEZKE</title>
 </head>
+<style>
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+	font-family: "Helvetica Neue", Helvetica, "Apple SD Gothic Neo", Arial, "Malgun Gothic", "Noto Sans", sans-serif;
+	font-size:13px;
+	background: #eee;
+	-ms-overflow-style: scrollbar;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* 사이드 메뉴 */
+.left_sub_menu {
+    position: fixed;
+    width: 230px;
+    z-index: 10;
+    background: #353535;
+    border-right: 1px solid rgba(0, 0, 0, 0.07);
+    bottom: 50px;
+    height: 100%;
+    margin-bottom: -50px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    box-shadow: 0 0px 24px 0 rgb(0 0 0 / 6%), 0 1px 0px 0 rgb(0 0 0 / 2%);
+    color: black;
+    overflow: auto;
+}
+
+.sub_menu {
+    margin-top: 6.5px;
+}
+
+/* 메뉴바 글씨 */
+.left_sub_menu>.sub_menu li:hover {
+    color: ff5858;
+    background-color: #292929;
+}
+
+.left_sub_menu>.sub_menu li {
+    color: white;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    padding: 9px 17px 9px 25px;
+    font-size: 14px;
+    line-height: normal;
+    border-radius: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: .3s;
+}
+
+/* 사이트 관리 글씨 */
+.sub_menu>span {
+    color: #888;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: normal;
+    border-radius: 0;
+    padding-left: 20px;
+    min-height: 30px;
+    min-width: 64px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.sub_menu .fas {
+    color: #ff5858;
+    font-size: 20px;
+    line-height: 20px;
+    float: right;
+    margin-right: 20px;
+}
+
+/* 메뉴바 서브제목 */
+.sub_menu>.big_menu>.small_menu li {
+    color: #333;
+    font-size: 14px;
+    border-bottom: 0px solid #e1e1e1;
+    padding-top: 8px;
+    margin-left: 43px;
+}
+
+.big_menu {
+    cursor: pointer;
+}
+
+.small_menu li a.active:hover {
+    background-color: #1A6DFF;
+}
+
+.small_menu li a {
+    color: #ccc;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.wrapper >.topbar >.left_sub_menu >.sub_menu >.big_menu,
+.wrapper >.topbar >.left_sub_menu >.sub_menu >.big_menu >.small_menu {
+    padding-inline-start: 0px;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.has_sub {
+    width: 100%;
+}
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.hide_sidemenu {
+    display: none;
+}
+
+/* content */
+#content {
+    position: relative;
+}
+
+.header__logo {
+    color: white;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    padding: 9px 17px 9px 55px;
+    font-size: 20px;
+    line-height: normal;
+    border-radius: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left:22px;
+    transition: .3s;
+}
+</style>
 <body>
+    <div id="wrapper" class="wrapper">
+        <div class="topbar" style="position: absolute; top:0;">
+	       <div class="header__top__inner">
 
-
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header__top__inner">
-                            
-                            <div class="header__logo">
-                                <a href="/furniture/index.jsp"><img src="/furniture/img/logo.png" alt="" width="120px" height="52px"></a>
-                            </div>
-                           
-                        </div>
-                    </div>
+	        </div>
+            <!-- 왼쪽 서브 메뉴 -->
+            <div class="left_sub_menu">
+                <div class="sub_menu">
+                    <div class="header__logo">IKEZKE</div>
+                	<hr class="line">
+                    <ul class="big_menu">
+						<li><ion-icon name="bed" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;사이트 바로가기</li>
+						<li><ion-icon name="grid" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;대시보드</li>
+                    </ul><hr class="line">
+                    <ul class="big_menu">
+						<li><ion-icon name="person-sharp" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;사용자 관리 &emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
+                        <ul class="small_menu">
+                            <li><a href="#">회원목록</a></li>
+                            <li><a href="#">메일 발송 설정</a></li>
+                        </ul>
+                    </ul>
+                    <ul class="big_menu">
+                        <li><ion-icon name="bag" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;쇼핑 &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
+                        <ul class="small_menu">
+                            <li><a href="#">주문관리</a></li>
+                            <li><a href="#">주문내역</a></li>
+                            <li><a href="#">재고관리</a></li>
+                            <li><a href="#">상품등록</a></li>
+                            <li><a href="#">배송관리</a></li>
+                        </ul>
+                    </ul>
+                    <ul class="big_menu">
+                        <li><ion-icon name="analytics" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;통계 &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
+                        <ul class="small_menu">
+                            <li><a href="#">매출</a></li>
+                            <li><a href="#">정산</a></li>
+                        </ul>
+                    </ul>
+                    <ul class="big_menu">
+                        <li><ion-icon name="create" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;컨텐츠 관리 &emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
+                        <ul class="small_menu">
+                            <li><a href="#">QNA관리</a></li>
+                            <li><a href="#">리뷰관리</a></li>
+                        </ul>
+                    </ul>
+                    <ul class="big_menu">
+                        <li><ion-icon name="megaphone" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;마케팅 관리 &emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
+                        <ul class="small_menu">
+                            <li><a href="#">이벤트 등록</a></li>
+                            <li><a href="#">이벤트 목록</a></li>
+                        </ul>
+                    </ul>
+<!-- 서브메뉴 end -->
                 </div>
-                <div class="canvas__open"><i class="fa fa-bars"></i></div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <nav class="header__menu mobile-menu">
-                        <ul>
-                        <li><a href="#">관리자 페이지</a>    </li>                           
-                         
-                       </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    
-    
-    
-    
-    
-    
-    
-  
-    
-    <!-- 
-      <section class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__bed">                    
-                            <a>주문 관리(list)</a>
-                           	주문 1건의 내역 (view) 
-                        </div>
-                        <div class="hero__categories__sofa">                    
-                            <a>상품 관리(list) </a>
-                            <ul>
-                               <li>상품 등록</li>
-                               <li>재고 관리</li>
-                           </ul>
-                        </div>
-                        <div class="hero__categories__bookshelf">                    
-                            <a>배송관리</a>
-                            <ul>
-                               <li>발송처리</li>
-                               <li>송장입력</li>
-                          
-                           </ul>
-                        </div>
-                        <div class="hero__categories__desk">                    
-                            <a>회원관리</a>
-                            <ul>
-                               <li>전체메일 발송</li>
-                              
-                           </ul>
-                        </div>
-                        <div class="hero__categories__closet">                    
-                            <a>QnA 관리</a>
-                            <ul>
-                               <li>거실장/찬장</li>
-                              
-                           </ul>
-                        </div>
-                        <div class="hero__categories__clothes">                    
-                            <a>review 관리</a>
-                            <ul>
-                               <li>여닫이옷장</li>
-                             
-                           </ul>
-                        </div>
-                        <div class="hero__categories__chair">                    
-                            <a href="/furniture/admin/event/eventList">이벤트 관리</a>
-                            <ul>
-                               <li><a href="/furniture/admin/event/eventWrite">이벤트 등록</a></li>
-                               
-                           </ul>
-                        </div>
-                        <div class="hero__categories__chair">                    
-                            <a>정산/매출</a>
-                            <ul>
-                               <li>정산 등록</li>
-                               
-                           </ul>
-                        </div>
-                        
-                    </div>
-                </div> -->
-    <!-- Header Section End -->
+        
 
-
-
-	<div id="section_admin">
-		<c:if test="${empty adminDisplay }">
-			<jsp:include page="/admin/adminIndexDisplay.jsp" />
-		</c:if>
-		<c:if test="${not empty adminDisplay }">
-			<jsp:include page="${adminDisplay }" />
-		</c:if>
+	<!-- content start -->
+	<div id="content" class="dashboard_main" style="margin-left:230px">
+		<section>
+			<div class="clearfix area_wrap">
+				<div class="section-body float_l">
+					<div id="section">
+					      <c:if test="${empty display }">
+					         <jsp:include page="/admin/dashBoard.jsp" />
+					      </c:if>
+					      <c:if test="${not empty display }">
+					         <jsp:include page="${display }" />
+					      </c:if>
+   					</div>
+				</div>
+			</div>
+		</section>
 	</div>
+</div>
+ <!-- 왼쪽 사이드 메뉴 스크립트 -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //왼쪽메뉴 드롭다운
+        $(".sub_menu ul.small_menu").hide();
+        $(".sub_menu ul.big_menu").click(function () {
+            $("ul", this).slideToggle(300);
+        });
 
-
+    });
+</script>
+<script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 </body>
-
-
-<script src="/furniture/js/jquery-3.3.1.min.js"></script>
-<script src="/furniture/js/bootstrap.min.js"></script>
-<script src="/furniture/js/jquery.nice-select.min.js"></script>
-<script src="/furniture/js/jquery.barfiller.js"></script>
-<script src="/furniture/js/jquery.magnific-popup.min.js"></script>
-<script src="/furniture/js/jquery.slicknav.js"></script>
-<script src="/furniture/js/owl.carousel.min.js"></script>
-<script src="/furniture/js/jquery.nicescroll.min.js"></script>
-<script src="/furniture/js/main.js"></script>
-
 </html>
+
+
