@@ -98,7 +98,7 @@ drop sequence seq_product_image;
 --옵션테이블
 CREATE TABLE product_option(
 option_seq NUMBER PRIMARY KEY, --seq
-id NUMBER PRIMARY KEY, --product ID
+id NUMBER, --product ID
 color VARCHAR2(50), -- 컬러
 stock NUMBER  --재고
 ); 
