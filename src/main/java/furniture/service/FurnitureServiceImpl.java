@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import furniture.bean.ProductDTO;
+import furniture.bean.ProductImageDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
@@ -89,6 +90,17 @@ public class FurnitureServiceImpl implements FurnitureService {
 	@Override
 	public List<ProductDTO> getBestSeller() {
 		return furnitureDAO.getBestSeller();
+	}
+	@Override
+	public void productRegistration(ProductDTO productDTO) {
+		furnitureDAO.productRegistration(productDTO);
+		
+	}
+
+	@Override
+	public void productImageRegistration(ProductImageDTO productImageDTO) {
+		furnitureDAO.productImageRegistration(productImageDTO);
+		
 	}
 
 }

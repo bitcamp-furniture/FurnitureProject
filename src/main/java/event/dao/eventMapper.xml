@@ -41,4 +41,26 @@
    <select id="AllListBanner" resultType="event">
       select * from event where rownum &lt;= 2 order by id desc 
    </select>
+
+
+	<!-- 공지사항 -->
+	<select id="getNoticeList" parameterType="java.util.Map" resultType="notice">
+		select * from 
+		(select rownum rn, tt.* from 
+		(select * from notice order by id desc)tt
+		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
+	</select>
+	
+	<!-- 공지사항 글 갯수 -->
+	<select id="getTotalNoticeList" resultType="int">
+		select count(*) from notice
+	</select>
+	
+	<!-- 공지 1개의 DTO 꺼내기 -->
+	<select id="getNoticeView" parameterType="String" resultType="notice">
+		select * from notice where id=#{id} 
+	</select>
+	
+	
+	
 </mapper>
