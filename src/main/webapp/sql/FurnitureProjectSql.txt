@@ -118,15 +118,7 @@ product_category1 NUMBER PRIMARY KEY, --카테고리1, 기본키
 product_category2 NUMBER --카테고리2
 );
 
-drop table product;
-commit;
-select * from USER_SEQUENCES;
-drop sequence seq_product;
 
----------------------------------------------------------------
-insert into .xlsx
-
----------------------------------------------------------------
 
 -- 회원 테이블
 create table member(
@@ -142,6 +134,7 @@ bir_yy varchar2(10), -- 생일 연도
 bir_mm varchar2(10), -- 생일 월
 bir_dd varchar2(10), -- 생일 일
 point varchar2(100), -- 포인트
+verify varchar2(10), -- 관리자 계정 확인 값
 kakaoId varchar2(20), -- 카카오아이디
 created_at date -- 생성일
 );
