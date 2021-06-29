@@ -96,7 +96,7 @@ drop sequence seq_product_image;
 
 -----------------------------------------------------------------
 --옵션테이블
-CREATE TABLE option_color(
+CREATE TABLE product_option(
 option_seq NUMBER PRIMARY KEY, --seq
 id NUMBER PRIMARY KEY, --product ID
 color VARCHAR2(50), -- 컬러
@@ -104,7 +104,7 @@ stock NUMBER  --재고
 ); 
 
 -- option_seq
-CREATE SEQUENCE option_seq nocycle nocache; 
+CREATE SEQUENCE seq_product_option nocycle nocache; 
 
 
 

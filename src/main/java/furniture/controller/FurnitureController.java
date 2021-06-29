@@ -53,6 +53,8 @@ public class FurnitureController {
 		return "/index";
 	}
 
+	   
+	
 	// 상품 상세컷 ... 상품 문의 작성
 	@RequestMapping(value = "/main/productQnAWrite", method = RequestMethod.POST)
 	@ResponseBody
