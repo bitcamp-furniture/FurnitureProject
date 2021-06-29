@@ -13,6 +13,7 @@
 		<typeAlias type="profile.bean.AskDTO" alias="ask"/>
 		<typeAlias type="profile.bean.ProfileDTO" alias="profile"/>
 		<typeAlias type="profile.bean.WishlistDTO" alias="wishlist"/>
+		<typeAlias type="event.bean.NoticeDTO" alias="notice"/>
 		
 	</typeAliases>
 	
