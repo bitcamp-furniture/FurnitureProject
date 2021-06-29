@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,7 @@ import event.bean.NoticeDTO;
 import event.bean.NoticeListPaging;
 import event.service.EventService;
 import furniture.bean.ProductDTO;
+import furniture.bean.ProductImageDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
@@ -40,6 +43,8 @@ public class FurnitureController {
 	private EventService eventService;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ServletContext ctx;
 
 	// 상품 상세컷 ... DB연결, 상품id 필요
 	@RequestMapping(value = "/main/productView", method = RequestMethod.GET)
@@ -229,12 +234,6 @@ public class FurnitureController {
 			                    @RequestParam String div,
 			                    Model model) {
 		
-		
-		
-		
-		
-		
-		
 		List<NoticeDTO> noticeList = eventService.getNoticeList(pg);
 		NoticeListPaging noticeListPaging = eventService.noticeListPaging(pg);
 		
@@ -246,6 +245,84 @@ public class FurnitureController {
 		mav.setViewName("jsonView");
 		return mav;
 	}
+
+		
+
+		   //썸네일 + 디테일 이미지 등록
+		   @RequestMapping(value = "/productRegistrationView", method = RequestMethod.GET)
+			
+			public String productRegistrationView(Model model) {
+			   model.addAttribute("adminDisplay", "/admin/productRegistration.jsp");
+			   return "/admin/adminIndex";
+			   }
+		   
+		   //썸네일 + 디테일 이미지 등록
+			@RequestMapping(value = "/productRegistration", method = RequestMethod.POST)
+			public String productRegistration(@ModelAttribute ProductDTO productDTO
+											, @ModelAttribute ProductImageDTO productImageDTO
+											, @RequestParam("img") MultipartFile thumbImg
+											, @RequestParam("detailImg[]") List<MultipartFile> list
+											, String[] product_colors
+											) {
+				//productDTO.setProduct_category2("1");
+//				ProductDTO productDTO = new ProductDTO();
+//				ProductImageDTO productImageDTO = new ProductImageDTO();
+//				productDTO.setId(id);
+//				productDTO.setId(id);
+//				productDTO.setId(id);
+//				productDTO.setId(id);
+				String webPath = "/category/storage";
+				String realPath = ctx.getRealPath(webPath);
+				System.out.println(realPath);
+				//이게 realPath 경로를 찍은건데 복붙해서 탐색기에 넣으면 나옴
+				
+				System.out.println(productDTO+"1");
+				//category테이블에서 product_category1를 select해서 category_name을 끌고 와서 하려다가 hidden값으로 하기
+				
+				
+				String fileName = thumbImg.getOriginalFilename();
+				File file = new File(realPath, fileName); // 파일 생성
+				//김지수파일올리기thumbImg.transferTo(file);
+				
+//				for(int i=0; i<product_colors.length; i++) {
+//					productDTO.setProduct_color(product_colors[i]);
+//				}
+					furnitureService.productRegistration(productDTO);
+					//여기서에러
+				System.out.println(productDTO+"2");
+				// 파일 복사
+				
+				// 썸네일 이미지(이미지1개)
+				try {
+					FileCopyUtils.copy(thumbImg.getInputStream(), new FileOutputStream(file));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				productImageDTO.setProduct_img_thumb(fileName);
+				System.out.println(productImageDTO);
+				
+				// 디테일 이미지(이미지 여러개)
+				for (MultipartFile detailImg : list) {
+					fileName = detailImg.getOriginalFilename();
+					System.out.println(fileName);
+					file = new File(realPath, fileName);
+					// 파일복사
+					try {
+						FileCopyUtils.copy(detailImg.getInputStream(), new FileOutputStream(file));
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					productImageDTO.setProduct_img_detail(fileName);
+					furnitureService.productImageRegistration(productImageDTO);
+					System.out.println(productDTO);
+					System.out.println(productImageDTO);
+				} //for
+				System.out.println(productDTO+"3");
+				return "redirect:/categoryAllList";
+			}
+		    
+			
 	
 }
 

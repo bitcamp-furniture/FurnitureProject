@@ -167,5 +167,6 @@
 <script src="/furniture/js/owl.carousel.min.js"></script>
 <script src="/furniture/js/jquery.nicescroll.min.js"></script>
 <script src="/furniture/js/main.js"></script>
+<script src="/furniture/js/productRegistration.js"></script>
 
 </html>
