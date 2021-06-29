@@ -57,6 +57,8 @@
 		(select * from product order by PRODUCT_PRICE desc)tt
 		)where rn &lt;= 8
 	</select>
+	
+	
 	<!-- 이미지 업로드 -->
 	<insert id="productRegistration" parameterType="product">
 		insert into product values(seq_product.nextval
