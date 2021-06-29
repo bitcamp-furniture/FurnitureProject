@@ -5,6 +5,7 @@ import java.util.Map;
 
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
+import profile.bean.WishlistDTO;
 
 public interface ProfileDAO {
 
@@ -24,5 +25,11 @@ public interface ProfileDAO {
 
 	public void updatePassword(Map<String, String> map);
 
+	public List<WishlistDTO> getWishlist(Map<String, Object> map);
 
+	public void choiceDelete(int id);
+
+	public void totalDelete(String memberId);
+
+	public int getTotalWishlist();
 }

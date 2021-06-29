@@ -21,8 +21,11 @@
 	<![CDATA[
 			select * from 
 			(select rownum rn, tt. * from 
-	 		(select * from product where product_category1 like '%'||#{category}||'%'
-	 		order by id asc)tt) 
+	 		(select distinct PRODUCT_CODE, id, PRODUCT_PRICE, PRODUCT_CATEGORY_NAME, PRODUCT_CATEGORY1, PRODUCT_CATEGORY2, PRODUCT_COLOR   from product 
+				where PRODUCT_CATEGORY1=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
+				or
+				PRODUCT_CATEGORY2=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
+				order by id desc)tt) 
 	 		where rn >= #{startNum} and rn <= #{endNum}
 		]]>
 	</select>
@@ -42,13 +45,30 @@
     
     <!-- 선택한 카테고리 리스트 뿌리기 -->
 	<select id="getSelectList" parameterType="java.util.Map" resultType="product">
-		select * from product where product_category1 like '%'||#{category}||'%'
+		select * from product where PRODUCT_CATEGORY_NAME=#{category}
 	</select>
 	
 	
 	<!--product안에 있는 모든 것들 갯수  -->
 	<select id="getTotalProduct" parameterType="String" resultType="int">
-		select count(*) from product where product_category1 like '%'||#{category}||'%'
+		select count(*) from product where PRODUCT_CATEGORY_NAME=#{category}
+	</select>
+	
+	<!-- 검색 키워드 + 페이징 -->
+	<select id="searchList" parameterType="java.util.Map" resultType="product">
+	<![CDATA[
+			select * from 
+			(select rownum rn, tt. * from 
+	 		(select * from product 
+				where product_name like '%'||#{keyword}||'%'
+				order by id desc)tt) 
+	 		where rn >= #{startNum} and rn <= #{endNum}
+		]]>
+	</select>
+	
+	<!-- 검색 글 갯수 -->
+	<select id="getSearchProduct" parameterType="String" resultType="int">
+		select count(*) from product where PRODUCT_NAME like '%'||#{keyword}||'%'
 	</select>
 	
  </mapper>

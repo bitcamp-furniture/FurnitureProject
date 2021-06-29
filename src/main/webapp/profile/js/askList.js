@@ -58,7 +58,7 @@ $(function(){
 });
 
 function askPaging(askPg){
-    $("#askListTable tr:gt(0)").remove(); 
+    $("#askListTable tr:gt(0)").remove();
     console.log(askPg);
 	$.ajax({
 		type: 'post',
@@ -90,31 +90,31 @@ function askPaging(askPg){
 					align:'center',
 					text: items.reply
 				})).appendTo($('#askListTable'));
-				
+
 		});//each
-		
+
 			$(document).on('click','#subjectA', function(){
 				//alert($(this).parent().prev().prev().text());
-				
+
 				var seq = $(this).parent().prev().prev().text();
 				window.open("/furniture/profile/askView?seq="+seq+"&askPg="+$('#askPg').val(), "a", "width=800, height=500, left=100, top=50");
-				
+
 				});
-			
+
 		$('#askPagingDiv').html(data.askPaging.pagingHTML);
-	
+
 		},
 		error: function(err){
 			console.log(err);
 		}
-			
-			
-			
+
+
+
 		});
 
 
 //		location.href = 'askList?pg='+pg;
 
 
-	
+
 }

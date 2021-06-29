@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<style>
+
+	</style>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -16,7 +19,7 @@
 <link rel="stylesheet" href="css/profile.css" type="text/css">
 <link rel="stylesheet" href="css/mypage.css" type="text/css">
 <link rel="stylesheet" href="css/cart.css" type="text/css">
-<link rel="stylesheet" href="css/wishList.css" type="text/css">
+<link rel="stylesheet" href="css/wishlist.css" type="text/css">
 <link rel="stylesheet" href="css/order.css" type="text/css">
 <link rel="stylesheet" href="css/askList.css" type="text/css">
 
@@ -31,7 +34,7 @@
 	<div class="profile container">
 		<div class="profile row">
 			<div>
-				<h1>안녕하세요! 떙떙 님</h1>
+				<h1>안녕하세요! ${name}님</h1>
 			</div>
 			<div class="profile col-lg-12">
 				<%--장바구니 --%>
@@ -64,7 +67,7 @@
 						aria-controls="mypage" role="tab" data-toggle="tab">자기정보</a></li>
 					<li role="presentation"><a href="#cart" aria-controls="cart"
 						role="tab" data-toggle="tab">장바구니</a></li>
-					<li role="presentation"><a href="#wishList"
+					<li role="presentation" id="wishlist-tap"><a href="#wishList"
 						aria-controls="wishList" role="tab" data-toggle="tab">위시리스트</a></li>
 					<li role="presentation"><a href="#order" aria-controls="order"
 						role="tab" data-toggle="tab">구매내역</a></li>
@@ -311,33 +314,38 @@
 						<div class="container">
 							<div class="wishlist row">
 								<div class="wishlist-title col-lg-12">
+									<input type="hidden" id="wishlistPg" value="${wishlistPg }">
 									<div class="wishlist-title-h1">
 										<h1>위시리스트</h1>
+										<button class="wishlistTotalDeletebutton">전체삭제</button>
 									</div>
 								</div>
 								<div class="wishlist-list col-lg-12">
-									<div class="wishlist-list-container"
-										id="wishlist-list-container">
-										<div class="parent">
-											<a href=#><img class="wishlist-list-img"
-												src="img/tiger.png"></a>
-											<button class="imgbtn" type="button">되냐?</button>
-										</div>
-										<div class="parent2">
-											<a href=#><img class="wishlist-list-img"
-												src="img/tiger.png"></a>
-											<button class="imgbtn2" type="button">되냐?</button>
-										</div>
-									</div>
-									<div class="wishlist-list-delete">
-										<button class="wishlist-list-delete-btn">전체삭제</button>
+									<div class="wishlist-list-container" id="wishlist-list-container">
+										<ul id="wishlist-list-container-ul">
+
+										</ul>
 									</div>
 								</div>
+								<div id="wishlistPagingDiv" style="float: left; width: 1000px; text-align: center"></div>
+
+
+
+
+
+
+								
+								
+								
+
+
 							</div>
 							<%--row end --%>
+
+
 						</div>
 						<%--container end --%>
-
+					
 					</div>
 					<%--wishList tap end--%>
 
@@ -399,13 +407,13 @@
 
 					</div>
 					<%--askList tap end--%>
-
+				</div><%--tap content --%>
 				</div>
 
 
 			</div>
-		</div>
-	</div>
+			</div>
+
 
 
 
@@ -415,12 +423,12 @@
 
 	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 	<script type="text/javascript" 	src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="js/profile.js"></script>
 	<script type="text/javascript" src="js/mypage.js"></script>
 	<script type="text/javascript" src="js/cart.js"></script>
-	<script type="text/javascript" src="js/wishList.js"></script>
+	<script type="text/javascript" src="js/wishlist.js"></script>
 	<script type="text/javascript" src="js/order.js"></script>
 	<script type="text/javascript" src="js/askList.js"></script>
 

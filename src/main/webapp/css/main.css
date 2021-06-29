@@ -335,7 +335,7 @@ ol {
   height: calc(100% - 30px);
   width: calc(100% - 30px);
   border: 1px dashed #140949;
-  content: "";
+/*  content: "";*/
   opacity: 0.3;
 }
 .hero__text h2 {

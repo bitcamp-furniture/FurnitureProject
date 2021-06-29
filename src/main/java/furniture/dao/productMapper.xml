@@ -39,10 +39,10 @@
 
 	<!-- 리뷰 top 5 -->
 	<select id="reviewListTop5" resultType="review">
-		  SELECT *
-		  FROM REVIEW
-		  WHERE ROWNUM &lt;= 6
-		  ORDER BY review_stars desc	
+		select * from 
+		(select rownum rn, tt.* from 
+		(select * from REVIEW order by review_stars desc)tt
+		)where rn &lt;= 6
     </select> 
 
 	<!-- 상품 리뷰 총 글수 -->
@@ -52,7 +52,10 @@
 	
 		<!--베스트 셀러 -->
 	<select id="getBestSeller" resultType="product">
-		select * from product
+		select * from 
+		(select rownum rn, tt.* from 
+		(select * from product order by PRODUCT_PRICE desc)tt
+		)where rn &lt;= 8
 	</select>
 	
 </mapper>

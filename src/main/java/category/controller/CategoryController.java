@@ -22,12 +22,16 @@ import org.springframework.web.servlet.ModelAndView;
 import furniture.bean.ProductDTO;
 import category.bean.ProductPaging;
 import category.service.ProductService;
+import event.bean.EventDTO;
+import event.service.EventService;
 
 @Controller 
 @RequestMapping(value = "/category/view")
 public class CategoryController {
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private EventService eventService;
 
 	// 카테고리 인덱스 소환
 	@RequestMapping(value = "/category", method = RequestMethod.GET)
@@ -96,14 +100,19 @@ public class CategoryController {
 	// 전체 상품을 리스트로 가져오는 메소드 +페이징 필요 없음 
 	@ResponseBody
 	@RequestMapping(value = "/getAllList", method = RequestMethod.POST)
-	public List<ProductDTO> getAllList(Model model) {
-		List<ProductDTO> allList = productService.getAllList();
-		
-		model.addAttribute("allList", allList);
-		return allList;
-	
-	}
-
+	public ModelAndView getAllList(@RequestParam(required = false, defaultValue = "1") String pg)
+	   {
+	      ModelAndView mav = new ModelAndView();
+	      List<ProductDTO> allList = productService.getAllList();
+	      List<EventDTO> AllListBanner = eventService.AllListBanner();
+	      //eventService.
+	      
+	      mav.addObject("allList", allList);
+	      mav.addObject("AllListBanner", AllListBanner);
+	      mav.addObject("pg", pg);
+	      mav.setViewName("jsonView");
+	      return mav;
+	   }
 	
 	//선택 상품을 리스트로 가져오는 메소드 + 페이징 작업중
 	@RequestMapping(value = "/categorySelectList",method=RequestMethod.GET)
@@ -146,4 +155,36 @@ public class CategoryController {
 	      mav.setViewName("jsonView");
 	      return mav;
 	   }
+	   
+		// 헤더에서 키워드 검색 시 페이지 이동하는 메소드
+		@RequestMapping(value = "/search",method=RequestMethod.GET)
+		public String search(@RequestParam(required = false, defaultValue = "1") String pg,
+							 @RequestParam String keyword,
+										   Model model)
+		{
+			model.addAttribute("pg", pg);
+			model.addAttribute("keyword", keyword);
+			model.addAttribute("display", "/category/view/category.jsp");
+			model.addAttribute("categorydisplay", "/category/view/search.jsp");
+			return "/index";
+		}
+
+		// 선택 상품을 리스트로 가져오는 메소드 + 페이징 작업중
+		@ResponseBody
+		@RequestMapping(value = "/getSearchList", method = RequestMethod.POST)
+		public ModelAndView getSearchList(@RequestParam(required = false, defaultValue = "1") String pg,
+										  @RequestParam String keyword) {
+			ModelAndView mav = new ModelAndView();
+			
+			List<ProductDTO> searchList = productService.searchList(pg, keyword);
+			ProductPaging productSearchPaging = productService.productSearchPaging(pg,keyword);
+			mav.addObject("pg", pg);
+			mav.addObject("keyword", keyword);
+			mav.addObject("searchList", searchList);
+			mav.addObject("productSearchPaging", productSearchPaging);
+			
+			mav.setViewName("jsonView");
+			return mav;
+		}
 }
+

@@ -27,7 +27,9 @@
 
 
 <br>
+<br>
     <input type="hidden" id="pg" value="${pg }" >
+    <input type="button" value="이벤트 등록" id="eventWriteBtn" >
 	<div >
 		<table class="event_list" align="center" cellpadding="8" border="0"></table>
 	</div>
@@ -59,7 +61,7 @@ function getEventList(pg) {
 					style: 'width: 400px;'
 				})
 				.append($('<a/>', {
-					href: '#'
+					href: '/furniture/main/eventView?id='+items.id+'&eventPg='+pg
 				}).append($('<img/>', {
 					style: 'width: 400px; height: 200px',
 					src: "/furniture/storage/event/"+items.event_img_banner
@@ -130,6 +132,9 @@ function getEventList(pg) {
 } // getEventList
 
 
+$('#eventWriteBtn').click(function() {
+	location.href="/furniture/admin/event/eventWriteForm"
+});
 
 
 </script>	
