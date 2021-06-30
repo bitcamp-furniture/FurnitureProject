@@ -41,13 +41,39 @@ public class FurnitureController {
 	private EventService eventService;
 	@Autowired
 	private ProductService productService;
-	@Autowired
-	private ServletContext ctx;
+//	@Autowired
+//	private ServletContext ctx;
 
+	private String webPath = "C:\\Users\\A\\Desktop\\최종프로젝트 관련\\프로젝트클론\\210629.1525\\src\\main\\webapp\\upload";
+	
 	// 상품 상세컷 ... DB연결, 상품id 필요
 	@RequestMapping(value = "/main/productView", method = RequestMethod.GET)
-	public String productView(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
+	public String productView(@RequestParam(required = false, defaultValue = "1") String pg
+							, Integer id
+							, Model model
+                            ) {
+		ProductDTO productDTO = new ProductDTO();
+		//ProductImageDTO productImageDTO = new ProductImageDTO();
+		String imagePath = "/upload";
+		id = 36;
+		productDTO = furnitureService.getIdToOneData(id);
+		List<ProductImageDTO> list = furnitureService.getIdToImageData(id);
+		System.out.println(list);
+		System.out.println(productDTO);
 
+		//String realPath = ctx.getRealPath(webPath);
+		webPath += File.separator;
+		
+		System.out.println(webPath);
+		
+		//테스트
+		System.out.println(list.size());
+		
+		
+		model.addAttribute("webPath", webPath);
+		model.addAttribute("productDTO", productDTO);//뷰가서 게터로, ${productDTO.product_id} 이런식으로 하는것 같은데
+		//model.addAttribute("productImageDTO", productImageDTO);//뷰가서 게터로, 이거는forEach로 반복문 돌리면서
+		model.addAttribute("ImageList", list);
 		model.addAttribute("pg", pg);
 		model.addAttribute("display", "/main/productView.jsp");
 		return "/index";
@@ -141,7 +167,7 @@ public class FurnitureController {
 		public ModelAndView getEventList(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
 			List<EventDTO> eventList = eventService.getEventList(pg);
 			EventListPaging eventListPaging = eventService.eventListPaging(pg);
-			
+
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("eventList", eventList);
 			mav.addObject("pg", pg);
@@ -207,9 +233,9 @@ public class FurnitureController {
 //				productDTO.setId(id);
 //				productDTO.setId(id);
 //				productDTO.setId(id);
-				String webPath = "/category/storage";
-				String realPath = ctx.getRealPath(webPath);
-				System.out.println(realPath);
+				
+				//String realPath = ctx.getRealPath(webPath);
+				//System.out.println(realPath);
 				//이게 realPath 경로를 찍은건데 복붙해서 탐색기에 넣으면 나옴
 				
 				System.out.println(productDTO+"1");
@@ -217,7 +243,7 @@ public class FurnitureController {
 				
 				
 				String fileName = thumbImg.getOriginalFilename();
-				File file = new File(realPath, fileName); // 파일 생성
+				File file = new File(webPath, fileName); // 파일 생성
 				//김지수파일올리기thumbImg.transferTo(file);
 				
 //				for(int i=0; i<product_colors.length; i++) {
@@ -234,7 +260,7 @@ public class FurnitureController {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
+
 				productImageDTO.setProduct_img_thumb(fileName);
 				System.out.println(productImageDTO);
 				
@@ -242,7 +268,7 @@ public class FurnitureController {
 				for (MultipartFile detailImg : list) {
 					fileName = detailImg.getOriginalFilename();
 					System.out.println(fileName);
-					file = new File(realPath, fileName);
+					file = new File(webPath, fileName);
 					// 파일복사
 					try {
 						FileCopyUtils.copy(detailImg.getInputStream(), new FileOutputStream(file));

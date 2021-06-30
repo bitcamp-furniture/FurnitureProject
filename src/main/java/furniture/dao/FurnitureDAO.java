@@ -29,4 +29,10 @@ public interface FurnitureDAO {
 	public void productRegistration(ProductDTO productDTO);
 
 	public void productImageRegistration(ProductImageDTO productImageDTO);
+
+	public ProductDTO getIdToOneData(Integer id);
+
+	public List<ProductImageDTO> getIdToImageData(Integer id);
+
+
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
@@ -76,29 +76,18 @@
                 
                     <div class="product__details__img">
                         <div class="product__details__big__img">
-                            <img class="big_img" src="/furniture/img/shop/details/product-big-1.jpg" alt="">
+                            <!-- <img class="big_img" src="/furniture/img/shop/details/product-big-1.jpg" alt=""> -->
+                            <img class="big_img" src="/furniture/upload/${ImageList[0].product_img_thumb}" alt="1">
                         </div>
+                       
                         <div class="product__details__thumb">
+                            <c:forEach var="n" items="${ImageList}">
                             <div class="pt__item active">
-                                <img data-imgbigurl="/furniture/img/shop/details/product-big-2.jpg"
-                                src="/furniture/img/shop/details/product-big-2.jpg" alt="">
+                                <img data-imgbigurl="/furniture/upload/${n.product_img_detail}"
+                                src="/furniture/upload/${n.product_img_detail}" alt="2">
                             </div>
-                            <div class="pt__item">
-                                <img data-imgbigurl="/furniture/img/shop/details/product-big-1.jpg"
-                                src="/furniture/img/shop/details/product-big-1.jpg" alt="">
-                            </div>
-                            <div class="pt__item">
-                                <img data-imgbigurl="/furniture/img/shop/details/product-big-4.jpg"
-                                src="/furniture/img/shop/details/product-big-4.jpg" alt="">
-                            </div>
-                            <div class="pt__item">
-                                <img data-imgbigurl="/furniture/img/shop/details/product-big-3.jpg"
-                                src="/furniture/img/shop/details/product-big-3.jpg" alt="">
-                            </div>
-                            <div class="pt__item">
-                                <img data-imgbigurl="/furniture/img/shop/details/product-big-5.jpg"
-                                src="/furniture/img/shop/details/product-big-5.jpg" alt="">
-                            </div>
+                        	</c:forEach>
+                            
                         </div>
                     </div>
                 </div>
@@ -106,8 +95,8 @@
                 <div class="col-lg-6">
                     <div class="product__details__text">
                         <div class="product__label">카테고리</div>
-                        <h4>잠이솔솔 침대</h4>
-                        <h5>가격 ₩ 8,000,000</h5>
+                        <h4>${productDTO.product_name}</h4>
+                        <h5>가격 ₩ <fmt:formatNumber value="${productDTO.product_price}" pattern="#,###,###"/></h5>
                         <p>하루를 최상의 컨디션으로 시작하려면 숙면을 취해야 하죠. 다양한 스타일의 튼튼한 IKEA 침대는 최고의 편안함과 품질을 약속해드려요. 
                           빌트인 수납처럼 스마트한 기능이 있거나 밑에 수납함을 밀어넣을 수 있는 크기의 침대도 많답니다. IKEA의 침대로 오랫동안 달콤한 꿈을 꾸는 숙면을 즐겨보세요.</p>
                           

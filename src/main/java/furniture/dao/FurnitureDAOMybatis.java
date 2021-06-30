@@ -74,4 +74,19 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 		sqlSession.insert("productSQL.productImageRegistration",productImageDTO);
 	}
 
+	@Override
+	public ProductDTO getIdToOneData(Integer id) {
+		return sqlSession.selectOne("productSQL.getIdToOneData", id);
+	}
+
+	@Override
+	public List<ProductImageDTO> getIdToImageData(Integer id) {
+		System.out.println("다오바티스id값"+id);
+		return sqlSession.selectList("productSQL.getIdToImageData", id);
+	}
+	
+	
+	
+
+
 }

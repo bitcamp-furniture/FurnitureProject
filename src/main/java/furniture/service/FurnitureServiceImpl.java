@@ -100,7 +100,17 @@ public class FurnitureServiceImpl implements FurnitureService {
 	@Override
 	public void productImageRegistration(ProductImageDTO productImageDTO) {
 		furnitureDAO.productImageRegistration(productImageDTO);
-		
 	}
 
+	@Override
+	public ProductDTO getIdToOneData(Integer id) {
+		return furnitureDAO.getIdToOneData(id);
+	}
+
+	@Override
+	public List<ProductImageDTO> getIdToImageData(Integer id) {
+		List<ProductImageDTO> list = furnitureDAO.getIdToImageData(id);
+		System.out.println("퍼니쳐서비스id값"+id);
+		return list;
+	}
 }
