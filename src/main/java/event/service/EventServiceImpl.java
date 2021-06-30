@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import event.bean.EventDTO;
 import event.bean.EventListPaging;
+import event.bean.NoticeDTO;
+import event.bean.NoticeListPaging;
 import event.dao.EventDAO;
 import furniture.bean.ProductDTO;
 import furniture.bean.Product_qnaDTO;
@@ -23,6 +25,8 @@ public class EventServiceImpl implements EventService {
 	private EventDAO eventDAO;
 	@Autowired
 	private EventListPaging eventListPaging;
+	@Autowired
+	private NoticeListPaging noticeListPaging;
 
 	@Override
 	public List<EventDTO> getEventList(String pg) {
@@ -72,4 +76,34 @@ public class EventServiceImpl implements EventService {
    
    }
 
+	@Override
+	public List<NoticeDTO> getNoticeList(String pg) {
+		// 1페이지당 5개씩
+		int endNum = Integer.parseInt(pg) * 10;
+		int startNum = endNum - 9;
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+
+		return eventDAO.getNoticeList(map);
+	}
+
+	@Override
+	public NoticeListPaging noticeListPaging(String pg) {
+		int totalA = eventDAO.getTotalNoticeList();// 총글수
+		
+		noticeListPaging.setCurrentPage(Integer.parseInt(pg));// 현재페이지
+		noticeListPaging.setPageBlock(3);
+		noticeListPaging.setPageSize(10);
+		noticeListPaging.setTotalA(totalA);
+		noticeListPaging.makePagingHTML();
+		
+		return noticeListPaging;
+	}
+
+	@Override
+	public NoticeDTO getNoticeView(String id) {
+		return eventDAO.getNoticeView(id);
+	}
 }

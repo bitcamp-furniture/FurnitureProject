@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import furniture.bean.ProductDTO;
+import furniture.bean.ProductImageDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.ReviewDTO;
 
@@ -25,4 +26,7 @@ public interface FurnitureDAO {
 
 	public List<ProductDTO> getBestSeller();
 
+	public void productRegistration(ProductDTO productDTO);
+
+	public void productImageRegistration(ProductImageDTO productImageDTO);
 }

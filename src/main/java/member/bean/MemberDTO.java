@@ -17,6 +17,7 @@ public class MemberDTO {
     private String bir_yy;
     private String bir_mm;
     private String bir_dd;
+    private String verify;
     private String point;
     private String kakaoId;
     private Date created_at;

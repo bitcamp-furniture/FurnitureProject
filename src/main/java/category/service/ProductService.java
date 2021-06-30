@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import furniture.bean.ProductDTO;
+import category.bean.ProductListDTO;
 import category.bean.ProductPaging;
 
 @Controller
@@ -20,9 +21,13 @@ public interface ProductService {
 	public List<ProductDTO> getAllList();
 
 	//페이지 값이랑 카테고리를 넘기기 
-	public List<ProductDTO> selectList(String pg, String category);
+	public List<ProductListDTO> selectList(String pg, String category);
 
 	public ProductPaging productPaging(String pg, String category);
+
+	public List<ProductDTO> searchList(String pg, String keyword);
+
+	public ProductPaging productSearchPaging(String pg, String keyword);
 
 
 

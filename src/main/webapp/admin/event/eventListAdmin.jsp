@@ -29,6 +29,7 @@
 <br>
 <br>
     <input type="hidden" id="pg" value="${pg }" >
+    <input type="button" value="이벤트 등록" id="eventWriteBtn" >
 	<div >
 		<table class="event_list" align="center" cellpadding="8" border="0"></table>
 	</div>
@@ -131,6 +132,9 @@ function getEventList(pg) {
 } // getEventList
 
 
+$('#eventWriteBtn').click(function() {
+	location.href="/furniture/admin/event/eventWriteForm"
+});
 
 
 </script>	

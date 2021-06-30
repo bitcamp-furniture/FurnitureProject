@@ -40,6 +40,7 @@ public class MemberServiceImpl implements MemberService {
         	session.setAttribute("memId", memberDTO.getId());
             session.setAttribute("memName", memberDTO.getName());
             session.setAttribute("memEmail", memberDTO.getEmail());
+            session.setAttribute("verify", memberDTO.getVerify());
             return "success";
         }
     }

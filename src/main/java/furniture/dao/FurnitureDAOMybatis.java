@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import furniture.bean.ProductDTO;
+import furniture.bean.ProductImageDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.ReviewDTO;
 
@@ -63,6 +64,14 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 	public List<ProductDTO> getBestSeller() {
 		return sqlSession.selectList("productSQL.getBestSeller");
 	}
+	@Override
+	public void productRegistration(ProductDTO productDTO) {
+		sqlSession.insert("productSQL.productRegistration",productDTO);
+	}
 
+	@Override
+	public void productImageRegistration(ProductImageDTO productImageDTO) {
+		sqlSession.insert("productSQL.productImageRegistration",productImageDTO);
+	}
 
 }

@@ -49,11 +49,15 @@
                                     <c:if test="${sessionScope.memEmail == null }">
                                         <li><a href="/furniture/member/joinPage">회원가입</a></li>
                                         <li><a href="/furniture/member/loginForm">로그인</a></li>
-                                        <li><a href="/furniture/profile/profile">마이페이지</a></li>
+                                        <li><a href="/furniture/member/loginForm">마이페이지</a></li>
                                     </c:if>
-                                    <c:if test="${sessionScope.memEmail != null }">
+                                    <c:if test="${sessionScope.memEmail != null && sessionScope.verify == null}">
                                         <li><a href="/furniture/member/logout">로그아웃</a></li>
                                         <li><a href="/furniture/profile/profile">마이페이지</a></li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.verify != null }">
+                                        <li><a href="/furniture/member/logout">로그아웃</a></li>
+                                        <li><a href="/furniture/admin/adminIndex">관리자페이지</a></li>
                                     </c:if>
                                 </ul>
                             </div>
@@ -63,8 +67,8 @@
                             <div class="header__top__right">
                             
                                 <div class="header__top__right__links">
-                               <input type="text" class="search-input" placeholder="검색어를 입력하세요" size="20" />&emsp;
-                                    <a href="#" ><img src="/furniture/img/icon/search.png" alt=""></a>
+                               <input type="text" class="search-input" placeholder="검색어를 입력하세요" onkeyup="enterkey();" size="20" />&emsp;
+                                    <a class="search-icon" ><img src="/furniture/img/icon/search.png" alt=""  style="cursor: pointer;"></a>
                                     <a href="#"><img src="/furniture/img/icon/heart.png" alt=""></a>
                                 </div>
                                 <div class="header__top__right__cart">
@@ -153,8 +157,8 @@
                             <!-- 추후 링크 수정 필요 -->
                             <li><a href="#">고객지원</a>
                             <ul class="dropdown">
-                                    <li><a href="/furniture/category/view/selectList?category=공지">공지</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=FAQ">FAQ</a></li>
+                                    <li><a href="/furniture/main/notice">공지</a></li>
+                                    <li><a href="/furniture/main/FaQ">FAQ</a></li>
                                     <li><a href="/furniture/main/event">이벤트</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=문의사항">문의사항</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=고객센터">고객센터</a></li>
@@ -271,6 +275,8 @@
 </div>
 <!-- Search End -->
 
+
+
 <!-- Js Plugins -->
 <script src="/furniture/js/jquery-3.3.1.min.js"></script>
 <script src="/furniture/js/bootstrap.min.js"></script>
@@ -283,5 +289,14 @@
 <script src="/furniture/js/main.js"></script>
     <script src="/furniture/js/constant.js"></script>
 
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>   
+<script src="/furniture/js/search.js"></script>
+<script type="text/javascript">
+function enterkey() {
+    if (window.event.keyCode == 13) {
+       location.href="/furniture/category/view/search?keyword=" + $('.search-input').val() +'&pg=1'
+    }
+}
+</script>
 </body>
 </html>

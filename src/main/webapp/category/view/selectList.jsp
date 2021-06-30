@@ -41,13 +41,14 @@
 
 
 <input type="hidden" value="${category }" id="category">
-                    <div class="cover_product_list" id="cover_product_list">
-                    <div class="row" id="product_list"></div>
-                    <%--이곳은 상품을 클릭한 리스트들이 들어온다 --%>
-                    </div>        
-    <!-- Product Section End -->
-     <%--페이징을 만들것이야 이곳에다가 띄우기 --%>
+
+	<div class="cover_product_list" id="cover_product_list">
+		<div class="row" id="product_list"></div>
+	</div>        
+
     <div id="selectCategoryPagingDiv" style="float: left; width: 100%; text-align: center;" ></div>   
+
+
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $.ajax({
@@ -67,18 +68,19 @@ $.ajax({
       $.each(data.selectList,function(index,items){
          
            $('<div/>', {class: "col-lg-4 col-md-6 col-sm-6"}).append($('<div/>', {class:"product__item"}).append($('<div/>',{class:"product__item__pic set-bg"})
-                   .append($('<a/>',{href: "/furniture/main/productView"}) 
-                 .append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/category/storage/"+items.product_img_thumb})))
+           		.append($('<a/>',{href: "/furniture/main/productView"}) 
+           		.append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/"+items.product_img_thumb})))
                       .append($('<ul/>',{class:"product__item__pic__hover"})
                             .append($('<li/>').append($('<a/>', {href:"#"}).append($('<i/>',{class:"fa fa-heart"}))))                                  
-                      
                       )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>',{id:"product_name",text: items.product_name})
-                        .append($('<a/>',{href: '#'}))).append($('<h5/>',{id:"product_price",text: "₩"+items.product_price.toLocaleString()}))))
+                      .append($('<a/>',{href: '#'}))).append($('<h5/>',{id:"product_price",text: "₩"+items.product_price.toLocaleString()}))))
                       .appendTo($("#product_list"));
-          });
+      }); // each
+      
          
-       $('#selectCategoryPagingDiv').html(data.productPaging.pagingHTML);
+      $('#selectCategoryPagingDiv').html(data.productPaging.pagingHTML);
          
+       
    },
    error: function(err) {
       alert("셀렉트 오류")
@@ -87,7 +89,6 @@ $.ajax({
 });
 
 function productPaging(pg){
-
    $.ajax({
          type:'post',
          url:'/furniture/category/view/getCategoryList',
@@ -119,15 +120,12 @@ function productPaging(pg){
                 });
                
              $('#selectCategoryPagingDiv').html(data.productPaging.pagingHTML);
-               
          },
          error: function(err) {
             alert("셀렉트 오류")
             console.log(err);
          }
       });
-   
-   
 }
 
 

@@ -3,6 +3,7 @@ package category.dao;
 import java.util.List;
 import java.util.Map;
 
+import category.bean.ProductListDTO;
 import furniture.bean.ProductDTO;
 
 public interface ProductDAO {
@@ -13,8 +14,12 @@ public interface ProductDAO {
 	public List<ProductDTO> getAllList();
 
 	//선택된 상품 목록 불러오기
-	public List<ProductDTO> selectList(Map<Object, Object> map);
+	public List<ProductListDTO> selectList(Map<Object, Object> map);
 	//총 토탈
 	public int getTotalProduct(String category);
+	
+	public List<ProductDTO> searchList(Map<Object, Object> map);
+	
+	public int getSearchProduct(String keyword);
 
 }

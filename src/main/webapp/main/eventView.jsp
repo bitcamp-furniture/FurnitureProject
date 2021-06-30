@@ -144,7 +144,7 @@ $(function() {
 		                 .append($('<img>',{
 		                	 id:"product_img_thumb", 
 		                	 alt:items.product_name,
-		                	 src: "/furniture/storage/딸기.png"/*+items.product_img_thumb*/
+		                	 src: "/furniture/storage/"+items.product_img_thumb
 		                })))
 		                      .append($('<ul/>',{class:"product__item__pic__hover"})
 		                      
@@ -183,7 +183,7 @@ function productPaging(pg){
 		         
 		           $('<div/>', {class: "col-lg-4 col-md-6 col-sm-6"}).append($('<div/>', {class:"product__item"}).append($('<div/>',{class:"product__item__pic set-bg"})
 		                   .append($('<a/>',{href: "/furniture/main/productView"}) 
-		                 .append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/딸기.png"/*+items.product_img_thumb*/})))
+		                 .append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/"+items.product_img_thumb})))
 		                      .append($('<ul/>',{class:"product__item__pic__hover"})
 		                      
 		                      )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>',{id:"product_name",text: items.product_name})
