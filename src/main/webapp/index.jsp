@@ -49,7 +49,7 @@
                                     <c:if test="${sessionScope.memEmail == null }">
                                         <li><a href="/furniture/member/joinPage">회원가입</a></li>
                                         <li><a href="/furniture/member/loginForm">로그인</a></li>
-                                        <li><a href="/furniture/member/loginForm">마이페이지</a></li>
+                                        <li><a onclick="alert('로그인이 필요합니다.')" href="/furniture/member/loginForm">마이페이지</a></li>
                                     </c:if>
                                     <c:if test="${sessionScope.memEmail != null && sessionScope.verify == null}">
                                         <li><a href="/furniture/member/logout">로그아웃</a></li>
@@ -161,7 +161,6 @@
                                     <li><a href="/furniture/main/FaQ">FAQ</a></li>
                                     <li><a href="/furniture/main/event">이벤트</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=문의사항">문의사항</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=고객센터">고객센터</a></li>
                                 </ul>
                              </li>
                         </ul>

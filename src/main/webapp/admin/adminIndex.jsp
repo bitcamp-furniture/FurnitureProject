@@ -97,11 +97,18 @@ body {
     font-size: 14px;
     border-bottom: 0px solid #e1e1e1;
     padding-top: 8px;
-    margin-left: 43px;
+/*     margin-left: 43px; */
 }
 
 .big_menu {
     cursor: pointer;
+}
+
+.big_menu li a{
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
 }
 
 .small_menu li a.active:hover {
@@ -112,6 +119,7 @@ body {
     color: #ccc;
     text-decoration: none;
     background-color: transparent;
+    margin-left: 43px;
 }
 
 .wrapper >.topbar >.left_sub_menu >.sub_menu >.big_menu,
@@ -168,18 +176,18 @@ body {
                     <div class="header__logo">IKEZKE</div>
                 	<hr class="line">
                     <ul class="big_menu">
-						<li><ion-icon name="bed" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;사이트 바로가기</li>
+						<li><ion-icon name="bed" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;<a href="/furniture/index.jsp">사이트 바로가기</a></li>
 						<li><ion-icon name="grid" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;대시보드</li>
                     </ul><hr class="line">
                     <ul class="big_menu">
-						<li><ion-icon name="person-sharp" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;사용자 관리 &emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
+						<li><ion-icon name="person-sharp" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;사용자 관리 &emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu">
                             <li><a href="#">회원목록</a></li>
                             <li><a href="#">메일 발송 설정</a></li>
                         </ul>
                     </ul>
                     <ul class="big_menu">
-                        <li><ion-icon name="bag" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;쇼핑 &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
+                        <li><ion-icon name="bag" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;쇼핑 &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu">
                             <li><a href="#">주문관리</a></li>
                             <li><a href="#">주문내역</a></li>
@@ -189,21 +197,21 @@ body {
                         </ul>
                     </ul>
                     <ul class="big_menu">
-                        <li><ion-icon name="analytics" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;통계 &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
+                        <li><ion-icon name="analytics" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;통계 &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu">
                             <li><a href="#">매출</a></li>
                             <li><a href="#">정산</a></li>
                         </ul>
                     </ul>
                     <ul class="big_menu">
-                        <li><ion-icon name="create" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;컨텐츠 관리 &emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
+                        <li><ion-icon name="create" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;컨텐츠 관리 &emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu">
                             <li><a href="#">QNA관리</a></li>
                             <li><a href="#">리뷰관리</a></li>
                         </ul>
                     </ul>
                     <ul class="big_menu">
-                        <li><ion-icon name="megaphone" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;마케팅 관리 &emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
+                        <li><ion-icon name="megaphone" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;마케팅 관리 &emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu">
                             <li><a href="#">이벤트 등록</a></li>
                             <li><a href="#">이벤트 목록</a></li>

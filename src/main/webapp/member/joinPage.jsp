@@ -115,10 +115,8 @@ html {
     transform:translateY(-50%); */
 }
 
-
-
 /* input */
-.email, .password, .repassword, .name, .phone, .postcode, .address, .detailAddress, .extraAddress, .mail_check_input, .year, .dd, select {
+.email, .password, .repassword, .name, .phone, .postcode, .address, .detailAddress, .extraAddress, .mail_check_input {
 /*     -webkit-border-radius: 0;
     border-radius: 0;
     -webkit-appearance: none;
@@ -130,6 +128,14 @@ html {
     width: 400px;
     height: 40px;
     padding: 14px;
+}
+
+/* input */
+.year, .dd, select {
+    font-size:14px;
+    width: 400px;
+    height: 40px;
+    padding-left: 14px;
 }
 
 input::placeholder {
@@ -475,7 +481,7 @@ input::placeholder {
 			                        </div>
 			
 			                        <!-- 월 -->
-			                        <div id="mm" style="width:60px; float:left;">
+			                        <div id="mm" style="width:60px; float:left; font-size:13px;">
 			                            <span class="box">
 			                                <select id="bir_mm" name="bir_mm" style="width:60px;">
 			                                    <option>월</option>
@@ -525,6 +531,7 @@ input::placeholder {
 			                        </div>
 			                    </div>
 			                </div>
+			             <br><br>
 			                
 			                <!-- end -->
 			            </div>
