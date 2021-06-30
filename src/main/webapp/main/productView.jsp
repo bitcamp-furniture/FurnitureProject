@@ -73,7 +73,7 @@
                 <div class="col-lg-6">
                 
                 	<!-- 상품 상세샷 넣을 자리 -->
-                
+                <!-- 썸네일 이미지는 그냥 5개중에 제일 먼저 뜰게뭐일지 정하는거고 그다음에 클릭한게 크게 뜬다. 이미지가 1개밖에 없으면 반복안되는것 처럼 보이지 착각말고-->
                     <div class="product__details__img">
                         <div class="product__details__big__img">
                             <!-- <img class="big_img" src="/furniture/img/shop/details/product-big-1.jpg" alt=""> -->
@@ -102,12 +102,11 @@
                           
             <select name="option_color" id="option_color">
                  <!--<option value="">--색상을 선택해주세요 --</option> --> 
-              	<option value="black">black</option>
-                <option value="black">blackblack</option>
-                <option value="black">blackblack</option>
-                <option value="black">blackblackblack</option>
-                <option value="black">blackblackblackblack</option>
-                <option value="black">blackblackblackblack</option>
+              	<option value="B">black</option>
+                <option value="W">white</option>
+                <option value="R">red</option>
+                <option value="S">silver</option>
+                <option value="P">purple</option>
             </select>
          <br>
          <div>&emsp;</div>

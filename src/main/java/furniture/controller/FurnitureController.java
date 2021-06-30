@@ -47,14 +47,42 @@ public class FurnitureController {
 	@Autowired
 	private ServletContext ctx;
 
+	private String webPath = "C:\\Users\\A\\Desktop\\최종프로젝트 관련\\프로젝트클론\\210629.1525\\src\\main\\webapp\\upload";
 	// 상품 상세컷 ... DB연결, 상품id 필요
-	@RequestMapping(value = "/main/productView", method = RequestMethod.GET)
-	public String productView(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
+		@RequestMapping(value = "/main/productView", method = RequestMethod.GET)
+		public String productView(@RequestParam(required = false, defaultValue = "1") String pg
+								, Integer id
+								, Model model
+	                            ) {
+			ProductDTO productDTO = new ProductDTO();
+			//ProductImageDTO productImageDTO = new ProductImageDTO();
+			String imagePath = "/upload";
+			id = 36;
+			productDTO = furnitureService.getIdToOneData(id);
+			List<ProductImageDTO> list = furnitureService.getIdToImageData(id);
+			
+			System.out.println(list);
+			System.out.println(productDTO);
 
-		model.addAttribute("pg", pg);
-		model.addAttribute("display", "/main/productView.jsp");
-		return "/index";
-	}
+			//String realPath = ctx.getRealPath(webPath);
+			webPath += File.separator;
+			
+			System.out.println(webPath);
+			
+			//테스트
+			System.out.println(list.size());
+			
+			
+			model.addAttribute("webPath", webPath);
+			model.addAttribute("productDTO", productDTO);//뷰가서 게터로, ${productDTO.product_id} 이런식으로 하는것 같은데
+			//model.addAttribute("productImageDTO", productImageDTO);//뷰가서 게터로, 이거는forEach로 반복문 돌리면서
+			model.addAttribute("ImageList", list);
+			model.addAttribute("pg", pg);
+			model.addAttribute("display", "/main/productView.jsp");
+			return "/index";
+		}
+		
+	
 
 	   
 	
@@ -255,7 +283,7 @@ public class FurnitureController {
 		   @RequestMapping(value = "/productRegistrationView", method = RequestMethod.GET)
 			
 			public String productRegistrationView(Model model) {
-			   model.addAttribute("adminDisplay", "/admin/productRegistration.jsp");
+			   model.addAttribute("display", "/admin/productRegistration.jsp");
 			   return "/admin/adminIndex";
 			   }
 		   
@@ -282,7 +310,9 @@ public class FurnitureController {
 				System.out.println(productDTO+"1");
 				//category테이블에서 product_category1를 select해서 category_name을 끌고 와서 하려다가 hidden값으로 하기
 				
-				
+				//productDTO.setProduct_category1("550");
+				//productDTO.setProduct_category2("120");
+								
 				String fileName = thumbImg.getOriginalFilename();
 				File file = new File(realPath, fileName); // 파일 생성
 				//김지수파일올리기thumbImg.transferTo(file);
@@ -291,8 +321,15 @@ public class FurnitureController {
 //					productDTO.setProduct_color(product_colors[i]);
 //				}
 					furnitureService.productRegistration(productDTO);
-					//여기서에러
+					
+					
+				///////////////////////////
+				int productId = furnitureService.getProductId(productDTO.getProduct_code());
+				productImageDTO.setId(productId);
+				/////////////////////////
+				
 				System.out.println(productDTO+"2");
+				System.out.println(productImageDTO+"2");
 				// 파일 복사
 				
 				// 썸네일 이미지(이미지1개)
@@ -321,7 +358,9 @@ public class FurnitureController {
 					System.out.println(productDTO);
 					System.out.println(productImageDTO);
 				} //for
+				
 				System.out.println(productDTO+"3");
+				
 				return "redirect:/categoryAllList";
 			}
 		    

@@ -35,4 +35,7 @@ public interface FurnitureService {
 
 	public List<ProductImageDTO> getIdToImageData(Integer id);
 
+	public int getProductId(String product_code);
+
+	
 }

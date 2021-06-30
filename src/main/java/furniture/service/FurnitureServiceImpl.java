@@ -113,4 +113,10 @@ public class FurnitureServiceImpl implements FurnitureService {
 		System.out.println("퍼니쳐서비스id값"+id);
 		return list;
 	}
+
+	@Override
+	public int getProductId(String product_code) {
+		
+		return furnitureDAO.getProductId(product_code);
+	}
 }
