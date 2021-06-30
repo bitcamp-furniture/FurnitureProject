@@ -193,3 +193,16 @@ created_at date -- 등록일
 ); 
 create sequence seq_notice nocycle nocache;
 
+
+---- 이벤트
+CREATE TABLE event (
+   id NUMBER PRIMARY KEY,       
+   event_subject VARCHAR2(100),   -- 이벤트 제목
+   event_content VARCHAR2(500),   -- 내용(리스트에 출력)
+   event_startDate date,         -- 시작 날짜
+   event_endDate date,            -- 종료 날짜
+   event_category VARCHAR2(80),   -- 카테고리명(대상 물건 설정, view에서 해당 리스트 출력)
+   event_img_banner VARCHAR2(100),   -- 배너용 이미지 1개
+   event_img_detail VARCHAR2(100)   -- 디테일 이미지 2개 고정
+);
+create sequence seq_event nocycle nocache;

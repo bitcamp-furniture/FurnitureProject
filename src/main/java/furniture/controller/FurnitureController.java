@@ -171,7 +171,7 @@ public class FurnitureController {
 	@ResponseBody
 	@RequestMapping(value = "/main/getCategoryList", method = RequestMethod.POST)
 	public ModelAndView getCategoryList(@RequestParam(required = false, defaultValue = "1") String pg,
-			@RequestParam String category) { // category='수납형침대'
+										@RequestParam String category) { // category='수납형침대'
 		ModelAndView mav = new ModelAndView();
 
 		List<ProductDTO> selectList = productService.selectList(pg, category);
