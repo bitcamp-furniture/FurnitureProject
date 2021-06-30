@@ -6,78 +6,96 @@
 	<!-- startNum endNum -->
 	<select id="selectList" parameterType="java.util.Map" resultType="productList">
 		<![CDATA[
-			select distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
-			PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB from 
-	         (select rownum rn, tt. * from 
-	          (select * from product
-	            where PRODUCT_CATEGORY1=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
-	            or
-	            PRODUCT_CATEGORY2=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
-	            order by id desc)tt)
-	        join product_image using (PRODUCT_CODE)
-	 		where rn >= #{startNum} and rn <= #{endNum}
+		select * from (
+		    select rownum rn, tt.* from
+		        (select distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
+		        PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB from 
+		            (
+		            select * from product
+		                    where PRODUCT_CATEGORY1=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
+		                    or
+		                    PRODUCT_CATEGORY2=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
+		                    order by id desc
+		             )       
+		        join product_image using (PRODUCT_CODE)
+		        )tt)
+		where rn >= #{startNum} and rn <= #{endNum}
 		]]>
-			
-			
 	</select>
 	
 	
-	<!--모든 리스트  -->
-<!--    	 
-		 SELECT *
-		 FROM product
-		 WHERE ROWNUM &lt;= 9
-		 ORDER BY product_price desc	
-	-->	 
+	<!-- 전체상품보기 ... 모든 리스트  -->
 	 <select id="getAllList" resultType="productList">
  		<![CDATA[
-		select distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1, PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB from 
-	    	(SELECT * FROM product WHERE ROWNUM <= 9 ORDER BY product_price desc)
-		join product_image using (PRODUCT_CODE)
+		select * from (
+			SELECT distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
+			PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB
+			FROM product
+			join product_image using (PRODUCT_CODE)
+			ORDER BY product_price desc
+		) WHERE ROWNUM <= 9
 		]]>
     </select>   
     
     
-    <!-- 선택한 카테고리 리스트 뿌리기 -->
-<!-- 		select * from product where PRODUCT_CATEGORY_NAME=#{category} -->
-	<select id="getSelectList" parameterType="java.util.Map" resultType="productList">
-		
-		select distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
-		PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB from 
-		    (select * from product where PRODUCT_CATEGORY_NAME=#{category})
-		join product_image using (PRODUCT_CODE)
-	</select>
-	
-	
-	<!--product안에 있는 모든 것들 갯수  -->
+	<!-- category - selectList 페이징용 product안에 있는 모든 것들 갯수  -->
 	<select id="getTotalProduct" parameterType="String" resultType="int">
-		select count(*) from product where PRODUCT_CATEGORY_NAME=#{category}
+		<!-- select count(*) from product where PRODUCT_CATEGORY_NAME=#{category} -->
+		<![CDATA[
+		select count(*)  from (
+		    select rownum rn, tt.* from
+		        (select distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
+		        PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB from 
+		            (
+		            select * from product
+		                    where PRODUCT_CATEGORY1=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
+		                    or
+		                    PRODUCT_CATEGORY2=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
+		                    order by id desc
+		             )       
+		        join product_image using (PRODUCT_CODE)
+		        )tt)
+		]]>
+		
 	</select>
+	
 	
 	<!-- 검색 키워드 + 페이징 -->
-<!--			select * from 
-			(select rownum rn, tt. * from 
-	 		(select * from product 
-				where product_name like '%'||#{keyword}||'%'
-				order by id desc)tt) 
-	 		where rn >= #{startNum} and rn <= #{endNum}
-	--> 		
 	<select id="searchList" parameterType="java.util.Map" resultType="productList">
-	<![CDATA[
-	 		select distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
-			PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB from 
-			    (select rownum rn, tt. * from 
-			        (select * from product 
-							where product_name like '%'||#{keyword}||'%'
-							order by id desc)tt)
-			join product_image using (PRODUCT_CODE)
-			where rn >= #{startNum} and rn <= #{endNum}
+		<![CDATA[
+		select * from (
+		    select rownum rn, tt.* from
+		        (select distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
+		        PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB from 
+		            (
+		            select * from product 
+		            where product_name like '%'||#{keyword}||'%'
+		            order by id desc
+		             )       
+		        join product_image using (PRODUCT_CODE)
+		        )tt)
+		where rn >= #{startNum} and rn <= #{endNum}
 		]]>
 	</select>
 	
+	
 	<!-- 검색 글 갯수 -->
 	<select id="getSearchProduct" parameterType="String" resultType="int">
-		select count(*) from product where PRODUCT_NAME like '%'||#{keyword}||'%'
+		<!-- select count(*) from product where PRODUCT_NAME like '%'||#{keyword}||'%' -->
+		<![CDATA[
+		select count(*) from (
+		    select rownum rn, tt.* from
+		        (select distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
+		        PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB from 
+		            (
+		            select * from product 
+		            where product_name like '%'||#{keyword}||'%'
+		            order by id desc
+		             )       
+		        join product_image using (PRODUCT_CODE)
+		        )tt)
+		]]>
+		
 	</select>
 	
  </mapper>

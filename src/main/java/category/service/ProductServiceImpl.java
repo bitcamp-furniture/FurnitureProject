@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import furniture.bean.ProductDTO;
+import category.bean.ProductListDTO;
 import category.bean.ProductPaging;
 import category.dao.ProductDAO;
 
@@ -40,7 +41,7 @@ public class ProductServiceImpl implements ProductService
 	
 	//셀렉트 상품리스트 페이지 카테고리 
 	@Override
-	public List<ProductDTO> selectList(String pg, String category) {
+	public List<ProductListDTO> selectList(String pg, String category) {
 		//1페이지당 9개씩
 		int endNum = Integer.parseInt(pg)*9;
 		int startNum = endNum-8;

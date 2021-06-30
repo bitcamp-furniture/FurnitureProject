@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import furniture.bean.ProductDTO;
+import category.bean.ProductListDTO;
 import category.bean.ProductPaging;
 import category.service.ProductService;
 import event.bean.EventDTO;
@@ -91,7 +92,7 @@ public class CategoryController {
 	                              @RequestParam String category) {
 	      ModelAndView mav = new ModelAndView();
 
-	      List<ProductDTO> selectList = productService.selectList(pg, category);
+	      List<ProductListDTO> selectList = productService.selectList(pg, category);
 	      ProductPaging productPaging = productService.productPaging(pg,category);
 	      mav.addObject("pg", pg);
 	      mav.addObject("category", category);

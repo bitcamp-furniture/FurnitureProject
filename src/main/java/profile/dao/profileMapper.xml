@@ -69,4 +69,54 @@
 		select count(*) as count from wishlist
 	</select>
 
+	<select id="getOrderList" parameterType="java.util.Map" resultType="order">
+		select *
+		from (select rownum rn, tt.* from
+			(select o.order_number,
+					o.order_date,
+					i.product_img_thumb,
+					p.product_name,
+			        od.id,
+					od.product_color,
+					od.product_qty,
+					od.product_amounts,
+					od.order_status
+			 from orders o
+					  inner join orders_detail od
+								 on o.order_number=od.order_number
+					  Inner join product p
+								 on od.product_id=p.id
+					  Inner join product_image i
+								 on p.product_code=i.product_code
+			 where o.member_id=#{id} order by o.order_number desc
+			) tt
+			)where rn between #{startNum} and #{endNum}
+	</select>
+
+	<select id="getTotalOrderList" parameterType="String" resultType="Integer">
+		select count(*) as count from (
+			select o.order_number,
+				   o.order_date,
+				   i.product_img_thumb,
+				   p.product_name,
+		           od.id,
+				   od.product_color,
+				   od.product_qty,
+				   od.product_amounts,
+				   od.order_status
+			from orders o
+					inner join orders_detail od
+						on o.order_number=od.order_number
+					Inner join product p
+						on od.product_id=p.id
+					Inner join product_image i
+						on p.product_code=i.product_code
+			where o.member_id=#{id} order by o.order_number desc
+			)
+	</select>
+
+	<update id="updateOrderStatus" parameterType="int">
+		update orders_detail set order_status = 'FINISH' where id=#{id}
+	</update>
+
  </mapper>

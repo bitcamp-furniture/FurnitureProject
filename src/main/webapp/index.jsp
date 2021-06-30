@@ -287,6 +287,7 @@
 <script src="/furniture/js/owl.carousel.min.js"></script>
 <script src="/furniture/js/jquery.nicescroll.min.js"></script>
 <script src="/furniture/js/main.js"></script>
+    <script src="/furniture/js/constant.js"></script>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>   
 <script src="/furniture/js/search.js"></script>
