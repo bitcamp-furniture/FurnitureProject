@@ -74,7 +74,7 @@ public class CategoryController {
 
 	   @RequestMapping(value = "/selectList", method = RequestMethod.GET)
 	   public String selectList(@RequestParam(required = false, defaultValue = "1") String pg,
-	                      @RequestParam String category, Model model) {
+	                      		@RequestParam String category, Model model) {
 
 	      model.addAttribute("category", category);
 	      model.addAttribute("pg", pg);

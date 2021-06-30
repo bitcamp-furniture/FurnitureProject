@@ -50,13 +50,15 @@
 		select count(*) from review
 	</select>
 	
-		<!--베스트 셀러 -->
+	<!--베스트 셀러 -->
 	<select id="getBestSeller" resultType="product">
 		select * from 
 		(select rownum rn, tt.* from 
 		(select * from product order by PRODUCT_PRICE desc)tt
 		)where rn &lt;= 8
 	</select>
+	
+	
 	<!-- 이미지 업로드 -->
 	<insert id="productRegistration" parameterType="product">
 		insert into product values(seq_product.nextval

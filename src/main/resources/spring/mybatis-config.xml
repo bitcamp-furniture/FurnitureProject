@@ -5,6 +5,7 @@
 <configuration>
 	
 	<typeAliases>
+      	<typeAlias type="category.bean.ProductListDTO" alias="productList"/>      	
       	<typeAlias type="event.bean.EventDTO" alias="event"/>      	
       	<typeAlias type="furniture.bean.Product_qnaDTO" alias="qna"/>      	
       	<typeAlias type="furniture.bean.ReviewDTO" alias="review"/>      	

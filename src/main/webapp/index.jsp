@@ -67,7 +67,7 @@
                             <div class="header__top__right">
                             
                                 <div class="header__top__right__links">
-                               <input type="text" class="search-input" placeholder="검색어를 입력하세요" size="20" />&emsp;
+                               <input type="text" class="search-input" placeholder="검색어를 입력하세요" onkeyup="enterkey();" size="20" />&emsp;
                                     <a class="search-icon" ><img src="/furniture/img/icon/search.png" alt=""  style="cursor: pointer;"></a>
                                     <a href="#"><img src="/furniture/img/icon/heart.png" alt=""></a>
                                 </div>
@@ -276,16 +276,6 @@
 
 
 
-<script type="text/javascript">
-if(${keyword} != null){
-	$(document).ready(function() {
-		var aa = $('#keyword').val();
-		$('.search-input').val(aa);
-	});
-}
-</script>
-
-
 <!-- Js Plugins -->
 <script src="/furniture/js/jquery-3.3.1.min.js"></script>
 <script src="/furniture/js/bootstrap.min.js"></script>
@@ -299,6 +289,12 @@ if(${keyword} != null){
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>   
 <script src="/furniture/js/search.js"></script>
-
+<script type="text/javascript">
+function enterkey() {
+    if (window.event.keyCode == 13) {
+       location.href="/furniture/category/view/search?keyword=" + $('.search-input').val() +'&pg=1'
+    }
+}
+</script>
 </body>
 </html>

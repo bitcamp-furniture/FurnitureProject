@@ -53,7 +53,7 @@
 <input type="hidden" value="${pg }" id="pg">
    <br>
    <div class="searchDiv" align="center">
-      <input type="text" size="50" class="searchKeyword" value="${keyword }"> &emsp;
+      <input type="text" size="50" class="searchKeyword" value="${keyword }" onkeypress="if(event.keyCode == 13){goSearch();}"> &emsp;
       <a class="searchBtn" ><img src="/furniture/img/icon/search.png" alt="" style="cursor: pointer;"></a>
    </div>
    <br>
@@ -132,57 +132,11 @@ function productPaging(pg) {
 
 $('.searchBtn').click(function() {
    location.href="/furniture/category/view/search?keyword=" + $('.searchKeyword').val() +'&pg=1' 
-         
-  /*  $.ajax({
-         type:'post',
-         url:'/furniture/category/view/getSearchList',
-       data: {'keyword':$('.searchKeyword').val(),
-               'pg': 1 },
-         dataType:'json',
-         success:function(data){
-           // alert('ddd');
-            console.log(data);
-            $('keyword').empty();
-              $('.cover_product_list').empty();
-            $('#product_list').remove();
-            $('<div/>',{class: "row",id:"product_list"}).appendTo($('#cover_product_list'));
-               
-            if(data.searchList != ''){
-               $('.cover_product_list h4').remove();
-
-               $.each(data.searchList, function(index,items){
-                  
-                   $('<div/>', {class: "col-lg-4 col-md-6 col-sm-6"}).append($('<div/>', {class:"product__item"}).append($('<div/>',{class:"product__item__pic set-bg"})
-                           .append($('<a/>',{href: "/furniture/main/productView"}) 
-                         .append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/category/storage/"+items.product_img_thumb})))
-                              .append($('<ul/>',{class:"product__item__pic__hover"})
-                                    .append($('<li/>').append($('<a/>', {href:"#"}).append($('<i/>',{class:"fa fa-heart"}))))                                  
-                              
-                              )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>',{id:"product_name",text: items.product_name})
-                                .append($('<a/>',{href: '#'}))).append($('<h5/>',{id:"product_price",text: "₩"+items.product_price.toLocaleString()}))))
-                              .appendTo($("#product_list"));
-                   });
-                  
-                $('#searchPagingDiv').html(data.productSearchPaging.pagingHTML);
-                  
-            } else {
-               $('.cover_product_list').empty();
-               $('#searchPagingDiv').empty();
-
-               $('<h4/>', {
-                  html: '<br>검색 결과가 존재하지 않습니다.',
-                  align: 'center'
-               }).appendTo($('.cover_product_list'));
-            }
-         },
-         error: function(err) {
-            alert("셀렉트 오류")
-            console.log(err);
-         }
-      }); */
-   
-
 });
+
+function goSearch() {
+    location.href="/furniture/category/view/search?keyword=" + $('.searchKeyword').val() +'&pg=1'
+}
 
 </script>
 
