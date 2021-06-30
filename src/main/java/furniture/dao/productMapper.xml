@@ -51,11 +51,16 @@
 	</select>
 	
 	<!--베스트 셀러 -->
-	<select id="getBestSeller" resultType="product">
-		select * from 
-		(select rownum rn, tt.* from 
-		(select * from product order by PRODUCT_PRICE desc)tt
-		)where rn &lt;= 8
+	<select id="getBestSeller" resultType="productList">
+ 		<![CDATA[
+		select * from (
+			SELECT distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
+			PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB
+			FROM product
+			join product_image using (PRODUCT_CODE)
+			ORDER BY product_price desc
+		) WHERE ROWNUM <= 8
+		]]>
 	</select>
 	
 	

@@ -44,7 +44,6 @@ public class ProductServiceImpl implements ProductService
 		//1페이지당 9개씩
 		int endNum = Integer.parseInt(pg)*9;
 		int startNum = endNum-8;
-		
 		Map<Object,Object> map = new HashMap<Object,Object>();
 		map.put("category", category);
 		map.put("startNum",startNum);

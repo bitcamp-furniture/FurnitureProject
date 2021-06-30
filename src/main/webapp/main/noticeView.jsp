@@ -39,12 +39,15 @@
 			type="hidden" name="pg" value="${pg }"> <br> <br>
 
 		<div id="noticeSubject">${noticeDTO.notice_subject }</div>
-		<div id="noticeCreatedAt"></div>
+		<div id="noticeCreatedAt">${noticeDTO.created_at }</div>
+		<br>
 		<hr>
-		<div id="noticeContent">${noticeDTO.notice_content }</div>
+		<div id="noticeContent"><pre>${noticeDTO.notice_content }</pre></div>
 		<br>
 		<br>
 
+		<input type="button" value="목록으로"  >
+		<br>
 	</div>
 </form>
 

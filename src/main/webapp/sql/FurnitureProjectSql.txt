@@ -81,7 +81,7 @@ CREATE SEQUENCE seq_product nocycle nocache;
 
 --이미지 테이블
 CREATE TABLE product_image(
-id NUMBER PRIMARY KEY,
+id NUMBER,
 product_code  VARCHAR2(50), --상품코드
 product_img_thumb VARCHAR2(500), -- 썸네일 사진
 product_img_detail VARCHAR2(500) -- 디테일 사진
@@ -106,8 +106,6 @@ stock NUMBER  --재고
 -- option_seq
 CREATE SEQUENCE seq_product_option nocycle nocache; 
 
-
-
 -----------------------------------------------------------------
 
 --카테고리 테이블
@@ -118,9 +116,11 @@ product_category1 NUMBER PRIMARY KEY, --카테고리1, 기본키
 product_category2 NUMBER --카테고리2
 );
 
+---------------------------------------------------------------
+insert into .xlsx
 
-
--- 회원 테이블
+---------------------------------------------------------------
+--회원테이블
 create table member(
 id NUMBER primary key, -- 기본키
 email varchar2(60), -- 이메일 = 아이디
@@ -171,3 +171,25 @@ image1 varchar2(200),
 created_at date -- 생성일
 );
 create sequence seq_ask nocycle nocache;
+-----------------------------------------------------------------
+-- FaQ 테이블
+create table FAQ(
+	id NUMBER primary key,
+	div varchar2(50),	--구분(AS,환불,주문,배송,교환,회원정보)
+	subject varchar2(50),	--제목
+	content varchar2(1000),	--내용
+	created_faq date 	--등록일
+)
+
+create sequence seq_faq nocycle nocache;
+
+
+-- 공지사항 테이블
+create table NOTICE (
+id NUMBER, -- seq
+notice_subject varchar2(100), -- 공지 제목
+notice_content varchar2(1000), -- 공지 내용
+created_at date -- 등록일
+); 
+create sequence seq_notice nocycle nocache;
+
