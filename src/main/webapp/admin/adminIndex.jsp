@@ -155,6 +155,10 @@ body {
     margin-left:22px;
     transition: .3s;
 }
+.big_menu a{
+	color: white;
+	text-decoration: none;
+}
 </style>
 <body>
     <div id="wrapper" class="wrapper">
@@ -168,8 +172,8 @@ body {
                     <div class="header__logo">IKEZKE</div>
                 	<hr class="line">
                     <ul class="big_menu">
-						<li><ion-icon name="bed" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;사이트 바로가기</li>
-						<li><ion-icon name="grid" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;대시보드</li>
+						<li><ion-icon name="bed" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;<a href="/furniture/">사이트 바로가기</a></li>
+						<li><ion-icon name="grid" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;<a href="#">대시보드</a></li>
                     </ul><hr class="line">
                     <ul class="big_menu">
 						<li><ion-icon name="person-sharp" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;사용자 관리 &emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
@@ -205,8 +209,8 @@ body {
                     <ul class="big_menu">
                         <li><ion-icon name="megaphone" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;마케팅 관리 &emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu">
-                            <li><a href="#">이벤트 등록</a></li>
-                            <li><a href="#">이벤트 목록</a></li>
+                            <li><a href="/furniture/admin/event/eventWriteForm">이벤트 등록</a></li>
+                            <li><a href="/furniture/admin/event/eventList">이벤트 목록</a></li>
                         </ul>
                     </ul>
 <!-- 서브메뉴 end -->
