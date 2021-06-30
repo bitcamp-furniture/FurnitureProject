@@ -381,7 +381,7 @@ input::placeholder {
 			                    </div>
 			                </div>
 			                <!-- 아이디 입력 페이지 -->
-			                <div class="bn" id="bn" onclick="checkId()">
+			                <div class="bn" id="bn">
 			                    <div class="inner-txt">
 			                      <h2 class="title" style="font-weight:bold; color:black;">간편가입</h2>
 			                        <p class="loginContent" onclick="checkId()">로그인에 사용할 <br>아이디를 입력하세요.</p>
@@ -409,7 +409,7 @@ input::placeholder {
 			                    </div>
 			                 </div>
 			                <!-- 이름 입력 페이지 -->
-			                <div class="bn" onclick="checkName()">
+			                <div class="bn">
 			                    <div class="inner-txt">
 			                      <h3 class="title" style="font-weight:bold; color:black;">간편가입</h3>
 			                        <p class="nameContent">이름을 입력하세요.</p>
@@ -421,7 +421,7 @@ input::placeholder {
 			                    </div>
 			                </div>
 			                <!-- 주소, 전화번호 입력 페이지 -->
-			                <div class="bn" onclick="checkAddPhone()">
+			                <div class="bn" onclick="checkAddrPhone()">
 			                    <div class="inner-txt">
 			                  	  <h2 class="title" style="font-weight:bold; color:black;">간편가입</h2>
 			                        <p class="phoneAddrContent">휴대폰번호와 주소를 입력하세요.</p><br>
@@ -441,7 +441,7 @@ input::placeholder {
 			                    </div>
 			                </div>
 			                <!-- 이메일 인증 페이지 -->
-			                <div class="bn" onclick="checkCode()">
+			                <div class="bn">
 			                    <div class="inner-txt">
 			                      <h2 class="title" style="font-weight:bold; color:black;">간편가입</h2>
 			                        <p class="emailContent">본인 확인을 위해<br>이메일 인증번호를 입력해주세요.</p>
@@ -518,7 +518,7 @@ input::placeholder {
 											<li class="content2">발급된 쿠폰의 상세 내용은 마이 > 쿠폰에서 확인하세요.</li>
 											<li class="content3">쿠폰, 멤버십 등 신규 회원을 위한 혜택은 여기에 모아 소개해드려요.</li>
 										</ul><br>
-										<img id="coupon" src="/furniture/img/coupon.png" alt="kakao" width="440" height="396" style="align:center;"><br>
+										<img id="coupon" src="/furniture/img/coupon.png" alt="kakao" width="440" height="396" style="align:center;"><br><br><br>
 			                        <div class="page-btn">
 			                        	<div class="page-btn7" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block">추천상품 보러가기</div>
 			                        	<div class="page-btn8" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block">쇼핑하러가기</div>

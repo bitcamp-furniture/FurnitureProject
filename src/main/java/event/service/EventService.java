@@ -5,6 +5,8 @@ import java.util.Map;
 
 import event.bean.EventDTO;
 import event.bean.EventListPaging;
+import event.bean.NoticeDTO;
+import event.bean.NoticeListPaging;
 
 public interface EventService {
 
@@ -19,5 +21,11 @@ public interface EventService {
 	public EventDTO getEventView(String id);
 
 	public List<EventDTO> AllListBanner();
+
+	public List<NoticeDTO> getNoticeList(String pg);
+
+	public NoticeListPaging noticeListPaging(String pg);
+
+	public NoticeDTO getNoticeView(String id);
 
 }

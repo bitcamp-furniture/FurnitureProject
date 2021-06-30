@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import event.bean.EventDTO;
+import event.bean.NoticeDTO;
 
 @Repository
 @Transactional
@@ -47,4 +48,21 @@ public class EventDAOMybatis implements EventDAO {
    public List<EventDTO> AllListBanner() {
       return sqlSession.selectList("eventSQL.AllListBanner");
    }
+
+	@Override
+	public List<NoticeDTO> getNoticeList(Map<String, Integer> map) {
+		return sqlSession.selectList("eventSQL.getNoticeList", map);
+	}
+
+	@Override
+	public int getTotalNoticeList() {
+		return sqlSession.selectOne("eventSQL.getTotalNoticeList");
+	}
+	
+	@Override
+	public NoticeDTO getNoticeView(String id) {
+		return sqlSession.selectOne("eventSQL.getNoticeView", id);
+	}
 }
+
+
