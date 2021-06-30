@@ -28,8 +28,10 @@
 
 <br>
 <br>
-    <input type="hidden" id="pg" value="${pg }" >
-    <input type="button" value="이벤트 등록" id="eventWriteBtn" >
+	<div align="center">
+	    <input type="hidden" id="pg" value="${pg }" >
+	    <input type="button" value="이벤트 등록" id="eventWriteBtn" >
+    </div>
 	<div >
 		<table class="event_list" align="center" cellpadding="8" border="0"></table>
 	</div>
