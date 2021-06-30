@@ -81,7 +81,7 @@ function wishlistPaging(wishlistPg){
 		},
 		dataType: 'json',
 		success: function(data){
-			//alert(JSON.stringify(data));
+			alert(JSON.stringify(data));
 
 			$.each(data.list, function(index, items){
 				$('<li/>',{
@@ -129,7 +129,6 @@ function wishlistPaging(wishlistPg){
 		error: function(err){
 			console.log(err);
 		}
-
 
 
 	});

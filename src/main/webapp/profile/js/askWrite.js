@@ -11,6 +11,7 @@
 });
 
 $('#askWriteBtn').click(function(){
+
 	$('#ask_categoryDiv').empty();
 	$('#oreder_numberDiv').empty();
 	$('#subjectDiv').empty();
@@ -54,7 +55,6 @@ $('#askWriteBtn').click(function(){
 		data: formData,
 		success: function(){
 			swal("등록 완료", "문의가 등록되었습니다", "success");
-			//self.close();
 			window.opener.location.reload();
 			self.close();
 			
@@ -67,4 +67,8 @@ $('#askWriteBtn').click(function(){
 	});
 	
 	}
+});
+
+$(function (){
+
 });

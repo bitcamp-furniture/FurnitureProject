@@ -1,5 +1,5 @@
 $('#askBtn').click(function(){
-	window.open("askWrite.jsp", "문의", "width=700, height=800, left=200, top=70");
+	window.open("askWrite.jsp?name=" + $('#profileName').val() + "&email=" + $('#profileEmail').val(), "문의", "width=700, height=800, left=200, top=70");
 });
 
 

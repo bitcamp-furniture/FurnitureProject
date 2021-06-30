@@ -69,7 +69,7 @@
 						role="tab" data-toggle="tab">장바구니</a></li>
 					<li role="presentation" id="wishlist-tap"><a href="#wishList"
 						aria-controls="wishList" role="tab" data-toggle="tab">위시리스트</a></li>
-					<li role="presentation"><a href="#order" aria-controls="order"
+					<li role="presentation" id="order-tap"><a href="#order" aria-controls="order"
 						role="tab" data-toggle="tab">구매내역</a></li>
 					<li role="presentation"><a href="#askList"
 						aria-controls="askList" role="tab" data-toggle="tab">문의내역</a></li>
@@ -82,6 +82,7 @@
 					<div role="tabpanel" class="tab-pane fade in active" id="mypage">
 						<%--mypage tap --%>
 						<input type="hidden" id="id" value="${id}">
+
 
 						<!-- 이름,생일, 주소를 알려주는 제목 -->
 						<div id="mypageP" class="mypageP">
@@ -277,6 +278,7 @@
 
 
 								<div class="cart-checkout col-lg-4">
+									<input type="hidden" id="orderPg" value="${orderPg}">
 									<%--주문 내역 --%>
 									<div class="cart-checkout-title">
 										<h4>주문내역</h4>
@@ -352,33 +354,35 @@
 					<div role="tabpanel" class="tab-pane fade" id="order">
 						<%--order tap--%>
 						<form id="orderDeleteForm" method="post" action="imageboardDelete">
-							<input type="hidden" id="orderPg" value="">
+							<input type="hidden" id="orderPg" value="${orderPg }">
+							<input type="hidden" id="profileName" value="${profileName}">
+							<input type="hidden" id="profileEmail" value="${profileEmail}">
 							<table class="order table" id="orderListTable">
 								<tr>
-									<th>주문번호</th>
-									<th>이미지</th>
-									<th>상품정보</th>
-									<th>수량</th>
-									<th>구매금액</th>
-									<th>배송상태</th>
-									<th>*</th>
+									<th style="text-align: center; vertical-align:middle;">주문번호<br>[주문일자]</th>
+									<th style="text-align: center; vertical-align:middle;">이미지</th>
+									<th style="text-align: center; vertical-align:middle;">상품정보</th>
+									<th style="text-align: center; vertical-align:middle;">수량</th>
+									<th style="text-align: center; vertical-align:middle;">구매금액</th>
+									<th style="text-align: center; vertical-align:middle;">주문처리상태</th>
+									<th style="text-align: center; vertical-align:middle;">문의하기</th>
 								</tr>
-								<tr>
-									<td>1</td>
-									<td><img alt="imgimg" src="img/tiger.png" width="75"
-										height="75"></td>
-									<td>구ggi 체얼</td>
-									<td>1</td>
-									<td>1000</td>
-									<td>배송중</td>
-									<td>후에 버튼 추가</td>
-								</tr>
+<%--								<tr>--%>
+<%--									<td>1<br>2021.06.28</td>--%>
+<%--									<td><img alt="imgimg" src="img/tiger.png" width="75" height="75"></td>--%>
+<%--									<td>구ggi 체얼<br>컬</td>--%>
+<%--									<td>1</td>--%>
+<%--									<td>1000</td>--%>
+<%--									<td>배송중</td>--%>
+<%--									<td>후에 버튼 추가</td>--%>
+<%--								</tr>--%>
 							</table>
 
 
-							<div style="width: 700px; text-align: center;"
-								id="imageboardPagingDiv"></div>
+							<div style="width: 1100px; text-align: center;"
+								id="orderPagingDiv"></div>
 						</form>
+						<br><br><br><br>
 					</div>
 					<%--order tap end--%>
 

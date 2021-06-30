@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import member.bean.MemberDTO;
-import profile.bean.AskDTO;
-import profile.bean.AskPaging;
-import profile.bean.WishlistDTO;
-import profile.bean.WishlistPaging;
+import profile.bean.*;
 import profile.dao.ProfileDAO;
 
 @Service
@@ -22,7 +19,8 @@ public class ProfileServiceImpl implements ProfileService {
 	AskPaging askPaging;
 	@Autowired
 	WishlistPaging wishlistPaging;
-
+	@Autowired
+	OrderPaging orderPaging;
 
 	@Override
 	public void askWrite(AskDTO askDTO) {
@@ -116,6 +114,40 @@ public class ProfileServiceImpl implements ProfileService {
 		wishlistPaging.makePagingHTML();
 
 		return wishlistPaging;
+	}
+
+	@Override
+	public List<OrderDTO> getOrderList(String id, String orderPg) {
+		int endNum = Integer.parseInt(orderPg)*4;
+		int startNum = endNum-3;
+
+		System.out.println("endNum = " + endNum);
+		System.out.println("startNum = " + startNum);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		map.put("id", id);
+
+		return profileDAO.getOrderList(map);
+	}
+
+	@Override
+	public OrderPaging orderPaging(String id, String orderPg) {
+		int totalA = profileDAO.getTotalOrderList(id);
+
+		orderPaging.setCurrentPage(Integer.parseInt(orderPg)); //현재 페이지
+		orderPaging.setPageBlock(3);
+		orderPaging.setPageSize(4);
+		orderPaging.setTotalA(totalA);
+		orderPaging.makePagingHTML();
+
+		return orderPaging;
+	}
+
+	@Override
+	public void updateOrderStatus(int id) {
+		profileDAO.updateOrderStatus(id);
 	}
 
 }

@@ -71,9 +71,8 @@ product_code VARCHAR2(50), -- 제품코드 ex.BED_UNIT2_
 product_price NUMBER, -- 가격
 product_category_name VARCHAR2(50), -- 카테고리명
 product_category1 NUMBER, -- 카테고리1
-product_category2 NUMBER,-- 카테고리2
-product_color VARCHAR2(10), -- 색깔 약어 B W R S P
-stock NUMBER); --재고
+product_category2 NUMBER-- 카테고리2
+);
 
 --상품 seq문
 CREATE SEQUENCE seq_product nocycle nocache;
@@ -145,3 +144,18 @@ create table wishlist(
 	product_code VARCHAR2(80) -- 상품아이디
 );
 create sequence seq_wishlist nocycle nocache;
+
+---------------------------------------------------------------
+-- 주문내역 테이블
+create table orders(
+id NUMBER primary key, -- 기본키
+order_number VARCHAR2(20), --
+member_id VARCHAR2(30), --회원아이디
+product_id VARCHAR2(30), --상품아이디
+product_color VARCHAR2(20), --상품컬러
+product_qty NUMBER,--상품별 구매수량
+product_price NUMBER, --상품별 금액
+product_status VARCHAR2(20), --주문처리상태
+order_date date -- 주문날짜
+);
+create sequence seq_orders nocycle nocache;
