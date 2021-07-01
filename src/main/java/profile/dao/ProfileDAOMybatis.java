@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
+import profile.bean.CartDTO;
 import profile.bean.OrderDTO;
 import profile.bean.WishlistDTO;
 
@@ -93,6 +94,12 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	@Override
 	public void updateOrderStatus(int id) {
 		sqlSession.update("profileSQL.updateOrderStatus", id);
+	}
+
+	@Override
+	public List<CartDTO> getCartList(Map<String, Object> map) {
+		System.out.println("mapId = " + map.get("id"));
+		return sqlSession.selectList("profileSQL.getCartList", map);
 	}
 
 }

@@ -6,6 +6,8 @@ import java.util.Map;
 import member.bean.MemberDTO;
 import profile.bean.*;
 
+import javax.servlet.http.HttpSession;
+
 public interface ProfileService {
 
 	public void askWrite(AskDTO askDTO);
@@ -18,7 +20,7 @@ public interface ProfileService {
 
 	public MemberDTO getMember(int id);
 
-	public void updateMember(Map<String, String> map);
+	public void updateMember(Map<String, String> map, HttpSession session);
 
 	public void updateContact(Map<String, String> map);
 
@@ -37,4 +39,6 @@ public interface ProfileService {
 	OrderPaging orderPaging(String id, String orderPg);
 
 	void updateOrderStatus(int id);
+
+    List<CartDTO> getCartList(String id);
 }

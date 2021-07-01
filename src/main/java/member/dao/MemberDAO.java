@@ -21,4 +21,6 @@ public interface MemberDAO {
 	public MemberDTO checkEmail(String email);
 
 	public void kakaoUpdate(Map<String, String> map);
+
+	public MemberDTO getkakaoId(Map<String, String> map);
 }

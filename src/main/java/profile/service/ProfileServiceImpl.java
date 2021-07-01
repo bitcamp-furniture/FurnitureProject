@@ -11,6 +11,8 @@ import member.bean.MemberDTO;
 import profile.bean.*;
 import profile.dao.ProfileDAO;
 
+import javax.servlet.http.HttpSession;
+
 @Service
 public class ProfileServiceImpl implements ProfileService {
 	@Autowired
@@ -66,7 +68,11 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public void updateMember(Map<String, String> map) {
+	public void updateMember(Map<String, String> map, HttpSession session) {
+		//session.removeAttribute("memId");
+		System.out.println("service name1 = " + session.getAttribute("memName"));
+		session.setAttribute("memName", map.get("name"));
+		System.out.println("service name2 = " + session.getAttribute("memName"));
 		profileDAO.updateMember(map);
 	}
 
@@ -148,6 +154,20 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	public void updateOrderStatus(int id) {
 		profileDAO.updateOrderStatus(id);
+	}
+
+	@Override
+	public List<CartDTO> getCartList(String id) {
+//		int endNum = Integer.parseInt(wishlistPg)*9;
+//		int startNum = endNum-8;
+
+		System.out.println("id = " + id);
+		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("startNum", startNum);
+//		map.put("endNum", endNum);
+		map.put("id", id);
+
+		return profileDAO.getCartList(map);
 	}
 
 }
