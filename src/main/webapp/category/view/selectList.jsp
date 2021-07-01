@@ -66,20 +66,25 @@ $.ajax({
       $('<div/>',{class: "row",id:"product_list"}).appendTo($('#cover_product_list'));
          
       $.each(data.selectList,function(index,items){
-         
            $('<div/>', {class: "col-lg-4 col-md-6 col-sm-6"}).append($('<div/>', {class:"product__item"}).append($('<div/>',{class:"product__item__pic set-bg"})
-           		.append($('<a/>',{href: "/furniture/main/productView"}) 
+           		.append($('<a/>',{
+           					href: "/furniture/main/productView?id="+items.id
+           				}) 
            		.append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/"+items.product_img_thumb})))
                       .append($('<ul/>',{class:"product__item__pic__hover"})
                             .append($('<li/>').append($('<a/>', {href:"#"}).append($('<i/>',{class:"fa fa-heart"}))))                                  
                       )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>',{id:"product_name",text: items.product_name})
                       .append($('<a/>',{href: '#'}))).append($('<h5/>',{id:"product_price",text: "₩"+items.product_price.toLocaleString()}))))
                       .appendTo($("#product_list"));
+           $('<input/>', {
+        	   type: 'hidden',
+        	   id: 'id',
+        	   value: items.id
+           }).appendTo($("#product_list"));
       }); // each
       
          
       $('#selectCategoryPagingDiv').html(data.productPaging.pagingHTML);
-         
        
    },
    error: function(err) {

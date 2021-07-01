@@ -22,6 +22,7 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 	// 상품 문의 작성
 	@Override
 	public void productQnAWrite(Product_qnaDTO product_qnaDTO) {
+		System.out.println(product_qnaDTO);
 		sqlSession.insert("productSQL.productQnAWrite", product_qnaDTO);
 	}
 

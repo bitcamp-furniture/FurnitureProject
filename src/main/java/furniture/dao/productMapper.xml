@@ -8,7 +8,7 @@
 	<insert id="productQnAWrite" parameterType="qna">
 		insert into
 		product_qna values(seq_productQna.nextval, #{email}, #{product_id},
-		#{qna_subject}, #{qna_content}, sysdate, 0)
+		#{qna_subject}, #{qna_content}, #{product_name}, sysdate, 0, null, null)
 	</insert>
 	
 	<!-- 상품 문의 전체 리스트 -->
