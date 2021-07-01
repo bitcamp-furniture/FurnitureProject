@@ -1,12 +1,13 @@
 package furniture.controller;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -74,27 +75,39 @@ public class FurnitureController {
 			model.addAttribute("display", "/main/productView.jsp");
 			return "/index";
 		}
-		
-	
 
+
+		   // 상품 상세컷 ... 상품 문의 작성
+		   @RequestMapping(value = "/main/productQnAWrite", method = RequestMethod.POST)
+		   @ResponseBody
+		   public ModelAndView productQnAWrite(@ModelAttribute Product_qnaDTO product_qnaDTO
+		         ,@RequestParam Map<String, String>map
+		         ,HttpSession session) {
+		      
+
+		     // map.put("email",(String) session.getAttribute("memId"));
+		     // map.put("id", map.get("product_id"));
+			   
+		      //product_qnaDTO.setEmail((String) session.getAttribute("memId"));
+		      product_qnaDTO.setEmail("무야호");
+		      product_qnaDTO.setProduct_id(map.get("product_id"));
+		      product_qnaDTO.setProduct_name(map.get("product_name"));
+
+		      
+		      System.out.println(product_qnaDTO +"product_qnaDTO 찍엇어요");
+		      
+		      furnitureService.productQnAWrite(product_qnaDTO);
+
+		      ModelAndView mav = new ModelAndView();
+		      mav.setViewName("jsonView");
+
+		      return mav;
+		   }
 	   
-	
-	// 상품 상세컷 ... 상품 문의 작성
-	@RequestMapping(value = "/main/productQnAWrite", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView productQnAWrite(@ModelAttribute Product_qnaDTO product_qnaDTO) {
-		// 추후 세션에서 값 받아와 입력
-		product_qnaDTO.setEmail("emailmail");
-		product_qnaDTO.setProduct_id("35345");
-
-		furnitureService.productQnAWrite(product_qnaDTO);
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("jsonView");
-
-		return mav;
-	}
-
+	   
+	   
+	   
+	   
 	// 상품 상세컷 ... onload로 부르는 상품문의 리스트
 	// 상품id에 따라 다르게 가져와야 한다!
 	@ResponseBody
@@ -295,21 +308,19 @@ public class FurnitureController {
 //				productDTO.setId(id);
 //				productDTO.setId(id);
 //				productDTO.setId(id);
-				String webPath = "/furniture/upload";
 				//String realPath = ctx.getRealPath(webPath);
 				//System.out.println(realPath);
 				//이게 realPath 경로를 찍은건데 복붙해서 탐색기에 넣으면 나옴
-
-				//category테이블에서 product_category1를 select해서 category_name을 끌고 와서 하려다가 hidden값으로 하기
 				
+				//category테이블에서 product_category1를 select해서 category_name을 끌고 와서 하려다가 hidden값으로 하기
+
 				//productDTO.setProduct_category1("550");
 				//productDTO.setProduct_category2("120");
-								
+
 				String fileName = thumbImg.getOriginalFilename();
 				File file = new File(webPath, fileName); // 파일 생성, 경로와 파일 이름
 				//파일올리기thumbImg.transferTo(file);
 				
-
 				System.out.println(productDTO+"1");	
 				furnitureService.productRegistration(productDTO); //담겨진 DTO를 DB에 넣기
 				

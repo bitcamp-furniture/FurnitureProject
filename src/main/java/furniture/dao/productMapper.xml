@@ -7,7 +7,7 @@
 	<!-- 상품 문의 write -->
    <insert id="productQnAWrite" parameterType="qna">
       insert into
-      product_qna values(seq_productQna.nextval, #{email}, #{product_id},
+      product_qna values(seq_product_qna.nextval, #{email}, #{product_id},
       #{product_name},#{qna_subject}, #{qna_content}, sysdate, 0,null,null)
    </insert>
 	
@@ -101,11 +101,10 @@
 	
 	<!-- 상품 옵션 업로드 -->
 	<insert id="productOptionRegistration" parameterType="productOption">
-		insert into product_Image values(
+		insert into product_option values(
 									seq_product_option.nextval
 									, #{id}
 									, #{color}
-									
 									)
 	</insert>
 	
