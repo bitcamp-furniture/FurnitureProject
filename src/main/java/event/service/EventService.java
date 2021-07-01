@@ -7,6 +7,8 @@ import event.bean.EventDTO;
 import event.bean.EventListPaging;
 import event.bean.NoticeDTO;
 import event.bean.NoticeListPaging;
+import event.bean.ProductManagingDTO;
+import furniture.bean.ProductDTO;
 
 public interface EventService {
 
@@ -27,5 +29,7 @@ public interface EventService {
 	public NoticeListPaging noticeListPaging(String pg);
 
 	public NoticeDTO getNoticeView(String id);
+
+	public List<ProductManagingDTO> getProductList(String pg);
 
 }

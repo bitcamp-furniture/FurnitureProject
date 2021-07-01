@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import event.bean.EventDTO;
 import event.bean.NoticeDTO;
+import event.bean.ProductManagingDTO;
+import furniture.bean.ProductDTO;
 
 @Repository
 @Transactional
@@ -62,6 +64,11 @@ public class EventDAOMybatis implements EventDAO {
 	@Override
 	public NoticeDTO getNoticeView(String id) {
 		return sqlSession.selectOne("eventSQL.getNoticeView", id);
+	}
+
+	@Override
+	public List<ProductManagingDTO> getProductList(Map<String, Integer> map) {
+		return sqlSession.selectList("eventSQL.getProductList", map);
 	}
 }
 

@@ -187,7 +187,7 @@ body {
                         <ul class="small_menu">
                             <li><a href="#">주문관리</a></li>
                             <li><a href="#">주문내역</a></li>
-                            <li><a href="#">재고관리</a></li>
+                            <li><a href="/furniture/admin/product/productManaging">상품관리</a></li>
                             <li><a href="#">상품등록</a></li>
                             <li><a href="#">배송관리</a></li>
                         </ul>

@@ -61,6 +61,14 @@
 		select * from notice where id=#{id} 
 	</select>
 	
+	<!-- 상품관리 -->
+	<select id="getProductList" parameterType="java.util.Map" resultType="event.bean.ProductManagingDTO">
+		<![CDATA[
+		select * from (select rownum rn, tt.* from 
+			(select id, product_code, product_name, product_price, product_category_name, product_category1 from product)tt) 
+		where rn >= #{startNum} and rn <= #{endNum}
+		]]>
+	</select>
 	
 	
 </mapper>

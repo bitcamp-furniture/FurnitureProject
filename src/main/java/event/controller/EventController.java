@@ -20,7 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import event.bean.EventDTO;
 import event.bean.EventListPaging;
+import event.bean.ProductManagingDTO;
 import event.service.EventService;
+import furniture.bean.ProductDTO;
 
 // 판매자 이벤트 관리
 @Controller
@@ -119,6 +121,20 @@ public class EventController {
 	}
 
 	
+	// 상품관리 ... 페이징 + 전체 상품 + 색 옵션 배열 리스트로 가져오는 메소드
+	@RequestMapping(value = "/product/productManaging", method = RequestMethod.GET)
+	public String productManaging(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
+		List<ProductManagingDTO> productList = eventService.getProductList(pg);
+		// 페이징 추가 요망
+		model.addAttribute("display", "/admin/product/productManaging.jsp");
+		model.addAttribute("productList", productList);
+		model.addAttribute("pg", pg);
+
+		return "/admin/adminIndex";
+	}
+
+	
+
 	
 	
 }

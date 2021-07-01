@@ -5,6 +5,8 @@ import java.util.Map;
 
 import event.bean.EventDTO;
 import event.bean.NoticeDTO;
+import event.bean.ProductManagingDTO;
+import furniture.bean.ProductDTO;
 
 public interface EventDAO {
 
@@ -25,4 +27,6 @@ public interface EventDAO {
 	public int getTotalNoticeList();
 	 
 	public NoticeDTO getNoticeView(String id);
+
+	public List<ProductManagingDTO> getProductList(Map<String, Integer> map);
 }
