@@ -18,6 +18,7 @@
 		<typeAlias type="profile.bean.OrderDTO" alias="order"/>
 		<typeAlias type="event.bean.NoticeDTO" alias="notice"/>
 		<typeAlias type="furniture.bean.Product_OptionDTO" alias="productOption"/>
+		<typeAlias type="profile.bean.CartDTO" alias="cart"/>
 	</typeAliases>
 	
 </configuration>

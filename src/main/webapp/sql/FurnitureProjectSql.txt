@@ -148,6 +148,7 @@ CREATE TABLE cart(
    product_id VARCHAR2(80), -- 상품아이디
    product_count NUMBER -- 상품개수
 );
+create sequence seq_cart nocycle nocache;
 
 create table wishlist(
    id NUMBER PRIMARY KEY,               

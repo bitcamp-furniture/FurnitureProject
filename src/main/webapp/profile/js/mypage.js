@@ -51,13 +51,18 @@ $(document).ready(function(){
 			dataType: 'json',
 			success: function(data){
 				//alert(JSON.stringify(data));
+
 				$('#name').text(data.name);
 				$('#birth').text(data.bir_yy + data.bir_mm + data.bir_dd);
 				$('#address').text(data.addr1 + data.addr2);
 				$('#phone').text(data.phone);
 				$('#email').text(data.email);
-				$('#password').val(data.password);
-				
+
+				if(data.password === null) {
+					$('#mypagePw').hide();
+				} else {
+					$('#password').val(data.password);
+				}
 
 			},
 			error: function(err){
@@ -234,9 +239,9 @@ $('#mypageContactModifyBtn').click(function(){
 	$('#mypagePhoneDiv').empty();
 	
 	if($('#mypageContactModifyPhone').val()==''){
-		$('#mypagePhoneDiv').text('핸드폰번호를 입력해주시기 바랍니다');
+		$('#mypagePhoneDiv').text('휴대폰번호를 입력해주시기 바랍니다');
 	} else if(!phone.test($("#mypageContactModifyPhone").val())) {
-	    document.getElementById("mypagePhoneDiv").innerText = "잘못된 휴대폰번호를 입력하셨습니다.";
+	    document.getElementById("mypagePhoneDiv").innerText = "잘못된 휴대폰번호를 입력하셨습니다";
 	} else{
 		$.ajax({
 			url: '/furniture/profile/updateContact',
