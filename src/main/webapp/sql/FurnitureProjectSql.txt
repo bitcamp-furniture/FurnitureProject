@@ -2,7 +2,8 @@
 create table product_qna (
    id NUMBER primary key, -- 기본키, 문의seq
    email varchar2(50), -- 이메일=아이디 ... 누가 문의를 남겼는지
-   product_id VARCHAR2(80), -- 제품명 ... 어떤 상품에 대한 문의인지 
+   product_id VARCHAR2(80), -- 제품코드 ... 검색용
+   product_name varchar2(100), --제품명 ... 어떤 상품에 대한 문의인지
    qna_subject varchar2(100),  -- 문의의 제목
    qna_content varchar2(500), -- 문의의 내용
    created_atQ date, -- 질문등록일
@@ -99,8 +100,7 @@ drop sequence seq_product_image;
 CREATE TABLE product_option(
 option_seq NUMBER PRIMARY KEY, --seq
 id NUMBER, --product ID
-color VARCHAR2(50), -- 컬러
-stock NUMBER  --재고
+color VARCHAR2(50) -- 컬러
 ); 
 
 -- option_seq
@@ -143,41 +143,19 @@ create sequence seq_member nocycle nocache;
 
 -- 장바구니, 위시리스트
 CREATE TABLE cart(
-	id NUMBER PRIMARY KEY,               
-	member_id VARCHAR2(80),  -- 회원아이디
-	product_id VARCHAR2(80), -- 상품아이디
-	product_count NUMBER -- 상품개수
+   id NUMBER PRIMARY KEY,               
+   member_id VARCHAR2(80),  -- 회원아이디
+   product_id VARCHAR2(80), -- 상품아이디
+   product_count NUMBER -- 상품개수
 );
 
 create table wishlist(
-	id NUMBER PRIMARY KEY,               
-	member_id VARCHAR2(80),  -- 회원아이디
-	product_code VARCHAR2(80) -- 상품아이디
+   id NUMBER PRIMARY KEY,               
+   member_id VARCHAR2(80),  -- 회원아이디
+   product_code VARCHAR2(80) -- 상품아이디
 );
 create sequence seq_wishlist nocycle nocache;
 
----------------------------------------------------------------
--- 주문내역 테이블
-create table orders(
-order_number NUMBER primary key, -- 기본키
-total_amount NUMBER, --총 금액
-member_id VARCHAR2(30), --회원아이디
-order_date date -- 주문날짜
-);
-create sequence seq_orders nocycle nocache;
-
---주문내역상세 테이블
-create table orders_detail(
-id NUMBER primary key, -- 기본키
-product_price NUMBER,-- 상품별 금액
-product_qty NUMBER,--상품별 구매수량
-product_amounts NUMBER, --한 줄 총 금액
-order_number VARCHAR2(30), --주문아이디
-product_id VARCHAR2(30), --상품아이디
-order_status VARCHAR2(30), --주문처리상태
-product_color VARCHAR2(30) --상품컬러
-);
-create sequence seq_orders_detail nocycle nocache;
 
 -- 문의 테이블
 create table ask(
@@ -196,12 +174,12 @@ create sequence seq_ask nocycle nocache;
 -----------------------------------------------------------------
 -- FaQ 테이블
 create table FAQ(
-	id NUMBER primary key,
-	div varchar2(50),	--구분(AS,환불,주문,배송,교환,회원정보)
-	subject varchar2(50),	--제목
-	content varchar2(1000),	--내용
-	created_faq date 	--등록일
-);
+   id NUMBER primary key,
+   div varchar2(50),   --구분(AS,환불,주문,배송,교환,회원정보)
+   subject varchar2(50),   --제목
+   content varchar2(1000),   --내용
+   created_faq date    --등록일
+)
 
 create sequence seq_faq nocycle nocache;
 
@@ -228,4 +206,3 @@ CREATE TABLE event (
    event_img_detail VARCHAR2(100)   -- 디테일 이미지 2개 고정
 );
 create sequence seq_event nocycle nocache;
-

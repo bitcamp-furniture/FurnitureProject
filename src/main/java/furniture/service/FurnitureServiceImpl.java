@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import furniture.bean.ProductDTO;
 import furniture.bean.ProductImageDTO;
+import furniture.bean.Product_OptionDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
@@ -118,5 +119,11 @@ public class FurnitureServiceImpl implements FurnitureService {
 	public int getProductId(String product_code) {
 		
 		return furnitureDAO.getProductId(product_code);
+	}
+
+	@Override
+	public void productOptionRegistration(Product_OptionDTO product_OptionDTO) {
+		furnitureDAO.productOptionRegistration(product_OptionDTO);
+		
 	}
 }

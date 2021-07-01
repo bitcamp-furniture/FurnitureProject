@@ -5,6 +5,7 @@ import java.util.Map;
 
 import furniture.bean.ProductDTO;
 import furniture.bean.ProductImageDTO;
+import furniture.bean.Product_OptionDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.ReviewDTO;
 
@@ -35,6 +36,8 @@ public interface FurnitureDAO {
 	public List<ProductImageDTO> getIdToImageData(Integer id);
 
 	public int getProductId(String product_code);
+
+	public void productOptionRegistration(Product_OptionDTO product_OptionDTO);
 
 
 }

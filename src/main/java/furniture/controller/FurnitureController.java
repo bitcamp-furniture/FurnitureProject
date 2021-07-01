@@ -30,6 +30,7 @@ import event.bean.NoticeListPaging;
 import event.service.EventService;
 import furniture.bean.ProductDTO;
 import furniture.bean.ProductImageDTO;
+import furniture.bean.Product_OptionDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
@@ -56,24 +57,16 @@ public class FurnitureController {
 	                            ) {
 			ProductDTO productDTO = new ProductDTO();
 			//ProductImageDTO productImageDTO = new ProductImageDTO();
-			String imagePath = "/upload";
-			id = 36;
 			productDTO = furnitureService.getIdToOneData(id);
 			List<ProductImageDTO> list = furnitureService.getIdToImageData(id);
-			
-			System.out.println(list);
-			System.out.println(productDTO);
 
-			//String realPath = ctx.getRealPath(webPath);
-			webPath += File.separator;
-			
-			System.out.println(webPath);
 			
 			//테스트
+			System.out.println(list);
+			System.out.println(productDTO);
 			System.out.println(list.size());
+
 			
-			
-			model.addAttribute("webPath", webPath);
 			model.addAttribute("productDTO", productDTO);//뷰가서 게터로, ${productDTO.product_id} 이런식으로 하는것 같은데
 			//model.addAttribute("productImageDTO", productImageDTO);//뷰가서 게터로, 이거는forEach로 반복문 돌리면서
 			model.addAttribute("ImageList", list);
@@ -280,7 +273,7 @@ public class FurnitureController {
 		
 
 		   //썸네일 + 디테일 이미지 등록
-		   @RequestMapping(value = "/productRegistrationView", method = RequestMethod.GET)
+		   @RequestMapping(value = "/admin/productRegistrationView", method = RequestMethod.GET)
 			
 			public String productRegistrationView(Model model) {
 			   model.addAttribute("display", "/admin/productRegistration.jsp");
@@ -295,39 +288,35 @@ public class FurnitureController {
 											, @RequestParam("detailImg[]") List<MultipartFile> list
 											, String[] product_colors
 											) {
-				//productDTO.setProduct_category2("1");
+//				productDTO.setProduct_category2("1");
 //				ProductDTO productDTO = new ProductDTO();
 //				ProductImageDTO productImageDTO = new ProductImageDTO();
 //				productDTO.setId(id);
 //				productDTO.setId(id);
 //				productDTO.setId(id);
 //				productDTO.setId(id);
-				String webPath = "/category/storage";
-				String realPath = ctx.getRealPath(webPath);
-				System.out.println(realPath);
+				String webPath = "/furniture/upload";
+				//String realPath = ctx.getRealPath(webPath);
+				//System.out.println(realPath);
 				//이게 realPath 경로를 찍은건데 복붙해서 탐색기에 넣으면 나옴
-				
-				System.out.println(productDTO+"1");
+
 				//category테이블에서 product_category1를 select해서 category_name을 끌고 와서 하려다가 hidden값으로 하기
 				
 				//productDTO.setProduct_category1("550");
 				//productDTO.setProduct_category2("120");
 								
 				String fileName = thumbImg.getOriginalFilename();
-				File file = new File(realPath, fileName); // 파일 생성
-				//김지수파일올리기thumbImg.transferTo(file);
+				File file = new File(webPath, fileName); // 파일 생성, 경로와 파일 이름
+				//파일올리기thumbImg.transferTo(file);
 				
-//				for(int i=0; i<product_colors.length; i++) {
-//					productDTO.setProduct_color(product_colors[i]);
-//				}
-					furnitureService.productRegistration(productDTO);
-					
-					
-				///////////////////////////
+
+				System.out.println(productDTO+"1");	
+				furnitureService.productRegistration(productDTO); //담겨진 DTO를 DB에 넣기
+				
+				/////////////////////////productDTO의 id값을 ImageDTO에 수동으로 넣기
 				int productId = furnitureService.getProductId(productDTO.getProduct_code());
 				productImageDTO.setId(productId);
 				/////////////////////////
-				
 				System.out.println(productDTO+"2");
 				System.out.println(productImageDTO+"2");
 				// 파일 복사
@@ -346,26 +335,31 @@ public class FurnitureController {
 				for (MultipartFile detailImg : list) {
 					fileName = detailImg.getOriginalFilename();
 					System.out.println(fileName);
-					file = new File(realPath, fileName);
+					file = new File(webPath, fileName);
 					// 파일복사
 					try {
 						FileCopyUtils.copy(detailImg.getInputStream(), new FileOutputStream(file));
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					productImageDTO.setProduct_img_detail(fileName);
-					furnitureService.productImageRegistration(productImageDTO);
+					productImageDTO.setProduct_img_detail(fileName);//ImageDTO에 다담았다
+					furnitureService.productImageRegistration(productImageDTO);//다 담았으니 DB로감
 					System.out.println(productDTO);
 					System.out.println(productImageDTO);
 				} //for
 				
+				Product_OptionDTO product_OptionDTO = new Product_OptionDTO(); 
+				product_OptionDTO.setId(productId);
+				
+				for(int i=0; i<product_colors.length; i++) {
+				product_OptionDTO.setColor(product_colors[i]);
+				furnitureService.productOptionRegistration(product_OptionDTO);//다 담았으니 DB로감
+				}
+				
 				System.out.println(productDTO+"3");
 				
-				return "redirect:/categoryAllList";
+				return "redirect:/admin/productRegistrationView";
 			}
-		    
-			
-	
 }
 
 

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import furniture.bean.ProductDTO;
 import furniture.bean.ProductImageDTO;
+import furniture.bean.Product_OptionDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.ReviewDTO;
 
@@ -90,6 +91,11 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 	public int getProductId(String product_code) {
 		
 		return sqlSession.selectOne("productSQL.getProductId", product_code);
+	}
+
+	@Override
+	public void productOptionRegistration(Product_OptionDTO product_OptionDTO) {
+		sqlSession.insert("productSQL.productOptionRegistration", product_OptionDTO);
 	}
 	
 	
