@@ -8,7 +8,7 @@
 	<insert id="productQnAWrite" parameterType="qna">
 		insert into
 		product_qna values(seq_productQna.nextval, #{email}, #{product_id},
-		#{qna_subject}, #{qna_content}, sysdate, 0)
+		#{qna_subject}, #{qna_content}, #{product_name}, sysdate, 0, null, null)
 	</insert>
 	
 	<!-- 상품 문의 전체 리스트 -->
@@ -53,14 +53,26 @@
 	<!--베스트 셀러 -->
 	<select id="getBestSeller" resultType="productList">
  		<![CDATA[
-		select * from (
+ 		select * from (
+          select rownum rn, tt.* from
+              (select distinct p.PRODUCT_CODE, p.PRODUCT_NAME, p.PRODUCT_PRICE, p.PRODUCT_CATEGORY1,
+                p.PRODUCT_CATEGORY2, p.PRODUCT_CATEGORY_NAME, i.PRODUCT_IMG_THUMB, p.id from 
+                  product p   
+              join product_image i
+               on p.PRODUCT_CODE = i.PRODUCT_CODE
+              ORDER BY product_price desc)tt)
+      WHERE ROWNUM <= 8
+
+ 		
+ 		
+		]]>
+<!--		select * from (
 			SELECT distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
 			PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB
 			FROM product
 			join product_image using (PRODUCT_CODE)
 			ORDER BY product_price desc
-		) WHERE ROWNUM <= 8
-		]]>
+		) WHERE ROWNUM <= 8-->
 	</select>
 	
 	

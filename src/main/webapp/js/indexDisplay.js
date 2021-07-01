@@ -44,6 +44,7 @@ $(function(){
             if(index == 0){
                $('#product_item_category_span1').html(items.product_category_name)
                $('#product_item_text_a1').html(items.product_name)
+               $('#product_item_text_a1').attr('href', "/furniture/main/productView?id="+items.id)
                $('#product_item_price_div1').html('₩'+items.product_price.toLocaleString())
                $('#product__item__pic1').append($('<img/>', {
             	   src: '/furniture/storage/' + items.product_img_thumb
@@ -51,6 +52,7 @@ $(function(){
             }else if(index == 1){
                $('#product_item_category_span2').html(items.product_category_name)
                $('#product_item_text_a2').html(items.product_name)
+               $('#product_item_text_a2').attr('href', "/furniture/main/productView?id="+items.id)
                $('#product_item_price_div2').html('₩'+items.product_price.toLocaleString())
                $('#product__item__pic2').append($('<img/>', {
             	   src: '/furniture/storage/' + items.product_img_thumb
@@ -58,6 +60,7 @@ $(function(){
             }else if(index == 2){
                $('#product_item_category_span3').html(items.product_category_name)
                $('#product_item_text_a3').html(items.product_name)
+               $('#product_item_text_a3').attr('href', "/furniture/main/productView?id="+items.id)
                $('#product_item_price_div3').html('₩'+items.product_price.toLocaleString())
                $('#product__item__pic3').append($('<img/>', {
                 	  src: '/furniture/storage/' + items.product_img_thumb
@@ -65,6 +68,7 @@ $(function(){
             }else if(index == 3){
                $('#product_item_category_span4').html(items.product_category_name)
                $('#product_item_text_a4').html(items.product_name)
+               $('#product_item_text_a4').attr('href', "/furniture/main/productView?id="+items.id)
                $('#product_item_price_div4').html('₩'+items.product_price.toLocaleString())
                $('#product__item__pic4').append($('<img/>', {
             	   src: '/furniture/storage/' + items.product_img_thumb
@@ -72,6 +76,7 @@ $(function(){
             }else if(index == 4){
                $('#product_item_category_span5').html(items.product_category_name)
                $('#product_item_text_a5').html(items.product_name)
+               $('#product_item_text_a5').attr('href', "/furniture/main/productView?id="+items.id)
                $('#product_item_price_div5').html('₩'+items.product_price.toLocaleString())
                $('#product__item__pic5').append($('<img/>', {
             	   src: '/furniture/storage/' + items.product_img_thumb
@@ -79,6 +84,7 @@ $(function(){
             }else if(index == 5){
                $('#product_item_category_span6').html(items.product_category_name)
                $('#product_item_text_a6').html(items.product_name)
+               $('#product_item_text_a6').attr('href', "/furniture/main/productView?id="+items.id)
                $('#product_item_price_div6').html('₩'+items.product_price.toLocaleString())
                $('#product__item__pic6').append($('<img/>', {
             	   src: '/furniture/storage/' + items.product_img_thumb
@@ -86,6 +92,7 @@ $(function(){
             }else if(index == 6){
                $('#product_item_category_span7').html(items.product_category_name)
                $('#product_item_text_a7').html(items.product_name)
+               $('#product_item_text_a7').attr('href', "/furniture/main/productView?id="+items.id)
                $('#product_item_price_div7').html('₩'+items.product_price.toLocaleString())
                $('#product__item__pic7').append($('<img/>', {
             	   src: '/furniture/storage/' + items.product_img_thumb
@@ -93,6 +100,7 @@ $(function(){
             }else if(index == 7){
                $('#product_item_category_span8').html(items.product_category_name)
                $('#product_item_text_a8').html(items.product_name)
+               $('#product_item_text_a8').attr('href', "/furniture/main/productView?id="+items.id)
                $('#product_item_price_div8').html('₩'+items.product_price.toLocaleString())
                $('#product__item__pic8').append($('<img/>', {
             	   src: '/furniture/storage/' + items.product_img_thumb
