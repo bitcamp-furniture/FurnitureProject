@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <head>
 <meta charset="UTF-8">
 <title>IKEZKE</title>
@@ -178,21 +180,21 @@ body {
             <div class="left_sub_menu">
                 <div class="sub_menu">
                     <div class="header__logo">IKEZKE</div>
-                	<hr class="line">
+                	<hr class="line" style="margin:0;">
                     <ul class="big_menu">
 						<li><ion-icon name="bed" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;<a href="/furniture/">사이트 바로가기</a></li>
 						<li><ion-icon name="grid" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;<a href="#">대시보드</a></li>
-                    </ul><hr class="line">
+                    </ul><hr class="line" style="margin:0;">
                     <ul class="big_menu">
 						<li><ion-icon name="person-sharp" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;사용자 관리 &emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
-                        <ul class="small_menu">
-                            <li><a href="#">회원목록</a></li>
+                        <ul class="small_menu admin">
+                            <li><a href="/furniture/admin/memberList">회원목록</a></li><!-- id="memberListShow" -->
                             <li><a href="#">메일 발송 설정</a></li>
                         </ul>
                     </ul>
                     <ul class="big_menu">
                         <li><ion-icon name="bag" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;쇼핑 &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
-                        <ul class="small_menu">
+                        <ul class="small_menu"> 
                             <li><a href="#">주문관리</a></li>
                             <li><a href="#">주문내역</a></li>
                             <li><a href="#">재고관리</a></li>
@@ -233,6 +235,9 @@ body {
 			<div class="clearfix area_wrap">
 				<div class="section-body float_l">
 					<div id="section">
+<%-- 					<div class="memberDiv">
+					<jsp:include page="/admin/memberList.jsp"/>
+					</div> --%>
 					      <c:if test="${empty display }">
 					         <jsp:include page="/admin/dashBoard.jsp" />
 					      </c:if>
@@ -248,15 +253,25 @@ body {
  <!-- 왼쪽 사이드 메뉴 스크립트 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-    $(function () {
-        //왼쪽메뉴 드롭다운
-        $(".sub_menu ul.small_menu").hide();
-        $(".sub_menu ul.big_menu").click(function () {
-            $("ul", this).slideToggle(300);
-        });
-
+$(function () {
+    //왼쪽메뉴 드롭다운
+    $(".sub_menu ul.small_menu").hide();
+    $(".sub_menu ul.big_menu").click(function () {
+        $("ul", this).slideToggle(300);
     });
+
+/* 	$('.memberDiv').hide(); */
+});
+/* $('#memberListShow').click(function(){
+	$('.memberDiv').show();
+	$(".small_menu admin").show();
+
+}); */
 </script>
+
+<script src="//code.jquery.com/jquery.min.js"></script> 
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
 <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
 </body>
 </html>

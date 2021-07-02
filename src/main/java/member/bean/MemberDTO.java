@@ -4,6 +4,8 @@ import lombok.Data;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Data
 public class MemberDTO {
     private int id;
@@ -20,5 +22,6 @@ public class MemberDTO {
     private String verify;
     private String point;
     private String kakaoId;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy.MM.dd")
     private Date created_at;
 }
