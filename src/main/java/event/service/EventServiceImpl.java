@@ -28,6 +28,8 @@ public class EventServiceImpl implements EventService {
 	private EventListPaging eventListPaging;
 	@Autowired
 	private NoticeListPaging noticeListPaging;
+	@Autowired
+	private event.bean.ProductManagingListPaging productManagingListPaging;
 
 	@Override
 	public List<EventDTO> getEventList(String pg) {
@@ -118,13 +120,39 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public List<ProductManagingDTO> getProductList(String pg) {
 		// 1페이지당 10개씩
-		int endNum = Integer.parseInt(pg) * 10;
-		int startNum = endNum - 9;
+		int endNum = Integer.parseInt(pg) * 15;
+		int startNum = endNum - 14;
 
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
 
 		return eventDAO.getProductList(map);
+	}
+
+	@Override
+	public event.bean.ProductManagingListPaging ProductManagingListPaging(String pg) {
+		int totalA = eventDAO.getProductPagingA();
+		
+		productManagingListPaging.setCurrentPage(Integer.parseInt(pg));
+		productManagingListPaging.setPageBlock(5);
+		productManagingListPaging.setPageSize(15);
+		productManagingListPaging.setTotalA(totalA);
+		productManagingListPaging.makePagingHTML();
+		
+		return productManagingListPaging;
+	}
+
+	@Override
+	public double getproductReviewAvg(String id) {
+		return eventDAO.getproductReviewAvg(id);
+	}
+
+	@Override
+	public List<String> getProductColors(String id) {
+		// 리스트 형식으로 데이터 받아와서 여기서 String[]으로 만들기??
+		
+		List<String> colors = eventDAO.getProductColors(id);
+		return colors;
 	}
 }

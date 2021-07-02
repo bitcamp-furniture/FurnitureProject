@@ -29,4 +29,10 @@ public interface EventDAO {
 	public NoticeDTO getNoticeView(String id);
 
 	public List<ProductManagingDTO> getProductList(Map<String, Integer> map);
+
+	public int getProductPagingA();
+
+	public double getproductReviewAvg(String id);
+
+	public List<String> getProductColors(String id);
 }

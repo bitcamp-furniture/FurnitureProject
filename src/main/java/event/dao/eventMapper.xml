@@ -61,6 +61,7 @@
 		select * from notice where id=#{id} 
 	</select>
 	
+	<!-- /////////////////////////////////// 상품 관리 ////////////////////////////////////////// -->
 	<!-- 상품관리 -->
 	<select id="getProductList" parameterType="java.util.Map" resultType="event.bean.ProductManagingDTO">
 		<![CDATA[
@@ -70,5 +71,26 @@
 		]]>
 	</select>
 	
+	<!-- 상품 갯수 -->
+	<select id="getProductPagingA" resultType="int">
+		select count(*) from product
+	</select>
+	
+	<!-- 상품id로 리뷰 있나 검증 -->
+	<select id="isNullProductReview" parameterType="int" resultType="furniture.bean.ReviewDTO" >
+		select * from review where product_id=#{id}
+	</select>
+	
+	<!-- 상품id로 별점 평균 -->
+	<select id="getproductReviewAvg" parameterType="int" resultType="Double" >
+		select avg(review_stars) from review where product_id=#{id}
+	</select>
+
+	
+	<select id="getProductColors" parameterType="int" resultType="String">
+		select color from product_option where id=#{id}
+	</select>
+
+
 	
 </mapper>
