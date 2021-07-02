@@ -120,19 +120,40 @@
 	</update>
 
 	<select id="getCartList" parameterType="java.util.Map" resultType="cart">
-		select distinct
+		select *
+		from (select rownum rn, tt.* from
+				(select distinct
+				 c.id,
+				 p.product_name,
+				 c.product_option_color,
+				 c.product_count,
+				 p.product_price,
+				 i.product_img_thumb
+				 from cart c
+					  inner join product p
+								 on p.id=c.product_id
+					  inner join product_image i
+								 on p.product_code=I.product_code
+			 where c.member_id=#{id} order by c.id desc
+				) tt
+			 )where rn between #{startNum} and #{endNum}
+	</select>
+
+	<select id="getTotalCartList"  parameterType="String" resultType="Integer">
+		select count(*) as count from (
+			select distinct
 				c.id,
 				p.product_name,
 				c.product_option_color,
 				c.product_count,
 				p.product_price,
 				i.product_img_thumb
-		from cart c
-				 inner join product p
-							on p.id=c.product_id
-				 inner join product_image i
-							on p.product_code=I.product_code
-		where c.member_id=#{id} order by c.id desc
+			from cart c
+				inner join product p
+					on p.id=c.product_id
+				inner join product_image i
+					on p.product_code=I.product_code
+				where c.member_id=#{id} order by c.id desc
+			)
 	</select>
-
  </mapper>
