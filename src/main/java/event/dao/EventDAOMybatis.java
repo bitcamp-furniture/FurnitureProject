@@ -93,6 +93,11 @@ public class EventDAOMybatis implements EventDAO {
 	public List<String> getProductColors(String id) {
 		return sqlSession.selectList("eventSQL.getProductColors", Integer.parseInt(id));
 	}
+
+	@Override
+	public void productListDelete(Map<String, String[]> map) {
+		sqlSession.delete("eventSQL.productListDelete",map);
+	}
 }
 
 

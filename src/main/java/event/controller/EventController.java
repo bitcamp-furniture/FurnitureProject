@@ -165,7 +165,14 @@ public class EventController {
 		return mav;
 	}
 	
-
 	
+	  @RequestMapping(value="productListDelete", method=RequestMethod.GET)
+	  public ModelAndView adminReviewListwDelete(String[] check) {
+		  ModelAndView mav = new ModelAndView();
+		  eventService.productListDelete(check);
+      
+      
+		  return new ModelAndView("redirect:/review/reviewList");
+	  }
 	
 }

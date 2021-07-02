@@ -35,4 +35,6 @@ public interface EventDAO {
 	public double getproductReviewAvg(String id);
 
 	public List<String> getProductColors(String id);
+
+	public void productListDelete(Map<String, String[]> map);
 }

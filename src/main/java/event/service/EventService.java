@@ -39,4 +39,6 @@ public interface EventService {
 
 	public List<String> getProductColors(String id);
 
+	public void productListDelete(String[] check);
+
 }

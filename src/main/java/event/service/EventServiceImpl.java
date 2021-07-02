@@ -155,4 +155,12 @@ public class EventServiceImpl implements EventService {
 		List<String> colors = eventDAO.getProductColors(id);
 		return colors;
 	}
+
+	@Override
+	public void productListDelete(String[] check) {
+	      Map<String,String[]>map = new HashMap<String,String[]>();
+	      map.put("array",check);
+	      
+	      eventDAO.productListDelete(map);   
+	}
 }

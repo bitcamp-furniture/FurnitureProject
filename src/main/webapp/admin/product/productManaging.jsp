@@ -45,6 +45,7 @@
 }
 </style>
 
+<form id="productManagingForm" method="get" action="productListDelete">
 <div id="wholeDiv" align="center">
 <br>
 <br>
@@ -57,9 +58,10 @@
 			<thead>
 				<tr>
 					<!-- 7개 -->
+					<th width="50px"><input type="checkbox" id="checkAllPRO" >전체</th>
 					<th width="50px">No.</th>
 					<th width="80px">상품코드</th>
-					<th width="250px" >상품명</th>
+					<th width="250px">상품명</th>
 					<th width="80px">가격</th>
 					<th width="100px">색상</th>
 					<th width="80px">카테고리</th>
@@ -67,11 +69,14 @@
 				</tr>
 			</thead>
 		</table>
+		<br>
+		<input type="button" id="productDeleteBtn" value="삭제">
 	</div>
 	<br>
 	<br>
 	<div align="center" id="productManagingListPagingDiv"></div>
 </div>
+</form>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
@@ -95,7 +100,15 @@
 
 				$.each(data.productList, function(index, items){
 					$('<tr/>').append($('<td/>',{
+						align: 'center'
+					}).append($('<input/>',{
+						align: 'center',
+						type: 'checkbox',
+						name: 'check',
+						value: items.id
+					}))).append($('<td/>',{
 						text: items.id,
+						align: 'center',
 						align: 'center',
 						class: 'product_tbl_id'
 					})).append($('<td/>',{
@@ -151,4 +164,32 @@
 		});
 
 	}
+</script>
+
+<script type="text/javascript">
+
+	$('#checkAllPRO').click(function() {
+	      if($('#checkAllPRO').prop('checked')){
+	          $('input[name=check]').prop('checked', true);
+	       }else{
+	          $('input[name=check]').prop('checked', false);
+	       }
+	});
+	
+	$('#productDeleteBtn').click(function() {
+		var count =  $('input[name=check]:checked').length;
+	       
+		if(count==0){
+			alert("삭제할 항목이 없습니다!");
+		} else{
+			if(confirm("정말로 삭제합니까?")){
+				$('#productManagingForm').submit();
+			}
+		}
+
+	});
+</script>
+<!--
+
+//-->
 </script>

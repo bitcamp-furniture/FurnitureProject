@@ -86,11 +86,18 @@
 		select avg(review_stars) from review where product_id=#{id}
 	</select>
 
-	
+	<!-- 상품id로 색상 리스트 리턴 -->
 	<select id="getProductColors" parameterType="int" resultType="String">
 		select color from product_option where id=#{id}
 	</select>
 
+	<!-- 상품 삭제 -->
+	<delete id="productListDelete" parameterType="java.util.Map">
+		delete PRODUCT where id in 
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</delete>
 
 	
 </mapper>
