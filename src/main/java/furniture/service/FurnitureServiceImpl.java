@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import furniture.bean.ProductDTO;
 import furniture.bean.ProductImageDTO;
+import furniture.bean.Product_OptionDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
@@ -100,7 +101,29 @@ public class FurnitureServiceImpl implements FurnitureService {
 	@Override
 	public void productImageRegistration(ProductImageDTO productImageDTO) {
 		furnitureDAO.productImageRegistration(productImageDTO);
-		
 	}
 
+	@Override
+	public ProductDTO getIdToOneData(Integer id) {
+		return furnitureDAO.getIdToOneData(id);
+	}
+
+	@Override
+	public List<ProductImageDTO> getIdToImageData(Integer id) {
+		List<ProductImageDTO> list = furnitureDAO.getIdToImageData(id);
+		System.out.println("퍼니쳐서비스id값"+id);
+		return list;
+	}
+
+	@Override
+	public int getProductId(String product_code) {
+		
+		return furnitureDAO.getProductId(product_code);
+	}
+
+	@Override
+	public void productOptionRegistration(Product_OptionDTO product_OptionDTO) {
+		furnitureDAO.productOptionRegistration(product_OptionDTO);
+		
+	}
 }

@@ -118,7 +118,7 @@
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="/furniture/main/productView" id="product_item_text_a1"></a></h6>
+                            <h6><a id="product_item_text_a1"></a></h6>
                             <div class="product__item__price" id="product_item_price_div1"></div>
                             <div class="cart_add">
                                 <a href="#" >Wish List</a>
@@ -135,7 +135,7 @@
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#" id="product_item_text_a2"></a></h6>
+                            <h6><a id="product_item_text_a2"></a></h6>
                             <div class="product__item__price" id="product_item_price_div2"></div>
                             <div class="cart_add">
                                 <a href="#" >Wish List</a>
@@ -151,7 +151,7 @@
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#" id="product_item_text_a3"></a></h6>
+                            <h6><a id="product_item_text_a3"></a></h6>
                             <div class="product__item__price" id="product_item_price_div3"></div>
                             <div class="cart_add">
                                 <a href="#" >Wish List</a>
@@ -167,7 +167,7 @@
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#" id="product_item_text_a4"></a></h6>
+                            <h6><a id="product_item_text_a4"></a></h6>
                             <div class="product__item__price" id="product_item_price_div4"></div>
                             <div class="cart_add">
                                 <a href="#" >Wish List</a>
@@ -183,7 +183,7 @@
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#" id="product_item_text_a5"></a></h6>
+                            <h6><a id="product_item_text_a5"></a></h6>
                             <div class="product__item__price" id="product_item_price_div5"></div>
                             <div class="cart_add">
                                 <a href="#" >Wish List</a>
@@ -199,7 +199,7 @@
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#" id="product_item_text_a6"></a></h6>
+                            <h6><a id="product_item_text_a6"></a></h6>
                             <div class="product__item__price" id="product_item_price_div6"></div>
                             <div class="cart_add">
                                 <a href="#" >Wish List</a>
@@ -215,7 +215,7 @@
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#" id="product_item_text_a7"></a></h6>
+                            <h6><a id="product_item_text_a7"></a></h6>
                             <div class="product__item__price" id="product_item_price_div7"></div>
                             <div class="cart_add">
                                 <a href="#" >Wish List</a>
@@ -231,7 +231,7 @@
                             </div>
                         </div>
                         <div class="product__item__text">
-                            <h6><a href="#" id="product_item_text_a8"></a></h6>
+                            <h6><a id="product_item_text_a8"></a></h6>
                             <div class="product__item__price" id="product_item_price_div8"></div>
                             <div class="cart_add">
                                 <a href="#" >Wish List</a>

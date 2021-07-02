@@ -7,18 +7,19 @@
 	<select id="selectList" parameterType="java.util.Map" resultType="productList">
 		<![CDATA[
 		select * from (
-		    select rownum rn, tt.* from
-		        (select distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
-		        PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB from 
-		            (
+          select rownum rn, tt.* from
+              (select distinct p.PRODUCT_CODE, p.PRODUCT_NAME, p.PRODUCT_PRICE, p.PRODUCT_CATEGORY1,
+                p.PRODUCT_CATEGORY2, p.PRODUCT_CATEGORY_NAME, i.PRODUCT_IMG_THUMB, p.id from 
+                  (
 		            select * from product
 		                    where PRODUCT_CATEGORY1=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
 		                    or
 		                    PRODUCT_CATEGORY2=(select PRODUCT_CATEGORY1 from category where CATENAME=#{category})
 		                    order by id desc
-		             )       
-		        join product_image using (PRODUCT_CODE)
-		        )tt)
+                   ) p   
+              join product_image i
+               on p.PRODUCT_CODE = i.PRODUCT_CODE
+              )tt)
 		where rn >= #{startNum} and rn <= #{endNum}
 		]]>
 	</select>
@@ -63,7 +64,27 @@
 	<!-- 검색 키워드 + 페이징 -->
 	<select id="searchList" parameterType="java.util.Map" resultType="productList">
 		<![CDATA[
+		
 		select * from (
+          select rownum rn, tt.* from
+              (select distinct p.PRODUCT_CODE, p.PRODUCT_NAME, p.PRODUCT_PRICE, p.PRODUCT_CATEGORY1,
+                p.PRODUCT_CATEGORY2, p.PRODUCT_CATEGORY_NAME, i.PRODUCT_IMG_THUMB, p.id from 
+                  (
+		            select * from product 
+		            where product_name like '%'||#{keyword}||'%'
+		            order by id desc
+                   ) p   
+              join product_image i
+               on p.PRODUCT_CODE = i.PRODUCT_CODE
+              )tt)
+		where rn >= #{startNum} and rn <= #{endNum}
+		
+		
+		
+		
+		
+		]]>
+<!-- 		select * from (
 		    select rownum rn, tt.* from
 		        (select distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
 		        PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB from 
@@ -74,8 +95,7 @@
 		             )       
 		        join product_image using (PRODUCT_CODE)
 		        )tt)
-		where rn >= #{startNum} and rn <= #{endNum}
-		]]>
+		where rn >= #{startNum} and rn <= #{endNum} -->
 	</select>
 	
 	

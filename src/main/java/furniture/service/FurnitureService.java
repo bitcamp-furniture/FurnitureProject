@@ -5,6 +5,7 @@ import java.util.Map;
 
 import furniture.bean.ProductDTO;
 import furniture.bean.ProductImageDTO;
+import furniture.bean.Product_OptionDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
@@ -31,4 +32,13 @@ public interface FurnitureService {
 
 	public void productImageRegistration(ProductImageDTO productImageDTO);
 
+	public ProductDTO getIdToOneData(Integer id);
+
+	public List<ProductImageDTO> getIdToImageData(Integer id);
+
+	public int getProductId(String product_code);
+
+	public void productOptionRegistration(Product_OptionDTO product_OptionDTO);
+
+	
 }

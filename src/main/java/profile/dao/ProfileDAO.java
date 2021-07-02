@@ -5,6 +5,7 @@ import java.util.Map;
 
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
+import profile.bean.CartDTO;
 import profile.bean.OrderDTO;
 import profile.bean.WishlistDTO;
 
@@ -39,4 +40,6 @@ public interface ProfileDAO {
 	public int getTotalOrderList(String id);
 
 	void updateOrderStatus(int id);
+
+    List<CartDTO> getCartList(Map<String, Object> map);
 }
