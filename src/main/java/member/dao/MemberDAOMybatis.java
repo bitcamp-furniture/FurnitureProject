@@ -43,7 +43,7 @@ public class MemberDAOMybatis implements MemberDAO{
 	public void kakaoWrite(Map<String, String> map) {
 		map.remove("birth");
 		sqlSession.insert("memberSQL.kakaoWrite", map);
-	}
+    }
 
 	@Override
 	public MemberDTO checkEmail(String email) {
@@ -53,6 +53,11 @@ public class MemberDAOMybatis implements MemberDAO{
 	@Override
 	public void kakaoUpdate(Map<String, String> map) {
 		sqlSession.update("memberSQL.kakaoUpdate", map);
+	}
+
+	@Override
+	public MemberDTO getkakaoId(Map<String, String> map) {
+		return sqlSession.selectOne("memberSQL.getkakaoId", map);
 	}
 
 }

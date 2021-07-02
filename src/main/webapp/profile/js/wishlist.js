@@ -35,7 +35,7 @@ $('#wishlist-tap').click(function(){
 
 
 					$(document).on('click', '.wishlistDeletebutton_'+items.id, function(){
-						alert(items.id);
+						//alert(items.id);
 
 						$.ajax({
 							url: '/furniture/profile/choiceDelete',
@@ -81,7 +81,7 @@ function wishlistPaging(wishlistPg){
 		},
 		dataType: 'json',
 		success: function(data){
-			alert(JSON.stringify(data));
+			//alert(JSON.stringify(data));
 
 			$.each(data.list, function(index, items){
 				$('<li/>',{
@@ -93,7 +93,7 @@ function wishlistPaging(wishlistPg){
 					//id: 'subjectA',
 				}).append($('<img>',{
 					class: 'wishlist-list-img _'+items.id,
-					src: '/furniture/img/'+items.product_img_thumb
+					src: '/furniture/storage/'+items.product_img_thumb
 
 				}))).append($('<button/>',{
 					class: 'wishDelBtn wishlistDeletebutton_'+items.id,

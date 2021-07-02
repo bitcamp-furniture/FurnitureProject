@@ -185,8 +185,8 @@ public class ProfileController {
 //회원 정보 수정
 	@RequestMapping(value="updateMember", method=RequestMethod.POST)
     @ResponseBody
-    public void updateMember(@RequestParam Map<String, String> map) {
-        profileService.updateMember(map);
+    public void updateMember(@RequestParam Map<String, String> map, Model model, HttpSession session) {
+        profileService.updateMember(map, session);
     }
 	
 //----------------------------------------------------------------
@@ -273,13 +273,23 @@ public class ProfileController {
 	}
 
 //----------------------------------------------------------------
-//문의하기 창
-//	@RequestMapping(value="askWriteForm", method=RequestMethod.GET)
-//	public String askWriteForm() {
-//
-//		return "/furniture/profile/askWrite.jsp";
-//	}
+//장바구니
+ 	@RequestMapping(value="getCartList", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getCartList(@RequestParam String id) {
 
+		List<CartDTO> list = profileService.getCartList(id);
+
+		//페이징 처리
+		//OrderPaging orderPaging = profileService.orderPaging(id, orderPg);
+
+		ModelAndView mav = new ModelAndView();
+		//mav.addObject("orderPg", orderPg);
+		mav.addObject("list", list);
+		//mav.addObject("orderPaging", orderPaging);
+		mav.setViewName("jsonView");
+		return mav;
+	}
 }
 
 

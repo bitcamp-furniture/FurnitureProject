@@ -7,6 +7,7 @@ import lombok.Data;
 @Component
 @Data
 public class ProductImageDTO {
+	private int seq;
 	private int id; //seq 
 	private String product_code; //상품코드
 	private String product_img_thumb; //이미지 썸네일

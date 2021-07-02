@@ -50,7 +50,7 @@
 	<select id="getWishlist" parameterType="java.util.Map" resultType="wishlist">
 		select * from
 			(select rownum rn, tt. * from
-					(select w.id, w.member_id, w.product_code, p.product_img_thumb from wishlist w
+					(select distinct w.id, w.member_id, w.product_code, p.product_img_thumb from wishlist w
 					 inner join product_image p
 					 on w.product_code=p.product_code
 					 where w.member_id = #{id} order by id desc)tt
@@ -72,7 +72,7 @@
 	<select id="getOrderList" parameterType="java.util.Map" resultType="order">
 		select *
 		from (select rownum rn, tt.* from
-			(select o.order_number,
+			(select distinct o.order_number,
 					o.order_date,
 					i.product_img_thumb,
 					p.product_name,
@@ -95,7 +95,7 @@
 
 	<select id="getTotalOrderList" parameterType="String" resultType="Integer">
 		select count(*) as count from (
-			select o.order_number,
+			select distinct o.order_number,
 				   o.order_date,
 				   i.product_img_thumb,
 				   p.product_name,
@@ -118,5 +118,21 @@
 	<update id="updateOrderStatus" parameterType="int">
 		update orders_detail set order_status = 'FINISH' where id=#{id}
 	</update>
+
+	<select id="getCartList" parameterType="java.util.Map" resultType="cart">
+		select distinct
+				c.id,
+				p.product_name,
+				c.product_option_color,
+				c.product_count,
+				p.product_price,
+				i.product_img_thumb
+		from cart c
+				 inner join product p
+							on p.id=c.product_id
+				 inner join product_image i
+							on p.product_code=I.product_code
+		where c.member_id=#{id} order by c.id desc
+	</select>
 
  </mapper>

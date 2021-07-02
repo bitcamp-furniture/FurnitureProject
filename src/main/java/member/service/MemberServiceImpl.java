@@ -67,6 +67,9 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.kakaoWrite(map);
 		
 		session.setAttribute("memEmail", map.get("email"));
+
+		MemberDTO memberDTO = memberDAO.getkakaoId(map);
+		session.setAttribute("memId", memberDTO.getId());
 	}
 
 	@Override
@@ -85,5 +88,10 @@ public class MemberServiceImpl implements MemberService {
 	public void kakaoUpdate(Map<String, String> map, HttpSession session) {
 		memberDAO.kakaoUpdate(map);
 		session.setAttribute("memEmail", map.get("email"));
+
+		MemberDTO memberDTO = memberDAO.getkakaoId(map);
+		session.setAttribute("memId", memberDTO.getId());
+		session.setAttribute("memName", memberDTO.getName());
 	}
+
 }

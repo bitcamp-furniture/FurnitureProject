@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import furniture.bean.ProductDTO;
 import furniture.bean.ProductImageDTO;
+import furniture.bean.Product_OptionDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.ReviewDTO;
 
@@ -72,7 +73,34 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 
 	@Override
 	public void productImageRegistration(ProductImageDTO productImageDTO) {
+		System.out.println(productImageDTO+"5");
 		sqlSession.insert("productSQL.productImageRegistration",productImageDTO);
 	}
+
+	@Override
+	public ProductDTO getIdToOneData(Integer id) {
+		return sqlSession.selectOne("productSQL.getIdToOneData", id);
+	}
+
+	@Override
+	public List<ProductImageDTO> getIdToImageData(Integer id) {
+		System.out.println("다오바티스id값"+id);
+		return sqlSession.selectList("productSQL.getIdToImageData", id);
+	}
+
+	@Override
+	public int getProductId(String product_code) {
+		
+		return sqlSession.selectOne("productSQL.getProductId", product_code);
+	}
+
+	@Override
+	public void productOptionRegistration(Product_OptionDTO product_OptionDTO) {
+		sqlSession.insert("productSQL.productOptionRegistration", product_OptionDTO);
+	}
+	
+	
+	
+
 
 }

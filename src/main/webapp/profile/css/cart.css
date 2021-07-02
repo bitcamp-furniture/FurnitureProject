@@ -1,34 +1,62 @@
-.cart-bag-title h1, .cart-bag-title button{
-	display: inline;
+.cart-bag-title h1, .cart-bag-title button {
+    display: inline;
 }
+
 .cart-checkout-title h4 {
-	display: inline;
+    display: inline;
 }
 
 
-.cart-bag-title button{
-float: right;
-}
-.cart-line{
-background-color: black;
-height: 2px;
-margin: 50px 0px;
+.cart-bag-title button {
+    float: right;
 }
 
-.cart-checkout-title{
-float: left;
-}
-.cart-checkout-sum{
-float: right;
-
-}
-.cart-checkout-totalsum{
-            display: block;
-            content: "";
-            clear: both;
-            margin-bottom: 100px;
+.cart-line {
+    background-color: black;
+    height: 2px;
+    margin: 50px 0px;
 }
 
-.cart-checkout-btn-wrap button{
+.cart-checkout-title {
+    float: left;
+}
+
+.cart-checkout-sum {
+    float: right;
+
+}
+
+.cart-checkout-totalsum {
+    display: block;
+    content: "";
+    clear: both;
+    margin-bottom: 100px;
+}
+
+.cart-checkout-btn-wrap button {
+}
+.table thead th {
+    border: none;
+}
+.table td, .table th {
+    border: none;
+}
+.cartDeleteBtn, .wishlistSaveBtn{
+    border: 1px solid;
+}
+.totalCartDeleteBtn{
+    background: #292f86;
+    color : white;
+    border:0;
+    margin: 5px;
+    height: 30px;
+}
+.payBtn{
+    background: #292f86;
+    color : white;
+    border:0;
+    margin: 5px;
+    height: 50px;
+    width: 400px;
 }
 
