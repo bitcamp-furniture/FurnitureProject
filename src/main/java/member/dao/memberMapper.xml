@@ -55,4 +55,9 @@
 	<update id="kakaoUpdate" parameterType="java.util.Map">
 		update member set kakaoId=#{kakaoId} where email=#{email}
 	</update>
+
+	<!-- 카카오로그인 아이디 얻어오기 -->
+	<select id="getkakaoId" parameterType="java.util.Map" resultType="member">
+		select * from member where kakaoId=#{kakaoId}
+	</select>
 </mapper>

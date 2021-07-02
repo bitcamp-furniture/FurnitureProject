@@ -2,7 +2,8 @@
 create table product_qna (
    id NUMBER primary key, -- 기본키, 문의seq
    email varchar2(50), -- 이메일=아이디 ... 누가 문의를 남겼는지
-   product_id VARCHAR2(80), -- 제품명 ... 어떤 상품에 대한 문의인지 
+   product_id VARCHAR2(80), -- 제품코드 ... 검색용
+   product_name varchar2(100), --제품명 ... 어떤 상품에 대한 문의인지
    qna_subject varchar2(100),  -- 문의의 제목
    qna_content varchar2(500), -- 문의의 내용
    created_atQ date, -- 질문등록일
@@ -81,7 +82,7 @@ CREATE SEQUENCE seq_product nocycle nocache;
 
 --이미지 테이블
 CREATE TABLE product_image(
-id NUMBER PRIMARY KEY,
+id NUMBER,
 product_code  VARCHAR2(50), --상품코드
 product_img_thumb VARCHAR2(500), -- 썸네일 사진
 product_img_detail VARCHAR2(500) -- 디테일 사진
@@ -99,14 +100,11 @@ drop sequence seq_product_image;
 CREATE TABLE product_option(
 option_seq NUMBER PRIMARY KEY, --seq
 id NUMBER, --product ID
-color VARCHAR2(50), -- 컬러
-stock NUMBER  --재고
+color VARCHAR2(50) -- 컬러
 ); 
 
 -- option_seq
 CREATE SEQUENCE seq_product_option nocycle nocache; 
-
-
 
 -----------------------------------------------------------------
 
@@ -118,9 +116,11 @@ product_category1 NUMBER PRIMARY KEY, --카테고리1, 기본키
 product_category2 NUMBER --카테고리2
 );
 
+---------------------------------------------------------------
+insert into .xlsx
 
-
--- 회원 테이블
+---------------------------------------------------------------
+--회원테이블
 create table member(
 id NUMBER primary key, -- 기본키
 email varchar2(60), -- 이메일 = 아이디
@@ -143,16 +143,17 @@ create sequence seq_member nocycle nocache;
 
 -- 장바구니, 위시리스트
 CREATE TABLE cart(
-	id NUMBER PRIMARY KEY,               
-	member_id VARCHAR2(80),  -- 회원아이디
-	product_id VARCHAR2(80), -- 상품아이디
-	product_count NUMBER -- 상품개수
+   id NUMBER PRIMARY KEY,               
+   member_id VARCHAR2(80),  -- 회원아이디
+   product_id VARCHAR2(80), -- 상품아이디
+   product_count NUMBER -- 상품개수
 );
+create sequence seq_cart nocycle nocache;
 
 create table wishlist(
-	id NUMBER PRIMARY KEY,               
-	member_id VARCHAR2(80),  -- 회원아이디
-	product_code VARCHAR2(80) -- 상품아이디
+   id NUMBER PRIMARY KEY,               
+   member_id VARCHAR2(80),  -- 회원아이디
+   product_code VARCHAR2(80) -- 상품아이디
 );
 create sequence seq_wishlist nocycle nocache;
 
@@ -171,3 +172,38 @@ image1 varchar2(200),
 created_at date -- 생성일
 );
 create sequence seq_ask nocycle nocache;
+-----------------------------------------------------------------
+-- FaQ 테이블
+create table FAQ(
+   id NUMBER primary key,
+   div varchar2(50),   --구분(AS,환불,주문,배송,교환,회원정보)
+   subject varchar2(50),   --제목
+   content varchar2(1000),   --내용
+   created_faq date    --등록일
+)
+
+create sequence seq_faq nocycle nocache;
+
+
+-- 공지사항 테이블
+create table NOTICE (
+id NUMBER, -- seq
+notice_subject varchar2(100), -- 공지 제목
+notice_content varchar2(1000), -- 공지 내용
+created_at date -- 등록일
+); 
+create sequence seq_notice nocycle nocache;
+
+
+---- 이벤트
+CREATE TABLE event (
+   id NUMBER PRIMARY KEY,       
+   event_subject VARCHAR2(100),   -- 이벤트 제목
+   event_content VARCHAR2(500),   -- 내용(리스트에 출력)
+   event_startDate date,         -- 시작 날짜
+   event_endDate date,            -- 종료 날짜
+   event_category VARCHAR2(80),   -- 카테고리명(대상 물건 설정, view에서 해당 리스트 출력)
+   event_img_banner VARCHAR2(100),   -- 배너용 이미지 1개
+   event_img_detail VARCHAR2(100)   -- 디테일 이미지 2개 고정
+);
+create sequence seq_event nocycle nocache;

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import category.bean.ProductListDTO;
 import furniture.bean.ProductDTO;
 
 @Transactional
@@ -30,7 +31,7 @@ public class ProductDAOMybatis implements ProductDAO{
 	}
 	//선택한 리스트만 가져오는 메소드
 	@Override
-	public List<ProductDTO> selectList(Map<Object, Object> map) {
+	public List<ProductListDTO> selectList(Map<Object, Object> map) {
 		return sqlSession.selectList("productSQL.selectList", map);
 	}
 

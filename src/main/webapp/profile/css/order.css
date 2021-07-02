@@ -1,1 +1,27 @@
-@charset "UTF-8";
+.orderlist_img {
+    width: 150px;
+    height: 150px;
+}
+.inquiryBtn{
+    border:0;
+    margin: 5px;
+    width: 80px;
+    height: 40px;
+}
+.confirmBtn {
+    background: #292f86;
+    color : white;
+    border:0;
+    margin: 5px;
+    width: 70px;
+    height: 30px;
+}
+.reviewBtn {
+    border:0;
+    margin: 5px;
+    width: 70px;
+    height: 30px;
+}
+#orderListTable{
+    border-spacing: 20px 20px;
+}

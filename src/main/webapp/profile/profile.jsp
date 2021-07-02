@@ -5,9 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style>
 
-	</style>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -34,7 +32,12 @@
 	<div class="profile container">
 		<div class="profile row">
 			<div>
-				<h1>안녕하세요! ${name}님</h1>
+				<c:if test="${profileName == null }">
+					<h1>안녕하세요! 카카오님</h1>
+				</c:if>
+				<c:if test="${profileName != null }">
+					<h1>안녕하세요! ${profileName}님</h1>
+				</c:if>
 			</div>
 			<div class="profile col-lg-12">
 				<%--장바구니 --%>
@@ -65,11 +68,11 @@
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active"><a href="#mypage"
 						aria-controls="mypage" role="tab" data-toggle="tab">자기정보</a></li>
-					<li role="presentation"><a href="#cart" aria-controls="cart"
+					<li role="presentation" id="cart-tap"><a href="#cart" aria-controls="cart"
 						role="tab" data-toggle="tab">장바구니</a></li>
 					<li role="presentation" id="wishlist-tap"><a href="#wishList"
 						aria-controls="wishList" role="tab" data-toggle="tab">위시리스트</a></li>
-					<li role="presentation"><a href="#order" aria-controls="order"
+					<li role="presentation" id="order-tap"><a href="#order" aria-controls="order"
 						role="tab" data-toggle="tab">구매내역</a></li>
 					<li role="presentation"><a href="#askList"
 						aria-controls="askList" role="tab" data-toggle="tab">문의내역</a></li>
@@ -82,6 +85,7 @@
 					<div role="tabpanel" class="tab-pane fade in active" id="mypage">
 						<%--mypage tap --%>
 						<input type="hidden" id="id" value="${id}">
+
 
 						<!-- 이름,생일, 주소를 알려주는 제목 -->
 						<div id="mypageP" class="mypageP">
@@ -207,7 +211,7 @@
 						<hr class="profile__divider">
 
 						<!-- 비밀번호 구분제목-->
-						<div id="mypageP" class="mypageP">
+						<div id="mypagePw" class="mypagePw">
 							<h4>비밀번호</h4>
 							<!-- 수정버튼 -->
 							<div id="mypagePassword">
@@ -260,23 +264,42 @@
 						<%--cart tap--%>
 
 						<div class="container">
-							<div class="cart row">
-								<div class="cart-bag col-lg-8">
-									<%--장바구니 --%>
-									<div class="cart-bag-title">
-										<h1>장바구니</h1>
-										<button type="button" class="btn btn-primary">장바구니
-											비우기</button>
-									</div>
-									<%--cart-bag-title end --%>
-									<div class="cart-bag-list"></div>
-
+							<h1>장바구니</h1>
+								<div class="cart table" style="float: left; width: 60%;">
+									<table class="cartTable" width="100%" border="0" style="border-color: white;">
+										<thead>
+											<tr>
+												<th class="tg-0pky" rowspan="3">
+													<img alt="imgimg" src="/furniture/img/침대.png" width="150" height="150">
+												</th>
+												<th class="tg-0pky">의자</th>
+												<th class="tg-0pky" rowspan="3" width="100" style="text-align: center; vertical-align:middle;">89000</th>
+											</tr>
+											<tr>
+												<td class="tg-0pky" width="400">빨강</td>
+											</tr>
+											<tr>
+												<td class="tg-0pky">
+													<select name="qty">
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select>
+													<button class="cartDeleteBtn">삭제</button>
+													<button class="wishlistSaveBtn">위시리스트 저장</button>
+												</td>
+											</tr>
+										</thead>
+									</table>
+									<br><br><br>
+									<button type="button" class="totalCartDeleteBtn">장바구니 비우기</button>
 								</div>
-								<%--cart__bag end --%>
 
 
-
-								<div class="cart-checkout col-lg-4">
+								<div class="cart-checkout col-lg-6" style="float: right; width: 40%;">
+									<input type="hidden" id="orderPg" value="${orderPg}">
 									<%--주문 내역 --%>
 									<div class="cart-checkout-title">
 										<h4>주문내역</h4>
@@ -289,23 +312,13 @@
 									</div>
 									<br>
 									<div class="cart-checkout-btn-wrap">
-										<button type="button" class="btn btn-primary">
-											<span>결제하기</span> <img width="30" height="30" alt="left"
-												src="/furniture/img/profile/aw.png">
-										</button>
+										<button type="button" class="payBtn">결제하기</button>
 									</div>
-
-
-
 								</div>
 								<%--cart__checkout end --%>
 
-							</div>
-							<%--cart end --%>
 						</div>
-
-
-
+						<%--cart end --%>
 					</div>
 					<%--cart tap end--%>
 
@@ -352,33 +365,35 @@
 					<div role="tabpanel" class="tab-pane fade" id="order">
 						<%--order tap--%>
 						<form id="orderDeleteForm" method="post" action="imageboardDelete">
-							<input type="hidden" id="orderPg" value="">
+							<input type="hidden" id="orderPg" value="${orderPg }">
+							<input type="hidden" id="profileName" value="${profileName}">
+							<input type="hidden" id="profileEmail" value="${profileEmail}">
 							<table class="order table" id="orderListTable">
 								<tr>
-									<th>주문번호</th>
-									<th>이미지</th>
-									<th>상품정보</th>
-									<th>수량</th>
-									<th>구매금액</th>
-									<th>배송상태</th>
-									<th>*</th>
+									<th style="text-align: center; vertical-align:middle;">주문번호<br>[주문일자]</th>
+									<th style="text-align: center; vertical-align:middle;">이미지</th>
+									<th style="text-align: center; vertical-align:middle;">상품정보</th>
+									<th style="text-align: center; vertical-align:middle;">수량</th>
+									<th style="text-align: center; vertical-align:middle;">구매금액</th>
+									<th style="text-align: center; vertical-align:middle;">주문처리상태</th>
+									<th style="text-align: center; vertical-align:middle;">문의하기</th>
 								</tr>
-								<tr>
-									<td>1</td>
-									<td><img alt="imgimg" src="img/tiger.png" width="75"
-										height="75"></td>
-									<td>구ggi 체얼</td>
-									<td>1</td>
-									<td>1000</td>
-									<td>배송중</td>
-									<td>후에 버튼 추가</td>
-								</tr>
+<%--								<tr>--%>
+<%--									<td>1<br>2021.06.28</td>--%>
+<%--									<td><img alt="imgimg" src="img/tiger.png" width="75" height="75"></td>--%>
+<%--									<td>구ggi 체얼<br>컬</td>--%>
+<%--									<td>1</td>--%>
+<%--									<td>1000</td>--%>
+<%--									<td>배송중</td>--%>
+<%--									<td>후에 버튼 추가</td>--%>
+<%--								</tr>--%>
 							</table>
 
 
-							<div style="width: 700px; text-align: center;"
-								id="imageboardPagingDiv"></div>
+							<div style="width: 1100px; text-align: center;"
+								id="orderPagingDiv"></div>
 						</form>
+						<br><br><br><br>
 					</div>
 					<%--order tap end--%>
 

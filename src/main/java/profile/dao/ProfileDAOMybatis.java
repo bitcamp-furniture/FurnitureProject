@@ -10,7 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
-import profile.bean.ProfileDTO;
+import profile.bean.CartDTO;
+import profile.bean.OrderDTO;
 import profile.bean.WishlistDTO;
 
 @Repository
@@ -78,6 +79,27 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	@Override
 	public int getTotalWishlist() {
 		return sqlSession.selectOne("profileSQL.getTotalWishlist");
+	}
+
+	@Override
+	public List<OrderDTO> getOrderList(Map<String, Object> map) {
+		return sqlSession.selectList("profileSQL.getOrderList", map);
+	}
+
+	@Override
+	public int getTotalOrderList(String id) {
+		return sqlSession.selectOne("profileSQL.getTotalOrderList", id);
+	}
+
+	@Override
+	public void updateOrderStatus(int id) {
+		sqlSession.update("profileSQL.updateOrderStatus", id);
+	}
+
+	@Override
+	public List<CartDTO> getCartList(Map<String, Object> map) {
+		System.out.println("mapId = " + map.get("id"));
+		return sqlSession.selectList("profileSQL.getCartList", map);
 	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <style type="text/css">
 a{
@@ -34,28 +35,37 @@ noticeListTable th{
 	border-radius: 5px;
 	cursor: pointer;
 }
-
+#noticeListTable th{
+  text-align: center;
+}
 </style>
 
 
 
 <div align="center">
-<br>
-<h3>공지사항</h3>
-<br>
+	<br>
+	<h3>공지사항</h3>
+	<br>
 	<input type="hidden" value="${pg }" id="pg" >
-	<table id="noticeListTable" border="1" width="700" cellpadding="5" frame="hsides" rules="rows" align="center" >
-		<tr>
-			<th width="50" align="center" >글번호</th>
-			<th width="300" align="center" >제목</th>
-			<th width="100" align="center" >등록일</th>
-		</tr>
-	</table>
-	    
-<br>
-	<div id="noticePagingDiv"></div>
-<br>
-<br>
+	<div align="center">
+		<table id="noticeListTable" border="1" width="800" cellpadding="5" frame="hsides" rules="rows" >
+			<tr>
+				<th width="50" >글번호</th>
+				<th width="300" >제목</th>
+				<th width="100" >등록일</th>
+			</tr>
+		</table>
+	</div>		
+	<br>
+		<div id="noticePagingDiv"></div>
+		    
+	<br>
+		<c:if test="${sessionScope.verify != null }">
+			<!-- <input style="float: left; margin-left: 200px;" type="button" value="공지 등록" id="noticeWriteBtn" > -->
+		    <!-- <a  href="/furniture/main/noticeWriteForm">공지 등록</a> -->
+		</c:if>
+	<br>
+	<br>
     
 </div>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -75,13 +85,12 @@ $(function() {
 					text: items.id
 				})).append($('<td/>', {
 					}).append($('<a/>', {
-						href: '#',
 						text: items.notice_subject,
 						id: 'subjectA',
 						href: '/furniture/main/noticeView?id='+items.id,
-						class: 'subject_'+items.seq  
+						class: 'subject_'+items.id  
 				}))).append($('<td/>', {
-					//align: 'center',
+					align: 'center',
 					text: items.created_at
 				})).appendTo($('#noticeListTable'));
 				

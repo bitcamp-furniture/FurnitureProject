@@ -8,11 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import member.bean.MemberDTO;
-import profile.bean.AskDTO;
-import profile.bean.AskPaging;
-import profile.bean.WishlistDTO;
-import profile.bean.WishlistPaging;
+import profile.bean.*;
 import profile.dao.ProfileDAO;
+
+import javax.servlet.http.HttpSession;
 
 @Service
 public class ProfileServiceImpl implements ProfileService {
@@ -22,7 +21,8 @@ public class ProfileServiceImpl implements ProfileService {
 	AskPaging askPaging;
 	@Autowired
 	WishlistPaging wishlistPaging;
-
+	@Autowired
+	OrderPaging orderPaging;
 
 	@Override
 	public void askWrite(AskDTO askDTO) {
@@ -68,7 +68,11 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public void updateMember(Map<String, String> map) {
+	public void updateMember(Map<String, String> map, HttpSession session) {
+		//session.removeAttribute("memId");
+		System.out.println("service name1 = " + session.getAttribute("memName"));
+		session.setAttribute("memName", map.get("name"));
+		System.out.println("service name2 = " + session.getAttribute("memName"));
 		profileDAO.updateMember(map);
 	}
 
@@ -116,6 +120,54 @@ public class ProfileServiceImpl implements ProfileService {
 		wishlistPaging.makePagingHTML();
 
 		return wishlistPaging;
+	}
+
+	@Override
+	public List<OrderDTO> getOrderList(String id, String orderPg) {
+		int endNum = Integer.parseInt(orderPg)*4;
+		int startNum = endNum-3;
+
+		System.out.println("endNum = " + endNum);
+		System.out.println("startNum = " + startNum);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		map.put("id", id);
+
+		return profileDAO.getOrderList(map);
+	}
+
+	@Override
+	public OrderPaging orderPaging(String id, String orderPg) {
+		int totalA = profileDAO.getTotalOrderList(id);
+
+		orderPaging.setCurrentPage(Integer.parseInt(orderPg)); //현재 페이지
+		orderPaging.setPageBlock(3);
+		orderPaging.setPageSize(4);
+		orderPaging.setTotalA(totalA);
+		orderPaging.makePagingHTML();
+
+		return orderPaging;
+	}
+
+	@Override
+	public void updateOrderStatus(int id) {
+		profileDAO.updateOrderStatus(id);
+	}
+
+	@Override
+	public List<CartDTO> getCartList(String id) {
+//		int endNum = Integer.parseInt(wishlistPg)*9;
+//		int startNum = endNum-8;
+
+		System.out.println("id = " + id);
+		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("startNum", startNum);
+//		map.put("endNum", endNum);
+		map.put("id", id);
+
+		return profileDAO.getCartList(map);
 	}
 
 }

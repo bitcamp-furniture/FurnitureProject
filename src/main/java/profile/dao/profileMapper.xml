@@ -50,7 +50,7 @@
 	<select id="getWishlist" parameterType="java.util.Map" resultType="wishlist">
 		select * from
 			(select rownum rn, tt. * from
-					(select w.id, w.member_id, w.product_code, p.product_img_thumb from wishlist w
+					(select distinct w.id, w.member_id, w.product_code, p.product_img_thumb from wishlist w
 					 inner join product_image p
 					 on w.product_code=p.product_code
 					 where w.member_id = #{id} order by id desc)tt
@@ -67,6 +67,72 @@
 
 	<select id="getTotalWishlist"  resultType="Integer">
 		select count(*) as count from wishlist
+	</select>
+
+	<select id="getOrderList" parameterType="java.util.Map" resultType="order">
+		select *
+		from (select rownum rn, tt.* from
+			(select distinct o.order_number,
+					o.order_date,
+					i.product_img_thumb,
+					p.product_name,
+			        od.id,
+					od.product_color,
+					od.product_qty,
+					od.product_amounts,
+					od.order_status
+			 from orders o
+					  inner join orders_detail od
+								 on o.order_number=od.order_number
+					  Inner join product p
+								 on od.product_id=p.id
+					  Inner join product_image i
+								 on p.product_code=i.product_code
+			 where o.member_id=#{id} order by o.order_number desc
+			) tt
+			)where rn between #{startNum} and #{endNum}
+	</select>
+
+	<select id="getTotalOrderList" parameterType="String" resultType="Integer">
+		select count(*) as count from (
+			select distinct o.order_number,
+				   o.order_date,
+				   i.product_img_thumb,
+				   p.product_name,
+		           od.id,
+				   od.product_color,
+				   od.product_qty,
+				   od.product_amounts,
+				   od.order_status
+			from orders o
+					inner join orders_detail od
+						on o.order_number=od.order_number
+					Inner join product p
+						on od.product_id=p.id
+					Inner join product_image i
+						on p.product_code=i.product_code
+			where o.member_id=#{id} order by o.order_number desc
+			)
+	</select>
+
+	<update id="updateOrderStatus" parameterType="int">
+		update orders_detail set order_status = 'FINISH' where id=#{id}
+	</update>
+
+	<select id="getCartList" parameterType="java.util.Map" resultType="cart">
+		select distinct
+				c.id,
+				p.product_name,
+				c.product_option_color,
+				c.product_count,
+				p.product_price,
+				i.product_img_thumb
+		from cart c
+				 inner join product p
+							on p.id=c.product_id
+				 inner join product_image i
+							on p.product_code=I.product_code
+		where c.member_id=#{id} order by c.id desc
 	</select>
 
  </mapper>

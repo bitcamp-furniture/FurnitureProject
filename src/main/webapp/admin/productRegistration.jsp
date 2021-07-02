@@ -69,14 +69,14 @@
          </tr>
          
          
-         <tr>   
+         <!-- <tr>   
           <td align="center">재고</td>
           <td>
               <input type="text" name="stock" id="stock" size="50" placeholder="재고입력">
               <div id="stockDiv"></div>
               
           </td>
-         </tr>
+         </tr> -->
       
       
       
@@ -106,9 +106,8 @@
 
 
 
-
-
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script src="/furniture/js/productRegistration.js"></script>
 
 
 

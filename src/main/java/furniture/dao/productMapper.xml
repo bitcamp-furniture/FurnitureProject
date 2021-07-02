@@ -5,11 +5,11 @@
 <mapper namespace="productSQL">
 
 	<!-- 상품 문의 write -->
-	<insert id="productQnAWrite" parameterType="qna">
-		insert into
-		product_qna values(seq_productQna.nextval, #{email}, #{product_id},
-		#{qna_subject}, #{qna_content}, sysdate, 0)
-	</insert>
+   <insert id="productQnAWrite" parameterType="qna">
+      insert into
+      product_qna values(seq_product_qna.nextval, #{email}, #{product_id},
+      #{product_name},#{qna_subject}, #{qna_content}, sysdate, 0,null,null)
+   </insert>
 	
 	<!-- 상품 문의 전체 리스트 -->
 	<select id="productQnAList" resultType="qna">
@@ -51,11 +51,28 @@
 	</select>
 	
 	<!--베스트 셀러 -->
-	<select id="getBestSeller" resultType="product">
-		select * from 
-		(select rownum rn, tt.* from 
-		(select * from product order by PRODUCT_PRICE desc)tt
-		)where rn &lt;= 8
+	<select id="getBestSeller" resultType="productList">
+ 		<![CDATA[
+ 		select * from (
+          select rownum rn, tt.* from
+              (select distinct p.PRODUCT_CODE, p.PRODUCT_NAME, p.PRODUCT_PRICE, p.PRODUCT_CATEGORY1,
+                p.PRODUCT_CATEGORY2, p.PRODUCT_CATEGORY_NAME, i.PRODUCT_IMG_THUMB, p.id from 
+                  product p   
+              join product_image i
+               on p.PRODUCT_CODE = i.PRODUCT_CODE
+              ORDER BY product_price desc)tt)
+      WHERE ROWNUM <= 8
+
+ 		
+ 		
+		]]>
+<!--		select * from (
+			SELECT distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
+			PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB
+			FROM product
+			join product_image using (PRODUCT_CODE)
+			ORDER BY product_price desc
+		) WHERE ROWNUM <= 8-->
 	</select>
 	
 	
@@ -73,10 +90,36 @@
 	
 	<!-- 이미지 업로드 -->
 	<insert id="productImageRegistration" parameterType="productImage">
-		insert into product_Image values(seq_product_image.nextval
+		insert into product_Image values(
+										#{id}
+									, seq_Product_Image.nextval
 									, #{product_code}
 									, #{product_img_thumb}
 									, #{product_img_detail}
 									)
 	</insert>
+	
+	<!-- 상품 옵션 업로드 -->
+	<insert id="productOptionRegistration" parameterType="productOption">
+		insert into product_option values(
+									seq_product_option.nextval
+									, #{id}
+									, #{color}
+									)
+	</insert>
+	
+	<select id="getIdToOneData" parameterType="Integer" resultType="product">
+		select * from product where id=#{id}
+	</select>
+	
+	<select id="getIdToImageData" parameterType="Integer" resultType="productImage">
+		select * from product_Image where id=#{id}
+	</select>
+	
+	<select id="getProductId" parameterType="String" resultType="Integer">
+		select id from product where product_code=#{product_code}
+	</select>
+	
+	
+	
 </mapper>

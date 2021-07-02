@@ -16,18 +16,23 @@
 #wholeDiv {
 	margin: 0 auto;
 	align-items: center;
-	width: 700px;
+	width: 800px;
 }
 
 #noticeSubject {
-	font-size: 1.2em;
+	font-size: 1.5em;
 	font-weight: bold;
 }
 
 #noticeCreatedAt {
 	float: right;
 }
-
+#noticeListBtn{
+	color: white;
+	background: darkblue;
+	border-radius: 5px;
+	border: none;
+}
 </style>
 
 
@@ -39,18 +44,25 @@
 			type="hidden" name="pg" value="${pg }"> <br> <br>
 
 		<div id="noticeSubject">${noticeDTO.notice_subject }</div>
-		<div id="noticeCreatedAt"></div>
+		<div id="noticeCreatedAt">${noticeDTO.created_at }</div>
+		<br>
 		<hr>
-		<div id="noticeContent">${noticeDTO.notice_content }</div>
+		<div id="noticeContent"><pre>${noticeDTO.notice_content }</pre></div>
 		<br>
 		<br>
-
+		<div align="center">
+			<input type="button" value="목록으로" id="noticeListBtn" >
+		</div>
+		<br>
+		<br>
 	</div>
 </form>
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-
+$('#noticeListBtn').click(function() {
+	location.href='/furniture/main/notice'
+});
 </script>
 

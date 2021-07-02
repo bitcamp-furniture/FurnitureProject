@@ -22,10 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.bean.MemberDTO;
-import profile.bean.AskDTO;
-import profile.bean.AskPaging;
-import profile.bean.WishlistDTO;
-import profile.bean.WishlistPaging;
+import profile.bean.*;
 import profile.service.ProfileService;
 
 @Controller
@@ -38,9 +35,11 @@ public class ProfileController {
 	public String profile(Model model, HttpSession session) {
 		int id = (Integer) session.getAttribute("memId");
 		String name = (String) session.getAttribute("memName");
+		String email = (String) session.getAttribute("memEmail");
 		
 		model.addAttribute("id", id);
-		model.addAttribute("name", name);
+		model.addAttribute("profileName", name);
+		model.addAttribute("profileEmail", email);
 		model.addAttribute("display", "/profile/profile.jsp");
 		model.addAttribute("askdisplay", "/profile/order.jsp");
 		return "/index";
@@ -86,7 +85,16 @@ public class ProfileController {
 		return "/index";
 	}
 
-	
+	@RequestMapping(value="askWriteForm", method=RequestMethod.GET)
+	public String askWriteForm(Model model, HttpSession session) {
+		int id = (Integer) session.getAttribute("memId");
+		String name = (String) session.getAttribute("memName");
+
+		model.addAttribute("id", id);
+		model.addAttribute("name", name);
+		model.addAttribute("display", "/profile/askWrite.jsp");
+		return "/profile/order";
+	}
 	
 	
 	@RequestMapping(value="askWrite", method=RequestMethod.POST)
@@ -177,8 +185,8 @@ public class ProfileController {
 //회원 정보 수정
 	@RequestMapping(value="updateMember", method=RequestMethod.POST)
     @ResponseBody
-    public void updateMember(@RequestParam Map<String, String> map) {
-        profileService.updateMember(map);
+    public void updateMember(@RequestParam Map<String, String> map, Model model, HttpSession session) {
+        profileService.updateMember(map, session);
     }
 	
 //----------------------------------------------------------------
@@ -236,4 +244,65 @@ public class ProfileController {
 		profileService.totalDelete(memberId);
 	}
 
+//----------------------------------------------------------------
+//구매목록
+    @RequestMapping(value="getOrderList", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getOrderList(@RequestParam String id,
+									@RequestParam(required = false, defaultValue="1") String orderPg) {
+
+		List<OrderDTO> list = profileService.getOrderList(id, orderPg);
+
+		//페이징 처리
+		OrderPaging orderPaging = profileService.orderPaging(id, orderPg);
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("orderPg", orderPg);
+		mav.addObject("list", list);
+		mav.addObject("orderPaging", orderPaging);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+
+//----------------------------------------------------------------
+//주문처리상태 수정
+	@RequestMapping(value="updateOrderStatus", method=RequestMethod.POST)
+	@ResponseBody
+	public void updateOrderStatus(@RequestParam int id) {
+		profileService.updateOrderStatus(id);
+	}
+
+//----------------------------------------------------------------
+//장바구니
+ 	@RequestMapping(value="getCartList", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getCartList(@RequestParam String id) {
+
+		List<CartDTO> list = profileService.getCartList(id);
+
+		//페이징 처리
+		//OrderPaging orderPaging = profileService.orderPaging(id, orderPg);
+
+		ModelAndView mav = new ModelAndView();
+		//mav.addObject("orderPg", orderPg);
+		mav.addObject("list", list);
+		//mav.addObject("orderPaging", orderPaging);
+		mav.setViewName("jsonView");
+		return mav;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

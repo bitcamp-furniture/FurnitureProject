@@ -4,10 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import member.bean.MemberDTO;
-import profile.bean.AskDTO;
-import profile.bean.AskPaging;
-import profile.bean.WishlistDTO;
-import profile.bean.WishlistPaging;
+import profile.bean.*;
+
+import javax.servlet.http.HttpSession;
 
 public interface ProfileService {
 
@@ -21,7 +20,7 @@ public interface ProfileService {
 
 	public MemberDTO getMember(int id);
 
-	public void updateMember(Map<String, String> map);
+	public void updateMember(Map<String, String> map, HttpSession session);
 
 	public void updateContact(Map<String, String> map);
 
@@ -34,4 +33,12 @@ public interface ProfileService {
 	public void totalDelete(String memberId);
 
 	public WishlistPaging wishlistPaging(String wishlistPg);
+
+    List<OrderDTO> getOrderList(String id, String orderPg);
+
+	OrderPaging orderPaging(String id, String orderPg);
+
+	void updateOrderStatus(int id);
+
+    List<CartDTO> getCartList(String id);
 }

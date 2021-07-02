@@ -35,7 +35,7 @@
   <tr>
     <td class="tg-0lax">주문번호</td>
     <td class="tg-0lax">
-    <input type="text" name="order_number" id="order_number" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  placeholder="주문번호 입력">
+    <input type="text" name="order_number" id="order_number" value=${param.id}>
     <div id="order_numberDiv"></div>
     </td>
   </tr>
@@ -43,14 +43,14 @@
   <tr>
     <td class="tg-0lax">성명</td>
     <td class="tg-0lax">
-    <input type="text" name="name" id="name" value="오대근" readonly>
+    <input type="text" name="name" id="name" value=${param.name} readonly>
     </td>
   </tr>
   
   <tr>
     <td class="tg-0lax">이메일</td>
     <td class="tg-0lax">
-    <input type="text" name="email" id="email" value="asd@asd.com" readonly>
+    <input type="text" name="email" id="email" value=${param.email} readonly>
     </td>
   </tr>
   

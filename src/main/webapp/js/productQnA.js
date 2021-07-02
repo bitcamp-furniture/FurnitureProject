@@ -17,13 +17,22 @@ $('.qna_write_btn').click(function() {
          type:'post',
          url:'/furniture/main/productQnAWrite',
          data:{
+            
+            
             'qna_subject':$('.qna_write_subject').val(),
-            'qna_content':$('.qna_write_content').val()
+            'qna_content':$('.qna_write_content').val(),
+            'product_id':$('.product_id').val(),
+            'product_name':$('.product_name').val()
+
+            
          },
          success:function(){
             alert('글쓰기 성공');
             $('.qna_write_subject').val('');
             $('.qna_write_content').val('');
+            $('.product_id').val('');
+            $('.product_name').val('');
+
             product_qna_paging();
          },
          error: function(err){
@@ -37,7 +46,7 @@ $('.qna_write_btn').click(function() {
 
 // productView 로드 시 onload로 상품 문의 리스트를 페이징까지 로드
 $(function(){
-	product_qna_paging();
+   product_qna_paging();
 });
 
 
@@ -67,7 +76,7 @@ $.ajax({
        var writerEmail = items.email;
 
        $('<tr/>', {
-    	   style: 'background-color: #f5f7ff;'
+          style: 'background-color: #f5f7ff;'
        }).append($('<td/>',{
           align:'center',
           text:items.id,
@@ -141,89 +150,88 @@ $.ajax({
 
 //productView 로드 시 onload로 리뷰 리스트를 페이징까지 로드
 $(function(){
-	review_paging();
+   review_paging();
 });
 
 
 // 상품 리뷰에서 페이지 선택 시 리스트를 삭제, 해당 페이지를 리로드
 function review_paging(pg) {
-	$.ajax({
-		type:'post',
-		url:'/furniture/main/reviewList',
-		data: { 'pg' : pg },
-		dataType:'json',
-		success:function(data){
-			console.log(data);
+   $.ajax({
+      type:'post',
+      url:'/furniture/main/reviewList',
+      data: { 'pg' : pg },
+      dataType:'json',
+      success:function(data){
+         console.log(data);
             $('#review_list_table tr:gt(0)').remove();
             $('#review_list_table tr:eq(0)').remove();
 
-			$.each(data.reviewList, function(index,items){
-				var writerEmail = items.email;
-				var stars = ''; 
-				for(i=1; i<=items.review_stars; i++){
-					stars = stars + '★';
-				}
-				
-				$('<tr/>').append($('<td/>', {
-					colspan: 3,
-					text: ''
-				})).appendTo($('#review_list_table'));
-				
-				$('<tr/>').append($('<td/>', {
-					
-					rowspan: 5
-				}).append($('<img/>',{
-					width: '250',
-					src: '/furniture/storage/' + items.review_image // +
-				}))).appendTo($('#review_list_table'));
-				
-				$('<tr/>', {
-					height: '30px'
-				}).append($('<td/>', {
-					width: '30%',
-					align: 'right',
-					text: writerEmail.slice(0, 2)+'***'
-				})).append($('<td/>', {
-					width: '30%',
-					align: 'right',
-					text: items.created_at
-				})).appendTo($('#review_list_table'));
-				
-				$('<tr/>').append($('<td/>', {
-					colspan: 2,
-					class: 'no_padding',
-					text: items.product_name
-				})).appendTo($('#review_list_table'));
-				
-				$('<tr/>').append($('<td/>', {
-					colspan: 2,
-					class: 'no_padding',
-					text: stars
-				})).appendTo($('#review_list_table'));
-				
-				$('<tr/>').append($('<td/>', {
-					colspan: 2
-				}).append($('<pre/>', {
-					align: 'left',
-					text: items.review_content
-				}))).appendTo($('#review_list_table'));
-				
-				$('<tr/>').append($('<td/>', {
-					colspan: 3,
-					text: '',
-					style: 'border-bottom: 1px solid black;'
-				})).appendTo($('#review_list_table'));
-				
-				
-			});//each  
-			
-			//페이징 처리
-			$('#review_listPagingDiv').html(data.review_paging.pagingHTML);
-		},
-		error: function(err){
-			console.log(err);
-		}
-		
-	});
+         $.each(data.reviewList, function(index,items){
+            var writerEmail = items.email;
+            var stars = ''; 
+            for(i=1; i<=items.review_stars; i++){
+               stars = stars + '★';
+            }
+            
+            $('<tr/>').append($('<td/>', {
+               colspan: 3,
+               text: ''
+            })).appendTo($('#review_list_table'));
+            
+            $('<tr/>').append($('<td/>', {
+               
+               rowspan: 5
+            }).append($('<img/>',{
+               width: '250',
+               src: '/furniture/storage/' + items.review_image // +
+            }))).appendTo($('#review_list_table'));
+            
+            $('<tr/>', {
+               height: '30px'
+            }).append($('<td/>', {
+               width: '30%',
+               align: 'right',
+               text: writerEmail.slice(0, 2)+'***'
+            })).append($('<td/>', {
+               width: '30%',
+               align: 'right',
+               text: items.created_at
+            })).appendTo($('#review_list_table'));
+            
+            $('<tr/>').append($('<td/>', {
+               colspan: 2,
+               class: 'no_padding',
+               text: items.product_name
+            })).appendTo($('#review_list_table'));
+            
+            $('<tr/>').append($('<td/>', {
+               colspan: 2,
+               class: 'no_padding',
+               text: stars
+            })).appendTo($('#review_list_table'));
+            
+            $('<tr/>').append($('<td/>', {
+               colspan: 2
+            }).append($('<pre/>', {
+               align: 'left',
+               text: items.review_content
+            }))).appendTo($('#review_list_table'));
+            
+            $('<tr/>').append($('<td/>', {
+               colspan: 3,
+               text: '',
+               style: 'border-bottom: 1px solid black;'
+            })).appendTo($('#review_list_table'));
+            
+            
+         });//each  
+         
+         //페이징 처리
+         $('#review_listPagingDiv').html(data.review_paging.pagingHTML);
+      },
+      error: function(err){
+         console.log(err);
+      }
+      
+   });
 }
-
