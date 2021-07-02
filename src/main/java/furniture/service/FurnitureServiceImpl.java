@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import furniture.bean.ProductDTO;
 import furniture.bean.ProductImageDTO;
+import furniture.bean.Product_OptionDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
@@ -46,27 +47,30 @@ public class FurnitureServiceImpl implements FurnitureService {
 
 	// 상품문의 리스트 ... 상품id 담아가야 함
 	@Override
-	public List<Product_qnaDTO> productQnAListPaging(String pg) {
+	public List<Product_qnaDTO> productQnAListPaging(String pg ,String product_name) {
 		//1페이지당 3개씩
 	      int endNum = Integer.parseInt(pg)*3;
 	      int startNum = endNum-2;
 	      
-	      Map<String, Integer> map = new HashMap<String, Integer>();
-	      map.put("startNum", startNum);
-	      map.put("endNum", endNum);
+	      Map<String, String> map = new HashMap<String, String>();
+	      map.put("startNum", startNum+"");
+	      map.put("endNum", endNum+"");
+	      map.put("product_name", product_name);
   		  return furnitureDAO.productQnAListPaging(map);
 	}
 
 	// 리뷰 리스트 ... 상품id를 담아가야 함
 	@Override
-	public List<ReviewDTO> reviewList(String pg) {
+	public List<ReviewDTO> reviewList(String pg ,String product_name) {
 		//1페이지당 3개씩
 	      int endNum = Integer.parseInt(pg)*3;
 	      int startNum = endNum-2;
 	      
-	      Map<String, Integer> map = new HashMap<String, Integer>();
-	      map.put("startNum", startNum);
-	      map.put("endNum", endNum);
+	      Map<String, String> map = new HashMap<String, String>();
+	      map.put("startNum", startNum+"");
+	      map.put("endNum", endNum+"");
+	      map.put("product_name", product_name);
+
 		  return furnitureDAO.reviewList(map);
 	}
 
@@ -100,7 +104,29 @@ public class FurnitureServiceImpl implements FurnitureService {
 	@Override
 	public void productImageRegistration(ProductImageDTO productImageDTO) {
 		furnitureDAO.productImageRegistration(productImageDTO);
-		
 	}
 
+	@Override
+	public ProductDTO getIdToOneData(Integer id) {
+		return furnitureDAO.getIdToOneData(id);
+	}
+
+	@Override
+	public List<ProductImageDTO> getIdToImageData(Integer id) {
+		List<ProductImageDTO> list = furnitureDAO.getIdToImageData(id);
+		System.out.println("퍼니쳐서비스id값"+id);
+		return list;
+	}
+
+	@Override
+	public int getProductId(String product_code) {
+		
+		return furnitureDAO.getProductId(product_code);
+	}
+
+	@Override
+	public void productOptionRegistration(Product_OptionDTO product_OptionDTO) {
+		furnitureDAO.productOptionRegistration(product_OptionDTO);
+		
+	}
 }
