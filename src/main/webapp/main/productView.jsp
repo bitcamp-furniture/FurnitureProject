@@ -139,7 +139,7 @@
                             <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">상품 리뷰</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">상품 문의</a>
+                            <a class="nav-link" data-toggle="tab" id="qna" href="#tabs-3" role="tab">상품 문의</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">배송 안내</a>

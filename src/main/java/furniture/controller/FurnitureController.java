@@ -112,9 +112,12 @@ public class FurnitureController {
 	// 상품id에 따라 다르게 가져와야 한다!
 	@ResponseBody
 	@RequestMapping(value = "/main/productQnAListPaging", method = RequestMethod.POST)
-	public ModelAndView productQnAListPaging(@RequestParam(required = false, defaultValue = "1") String pg) {
-		List<Product_qnaDTO> productQnAList = furnitureService.productQnAListPaging(pg);
-
+	public ModelAndView productQnAListPaging(@RequestParam(required = false, defaultValue = "1") String pg
+			,String product_name) {
+		System.out.println(pg+"    			"+product_name);
+		
+		List<Product_qnaDTO> productQnAList = furnitureService.productQnAListPaging(pg,product_name);
+		
 		// 페이징 처리
 		Product_qna_paging product_qna_paging = furnitureService.product_qna_paging(pg);
 
@@ -129,8 +132,9 @@ public class FurnitureController {
 	// 상품id에 따라 다르게 가져와야 한다!
 	@ResponseBody
 	@RequestMapping(value = "/main/reviewList", method = RequestMethod.POST)
-	public ModelAndView reviewList(@RequestParam(required = false, defaultValue = "1") String pg) {
-		List<ReviewDTO> reviewList = furnitureService.reviewList(pg);
+	public ModelAndView reviewList(@RequestParam(required = false, defaultValue = "1") String pg
+			,String product_name) {
+		List<ReviewDTO> reviewList = furnitureService.reviewList(pg,product_name);
 		// 페이징 처리
 		Review_paging review_paging = furnitureService.review_paging(pg);
 
