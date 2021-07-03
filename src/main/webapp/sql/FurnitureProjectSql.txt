@@ -82,7 +82,7 @@ CREATE SEQUENCE seq_product nocycle nocache;
 
 --이미지 테이블
 CREATE TABLE product_image(
-id NUMBER,
+id NUMBER PRIMARY KEY,
 product_code  VARCHAR2(50), --상품코드
 product_img_thumb VARCHAR2(500), -- 썸네일 사진
 product_img_detail VARCHAR2(500) -- 디테일 사진

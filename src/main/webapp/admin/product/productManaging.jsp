@@ -45,37 +45,38 @@
 }
 </style>
 
-<form id="productManagingForm" method="get" action="productListDelete">
-<div id="wholeDiv" align="center">
-<br>
-<br>
-<h1 >상품 목록</h1>
-<br>
-	<input type="hidden" value="${productPg }" id="productPg">
-	<div id="productManagingDiv">
-		<table id="productManagingTbl" width="95%" border="1" cellspacing="0"
-			cellpadding="5" frame="hsides" rules="rows">
-			<thead>
-				<tr>
-					<!-- 7개 -->
-					<th width="50px"><input type="checkbox" id="checkAllPRO" >전체</th>
-					<th width="50px">No.</th>
-					<th width="80px">상품코드</th>
-					<th width="250px">상품명</th>
-					<th width="80px">가격</th>
-					<th width="100px">색상</th>
-					<th width="80px">카테고리</th>
-					<th width="80px">고객평점</th>
-				</tr>
-			</thead>
-		</table>
+<form id="productManagingForm" name="productManagingForm" method="get" action="productListDelete">
+	<div id="wholeDiv" align="center">
+	<br>
+	<br>
+	<h1 >상품 목록</h1>
+	<br>
+		<input type="hidden" value="${productPg }" id="productPg">
+		<div id="productManagingDiv">
+			<table id="productManagingTbl" width="95%" border="1" cellspacing="0"
+				cellpadding="5" frame="hsides" rules="rows">
+				<thead>
+					<tr>
+						<!-- 7개 -->
+						<th width="50px"><input type="checkbox" id="checkAllPRO" >전체</th>
+						<th width="50px">No.</th>
+						<th width="80px">상품코드</th>
+						<th width="250px">상품명</th>
+						<th width="80px">가격</th>
+						<th width="100px">색상</th>
+						<th width="80px">카테고리</th>
+						<th width="80px">고객평점</th>
+					</tr>
+				</thead>
+			</table>
+			<br>
+			<input type="button" onclick="location.href='/furniture/admin/productRegistrationView'" value="등록" >
+			<input type="button" id="productDeleteBtn" value="삭제">
+		</div>
 		<br>
-		<input type="button" id="productDeleteBtn" value="삭제">
+		<br>
+		<div align="center" id="productManagingListPagingDiv"></div>
 	</div>
-	<br>
-	<br>
-	<div align="center" id="productManagingListPagingDiv"></div>
-</div>
 </form>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -188,8 +189,4 @@
 		}
 
 	});
-</script>
-<!--
-
-//-->
 </script>
