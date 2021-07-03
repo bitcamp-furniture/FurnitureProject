@@ -53,10 +53,6 @@ public class adminReviewController {
 		//ModelAndView mav = new ModelAndView();
 		adminreviewService.adminReviewListDelete(check);
 		
-		///admin/review/reviewList.jsp X
-		// /admin/review X
-		// 파일 [/admin/review.jsp]을(를) 찾을 수 없습니다
-		// /admin/review/review X
 		return "/admin/review/review";
 	}
 	
