@@ -47,10 +47,41 @@
 
 <form id="productManagingForm" name="productManagingForm" method="get" action="productListDelete">
 	<div id="wholeDiv" align="center">
-	<br>
-	<br>
-	<h1 >상품 목록</h1>
-	<br>
+		<br>
+		<h1 >상품 목록</h1>
+		<br>
+		<div>
+			<label for="cate-select">카테고리</label>
+			
+			<select name="sortCate" id="cate-select">
+			    <option value="all">전체보기</option>
+			    <option value="침대">침대</option>
+			    <option value="소파">소파</option>
+			    <option value="책장/선반유닛">책장/선반유닛</option>
+			    <option value="식탁/책상">식탁/책상</option>
+			    <option value="수납장/장식장">수납장/장식장</option>
+			    <option value="옷장">옷장</option>
+			    <option value="의자">의자</option>
+			</select>
+			
+			&emsp;
+			
+			<label for="sort-select">정렬</label>
+			&nbsp;
+			<input type="radio" name="sortPrice" checked="checked" id="sort-select" />
+				<span class="up">가격높은순</span>
+			<input type="radio"  name="sortPrice" id="sort-select"/>
+				<span class="up">가격낮은순</span>
+			<input type="radio"  name="sortPrice" id="sort-select"/>
+				<span class="up">평점높은순</span>
+			<input type="radio"  name="sortPrice" id="sort-select"/>
+				<span class="up">평점낮은순</span>
+			&nbsp;
+			<input type="button" id="productSortBtn" value="검색">
+			
+
+		</div>
+		<br>
 		<input type="hidden" value="${productPg }" id="productPg">
 		<div id="productManagingDiv">
 			<table id="productManagingTbl" width="95%" border="1" cellspacing="0"
