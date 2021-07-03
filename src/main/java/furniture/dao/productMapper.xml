@@ -91,8 +91,8 @@
 	<!-- 이미지 업로드 -->
 	<insert id="productImageRegistration" parameterType="productImage">
 		insert into product_Image values(
-										#{id}
-									, seq_Product_Image.nextval
+									seq_Product_Image.nextval
+									, #{id}
 									, #{product_code}
 									, #{product_img_thumb}
 									, #{product_img_detail}
