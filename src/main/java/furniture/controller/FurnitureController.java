@@ -50,6 +50,8 @@ public class FurnitureController {
 	private ServletContext ctx;
 
 	private String webPath = "C:\\Users\\A\\Desktop\\최종프로젝트 관련\\프로젝트클론\\210629.1525\\src\\main\\webapp\\upload";
+	//주소는 각자의 컴퓨터 경로
+	
 	// 상품 상세컷 ... DB연결, 상품id 필요
 		@RequestMapping(value = "/main/productView", method = RequestMethod.GET)
 		public String productView(@RequestParam(required = false, defaultValue = "1") String pg
