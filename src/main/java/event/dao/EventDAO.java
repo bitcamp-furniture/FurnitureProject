@@ -37,4 +37,6 @@ public interface EventDAO {
 	public List<String> getProductColors(String id);
 
 	public void productListDelete(Map<String, String[]> map);
+
+	public List<ProductManagingDTO> getSortedProductList(Map<String, Object> map);
 }

@@ -165,7 +165,7 @@ public class EventController {
 		return mav;
 	}
 	
-	
+	// 상품 선택삭제
 	  @RequestMapping(value="/product/productListDelete", method=RequestMethod.GET)
 	  public ModelAndView adminReviewListwDelete(String[] check) {
 		  ModelAndView mav = new ModelAndView();
@@ -174,4 +174,25 @@ public class EventController {
 		  return new ModelAndView("redirect:/admin/product/productManaging");
 	  }
 	
+		// select요소로 정렬
+		@ResponseBody
+		@RequestMapping(value = "/product/sortProduct", method = RequestMethod.POST)
+		public ModelAndView sortProduct(@RequestParam(required = false, defaultValue = "1") String productPg,
+										String selectCate,
+										String selectProduct, 
+										Model model) {
+			
+			List<ProductManagingDTO> productList = eventService.getSortedProductList(selectCate, selectProduct, productPg);
+			//ProductManagingListPaging productManagingListPaging = eventService.ProductManagingListPaging(productPg);
+
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("productList", productList);
+			mav.addObject("productPg", productPg);
+			//mav.addObject("productManagingListPaging", productManagingListPaging);
+
+			mav.setViewName("jsonView");
+			return mav;
+		}
 }
+
+

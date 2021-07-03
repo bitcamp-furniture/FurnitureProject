@@ -99,5 +99,43 @@
 		</foreach>
 	</delete>
 
+
+
+	<select id="getSortedProductListYESCATEreview" parameterType="java.util.Map" resultType="event.bean.ProductManagingDTO" >
+	<![CDATA[
+		select * from 
+		    ( 
+		    select p.id, p.product_code, p.product_name, p.product_price, p.product_category_name, p.product_category1, r.review, rownum rn
+		    from product p,
+		        (
+		        select round(avg(review_stars),1) as review, product_id from review
+		        group by product_id
+		        order by review asc
+		        )r
+		    where p.id = r.product_id and product_category2 = #{selectCate}
+	        order by ${sortOption} ${orderBy}
+		    )
+		where rn >= #{startNum} and rn <= #{endNum}
+	]]>
+	</select>
+
+	<select id="getSortedProductListNOCATEreview" parameterType="java.util.Map" resultType="event.bean.ProductManagingDTO" >
+	<![CDATA[
+		select * from 
+		    ( 
+		    select p.id, p.product_code, p.product_name, p.product_price, p.product_category_name, p.product_category1, r.review, rownum rn
+		    from product p,
+		        (
+		        select round(avg(review_stars),1) as review, product_id from review
+		        group by product_id
+		        order by review asc
+		        )r
+		    where p.id = r.product_id
+	        order by ${sortOption} ${orderBy}
+		    )
+		where rn >= #{startNum} and rn <= #{endNum}
+	]]>
+	</select>
+
 	
 </mapper>

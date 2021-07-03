@@ -3,13 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!-- 상품관리:
-기능:
--삭제
--등록(링크버튼)
--정렬(카테고리별/가격순/등록순/
--상품상세페이지로 이동(a, 링크)
- -->
 <style type="text/css">
 #wholeDiv {
 	width: 95%;
@@ -43,40 +36,48 @@
 .product_tbl_name a{
 	color: black; 
 }
+#selectProductDiv{
+	border: 1px solid #c6c6c6;
+	width: 700px;
+	padding: 5px;
+}
 </style>
 
 <form id="productManagingForm" name="productManagingForm" method="get" action="productListDelete">
 	<div id="wholeDiv" align="center">
 		<br>
 		<h1 >상품 목록</h1>
+		<div align="left" style="margin-left: 30px;" >
+			<input type="button" id="productDeleteBtn" value="선택삭제">
+			<input type="button" onclick="location.href='/furniture/admin/productRegistrationView'" value="상품등록" >
+		</div>
 		<br>
-		<div>
+		<div id="selectProductDiv">
 			<label for="cate-select">카테고리</label>
 			
 			<select name="sortCate" id="cate-select">
 			    <option value="all">전체보기</option>
-			    <option value="침대">침대</option>
-			    <option value="소파">소파</option>
-			    <option value="책장/선반유닛">책장/선반유닛</option>
-			    <option value="식탁/책상">식탁/책상</option>
-			    <option value="수납장/장식장">수납장/장식장</option>
-			    <option value="옷장">옷장</option>
-			    <option value="의자">의자</option>
+			    <option value="100">침대</option>
+			    <option value="200">소파</option>
+			    <option value="300">책장/선반유닛</option>
+			    <option value="400">식탁/책상</option>
+			    <option value="500">수납장/장식장</option>
+			    <option value="600">옷장</option>
+			    <option value="700">의자</option>
 			</select>
 			
 			&emsp;
 			
-			<label for="sort-select">정렬</label>
 			&nbsp;
-			<input type="radio" name="sortPrice" checked="checked" id="sort-select" />
+			<input type="radio" name="sortProduct" checked="checked" id="sort-select" value="1" />
 				<span class="up">가격높은순</span>
-			<input type="radio"  name="sortPrice" id="sort-select"/>
+			<input type="radio"  name="sortProduct" id="sort-select" value="2" />
 				<span class="up">가격낮은순</span>
-			<input type="radio"  name="sortPrice" id="sort-select"/>
+			<input type="radio"  name="sortProduct" id="sort-select" value="3" />
 				<span class="up">평점높은순</span>
-			<input type="radio"  name="sortPrice" id="sort-select"/>
+			<input type="radio"  name="sortProduct" id="sort-select" value="4" />
 				<span class="up">평점낮은순</span>
-			&nbsp;
+			&nbsp; &emsp;
 			<input type="button" id="productSortBtn" value="검색">
 			
 
@@ -101,8 +102,6 @@
 				</thead>
 			</table>
 			<br>
-			<input type="button" onclick="location.href='/furniture/admin/productRegistrationView'" value="등록" >
-			<input type="button" id="productDeleteBtn" value="삭제">
 		</div>
 		<br>
 		<br>
@@ -199,7 +198,7 @@
 </script>
 
 <script type="text/javascript">
-
+//////////////////////// 전체선택, 선택삭제 ////////////////////////////
 	$('#checkAllPRO').click(function() {
 	      if($('#checkAllPRO').prop('checked')){
 	          $('input[name=check]').prop('checked', true);
@@ -220,4 +219,167 @@
 		}
 
 	});
+	
+	
+//////////////////////// 정렬 ////////////////////////////
+
+	$('#productSortBtn').click(function() {
+		var selectCate = $('select[name=sortCate]').val();
+		var selectProduct = $('input[name=sortProduct]:checked').val();
+		
+		//alert("selectCate="+selectCate+" selectProduct="+selectProduct);
+		$.ajax({
+			type: 'post',
+			url: '/furniture/admin/product/sortProduct',
+			data: { 'selectCate' : selectCate, 
+					'selectProduct' : selectProduct,
+					'productPg' : $('#productPg').val() },
+			dataType: 'json',
+			success: function(data) {
+				//console.log(data)
+				//alert(JSON.stringify(data));
+				$('#productManagingTbl tr:gt(0)').remove();
+				
+				if(selectProduct == '1' || selectProduct == '2'){
+					// 가격순
+					getSortedProductListPRICEreview(data);
+				} else if(selectProduct == '3' || selectProduct == '4'){
+					// 리뷰순
+					getSortedProductListCATEreview(data);
+				}
+				
+			},
+			error: function(err) {
+				console.log(err);
+			}
+		});
+		
+	});
+	
+	
+</script>
+
+
+<script type="text/javascript">
+// 가격순 정렬 선택시 (1,2)
+function getSortedProductListPRICEreview(data) {
+	$.each(data.productList, function(index, items){
+		$('<tr/>').append($('<td/>',{
+			align: 'center'
+		}).append($('<input/>',{
+			align: 'center',
+			type: 'checkbox',
+			name: 'check',
+			value: items.id
+		}))).append($('<td/>',{
+			text: items.id,
+			align: 'center',
+			align: 'center',
+			class: 'product_tbl_id'
+		})).append($('<td/>',{
+			text: items.product_code,
+			align: 'center',
+			class: 'product_tbl_code'
+		})).append($('<td/>',{
+			align: 'center',
+			class: 'product_tbl_name'
+			}).append($('<a/>',{
+				text: items.product_name,
+				align: 'center',
+				href: '/furniture/main/productView?id='+items.id
+		}))).append($('<td/>',{
+			text: '₩'+items.product_price.toLocaleString(),
+			align: 'center',
+			class: 'product_tbl_price'
+		})).append($('<td/>',{
+			align: 'center',
+			class: 'product_tbl_colors'+items.id
+		})).append($('<td/>',{
+			text: items.product_category_name,
+			align: 'center',
+			class: 'product_tbl_cateName'
+		})).append($('<td/>',{
+			align: 'center',
+			class: 'product_tbl_reviewAvg'+items.id
+		})).appendTo($('#productManagingTbl'));
+		
+		$.ajax({
+			type : 'post',
+			url : '/furniture/admin/product/getProductColorReview',
+			data : { 'id' : items.id },
+			dataType : 'json',
+			success: function(dblData) {
+				$('.product_tbl_reviewAvg'+items.id).text(dblData.productReviewAvg.toFixed(1));
+
+				$('.product_tbl_colors'+items.id).text(  dblData.productColors  );
+			},
+			error : function(error) {
+				console.log(error); 
+			}
+		});
+		
+	}); // each
+
+}
+
+
+//리뷰순 정렬 선택시 (3,4)
+function getSortedProductListCATEreview(data) {
+	$.each(data.productList, function(index, items){
+		$('<tr/>').append($('<td/>',{
+			align: 'center'
+		}).append($('<input/>',{
+			align: 'center',
+			type: 'checkbox',
+			name: 'check',
+			value: items.id
+		}))).append($('<td/>',{
+			text: items.id,
+			align: 'center',
+			align: 'center',
+			class: 'product_tbl_id'
+		})).append($('<td/>',{
+			text: items.product_code,
+			align: 'center',
+			class: 'product_tbl_code'
+		})).append($('<td/>',{
+			align: 'center',
+			class: 'product_tbl_name'
+			}).append($('<a/>',{
+				text: items.product_name,
+				align: 'center',
+				href: '/furniture/main/productView?id='+items.id
+		}))).append($('<td/>',{
+			text: '₩'+items.product_price.toLocaleString(),
+			align: 'center',
+			class: 'product_tbl_price'
+		})).append($('<td/>',{
+			align: 'center',
+			class: 'product_tbl_colors'+items.id
+		})).append($('<td/>',{
+			text: items.product_category_name,
+			align: 'center',
+			class: 'product_tbl_cateName'
+		})).append($('<td/>',{
+			align: 'center',
+			text: items.review.toFixed(1),
+			class: 'product_tbl_reviewAvg'+items.id
+		})).appendTo($('#productManagingTbl'));
+		
+		$.ajax({
+			type : 'post',
+			url : '/furniture/admin/product/getProductColorReview',
+			data : { 'id' : items.id },
+			dataType : 'json',
+			success: function(dblData) {
+				$('.product_tbl_colors'+items.id).text(  dblData.productColors  );
+			},
+			error : function(error) {
+				console.log(error); 
+			}
+		});
+		
+	}); // each
+}
+
 </script>

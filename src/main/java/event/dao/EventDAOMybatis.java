@@ -1,5 +1,6 @@
 package event.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -97,6 +98,54 @@ public class EventDAOMybatis implements EventDAO {
 	@Override
 	public void productListDelete(Map<String, String[]> map) {
 		sqlSession.delete("eventSQL.productListDelete",map);
+	}
+
+	@Override
+	public List<ProductManagingDTO> getSortedProductList(Map<String, Object> map) {
+		String selectCate = (String) map.get("selectCate");
+		String selectProduct = (String) map.get("selectProduct");
+
+		
+		// Map<String, String> map = new HashMap<String, String>();
+		if(selectCate.equals("all")) { // 카테고리 전체(where절 x)
+			if(selectProduct.equals("1")) { 
+				map.put("sortOption", "product_price");
+				map.put("orderBy", "desc");
+			} else if(selectProduct.equals("2")) { 
+				map.put("sortOption", "product_price");
+				map.put("orderBy", "asc");
+			} else if(selectProduct.equals("3")) { 
+				map.put("sortOption", "review");
+				map.put("orderBy", "desc");
+			} else if(selectProduct.equals("4")) { 
+				map.put("sortOption", "review");
+				map.put("orderBy", "asc");
+			}
+			System.out.println(map);
+			
+			return sqlSession.selectList("eventSQL.getSortedProductListNOCATEreview", map);
+
+		} else { //selectCate = 100, 200, 300.... //  where product_category2 = #{selectCate}
+			//map.put("selectCate", selectCate);
+
+			// selectProduct = 1(가격높은순), 2(가격낮은순), 3(평점높은순), 4(평점낮은순)
+			if(selectProduct.equals("1")) { 
+				map.put("sortOption", "product_price");
+				map.put("orderBy", "desc");
+			} else if(selectProduct.equals("2")) { 
+				map.put("sortOption", "product_price");
+				map.put("orderBy", "asc");
+			} else if(selectProduct.equals("3")) { 
+				map.put("sortOption", "review");
+				map.put("orderBy", "desc");
+			} else if(selectProduct.equals("4")) { 
+				map.put("sortOption", "review");
+				map.put("orderBy", "asc");
+			}
+			System.out.println(map);
+			return sqlSession.selectList("eventSQL.getSortedProductListYESCATEreview", map);
+
+		}
 	}
 }
 

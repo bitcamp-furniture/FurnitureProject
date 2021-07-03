@@ -41,4 +41,6 @@ public interface EventService {
 
 	public void productListDelete(String[] check);
 
+	public List<ProductManagingDTO> getSortedProductList(String selectCate, String selectProduct, String productPg);
+
 }

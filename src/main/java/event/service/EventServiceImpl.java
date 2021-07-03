@@ -113,10 +113,6 @@ public class EventServiceImpl implements EventService {
 
 	
 	////////////////////////////// 상품관리 //////////////////////////////
-	/*1.리스트 가져오고 	2.색상 리스트 가져와서	여기서 dto에 세팅
-		for(전체 상품 리스트의 상품코드 = 색상을 끌어온 셀렉트의 상품코드 ) {
-			dto에 set[]해라?
-		}*/
 	@Override
 	public List<ProductManagingDTO> getProductList(String pg) {
 		// 1페이지당 10개씩
@@ -163,4 +159,22 @@ public class EventServiceImpl implements EventService {
 	      
 	      eventDAO.productListDelete(map);   
 	}
+
+	@Override
+	public List<ProductManagingDTO> getSortedProductList(String selectCate, String selectProduct, String productPg) {
+		// 1페이지당 10개씩
+		int endNum = Integer.parseInt(productPg) * 15;
+		int startNum = endNum - 14;
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		map.put("productPg", productPg);
+		map.put("selectProduct", selectProduct);
+		map.put("selectCate", selectCate);
+
+
+		return eventDAO.getSortedProductList(map);
+	}
+
 }
