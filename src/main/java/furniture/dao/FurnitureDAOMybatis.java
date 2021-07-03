@@ -35,14 +35,14 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 
 	// 상품 문의 총 갯수
 	@Override
-	public int getTotalQNA() {
-		return sqlSession.selectOne("productSQL.getTotalQNA");
+	public int getTotalQNA(String product_name) {
+		return sqlSession.selectOne("productSQL.getTotalQNA", product_name);
 	}
 
 	// 리뷰 총 갯수
 	@Override
-	public int getTotalReview() {
-		return sqlSession.selectOne("productSQL.getTotalReview");
+	public int getTotalReview(String product_name) {
+		return sqlSession.selectOne("productSQL.getTotalReview",product_name);
 	}
 
 	// 상품 리뷰 리스트

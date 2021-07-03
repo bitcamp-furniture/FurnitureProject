@@ -83,15 +83,14 @@ public class FurnitureController {
 		   @RequestMapping(value = "/main/productQnAWrite", method = RequestMethod.POST)
 		   @ResponseBody
 		   public ModelAndView productQnAWrite(@ModelAttribute Product_qnaDTO product_qnaDTO
-		         ,@RequestParam Map<String, String>map
-		         ,HttpSession session) {
+									         ,@RequestParam Map<String, String>map
+									         ,HttpSession session) {
 		      
 
-		     // map.put("email",(String) session.getAttribute("memId"));
-		     // map.put("id", map.get("product_id"));
-			   
-		      //product_qnaDTO.setEmail((String) session.getAttribute("memId"));
-		      product_qnaDTO.setEmail("무야호");
+		  
+		      product_qnaDTO.setEmail((String) session.getAttribute("memEmail"));
+		     
+		      //product_qnaDTO.setEmail("무야호");
 		      product_qnaDTO.setProduct_id(map.get("product_id"));
 		      product_qnaDTO.setProduct_name(map.get("product_name"));
 
@@ -115,14 +114,14 @@ public class FurnitureController {
 	@ResponseBody
 	@RequestMapping(value = "/main/productQnAListPaging", method = RequestMethod.POST)
 	public ModelAndView productQnAListPaging(@RequestParam(required = false, defaultValue = "1") String pg
-			,String product_name) {
-		System.out.println(pg+"    			"+product_name);
+												,String product_name) {
 		
 		List<Product_qnaDTO> productQnAList = furnitureService.productQnAListPaging(pg,product_name);
 		
 		// 페이징 처리
-		Product_qna_paging product_qna_paging = furnitureService.product_qna_paging(pg);
+		Product_qna_paging product_qna_paging = furnitureService.product_qna_paging(pg,product_name);
 
+		System.out.println(productQnAList +" 리스트");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("productQnAList", productQnAList);
 		mav.addObject("product_qna_paging", product_qna_paging);
@@ -135,10 +134,15 @@ public class FurnitureController {
 	@ResponseBody
 	@RequestMapping(value = "/main/reviewList", method = RequestMethod.POST)
 	public ModelAndView reviewList(@RequestParam(required = false, defaultValue = "1") String pg
-			,String product_name) {
+			,@ModelAttribute ReviewDTO reviewDTO
+			,String product_name
+			,HttpSession session) {
+		
+		reviewDTO.setEmail((String) session.getAttribute("memEmail"));
+
 		List<ReviewDTO> reviewList = furnitureService.reviewList(pg,product_name);
 		// 페이징 처리
-		Review_paging review_paging = furnitureService.review_paging(pg);
+		Review_paging review_paging = furnitureService.review_paging(pg,product_name);
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("reviewList", reviewList);
