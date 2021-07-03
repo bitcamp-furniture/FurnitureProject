@@ -50,10 +50,15 @@ public class adminReviewController {
 	//관리자페이지 - 리뷰삭제
 	@RequestMapping(value="adminReviewListwDelete", method=RequestMethod.GET)
 	public String adminReviewListwDelete(String[] check) {
-		ModelAndView mav = new ModelAndView();
+		//ModelAndView mav = new ModelAndView();
 		adminreviewService.adminReviewListDelete(check);
 		
-		return "/admin/adminReviewList";
+		///admin/review/reviewList.jsp X
+		// /admin/review X
+		// 파일 [/admin/review.jsp]을(를) 찾을 수 없습니다
+		// [/admin/review/review.jsp]을(를) 찾을 수 없습니다.
+		// /admin/review/review X
+		return "/admin/review/review";
 	}
 	
 	//관리자 페이지 - 리뷰 정렬
@@ -91,8 +96,7 @@ public class adminReviewController {
 		
 		List<adminReviewDTO> adminreviewSelectList = adminreviewService.adminreviewDESCtList(pg,sort1);
 		ModelAndView mav = new ModelAndView();
-		
-		
+	
 		adminReviewSelectListPaging adminreviewSelectListPaging = adminreviewService.adminReviewSelectList(pg,sort1);
 			
 		mav.addObject("pg", pg);

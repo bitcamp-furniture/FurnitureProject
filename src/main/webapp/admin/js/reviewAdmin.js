@@ -30,7 +30,7 @@ function reviewAdminSortPaging(pg)
 				  'pg':pg},
 			dataType:'json',
 			success: function(data){
-				console.log(data);
+				//console.log(data);
 				$('#reviewListTable tr:gt(0)').remove();
 				
 				$.each(data.adminreviewSelectList, function(index, items) {
@@ -107,7 +107,7 @@ function reviewAdminSortPaging(pg)
 				  'pg':pg},
 			dataType:'json',
 			success: function(data){
-				console.log(data);
+				//console.log(data);
 				$('#reviewListTable tr:gt(0)').remove();
 				
 				$.each(data.adminreviewSelectList, function(index, items) {

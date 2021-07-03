@@ -94,9 +94,6 @@ noticeListTable th{
 });
  //전체 삭제 버튼
 $('#checkAllRe').click(function() {
-		// alert($('#all').attr('checked')); // checked라는 속성이 없어 선언되지 않았다는 undefined가 출력
-		// alert($('#all').prop('checked')); // 그러므로 prop을 사용하면 true or false가 출력
-		
 		if($('#checkAllRe').prop('checked')){
 			$('input[name=check]').prop('checked', true);
 		}else{
@@ -124,7 +121,7 @@ function reviewPaging(pg)
 		data:{'pg':pg},
 		dataType:'json',
 		success: function(data){
-			console.log(data);
+			//console.log(data);
 			
 			$('#reviewListTable tr:gt(0)').remove();
 			//$('#reviewListTable tr:eq(0)').remove();
