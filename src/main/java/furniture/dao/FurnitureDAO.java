@@ -17,9 +17,9 @@ public interface FurnitureDAO {
 
 	public int getTotalQNA();
 
-	public List<ReviewDTO> reviewList(Map<String, Integer> map);
+	public List<ReviewDTO> reviewList(Map<String, String> map);
 
-	public List<Product_qnaDTO> productQnAListPaging(Map<String, Integer> map);
+	public List<Product_qnaDTO> productQnAListPaging(Map<String, String> map);
 
 	public int getTotalReview();
 

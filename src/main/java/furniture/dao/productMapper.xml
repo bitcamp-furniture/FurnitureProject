@@ -11,17 +11,17 @@
       #{product_name},#{qna_subject}, #{qna_content}, sysdate, 0,null,null)
    </insert>
 	
-	<!-- 상품 문의 전체 리스트 -->
-	<select id="productQnAList" resultType="qna">
-		select * from product_qna
-	</select>
+	<!-- < 상품 문의 전체 리스트 
+	<select id="productQnAList" resultType="qna" parameterType="java.util.Map">
+		select * from product_qna where product_name=#{product_name}
+	</select> -->
 
 	<!-- 상품 문의 리스트 + 페이징 -->
 	<select id="productQnAListPaging" resultType="qna" parameterType="java.util.Map">
  		select * from 
 		(select rownum rn, tt.* from 
-		(select * from product_qna order by id desc)tt
-		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
+		(select * from product_qna where product_name=#{product_name} order by id desc)tt
+		)where rn &gt;= #{startNum} and rn &lt;= #{endNum} 
 	</select>
 
 	<!-- 상품 문의 총 글수 -->
@@ -33,7 +33,7 @@
 	<select id="reviewList" resultType="review" parameterType="java.util.Map">
  		select * from 
 		(select rownum rn, tt.* from 
-		(select * from review order by id desc)tt
+		(select * from review where product_name=#{product_name} order by id desc)tt
 		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
 	</select>
 
@@ -91,8 +91,8 @@
 	<!-- 이미지 업로드 -->
 	<insert id="productImageRegistration" parameterType="productImage">
 		insert into product_Image values(
-										#{id}
-									, seq_Product_Image.nextval
+									seq_Product_Image.nextval
+									, #{id}
 									, #{product_code}
 									, #{product_img_thumb}
 									, #{product_img_detail}

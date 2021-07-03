@@ -79,14 +79,14 @@
                     <div class="product__details__img">
                         <div class="product__details__big__img">
                             <!-- <img class="big_img" src="/furniture/img/shop/details/product-big-1.jpg" alt=""> -->
-                            <img class="big_img" src="/furniture/upload/${ImageList[0].product_img_thumb}" alt="1">
+                            <img class="big_img" src="/furniture/storage/${ImageList[0].product_img_thumb}" alt="1">
                         </div>
                        
                         <div class="product__details__thumb">
                             <c:forEach var="n" items="${ImageList}">
                             <div class="pt__item active">
-                                <img data-imgbigurl="/furniture/upload/${n.product_img_detail}"
-                                src="/furniture/upload/${n.product_img_detail}" alt="2">
+                                <img data-imgbigurl="/furniture/storage/${n.product_img_detail}"
+                                src="/furniture/storage/${n.product_img_detail}" alt="2">
                             </div>
                            </c:forEach>
                             
@@ -139,7 +139,7 @@
                             <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">상품 리뷰</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">상품 문의</a>
+                            <a class="nav-link" data-toggle="tab" id="qna" href="#tabs-3" role="tab">상품 문의</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">배송 안내</a>
@@ -158,8 +158,8 @@
                                   
                                   <c:forEach var="n" items="${ImageList}">
                             <div class="pt__item active">
-                                <img width="720" height="720" data-imgbigurl="/furniture/upload/${n.product_img_detail}"
-                                src="/furniture/upload/${n.product_img_detail}" alt="2">
+                                <img width="720" height="720" data-imgbigurl="/furniture/storage/${n.product_img_detail}"
+                                src="/furniture/storage/${n.product_img_detail}" alt="2">
                             </div>
                            </c:forEach>
                            

@@ -42,4 +42,6 @@ public interface ProfileDAO {
 	void updateOrderStatus(int id);
 
     List<CartDTO> getCartList(Map<String, Object> map);
+
+	int getTotalCartList(String id);
 }
