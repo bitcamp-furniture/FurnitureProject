@@ -266,35 +266,35 @@
 						<div class="container">
 							<h1>장바구니</h1>
 								<div class="cart table" style="float: left; width: 60%;">
-									<table class="cartTable" width="100%" border="0" style="border-color: white;">
-										<thead>
-											<tr>
-												<th class="tg-0pky" rowspan="3">
-													<img alt="imgimg" src="/furniture/img/침대.png" width="150" height="150">
-												</th>
-												<th class="tg-0pky">의자</th>
-												<th class="tg-0pky" rowspan="3" width="100" style="text-align: center; vertical-align:middle;">89000</th>
-											</tr>
-											<tr>
-												<td class="tg-0pky" width="400">빨강</td>
-											</tr>
-											<tr>
-												<td class="tg-0pky">
-													<select name="qty">
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-														<option value="5">5</option>
-													</select>
-													<button class="cartDeleteBtn">삭제</button>
-													<button class="wishlistSaveBtn">위시리스트 저장</button>
-												</td>
-											</tr>
-										</thead>
+									<input type="hidden" id="cartPg" value="${cartPg}">
+									<table class="cartTable" border='0' border-color="white" width="100%">
+<%--										<tr>--%>
+<%--											<td class="tg-0pky" rowspan="3">--%>
+<%--												<img alt="imgimg" src="/furniture/img/침대.png" width="150" height="150">--%>
+<%--											</td>--%>
+<%--											<td class="tg-0pky">의자</td>--%>
+<%--											<td class="tg-0pky" rowspan="3" width="100" style="text-align: center; vertical-align:middle;">89000</td>--%>
+<%--										</tr>--%>
+<%--										<tr>--%>
+<%--											<td class="tg-0pky" width="400">빨강</td>--%>
+<%--										</tr>--%>
+<%--										<tr>--%>
+<%--											<td class="tg-0pky">--%>
+<%--												<input type="text">--%>
+
+<%--												</input>--%>
+<%--												<button class="cartDeleteBtn">삭제</button>--%>
+<%--												<button class="wishlistSaveBtn">위시리스트 저장</button>--%>
+<%--											</td>--%>
+<%--										</tr>--%>
+
+
+
+
 									</table>
 									<br><br><br>
 									<button type="button" class="totalCartDeleteBtn">장바구니 비우기</button>
+									<div id="cartlistPagingDiv" style="float: left; width: 1000px; text-align: center"></div>
 								</div>
 
 
@@ -315,6 +315,7 @@
 										<button type="button" class="payBtn">결제하기</button>
 									</div>
 								</div>
+
 								<%--cart__checkout end --%>
 
 						</div>

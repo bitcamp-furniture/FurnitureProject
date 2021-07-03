@@ -11,9 +11,8 @@
 });
 
 $('#askWriteBtn').click(function(){
-
 	$('#ask_categoryDiv').empty();
-	$('#oreder_numberDiv').empty();
+	$('#order_numberDiv').empty();
 	$('#subjectDiv').empty();
 	$('#contentDiv').empty();
 		
