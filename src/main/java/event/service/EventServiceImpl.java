@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import event.bean.EventDTO;
 import event.bean.EventListPaging;
+import event.bean.FaQAllListPaging;
+import event.bean.FaQDTO;
+import event.bean.FaQListPaging;
 import event.bean.NoticeDTO;
 import event.bean.NoticeListPaging;
 import event.dao.EventDAO;
@@ -27,6 +30,11 @@ public class EventServiceImpl implements EventService {
 	private EventListPaging eventListPaging;
 	@Autowired
 	private NoticeListPaging noticeListPaging;
+	@Autowired
+	private FaQListPaging faQListPaging;
+	@Autowired
+	private FaQAllListPaging faQAllListPaging;
+
 
 	@Override
 	public List<EventDTO> getEventList(String pg) {
@@ -105,5 +113,58 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public NoticeDTO getNoticeView(String id) {
 		return eventDAO.getNoticeView(id);
+	}
+	@Override
+	public List<FaQDTO> faQList(String pg, String div) {
+		//1페이지당 9개씩
+		int endNum = Integer.parseInt(pg)*9;
+		int startNum = endNum-8;
+		Map<Object,Object> map = new HashMap<Object,Object>();
+		map.put("div",div);
+		map.put("startNum",startNum);
+		map.put("endNum",endNum);
+		return eventDAO.faQList(map);	
+	}
+	
+	//해당 페이징
+	@Override
+	public FaQListPaging faQListPaging(String pg, String div) {
+		
+		int totalFAQ = eventDAO.getTotalFaQList(div);
+		
+		faQListPaging.setCurrentPage(Integer.parseInt(pg));
+		faQListPaging.setPageBlock(3);
+		faQListPaging.setPageSize(9);
+		faQListPaging.setTotalA(totalFAQ);
+		faQListPaging.makePagingHTML();
+		return faQListPaging;
+	}
+	//모든 리스트 페이징FaQAllList
+	@Override
+	public List<FaQDTO> faQAllList(String pg) {
+		int endNum = Integer.parseInt(pg)*9;
+		int startNum = endNum-8;
+		
+		Map<Object,Object> map = new HashMap<Object,Object>();
+		map.put("startNum",startNum);
+		map.put("endNum",endNum);
+		return eventDAO.faQAllList(map);	
+	}
+	
+	@Override
+	public FaQAllListPaging faQAllListPaging(String pg) {
+		int totalFAQ = eventDAO.getTotalAllFaQList();// 총글수 
+		
+		faQAllListPaging.setCurrentPage(Integer.parseInt(pg));
+		faQAllListPaging.setPageBlock(3);
+		faQAllListPaging.setPageSize(9);
+		faQAllListPaging.setTotalA(totalFAQ);
+		faQAllListPaging.makePagingHTML();
+		return faQAllListPaging;
+	}
+
+	@Override
+	public FaQDTO getFaQView(String id) {
+		return eventDAO.getFaQView(id);
 	}
 }

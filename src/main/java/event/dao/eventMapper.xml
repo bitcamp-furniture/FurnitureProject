@@ -60,6 +60,35 @@
 	<select id="getNoticeView" parameterType="String" resultType="notice">
 		select * from notice where id=#{id} 
 	</select>
+	<!-- FAQ -->
+	<select id="faQList" parameterType="java.util.Map" resultType="FaQ">
+	<![CDATA[
+			select * from 
+			(select rownum rn, tt.* from 
+			(select * from FAQ where div=#{div} order by id)tt
+			)where rn>=#{startNum} and rn <= #{endNum}
+		
+	]]>
+	</select>
+	<!-- 해당하는 div 모든 리스트 개수  -->
+	<select id="getTotalFaQList" parameterType="String" resultType="int">
+		select count(*) from FAQ where div=#{div} 
+	</select>
+	
+	<select id="FaQAllList" parameterType="java.util.Map" resultType="FaQ">
+		select * from 
+		(select rownum rn, tt.* from 
+		(select * from FAQ order by id)tt
+		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
+	</select>
+	<!-- 모든 리스트 개수  -->
+	<select id="getTotalAllFaQList" resultType="int">
+		select count(*) from FAQ
+	</select>
+	
+	<select id="getFaQView" parameterType="int" resultType="FaQ">
+		select * from FAQ where id=#{id} 
+	</select>
 	
 	
 	
