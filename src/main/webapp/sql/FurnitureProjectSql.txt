@@ -142,10 +142,11 @@ create sequence seq_member nocycle nocache;
 
 -- 장바구니, 위시리스트
 CREATE TABLE cart(
-   id NUMBER PRIMARY KEY,               
-   member_id VARCHAR2(80),  -- 회원아이디
-   product_id VARCHAR2(80), -- 상품아이디
-   product_count NUMBER -- 상품개수
+	id NUMBER PRIMARY KEY,
+	member_id VARCHAR2(80),  -- 회원아이디
+	product_id VARCHAR2(80), -- 상품아이디
+	product_option_color VARCHAR2(50), -- 컬러
+	product_count NUMBER -- 상품개수
 );
 create sequence seq_cart nocycle nocache;
 
