@@ -46,6 +46,7 @@
                         <div class="header__top__inner">
                             <div class="header__top__left">
                                 <ul>  
+                                <input type="hidden" id="memEmail" value="${memEmail}">
                                     <c:if test="${sessionScope.memEmail == null }">
                                         <li><a href="/furniture/member/joinPage">회원가입</a></li>
                                         <li><a href="/furniture/member/loginForm">로그인</a></li>
