@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import admin.service.adminReviewService;
-import admin.bean.adminReviewDTO;
+import furniture.bean.ReviewDTO;
 import admin.bean.adminReviewPaging;
 import admin.bean.adminReviewSelectListPaging;
 
@@ -36,7 +36,7 @@ public class adminReviewController {
 			                    		Model model)
 	{
 
-		List<adminReviewDTO> adminReviewList = adminreviewService.adminReviewList(pg);
+		List<ReviewDTO> adminReviewList = adminreviewService.adminReviewList(pg);
 
 		adminReviewPaging adminreviewPaging = adminreviewService.adminreviewPaging(pg);
 		ModelAndView mav = new ModelAndView();
@@ -49,11 +49,11 @@ public class adminReviewController {
 	}
 	//관리자페이지 - 리뷰삭제
 	@RequestMapping(value="adminReviewListwDelete", method=RequestMethod.GET)
-	public String adminReviewListwDelete(String[] check) {
-		//ModelAndView mav = new ModelAndView();
+	public ModelAndView adminReviewListwDelete(String[] check) {
+		ModelAndView mav = new ModelAndView();
 		adminreviewService.adminReviewListDelete(check);
 		
-		return "/admin/review/review";
+		 return new ModelAndView("redirect:/admin/review");
 	}
 	
 	//관리자 페이지 - 리뷰 정렬
@@ -66,7 +66,7 @@ public class adminReviewController {
 	{
 		// sort1 = 글번호순,날짜순,상품이름순,아이디순,평점순
 		
-		List<adminReviewDTO> adminreviewSelectList = adminreviewService.adminreviewASCList(pg,sort1);
+		List<ReviewDTO> adminreviewSelectList = adminreviewService.adminreviewASCList(pg,sort1);
 		ModelAndView mav = new ModelAndView();
 			
 		adminReviewSelectListPaging adminreviewSelectListPaging = adminreviewService.adminReviewSelectList(pg,sort1);
@@ -89,7 +89,7 @@ public class adminReviewController {
 	{
 		// sort1 = 글번호순,날짜순,상품이름순,아이디순,평점순
 		
-		List<adminReviewDTO> adminreviewSelectList = adminreviewService.adminreviewDESCtList(pg,sort1);
+		List<ReviewDTO> adminreviewSelectList = adminreviewService.adminreviewDESCtList(pg,sort1);
 		ModelAndView mav = new ModelAndView();
 	
 		adminReviewSelectListPaging adminreviewSelectListPaging = adminreviewService.adminReviewSelectList(pg,sort1);

@@ -33,7 +33,7 @@ public interface ProfileDAO {
 
 	public void totalDelete(String memberId);
 
-	public int getTotalWishlist();
+	public int getTotalWishlist(String id);
 
 	public List<OrderDTO> getOrderList(Map<String, Object> map);
 
@@ -44,4 +44,10 @@ public interface ProfileDAO {
     List<CartDTO> getCartList(Map<String, Object> map);
 
 	int getTotalCartList(String id);
+
+	void cartDelete(int id);
+
+	void cartTotalDelete(String memberId);
+
+	List<CartDTO> getAllCartList(String memberId);
 }

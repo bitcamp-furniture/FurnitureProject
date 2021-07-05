@@ -65,8 +65,8 @@
 		delete from wishlist where member_id=#{memberId}
 	</delete>
 
-	<select id="getTotalWishlist"  resultType="Integer">
-		select count(*) as count from wishlist
+	<select id="getTotalWishlist" parameterType="String" resultType="Integer">
+		select count(*) as count from wishlist where member_id=#{id}
 	</select>
 
 	<select id="getOrderList" parameterType="java.util.Map" resultType="order">
@@ -156,4 +156,29 @@
 				where c.member_id=#{id} order by c.id desc
 			)
 	</select>
+
+	<delete id="cartDelete" parameterType="int">
+		delete from cart where id=#{id}
+	</delete>
+
+	<delete id="cartTotalDelete" parameterType="String">
+		delete from cart where member_id=#{memberId}
+	</delete>
+
+	<select id="getAllCartList" parameterType="String" resultType="cart">
+		select distinct
+		c.id,
+		p.product_name,
+		c.product_option_color,
+		c.product_count,
+		p.product_price,
+		i.product_img_thumb
+		from cart c
+		inner join product p
+		on p.id = c.product_id
+		inner join product_image i
+		on p.product_code = I.product_code
+		where c.member_id=#{memberId} order by c.id desc
+	</select>
+
  </mapper>
