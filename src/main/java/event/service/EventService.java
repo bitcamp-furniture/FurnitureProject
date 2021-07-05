@@ -5,6 +5,9 @@ import java.util.Map;
 
 import event.bean.EventDTO;
 import event.bean.EventListPaging;
+import event.bean.FaQAllListPaging;
+import event.bean.FaQDTO;
+import event.bean.FaQListPaging;
 import event.bean.NoticeDTO;
 import event.bean.NoticeListPaging;
 import event.bean.ProductManagingDTO;
@@ -42,5 +45,15 @@ public interface EventService {
 	public void productListDelete(String[] check);
 
 	public List<ProductManagingDTO> getSortedProductList(String selectCate, String selectProduct, String productPg);
+
+	public List<FaQDTO> faQList(String pg, String div);
+
+	public FaQListPaging faQListPaging(String pg, String div);
+
+	public List<FaQDTO> faQAllList(String pg);
+
+	public FaQDTO getFaQView(String id);
+
+	public FaQAllListPaging faQAllListPaging(String pg);
 
 }

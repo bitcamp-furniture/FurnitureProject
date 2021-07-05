@@ -15,13 +15,13 @@ public interface FurnitureDAO {
 
 	public List<Product_qnaDTO> productQnAList(String pg);
 
-	public int getTotalQNA();
+	public int getTotalQNA(String product_name);
 
 	public List<ReviewDTO> reviewList(Map<String, String> map);
 
 	public List<Product_qnaDTO> productQnAListPaging(Map<String, String> map);
 
-	public int getTotalReview();
+	public int getTotalReview(String product_name);
 
 	public List<ReviewDTO> reviewListTop5();
 

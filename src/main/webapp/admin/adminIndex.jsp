@@ -203,7 +203,7 @@ body {
                         <li><ion-icon name="create" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;컨텐츠 관리 &emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu">
                             <li><a href="#">QNA관리</a></li>
-                            <li><a href="#">리뷰관리</a></li>
+                            <li><a href="/furniture/admin/review">리뷰관리</a></li>
                         </ul>
                     </ul>
                     <ul class="big_menu">

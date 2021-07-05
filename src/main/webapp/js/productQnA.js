@@ -1,6 +1,9 @@
 // 상품 문의 등록 버튼 클릭 시 유효성 검사 .. 작성
 $('.qna_write_btn').click(function() {
    $('.qna_write_div').empty();
+   if($('#memEmail').val() ==''){
+	   alert('로그인후 문의 등록 부탁드립니다~')
+   }
    
    if($('.qna_write_subject').val() == ''){
       $('.qna_write_div').text('제목을 입력하세요');
@@ -30,10 +33,90 @@ $('.qna_write_btn').click(function() {
             alert('글쓰기 성공');
             $('.qna_write_subject').val('');
             $('.qna_write_content').val('');
-            $('.product_id').val('');
-            $('.product_name').val('');
+          
 
-            product_qna_paging();
+            $.ajax({
+        		type:'post',
+        		url:'/furniture/main/productQnAListPaging',
+        		data: {'product_name':$('.product_name').val()},
+        		dataType:'json',
+        		success:function(data){
+        			//console.log(JSON.stringify(data));
+        			console.log(data);
+        			
+        			$('.qna_list_table tr:gt(0)').remove();
+        			
+        			$.each(data.productQnAList, function(index,items){
+        				var writerEmail = items.email;
+        				
+        				$('<tr/>', {
+        					style: 'background-color: #f5f7ff;'
+        				}).append($('<td/>',{
+        					align:'center',
+        					text:items.id,
+        					id:'qnaDTO_id_td'
+        				})).append($('<td/>').append($('<a/>',{
+        					class:'qnaDTO_subject_td'+items.id,
+        					href:'javascript:void(0)',
+        					text:items.qna_subject
+        				}))
+        				).append($('<td/>',{
+        					align:'center',
+        					text: writerEmail.slice(0, 2)+'***'
+        				})).append($('<td/>',{
+        					align:'center',
+        					text:items.created_atQ
+        				})).append($('<td/>',{
+        					align:'center',
+        					text:items.reply
+        					
+        				})).appendTo($('.qna_list_table'));
+        				
+        				//내용
+        				
+        				$('<tr/>',{
+        					class:'qna_content'+items.id,
+        					id:'qna_content'
+        				}).append($('<td/>',{
+        					align:'left',
+        					text:items.qna_content,
+        					colspan: '5'
+        				})).appendTo($('.qna_list_table'));
+        				
+        				if(items.reply != 0){
+        					$('<tr/>',{
+        						class:'qna_answer'+items.id,
+        						id:'qna_answer'
+        					}).append($('<td/>',{
+        						align:'left',
+        						text:items.qna_answer,
+        						colspan: '3'
+        					})).append($('<td/>',{
+        						align:'center',
+        						text:items.created_atA
+        					})).append($('<td/>',{
+        					})).appendTo($('.qna_list_table'));
+        				}
+        				
+        				$('.qna_content'+items.id).hide();
+        				$('.qna_answer'+items.id).hide();
+        				
+        				$('.qnaDTO_subject_td'+items.id).click(function(){
+        					$('.qna_content'+items.id).toggle();
+        					if(items.reply != 0){
+        						
+        						$('.qna_answer'+items.id).toggle();}
+        				});
+        				
+        			});//each  
+        			
+        			//페이징 처리
+        			$('#qna_listPagingDiv').html(data.product_qna_paging.pagingHTML);
+        		},
+        		error: function(err){
+        			console.log(err);
+        		}
+        	});
          },
          error: function(err){
             console.log(err);
@@ -62,7 +145,6 @@ function product_qna_paging(pg) {
 		dataType:'json',
 		success:function(data){
 			console.log(JSON.stringify(data));
-			
 			$('.qna_list_table tr:gt(0)').remove();
 			
 			$.each(data.productQnAList, function(index,items){
@@ -137,9 +219,11 @@ function product_qna_paging(pg) {
 		}
 	});
 }
-
 /*
+
 $('#qna').click(function(){
+	alert("ggggg")
+
 	$.ajax({
 		type:'post',
 		url:'/furniture/main/productQnAListPaging',
