@@ -161,6 +161,7 @@ function productPaging(pg){
 <script type="text/javascript">
 $('#selectListSort').on('change', function() {
 	// 1 최신순 2 가격낮은순 3 가격높은순
+	$('#key').val( $(this).val() );
 	selectListSort(1);
 });
 

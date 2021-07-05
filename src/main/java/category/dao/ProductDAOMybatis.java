@@ -60,12 +60,15 @@ public class ProductDAOMybatis implements ProductDAO{
 		if(key.equals("1")) {
 			map.put("sortOption", "id");
 			map.put("orderBy", "desc");
+			return sqlSession.selectList("productSQL.sortedSelectList", map);
 		} else if(key.equals("2")) {
 			map.put("sortOption", "product_price");
 			map.put("orderBy", "asc");
+			return sqlSession.selectList("productSQL.sortedSelectList", map);
 		} else if(key.equals("3")) {
 			map.put("sortOption", "product_price");
 			map.put("orderBy", "desc");
+			return sqlSession.selectList("productSQL.sortedSelectList", map);
 		}
 		return sqlSession.selectList("productSQL.sortedSelectList", map);
 	}
