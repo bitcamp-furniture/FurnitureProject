@@ -18,7 +18,7 @@
       <tr>
           <td align="center" width="100">제품코드</td>
           <td>
-              <input type="text" name=product_code id="product_code" size="50" placeholder="제품코드 입력">
+              <input type="text" name="product_code" id="product_code" size="50" placeholder="제품코드 입력">
               <div id="product_codeDiv"></div>
           </td>
       </tr>

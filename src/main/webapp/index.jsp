@@ -25,9 +25,7 @@
     <link rel="stylesheet" href="/furniture/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="/furniture/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/furniture/css/index.css" type="text/css">
-    
-    
-    
+
 </head>
 <body>
 
@@ -50,7 +48,7 @@
                                     <c:if test="${sessionScope.memEmail == null }">
                                         <li><a href="/furniture/member/joinPage">회원가입</a></li>
                                         <li><a href="/furniture/member/loginForm">로그인</a></li>
-                                        <li><a href="/furniture/member/loginForm">마이페이지</a></li>
+                                        <li><a href="#" onclick="myPage()">마이페이지</a>
                                     </c:if>
                                     <c:if test="${sessionScope.memEmail != null && sessionScope.verify == null}">
                                         <li><a href="/furniture/member/logout">로그아웃</a></li>
@@ -162,7 +160,6 @@
                                     <li><a href="/furniture/main/FaQ">FAQ</a></li>
                                     <li><a href="/furniture/main/event">이벤트</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=문의사항">문의사항</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=고객센터">고객센터</a></li>
                                 </ul>
                              </li>
                         </ul>
@@ -277,7 +274,7 @@
 <!-- Search End -->
 
 
-
+<input type="hidden" name="login" id="login" value="${login12}">
 <!-- Js Plugins -->
 <script src="/furniture/js/jquery-3.3.1.min.js"></script>
 <script src="/furniture/js/bootstrap.min.js"></script>
@@ -297,6 +294,13 @@ function enterkey() {
     if (window.event.keyCode == 13) {
        location.href="/furniture/category/view/search?keyword=" + $('.search-input').val() +'&pg=1'
     }
+}
+
+function myPage() {
+	$('input[name=login]').val(1);
+	var login = $('input[name=login]').val();
+	location.href = '/furniture/member/loginForm?login12='+login
+	//alert($('#login').val());
 }
 </script>
 </body>

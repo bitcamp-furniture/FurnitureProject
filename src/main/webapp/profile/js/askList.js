@@ -10,7 +10,6 @@ $('#askBtn').click(function(){
 
 });
 
-
 $(function(){
 	$.ajax({
 		type: 'post',
