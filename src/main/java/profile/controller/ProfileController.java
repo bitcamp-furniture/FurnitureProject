@@ -3,6 +3,7 @@ package profile.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -129,20 +130,28 @@ public class ProfileController {
 	@ResponseBody
 	public ModelAndView getAskList(@RequestParam(required = false, defaultValue = "1") String askPg,
 			HttpSession session, HttpServletResponse response) {
+		String memEmail = (String) session.getAttribute("memEmail");
+
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("askPg", askPg);
+		map.put("memEmail", memEmail);
+		
+		
+		
 		//1페이지당 5개씩
-		List<AskDTO> list = profileService.getAskList(askPg);
+		List<AskDTO> list = profileService.getAskList(map);
 		
 		//페이징 처리
 		AskPaging askPaging = profileService.askPaging(askPg);
 				
-//		//세션
-//		String memId = (String) session.getAttribute("memId");
-//		
+		//세션
+		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("askPaging", askPaging);
 		mav.addObject("askPg", askPg);
 		mav.addObject("list", list);
-//		mav.addObject("memId", memId);
+		mav.addObject("memEmail", memEmail);
 		
 		mav.setViewName("jsonView");
 		

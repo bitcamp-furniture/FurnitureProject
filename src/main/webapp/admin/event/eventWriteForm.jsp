@@ -6,6 +6,7 @@
 	font-weight: normal;
 	font-family: sans-serif;
 	font-size: 30px;
+	height:3px;
 }
 
 #imgSize {
