@@ -60,7 +60,7 @@ public class FurnitureController {
 		public String productView(@RequestParam(required = false, defaultValue = "1") String pg
 								, Integer id
 								, Model model
-								,Product_OptionDTO product_OptionDTO
+								, Product_OptionDTO product_OptionDTO
 	                            ) {
 			ProductDTO productDTO = new ProductDTO();
 			//ProductImageDTO productImageDTO = new ProductImageDTO();
