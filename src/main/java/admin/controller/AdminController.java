@@ -1,6 +1,7 @@
 package admin.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,5 +62,33 @@ public class AdminController {
 		
 		return mav;
 	}
+	
+	//회원목록 검색
+	@RequestMapping(value="/getSearchMemberList", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getSearchMemberList(@RequestParam Map map) {
+		
+		List<MemberDTO> list = adminService.getSearchMemberList(map);
+		
+		MemberListPaging memberListPaging = adminService.memberListSearchPaging(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("memberListPaging", memberListPaging);
+		mav.addObject("pg", map.get("pg"));
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+
+		
+		return mav;
+	}
+	
+	//회원 삭제
+	@RequestMapping(value="/memberListDelete", method=RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView memberListDelete(@RequestParam String[] check) {
+		adminService.memberListDelete(check);
+		
+		return new ModelAndView("redirect:/admin/memberList");
+	}	
 
 }

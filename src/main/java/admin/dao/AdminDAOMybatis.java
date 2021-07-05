@@ -26,4 +26,20 @@ public class AdminDAOMybatis implements AdminDAO{
 		return sqlSession.selectOne("adminSQL.getTotalA");
 	}
 
+	@Override
+	public List<MemberDTO> getSearchMemberList(Map<String, String> map) {
+		return sqlSession.selectList("adminSQL.getSearchMemberList", map);
+	}
+
+	@Override
+	public int getSearchTotal(Map<String, String> map) {
+		return sqlSession.selectOne("adminSQL.getSearchTotal", map);
+	}
+
+	@Override
+	public void memberListDelete(Map<String, String[]> map) {
+		sqlSession.delete("adminSQL.memberListDelete", map);
+		
+	}
+
 }

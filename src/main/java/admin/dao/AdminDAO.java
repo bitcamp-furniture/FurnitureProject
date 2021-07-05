@@ -11,4 +11,10 @@ public interface AdminDAO {
 
 	public int getTotalA();
 
+	public List<MemberDTO> getSearchMemberList(Map<String, String> map);
+
+	public int getSearchTotal(Map<String, String> map);
+
+	public void memberListDelete(Map<String, String[]> map);
+
 }

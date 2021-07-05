@@ -26,22 +26,19 @@
 </style>
 </head>
 <body id="memberListBody">
-	<form class="memberList" name="memberList">
+	<form class="memberList" id="memberList" name="memberList" method="get" action="/furniture/admin/memberListDelete">
 		<div class="memberList container">
 			<div class="memberList row">
 				<div class="col-lg-12">
 					<!-- search start -->
 					<div class="search">
-<!-- 					<select name="searchOption">
-							<option value="subject">제목</option>
-							<option value="id">작성자</option>
-						</select> -->
 						<input type="search" name="keyword" id="keyword" value="${keyword }">
 						<input type="button" value="검색" id="memberSearchBtn">
+						<input type="button" value="회원 삭제" id="memberDeleteBtn">
 					</div><br>
-					<table class="memberList table" id="memberListTable" border="1" bordercolor="black" cellpadding="5" cellspacing="0" frame="hsides" rules="rows">
+					<table class="memberList table" id="memberListTable" border="1" bordercolor="gray" cellpadding="5" cellspacing="0" frame="hsides" rules="rows">
 				        <tr>
-				            <th><input type="checkbox"></th>
+				            <th><input type="checkbox" id="check_all" name="check_all" value="check_all" autocomplete="off"></th>
 				            <th>이름</th>
 				            <th>계정</th>
 				            <th>가입일</th>

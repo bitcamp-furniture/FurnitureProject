@@ -390,7 +390,7 @@ input::placeholder {
 			                <div class="bn" id="bn">
 			                    <div class="inner-txt">
 			                      <h2 class="title" style="font-weight:bold; color:black;">간편가입</h2>
-			                        <p class="loginContent" onclick="checkId()">로그인에 사용할 <br>아이디를 입력하세요.</p>
+			                        <p class="loginContent">로그인에 사용할 <br>아이디를 입력하세요.</p>
 			                        <input class="email" id="email" name="email" placeholder="아이디 (이메일) 입력" formcontrolname="email" autocorrect="off" autocapitalize="none" type="text"><br><br>
 			                        <input type="hidden" name="check" value="">
 			                        <div id="emailDiv"></div><br>
@@ -416,7 +416,7 @@ input::placeholder {
 			                 </div>
 			                <!-- 이름 입력 페이지 -->
 			                <div class="bn">
-			                    <div class="inner-txt">
+			                    <div class="inner-txt" onclick="nameCheck()">
 			                      <h3 class="title" style="font-weight:bold; color:black;">간편가입</h3>
 			                        <p class="nameContent">이름을 입력하세요.</p>
 			                        <input class="name" id="name" name="name" placeholder="이름 입력" formcontrolname="name" autocorrect="off" autocapitalize="none" type="text"><br><br>

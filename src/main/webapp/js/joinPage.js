@@ -398,6 +398,7 @@ function checkPwd(){
 		$('.page-btn2').css('transition', 'all 0.5s');
 		$('.page-btn2').css('background', '#c4c4c4');
 		$('.page-btn2').css('color', 'white');
+		$('.page-btn2').attr('disabled', true);
 		
 		return false;
 	}
@@ -415,6 +416,9 @@ function checkPwd(){
 		$('.page-btn2').css('transition', 'all 0.5s');
 		$('.page-btn2').css('background', '#c4c4c4');
 		$('.page-btn2').css('color', 'white');
+		$('.page-btn2').attr('disabled', true);
+		
+		return false;
 		  
 		}else if(pw.search(/\s/) != -1){
 			document.getElementById("passwordDiv").innerText = "비밀번호는 공백 없이 입력해주세요.";	  
@@ -427,6 +431,7 @@ function checkPwd(){
 			$('.page-btn2').css('transition', 'all 0.5s');
 			$('.page-btn2').css('background', '#c4c4c4');
 			$('.page-btn2').css('color', 'white');
+			$('.page-btn2').attr('disabled', true);
 			
 			return false;
 		  
@@ -441,6 +446,7 @@ function checkPwd(){
 			$('.page-btn2').css('transition', 'all 0.5s');
 			$('.page-btn2').css('background', '#c4c4c4');
 			$('.page-btn2').css('color', 'white');
+			$('.page-btn2').attr('disabled', true);
 			
 			return false;
 		  
@@ -456,6 +462,7 @@ function checkPwd(){
 			$('.page-btn2').css('transition', 'all 0.5s');
 			$('.page-btn2').css('background', '#c4c4c4');
 			$('.page-btn2').css('color', 'white');
+			$('.page-btn2').attr('disabled', true);
 			
 			return false;
 			
@@ -472,6 +479,7 @@ function checkPwd(){
 			$('.page-btn2').css('transition', 'all 0.5s');
 			$('.page-btn2').css('background', '#c4c4c4');
 			$('.page-btn2').css('color', 'white');
+			$('.page-btn2').attr('disabled', true);
 			    
 		    return false;
 	    
@@ -488,6 +496,7 @@ function checkPwd(){
 			$('.page-btn2').css('transition', 'all 0.5s');
 			$('.page-btn2').css('background', '#c4c4c4');
 			$('.page-btn2').css('color', 'white');
+			$('.page-btn2').attr('disabled', true);
 			
 		    return false;
 	    
@@ -502,6 +511,8 @@ function checkPwd(){
 			$('.page-btn2').css('transition', 'all 0.5s');
 			$('.page-btn2').css('background', '#223894');
 			$('.page-btn2').css('color', 'white');
+			$('.page-btn2').attr('disabled', false);
+			
 			return true;
 			
 		} 
@@ -509,8 +520,7 @@ function checkPwd(){
 
 
 //이름
-$("#name").focusout(function(){
-//$('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn3').click(function(){
+$('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn3').click(function(){
 	var getName = /^[가-힣]{2,6}$/;
 	$('#nameDiv').empty();
 
@@ -563,6 +573,26 @@ $("#name").focusout(function(){
 	}
 	
 });
+
+function nameCheck(){
+	var getName = /^[가-힣]{2,6}$/;
+	$('#nameDiv').empty();
+	
+	if(getName.test($("#name").val())) {
+		$('#nameDiv').css('color', '#223894');
+		$('#nameDiv').css('font-size', '12.5px');
+		
+		$('.page-btn3').css('display', 'block');
+		$('.page-btn3').css('border-radius', '5px');
+		$('.page-btn3').css('border', 'none');
+		$('.page-btn3').css('transition', 'all 0.5s');
+		$('.page-btn3').css('background', '#223894');
+		$('.page-btn3').css('color', 'white');
+		
+	    return true;
+	}
+	
+}
 
 //휴대폰번호,주소
 $('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn4').click(function(){
@@ -757,7 +787,6 @@ $('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn5').c
 		}
 	});
 
-
 });
 
 
@@ -918,7 +947,7 @@ function checkBir(){
 		
 	}
 	
-	else if ($("#bir_yy").val() && $("#bir_mm").val() && $("#bir_dd").val()){
+	else if ($("#bir_yy").val() && $("#bir_dd").val()){
 		$("#birthDiv").val("");
 		
 		$('.page-btn6').css('display', 'block');
