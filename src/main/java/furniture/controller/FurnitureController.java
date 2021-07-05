@@ -60,13 +60,16 @@ public class FurnitureController {
 		public String productView(@RequestParam(required = false, defaultValue = "1") String pg
 								, Integer id
 								, Model model
+								,Product_OptionDTO product_OptionDTO
 	                            ) {
 			ProductDTO productDTO = new ProductDTO();
 			//ProductImageDTO productImageDTO = new ProductImageDTO();
 			productDTO = furnitureService.getIdToOneData(id);
 			List<ProductImageDTO> list = furnitureService.getIdToImageData(id);
 
+			List<Product_OptionDTO> optionlist=furnitureService.getIdOption(id);
 			
+			System.out.println(optionlist +"옵션");
 			//테스트
 			System.out.println(list);
 			System.out.println(productDTO);
@@ -76,6 +79,7 @@ public class FurnitureController {
 			model.addAttribute("productDTO", productDTO);//뷰가서 게터로, ${productDTO.product_id} 이런식으로 하는것 같은데
 			//model.addAttribute("productImageDTO", productImageDTO);//뷰가서 게터로, 이거는forEach로 반복문 돌리면서
 			model.addAttribute("ImageList", list);
+			model.addAttribute("optionlist", optionlist);
 			model.addAttribute("pg", pg);
 			model.addAttribute("display", "/main/productView.jsp");
 			return "/index";

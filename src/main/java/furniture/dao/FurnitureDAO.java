@@ -39,5 +39,7 @@ public interface FurnitureDAO {
 
 	public void productOptionRegistration(Product_OptionDTO product_OptionDTO);
 
+	public List<Product_OptionDTO> getIdOption(Integer id);
+
 
 }
