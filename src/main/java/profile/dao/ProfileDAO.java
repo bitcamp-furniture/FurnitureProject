@@ -13,7 +13,7 @@ public interface ProfileDAO {
 
 	public void askWrite(AskDTO askDTO);
 
-	public List<AskDTO> getAskList(Map<String, Integer> map);
+	public List<AskDTO> getAskList(Map<String, String> map);
 
 	public int getTotalA();
 

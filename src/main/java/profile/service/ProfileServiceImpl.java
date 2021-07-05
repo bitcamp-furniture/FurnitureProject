@@ -32,14 +32,14 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public List<AskDTO> getAskList(String pg) {
+	public List<AskDTO> getAskList(Map<String, String> map) {
 		//1페이지당 5개씩
-		int endNum = Integer.parseInt(pg)*5;
+		int endNum = Integer.parseInt(map.get("askPg"))*5;
 		int startNum = endNum-4;
 		
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startNum", startNum);
-		map.put("endNum", endNum);
+		map.put("startNum", startNum+"");
+		map.put("endNum", endNum+"");
+		
 		//DB
 		List<AskDTO> list = profileDAO.getAskList(map);
 		

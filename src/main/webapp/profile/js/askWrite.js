@@ -68,6 +68,6 @@ $('#askWriteBtn').click(function(){
 	}
 });
 
-$(function (){
+$(function(){
 
 });

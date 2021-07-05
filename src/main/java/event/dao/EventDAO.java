@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import event.bean.EventDTO;
+import event.bean.FaQDTO;
 import event.bean.NoticeDTO;
+import event.bean.ProductManagingDTO;
+import furniture.bean.ProductDTO;
 
 public interface EventDAO {
 
@@ -25,4 +28,26 @@ public interface EventDAO {
 	public int getTotalNoticeList();
 	 
 	public NoticeDTO getNoticeView(String id);
+
+	public List<ProductManagingDTO> getProductList(Map<String, Integer> map);
+
+	public int getProductPagingA(String selectCate, String selectProduct);
+
+	public double getproductReviewAvg(String id);
+
+	public List<String> getProductColors(String id);
+
+	public void productListDelete(Map<String, String[]> map);
+
+	public List<ProductManagingDTO> getSortedProductList(Map<String, Object> map);
+	
+	public List<FaQDTO> faQList(Map<Object, Object> map);
+
+	public int getTotalFaQList(String div);
+	
+	public List<FaQDTO> faQAllList(Map<Object, Object> map);
+
+	public int getTotalAllFaQList();
+
+	public FaQDTO getFaQView(String id);
 }

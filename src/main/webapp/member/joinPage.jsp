@@ -115,10 +115,8 @@ html {
     transform:translateY(-50%); */
 }
 
-
-
 /* input */
-.email, .password, .repassword, .name, .phone, .postcode, .address, .detailAddress, .extraAddress, .mail_check_input, .year, .dd, select {
+.email, .password, .repassword, .name, .phone, .postcode, .address, .detailAddress, .extraAddress, .mail_check_input {
 /*     -webkit-border-radius: 0;
     border-radius: 0;
     -webkit-appearance: none;
@@ -130,6 +128,14 @@ html {
     width: 400px;
     height: 40px;
     padding: 14px;
+}
+
+/* input */
+.year, .dd, select {
+    font-size:14px;
+    width: 400px;
+    height: 40px;
+    padding-left: 14px;
 }
 
 input::placeholder {
@@ -384,7 +390,7 @@ input::placeholder {
 			                <div class="bn" id="bn">
 			                    <div class="inner-txt">
 			                      <h2 class="title" style="font-weight:bold; color:black;">간편가입</h2>
-			                        <p class="loginContent" onclick="checkId()">로그인에 사용할 <br>아이디를 입력하세요.</p>
+			                        <p class="loginContent">로그인에 사용할 <br>아이디를 입력하세요.</p>
 			                        <input class="email" id="email" name="email" placeholder="아이디 (이메일) 입력" formcontrolname="email" autocorrect="off" autocapitalize="none" type="text"><br><br>
 			                        <input type="hidden" name="check" value="">
 			                        <div id="emailDiv"></div><br>
@@ -410,7 +416,7 @@ input::placeholder {
 			                 </div>
 			                <!-- 이름 입력 페이지 -->
 			                <div class="bn">
-			                    <div class="inner-txt">
+			                    <div class="inner-txt" onclick="nameCheck()">
 			                      <h3 class="title" style="font-weight:bold; color:black;">간편가입</h3>
 			                        <p class="nameContent">이름을 입력하세요.</p>
 			                        <input class="name" id="name" name="name" placeholder="이름 입력" formcontrolname="name" autocorrect="off" autocapitalize="none" type="text"><br><br>
@@ -475,7 +481,7 @@ input::placeholder {
 			                        </div>
 			
 			                        <!-- 월 -->
-			                        <div id="mm" style="width:60px; float:left;">
+			                        <div id="mm" style="width:60px; float:left; font-size:13px;">
 			                            <span class="box">
 			                                <select id="bir_mm" name="bir_mm" style="width:60px;">
 			                                    <option>월</option>
@@ -525,6 +531,7 @@ input::placeholder {
 			                        </div>
 			                    </div>
 			                </div>
+			             <br><br>
 			                
 			                <!-- end -->
 			            </div>

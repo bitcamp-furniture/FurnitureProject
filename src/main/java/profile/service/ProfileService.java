@@ -12,7 +12,7 @@ public interface ProfileService {
 
 	public void askWrite(AskDTO askDTO);
 
-	public List<AskDTO> getAskList(String pg);
+	public List<AskDTO> getAskList(Map<String, String> map);
 
 	public AskPaging askPaging(String pg);
 

@@ -42,7 +42,7 @@ $('#cart-tap').click(function() {
                     text: color
                 })).appendTo($('.cartTable'));
 
-                $('<tr/>',).append($('<td/>').append($('<input/>',{
+                $('<tr/>').append($('<td/>').append($('<input/>',{                
                     id: "qty_select",
                     type: 'text',
                     value: item.product_count,

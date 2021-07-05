@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service;
 
 import event.bean.EventDTO;
 import event.bean.EventListPaging;
+import event.bean.FaQAllListPaging;
+import event.bean.FaQDTO;
+import event.bean.FaQListPaging;
 import event.bean.NoticeDTO;
 import event.bean.NoticeListPaging;
+import event.bean.ProductManagingDTO;
 import event.dao.EventDAO;
 import furniture.bean.ProductDTO;
 import furniture.bean.Product_qnaDTO;
@@ -27,6 +31,12 @@ public class EventServiceImpl implements EventService {
 	private EventListPaging eventListPaging;
 	@Autowired
 	private NoticeListPaging noticeListPaging;
+	@Autowired
+	private event.bean.ProductManagingListPaging productManagingListPaging;
+	@Autowired
+	private FaQListPaging faQListPaging;
+	@Autowired
+	private FaQAllListPaging faQAllListPaging;
 
 	@Override
 	public List<EventDTO> getEventList(String pg) {
@@ -76,6 +86,7 @@ public class EventServiceImpl implements EventService {
    
    }
 
+	////////////////////////////// 공지 //////////////////////////////
 	@Override
 	public List<NoticeDTO> getNoticeList(String pg) {
 		// 1페이지당 5개씩
@@ -105,5 +116,130 @@ public class EventServiceImpl implements EventService {
 	@Override
 	public NoticeDTO getNoticeView(String id) {
 		return eventDAO.getNoticeView(id);
+	}
+	
+	////////////////////////////// 상품관리 //////////////////////////////
+	@Override
+	public List<ProductManagingDTO> getProductList(String pg) {
+		// 1페이지당 10개씩
+		int endNum = Integer.parseInt(pg) * 15;
+		int startNum = endNum - 14;
+
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+
+		return eventDAO.getProductList(map);
+	}
+
+	@Override
+	public event.bean.ProductManagingListPaging ProductManagingListPaging(String selectCate, String selectProduct, String productPg) {
+		if(!selectCate.equals("0")) {
+			productManagingListPaging.setFlag(1);
+		}else {
+			productManagingListPaging.setFlag(0);
+		}
+		
+		int totalA = eventDAO.getProductPagingA(selectCate, selectProduct);
+		
+		productManagingListPaging.setCurrentPage(Integer.parseInt(productPg));
+		productManagingListPaging.setPageBlock(5);
+		productManagingListPaging.setPageSize(15);
+		productManagingListPaging.setTotalA(totalA);
+		productManagingListPaging.makePagingHTML();
+		
+		return productManagingListPaging;
+	}
+
+	@Override
+	public double getproductReviewAvg(String id) {
+		return eventDAO.getproductReviewAvg(id);
+	}
+
+	@Override
+	public List<String> getProductColors(String id) {
+		// 리스트 형식으로 데이터 받아와서 여기서 String[]으로 만들기??
+		
+		List<String> colors = eventDAO.getProductColors(id);
+		return colors;
+	}
+
+	@Override
+	public void productListDelete(String[] check) {
+	      Map<String,String[]>map = new HashMap<String,String[]>();
+	      map.put("array",check);
+	      
+	      eventDAO.productListDelete(map);   
+	}
+
+	@Override
+	public List<ProductManagingDTO> getSortedProductList(String selectCate, String selectProduct, String productPg) {
+		// 1페이지당 10개씩
+		int endNum = Integer.parseInt(productPg) * 15;
+		int startNum = endNum - 14;
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		map.put("productPg", productPg);
+		map.put("selectProduct", selectProduct);
+		map.put("selectCate", selectCate);
+
+
+		return eventDAO.getSortedProductList(map);
+	}
+
+	@Override
+	public List<FaQDTO> faQList(String pg, String div) {
+		//1페이지당 9개씩
+		int endNum = Integer.parseInt(pg)*9;
+		int startNum = endNum-8;
+		Map<Object,Object> map = new HashMap<Object,Object>();
+		map.put("div",div);
+		map.put("startNum",startNum);
+		map.put("endNum",endNum);
+		return eventDAO.faQList(map);	
+	}
+	
+	//해당 페이징
+	@Override
+	public FaQListPaging faQListPaging(String pg, String div) {
+		
+		int totalFAQ = eventDAO.getTotalFaQList(div);
+		
+		faQListPaging.setCurrentPage(Integer.parseInt(pg));
+		faQListPaging.setPageBlock(3);
+		faQListPaging.setPageSize(9);
+		faQListPaging.setTotalA(totalFAQ);
+		faQListPaging.makePagingHTML();
+		return faQListPaging;
+	}
+	//모든 리스트 페이징FaQAllList
+	@Override
+	public List<FaQDTO> faQAllList(String pg) {
+		int endNum = Integer.parseInt(pg)*9;
+		int startNum = endNum-8;
+		
+		Map<Object,Object> map = new HashMap<Object,Object>();
+		map.put("startNum",startNum);
+		map.put("endNum",endNum);
+		return eventDAO.faQAllList(map);	
+	}
+	
+	@Override
+	public FaQAllListPaging faQAllListPaging(String pg) {
+		int totalFAQ = eventDAO.getTotalAllFaQList();// 총글수 
+		
+		faQAllListPaging.setCurrentPage(Integer.parseInt(pg));
+		faQAllListPaging.setPageBlock(3);
+		faQAllListPaging.setPageSize(9);
+		faQAllListPaging.setTotalA(totalFAQ);
+		faQAllListPaging.makePagingHTML();
+		return faQAllListPaging;
+	}
+
+	@Override
+	public FaQDTO getFaQView(String id) {
+		return eventDAO.getFaQView(id);
 	}
 }
