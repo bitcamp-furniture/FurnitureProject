@@ -226,7 +226,7 @@ public class ProfileController {
 		//System.out.println("list = "+list);
 
 		//페이징 처리
-		WishlistPaging wishlistPaging = profileService.wishlistPaging(wishlistPg);
+		WishlistPaging wishlistPaging = profileService.wishlistPaging(id, wishlistPg);
 
         ModelAndView mav = new ModelAndView();
 		mav.addObject("wishlistPg", wishlistPg);
@@ -282,6 +282,9 @@ public class ProfileController {
 		profileService.updateOrderStatus(id);
 	}
 
+//----------------------------------------------------------------
+//장바구니 넣기
+	
 //----------------------------------------------------------------
 //장바구니
  	@RequestMapping(value="getCartList", method=RequestMethod.POST)

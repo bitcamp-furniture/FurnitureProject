@@ -71,7 +71,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                
+                    <input type="hidden" id="memId" value="${memId}">
                    <!-- 상품 상세샷 넣을 자리 -->
                    
                    
@@ -119,10 +119,10 @@
                         <div class="product__details__option">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input type="text" id="product_qty" value="1">
                                 </div>
                             </div>
-                            <a href="#" class="primary-btn">Add to cart</a>
+                            <a id="addCartBtn" class="primary-btn">Add to cart</a>
                             <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
                         </div>
                     </div>
@@ -196,7 +196,7 @@
                             <table style="width:100%;" cellpadding="5">                        
                                <tr>
                                   <td align="center">
-                                     <input type="hidden" class="product_id" value="${productDTO.id}">
+                                     <input type="hidden" id="product_id" class="product_id" value="${productDTO.id}">
                                    <input type="hidden" class="product_name" value="${productDTO.product_name}">
                                      <input type="text" class="qna_write_subject" placeholder="제목입력" style="width:90%;"> 
                                   </td>
