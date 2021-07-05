@@ -5,7 +5,6 @@
 <configuration>
 	
 	<typeAliases>
-		<typeAlias type="admin.bean.adminReviewDTO" alias="Adminreview"/>
       	<typeAlias type="category.bean.ProductListDTO" alias="productList"/>      	
       	<typeAlias type="event.bean.EventDTO" alias="event"/>  
       	<typeAlias type="event.bean.FaQDTO" alias="FaQ"/>  	    	
