@@ -136,9 +136,9 @@ public class EventController {
 	// 페이징 + 전체 상품 + 색 옵션 배열 리스트로 가져오는 메소드
 	@ResponseBody
 	@RequestMapping(value = "/product/getProductManagingList", method = RequestMethod.POST)
-	public ModelAndView getProductManagingList(@RequestParam(required = false, defaultValue = "1") String productPg, Model model) {
+	public ModelAndView getProductManagingList(@RequestParam(required = false, defaultValue = "1") String productPg, String key, Model model) {
 		List<ProductManagingDTO> productList = eventService.getProductList(productPg);
-		ProductManagingListPaging productManagingListPaging = eventService.ProductManagingListPaging(productPg);
+		ProductManagingListPaging productManagingListPaging = eventService.ProductManagingListPaging("0", "0", productPg);
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("productList", productList);
@@ -181,14 +181,13 @@ public class EventController {
 										String selectCate,
 										String selectProduct, 
 										Model model) {
-			
 			List<ProductManagingDTO> productList = eventService.getSortedProductList(selectCate, selectProduct, productPg);
-			//ProductManagingListPaging productManagingListPaging = eventService.ProductManagingListPaging(productPg);
+			ProductManagingListPaging productManagingListPaging = eventService.ProductManagingListPaging(selectCate, selectProduct, productPg);
 
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("productList", productList);
 			mav.addObject("productPg", productPg);
-			//mav.addObject("productManagingListPaging", productManagingListPaging);
+			mav.addObject("productManagingListPaging", productManagingListPaging);
 
 			mav.setViewName("jsonView");
 			return mav;

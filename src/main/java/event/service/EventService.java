@@ -36,7 +36,7 @@ public interface EventService {
 
 	public List<ProductManagingDTO> getProductList(String pg);
 
-	public ProductManagingListPaging ProductManagingListPaging(String pg);
+	public ProductManagingListPaging ProductManagingListPaging(String selectCate, String selectProduct, String productPg);
 
 	public double getproductReviewAvg(String id);
 

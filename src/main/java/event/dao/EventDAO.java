@@ -31,7 +31,7 @@ public interface EventDAO {
 
 	public List<ProductManagingDTO> getProductList(Map<String, Integer> map);
 
-	public int getProductPagingA();
+	public int getProductPagingA(String selectCate, String selectProduct);
 
 	public double getproductReviewAvg(String id);
 

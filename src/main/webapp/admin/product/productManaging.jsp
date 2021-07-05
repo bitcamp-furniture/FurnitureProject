@@ -127,7 +127,7 @@
 				
 				//$('#productManagingDiv').remove();
 				$('#productManagingTbl tr:gt(0)').remove();
-
+				$('#productManagingListPagingDiv').empty();
 
 				$.each(data.productList, function(index, items){
 					$('<tr/>').append($('<td/>',{
@@ -227,24 +227,33 @@
 		var selectCate = $('select[name=sortCate]').val();
 		var selectProduct = $('input[name=sortProduct]:checked').val();
 		
+		sortProductList(1);
 		//alert("selectCate="+selectCate+" selectProduct="+selectProduct);
+		
+	});
+	
+	function sortProductList(productPg) {
+		var selectCate = $('select[name=sortCate]').val();
+		var selectProduct = $('input[name=sortProduct]:checked').val();
+
 		$.ajax({
 			type: 'post',
 			url: '/furniture/admin/product/sortProduct',
 			data: { 'selectCate' : selectCate, 
 					'selectProduct' : selectProduct,
-					'productPg' : $('#productPg').val() },
+					'productPg' : productPg },
 			dataType: 'json',
 			success: function(data) {
-				//console.log(data)
-				//alert(JSON.stringify(data));
 				$('#productManagingTbl tr:gt(0)').remove();
+				$('#productManagingListPagingDiv').empty();
+
 				
+				// 가격순
 				if(selectProduct == '1' || selectProduct == '2'){
-					// 가격순
 					getSortedProductListPRICEreview(data);
+
+				// 리뷰순
 				} else if(selectProduct == '3' || selectProduct == '4'){
-					// 리뷰순
 					getSortedProductListCATEreview(data);
 				}
 				
@@ -253,10 +262,8 @@
 				console.log(err);
 			}
 		});
-		
-	});
-	
-	
+
+	}
 </script>
 
 
@@ -319,6 +326,8 @@ function getSortedProductListPRICEreview(data) {
 		});
 		
 	}); // each
+	
+	$('#productManagingListPagingDiv').html(data.productManagingListPaging.pagingHTML);
 
 }
 
@@ -380,6 +389,9 @@ function getSortedProductListCATEreview(data) {
 		});
 		
 	}); // each
+	
+	$('#productManagingListPagingDiv').html(data.productManagingListPaging.pagingHTML);
+
 }
 
 </script>

@@ -75,8 +75,45 @@ public class EventDAOMybatis implements EventDAO {
 	}
 
 	@Override
-	public int getProductPagingA() {
-		return sqlSession.selectOne("eventSQL.getProductPagingA");
+	public int getProductPagingA(String selectCate, String selectProduct) {
+		if(selectCate.equals("0") || selectProduct.equals("0")) { // 아무 일도 없으면 그냥 전체 글 수 가져와라
+			return sqlSession.selectOne("eventSQL.getProductPagingA");
+		}
+
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("selectCate", selectCate);
+		//selectCate = 100, 200, 300.... //  where product_category2 = #{selectCate}
+		
+		if(selectCate.equals("all")) { // 카테고리 전체(where절 x)
+			if(selectProduct.equals("1")) { 
+				return sqlSession.selectOne("eventSQL.getProductPagingA");
+			} else if(selectProduct.equals("2")) { 
+				return sqlSession.selectOne("eventSQL.getProductPagingA");
+				
+			// 카테고리 전체 + 리뷰 존재하는 건수  count
+			} else if(selectProduct.equals("3")) { 
+				return sqlSession.selectOne("eventSQL.getProductPagingANOCATEreview");
+			} else if(selectProduct.equals("4")) { 
+				return sqlSession.selectOne("eventSQL.getProductPagingANOCATEreview");
+			}
+			
+		} else { 
+			if(selectProduct.equals("1")) { 
+				// System.out.println("카테고리있고 가격높은순");
+				return sqlSession.selectOne("eventSQL.getProductPagingAYESCATEprice", map);
+			} else if(selectProduct.equals("2")) { 
+				// System.out.println("카테고리있고 가격낮은순");
+				return sqlSession.selectOne("eventSQL.getProductPagingAYESCATEprice", map);
+			} else if(selectProduct.equals("3")) { 
+				//System.out.println("카테고리있고 평점높은순");
+				return sqlSession.selectOne("eventSQL.getProductPagingAYESCATEreview", map);
+			} else if(selectProduct.equals("4")) { 
+				//System.out.println("카테고리있고 평점낮은순");
+				return sqlSession.selectOne("eventSQL.getProductPagingAYESCATEreview", map);
+			}
+		}
+		// dead code
+		return 0;
 	}
 
 	// 리뷰가 존재하면 평균 점수를 가져오고, 없으면 0을 리턴한다

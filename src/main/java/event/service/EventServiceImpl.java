@@ -133,10 +133,16 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public event.bean.ProductManagingListPaging ProductManagingListPaging(String pg) {
-		int totalA = eventDAO.getProductPagingA();
+	public event.bean.ProductManagingListPaging ProductManagingListPaging(String selectCate, String selectProduct, String productPg) {
+		if(!selectCate.equals("0")) {
+			productManagingListPaging.setFlag(1);
+		}else {
+			productManagingListPaging.setFlag(0);
+		}
 		
-		productManagingListPaging.setCurrentPage(Integer.parseInt(pg));
+		int totalA = eventDAO.getProductPagingA(selectCate, selectProduct);
+		
+		productManagingListPaging.setCurrentPage(Integer.parseInt(productPg));
 		productManagingListPaging.setPageBlock(5);
 		productManagingListPaging.setPageSize(15);
 		productManagingListPaging.setTotalA(totalA);

@@ -100,10 +100,46 @@
 		]]>
 	</select>
 	
-	<!-- 상품 갯수 -->
+	<!-- //////////////////////////////////// 상품 갯수 .... 정렬 기준에 따라 다르게 가지고 오기 -->
 	<select id="getProductPagingA" resultType="int">
 		select count(*) from product
 	</select>
+	
+	<!-- 상품 갯수 ... 카테고리없이 리뷰 유무 -->
+	<select id="getProductPagingANOCATEreview" resultType="int">
+		select count(*) from 
+	    	(
+	    	select p.id, p.product_code, p.product_name, r.review, rownum rn
+	    	from product p,
+		        (
+		        select round(avg(review_stars), 1) as review, product_id from review
+		        group by product_id
+		        )r
+	    where p.id = r.product_id
+	    order by review desc
+	    )
+	</select>
+	
+	<!-- 상품 갯수 ... 카테고리있는 총 갯수 -->
+	<select id="getProductPagingAYESCATEprice" parameterType="java.util.Map" resultType="int">
+		select count(*) from product where product_category2 = #{selectCate}
+	</select>
+	
+	<!-- 상품 갯수 ... 카테고리있는 리뷰 유무 -->
+	<select id="getProductPagingAYESCATEreview" parameterType="java.util.Map" resultType="int">
+		select count(*) from 
+	    	(
+	    	select p.id, p.product_code, p.product_name, r.review, rownum rn
+	    	from product p,
+		        (
+		        select round(avg(review_stars), 1) as review, product_id from review
+		        group by product_id
+		        )r
+	    where p.id = r.product_id and product_category2 = #{selectCate}
+	    order by review desc
+	    )
+	</select>
+	
 	
 	<!-- 상품id로 리뷰 있나 검증 -->
 	<select id="isNullProductReview" parameterType="int" resultType="furniture.bean.ReviewDTO" >
