@@ -96,7 +96,9 @@ CREATE SEQUENCE seq_Product_Image nocycle nocache;
 CREATE TABLE product_option(
 option_seq NUMBER PRIMARY KEY, --seq
 id NUMBER, --product ID
-color VARCHAR2(50) -- 컬러
+color VARCHAR2(50), -- 컬러
+color_name VARCHAR2(50) -- 컬러풀네임
+
 ); 
 
 -- option_seq

@@ -129,7 +129,9 @@
 	<select id="getProductId" parameterType="String" resultType="Integer">
 		select id from product where product_code=#{product_code}
 	</select>
-	
-	
-	
+
+
+	<select id="getIdOption" parameterType="Integer" resultType="productOption">
+		select * from product_option where id=#{id}
+	</select>
 </mapper>
