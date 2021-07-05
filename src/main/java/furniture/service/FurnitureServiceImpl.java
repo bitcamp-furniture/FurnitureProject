@@ -128,4 +128,9 @@ public class FurnitureServiceImpl implements FurnitureService {
 		furnitureDAO.productOptionRegistration(product_OptionDTO);
 		
 	}
+	//최근 한달 리뷰수~~~
+	@Override
+	public List<ReviewDTO> reviewDay() {
+		return furnitureDAO.reviewDay();
+	}
 }

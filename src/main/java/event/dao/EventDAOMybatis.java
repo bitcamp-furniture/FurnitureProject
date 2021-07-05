@@ -1,5 +1,6 @@
 package event.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import event.bean.EventDTO;
 import event.bean.FaQDTO;
 import event.bean.NoticeDTO;
+import furniture.bean.ReviewDTO;
 
 @Repository
 @Transactional

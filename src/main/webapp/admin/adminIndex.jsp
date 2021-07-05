@@ -173,7 +173,7 @@ body {
                 	<hr class="line">
                     <ul class="big_menu">
 						<li><ion-icon name="bed" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;<a href="/furniture/">사이트 바로가기</a></li>
-						<li><ion-icon name="grid" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;<a href="#">대시보드</a></li>
+						<li><ion-icon name="grid" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;<a href="/furniture/admin/adminIndex">대시보드</a></li>
                     </ul><hr class="line">
                     <ul class="big_menu">
 						<li><ion-icon name="person-sharp" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;사용자 관리 &emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>

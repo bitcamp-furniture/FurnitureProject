@@ -1,5 +1,6 @@
 package event.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import event.bean.FaQDTO;
 import event.bean.FaQListPaging;
 import event.bean.NoticeDTO;
 import event.bean.NoticeListPaging;
+import furniture.bean.ReviewDTO;
 
 public interface EventService {
 
@@ -40,6 +42,5 @@ public interface EventService {
 	public FaQDTO getFaQView(String id);
 
 	public FaQAllListPaging faQAllListPaging(String pg);
-
 
 }
