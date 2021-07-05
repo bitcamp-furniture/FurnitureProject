@@ -27,7 +27,7 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
-	public List<AskDTO> getAskList(Map<String, Integer> map) {
+	public List<AskDTO> getAskList(Map<String, String> map) {
 		return sqlSession.selectList("profileSQL.getAskList", map);
 	}
 

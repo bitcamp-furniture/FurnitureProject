@@ -40,7 +40,9 @@ $('#cart-tap').click(function() {
 
 
                 $('<tr/>').append($('<td/>')).appendTo($('.cartTable'));
-                $('<tr/>').append($('<td/>').append($('<input/>',{
+
+                $('<tr/>').append($('<td/>').append($('<input/>',{                
+
                     id: "qty_select",
                     type: 'text',
                     value: item.product_count,

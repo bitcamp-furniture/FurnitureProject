@@ -34,43 +34,43 @@ public class MemberController {
 	
 	//-------------------------------------------------------------------
 	//회원가입 이메일
-//	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
-//	@ResponseBody
-//	public String mailCheck(@RequestParam(required = false) String email) throws Exception {
-//	
-//		// 뷰(View)로부터 넘어온 데이터 확인
-//		logger.info("이메일 데이터 전송 확인");
-//		logger.info("인증번호 : " + email);
-//	
-//		System.out.println(email);
-//	
-//		// 인증번호(난수) 생성
-//		Random random = new Random();
-//		int checkNum = random.nextInt(888888) + 111111;
-//	
-//		logger.info("인증번호 " + checkNum);
-//	
-//		// 이메일 보내기
-//		String setFrom = "breadcream@naver.com"; //보내는 사람(내 이메일 -> 설정 두번해야함 controller와 servlet)
-//		String toMail = email; //받는 사람
-//		String title = "회원가입 인증 이메일 입니다.";
-//		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
-//				+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
-//		
-//		 try {
-//		 
-//		 MimeMessage message = mailSender.createMimeMessage(); MimeMessageHelper
-//		 helper = new MimeMessageHelper(message, true, "utf-8");
-//		 helper.setFrom(setFrom); helper.setTo(toMail); helper.setSubject(title);
-//		 helper.setText(content,true); mailSender.send(message);
-//		  
-//		 }catch(Exception e) { e.printStackTrace(); }
-//		 
-//	
-//		String num = Integer.toString(checkNum);
-//	
-//		return num;
-//	}
+	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public String mailCheck(@RequestParam(required = false) String email) throws Exception {
+	
+		// 뷰(View)로부터 넘어온 데이터 확인
+		logger.info("이메일 데이터 전송 확인");
+		logger.info("인증번호 : " + email);
+	
+		System.out.println(email);
+	
+		// 인증번호(난수) 생성
+		Random random = new Random();
+		int checkNum = random.nextInt(888888) + 111111;
+	
+		logger.info("인증번호 " + checkNum);
+	
+		// 이메일 보내기
+		String setFrom = "breadcream@naver.com"; //보내는 사람(내 이메일 -> 설정 두번해야함 controller와 servlet)
+		String toMail = email; //받는 사람
+		String title = "회원가입 인증 이메일 입니다.";
+		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
+				+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+		
+		 try {
+		 
+		 MimeMessage message = mailSender.createMimeMessage(); MimeMessageHelper
+		 helper = new MimeMessageHelper(message, true, "utf-8");
+		 helper.setFrom(setFrom); helper.setTo(toMail); helper.setSubject(title);
+		 helper.setText(content,true); mailSender.send(message);
+		  
+		 }catch(Exception e) { e.printStackTrace(); }
+		 
+	
+		String num = Integer.toString(checkNum);
+	
+		return num;
+	}
 	
 	//-------------------------------------------------------------------
 	//회원가입 창 띄우기
@@ -102,7 +102,8 @@ public class MemberController {
 	//-------------------------------------------------------------------
 	//로그인창
 	  	@RequestMapping(value="loginForm", method=RequestMethod.GET)
-	  	public String loginForm(Model model) {
+	  	public String loginForm(@RequestParam(required = false, defaultValue = "0") String login12, Model model) {
+			model.addAttribute("login12", login12);
 	  		model.addAttribute("display", "/member/loginForm.jsp");
 	  		return "/index";
 	  	}
@@ -140,50 +141,50 @@ public class MemberController {
 	
 	//-------------------------------------------------------------------
 	//이메일 인증
-	@RequestMapping(value="mailCheck", method=RequestMethod.GET)
-	@ResponseBody
-	public String mailCheck(String email) throws Exception{
-		/* 뷰(View)로부터 넘어온 데이터 확인 */
-		System.out.println("이메일 데이터 전송 확인");
-		System.out.println("이메일 : " + email);
-		
-		//인증번호(난수) 생성
-		Random random = new Random();
-		int checkNum = random.nextInt(888888) + 111111;
-		System.out.println("인증번호 : " + checkNum);
-		
-		//이메일 보내기
-		String setFrom = "jhw02040@naver.com";
-		String toMail = email;
-		String title = "회원가입 인증 이메일 입니다.";
-		String content = 
-				"홈페이지를 방문해주셔서 감사합니다." +
-						"<br><br>" + 
-						"인증 번호는 " + checkNum + "입니다." + 
-						"<br>" + 
-						"해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
-		
-		
-		try {
-			
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-			helper.setFrom(setFrom);
-			helper.setTo(toMail);
-			helper.setSubject(title);
-			helper.setText(content,true);
-			mailSender.send(message);
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		String num = Integer.toString(checkNum);
-		
-		return num;
-		
-	}
+//	@RequestMapping(value="mailCheck", method=RequestMethod.GET)
+//	@ResponseBody
+//	public String mailCheck(String email) throws Exception{
+//		/* 뷰(View)로부터 넘어온 데이터 확인 */
+//		System.out.println("이메일 데이터 전송 확인");
+//		System.out.println("이메일 : " + email);
+//		
+//		//인증번호(난수) 생성
+//		Random random = new Random();
+//		int checkNum = random.nextInt(888888) + 111111;
+//		System.out.println("인증번호 : " + checkNum);
+//		
+//		//이메일 보내기
+//		String setFrom = "jhw02040@naver.com";
+//		String toMail = email;
+//		String title = "회원가입 인증 이메일 입니다.";
+//		String content = 
+//				"홈페이지를 방문해주셔서 감사합니다." +
+//						"<br><br>" + 
+//						"인증 번호는 " + checkNum + "입니다." + 
+//						"<br>" + 
+//						"해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+//		
+//		
+//		try {
+//			
+//			MimeMessage message = mailSender.createMimeMessage();
+//			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+//			helper.setFrom(setFrom);
+//			helper.setTo(toMail);
+//			helper.setSubject(title);
+//			helper.setText(content,true);
+//			mailSender.send(message);
+//			
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		
+//		String num = Integer.toString(checkNum);
+//		
+//		return num;
+//		
+//	}
 	  	
 	//-------------------------------------------------------------------
 	//비밀번호 변경
