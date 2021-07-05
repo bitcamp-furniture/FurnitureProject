@@ -1,5 +1,13 @@
 $('#askBtn').click(function(){
-	window.open("askWrite.jsp?name=" + $('#profileName').val() + "&email=" + $('#profileEmail').val(), "문의", "width=700, height=800, left=200, top=70");
+	var nWidth = "700";
+	var nHeight = "700";			  
+
+	var xPos = (document.body.clientWidth / 2) - (nWidth / 2); 
+	xPos += window.screenLeft;	 //듀얼 모니터
+	var yPos = (screen.availHeight / 2) - (nHeight / 2);
+
+	window.open("askWrite.jsp?name=" + $('#profileName').val() + "&email=" + $('#profileEmail').val(),"문의","width="+nWidth+",height="+nHeight+", left="+xPos+", top="+yPos+", toolbars=no, resizable=no, scrollbars=no");
+
 });
 
 
