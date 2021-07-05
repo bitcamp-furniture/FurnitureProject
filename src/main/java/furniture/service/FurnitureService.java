@@ -16,13 +16,13 @@ public interface FurnitureService {
 	// 상품 문의
 	public void productQnAWrite(Product_qnaDTO product_qnaDTO);
 
-	public List<Product_qnaDTO> productQnAListPaging(String pg);
+	public List<Product_qnaDTO> productQnAListPaging(String pg, String product_name);
 	
-	public Product_qna_paging product_qna_paging(String pg);
+	public Product_qna_paging product_qna_paging(String pg, String product_name);
 
-	public List<ReviewDTO> reviewList(String pg);
+	public List<ReviewDTO> reviewList(String pg, String product_name);
 
-	public Review_paging review_paging(String pg);
+	public Review_paging review_paging(String pg, String product_name);
 
 	public List<ReviewDTO> reviewListTop5();
 

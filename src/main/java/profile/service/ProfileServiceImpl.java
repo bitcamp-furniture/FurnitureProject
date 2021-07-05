@@ -23,6 +23,8 @@ public class ProfileServiceImpl implements ProfileService {
 	WishlistPaging wishlistPaging;
 	@Autowired
 	OrderPaging orderPaging;
+	@Autowired
+	CartPaging cartPaging;
 
 	@Override
 	public void askWrite(AskDTO askDTO) {
@@ -144,7 +146,7 @@ public class ProfileServiceImpl implements ProfileService {
 
 		orderPaging.setCurrentPage(Integer.parseInt(orderPg)); //현재 페이지
 		orderPaging.setPageBlock(3);
-		orderPaging.setPageSize(4);
+		orderPaging.setPageSize(3);
 		orderPaging.setTotalA(totalA);
 		orderPaging.makePagingHTML();
 
@@ -157,17 +159,33 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public List<CartDTO> getCartList(String id) {
-//		int endNum = Integer.parseInt(wishlistPg)*9;
-//		int startNum = endNum-8;
+	public List<CartDTO> getCartList(String id, String cartPg) {
+		int endNum = Integer.parseInt(cartPg)*3;
+		int startNum = endNum-2;
+
+		System.out.println("startNum = " + startNum);
+		System.out.println("endNum = " + endNum);
 
 		System.out.println("id = " + id);
 		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("startNum", startNum);
-//		map.put("endNum", endNum);
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
 		map.put("id", id);
 
 		return profileDAO.getCartList(map);
+	}
+
+	@Override
+	public CartPaging cartPaging(String id, String cartPg) {
+		int totalA = profileDAO.getTotalCartList(id);
+
+		cartPaging.setCurrentPage(Integer.parseInt(cartPg)); //현재 페이지
+		cartPaging.setPageBlock(3);
+		cartPaging.setPageSize(3);
+		cartPaging.setTotalA(totalA);
+		cartPaging.makePagingHTML();
+
+		return cartPaging;
 	}
 
 }

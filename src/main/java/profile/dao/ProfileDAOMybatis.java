@@ -98,8 +98,12 @@ public class ProfileDAOMybatis implements ProfileDAO {
 
 	@Override
 	public List<CartDTO> getCartList(Map<String, Object> map) {
-		System.out.println("mapId = " + map.get("id"));
 		return sqlSession.selectList("profileSQL.getCartList", map);
+	}
+
+	@Override
+	public int getTotalCartList(String id) {
+		return sqlSession.selectOne("profileSQL.getTotalCartList", id);
 	}
 
 }

@@ -40,5 +40,7 @@ public interface ProfileService {
 
 	void updateOrderStatus(int id);
 
-    List<CartDTO> getCartList(String id);
+    List<CartDTO> getCartList(String id, String cartPg);
+
+	CartPaging cartPaging(String id, String cartPg);
 }

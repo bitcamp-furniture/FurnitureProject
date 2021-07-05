@@ -276,17 +276,18 @@ public class ProfileController {
 //장바구니
  	@RequestMapping(value="getCartList", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView getCartList(@RequestParam String id) {
-
-		List<CartDTO> list = profileService.getCartList(id);
+	public ModelAndView getCartList(@RequestParam String id,
+									@RequestParam(required = false, defaultValue="1") String cartPg) {
+		System.out.println("cartPg = "+cartPg);
+		List<CartDTO> list = profileService.getCartList(id,cartPg);
 
 		//페이징 처리
-		//OrderPaging orderPaging = profileService.orderPaging(id, orderPg);
+		CartPaging cartPaging = profileService.cartPaging(id, cartPg);
 
 		ModelAndView mav = new ModelAndView();
-		//mav.addObject("orderPg", orderPg);
+		mav.addObject("cartPg", cartPg);
 		mav.addObject("list", list);
-		//mav.addObject("orderPaging", orderPaging);
+		mav.addObject("cartPaging", cartPaging);
 		mav.setViewName("jsonView");
 		return mav;
 	}

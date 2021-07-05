@@ -33,47 +33,49 @@ public class FurnitureServiceImpl implements FurnitureService {
 
 	// 상품문의 리스트 페이징 ...
 	@Override
-	public Product_qna_paging product_qna_paging(String pg) {
-		int totalA = furnitureDAO.getTotalQNA();// 총글수
+	public Product_qna_paging product_qna_paging(String pg,String product_name) {
+		int totalA = furnitureDAO.getTotalQNA(product_name);// 총글수
 
 		product_qna_paging.setCurrentPage(Integer.parseInt(pg));// 현재페이지
 		product_qna_paging.setPageBlock(3);
 		product_qna_paging.setPageSize(3);
 		product_qna_paging.setTotalA(totalA);
 		product_qna_paging.makePagingHTML();
- 
 		return product_qna_paging;
 	}
 
 	// 상품문의 리스트 ... 상품id 담아가야 함
 	@Override
-	public List<Product_qnaDTO> productQnAListPaging(String pg) {
+	public List<Product_qnaDTO> productQnAListPaging(String pg ,String product_name) {
 		//1페이지당 3개씩
 	      int endNum = Integer.parseInt(pg)*3;
 	      int startNum = endNum-2;
-	      
-	      Map<String, Integer> map = new HashMap<String, Integer>();
-	      map.put("startNum", startNum);
-	      map.put("endNum", endNum);
+
+	      Map<String, String> map = new HashMap<String, String>();
+	      map.put("startNum", startNum+"");
+	      map.put("endNum", endNum+"");
+	      map.put("product_name", product_name);
   		  return furnitureDAO.productQnAListPaging(map);
 	}
 
 	// 리뷰 리스트 ... 상품id를 담아가야 함
 	@Override
-	public List<ReviewDTO> reviewList(String pg) {
+	public List<ReviewDTO> reviewList(String pg ,String product_name) {
 		//1페이지당 3개씩
 	      int endNum = Integer.parseInt(pg)*3;
 	      int startNum = endNum-2;
 	      
-	      Map<String, Integer> map = new HashMap<String, Integer>();
-	      map.put("startNum", startNum);
-	      map.put("endNum", endNum);
+	      Map<String, String> map = new HashMap<String, String>();
+	      map.put("startNum", startNum+"");
+	      map.put("endNum", endNum+"");
+	      map.put("product_name", product_name);
+
 		  return furnitureDAO.reviewList(map);
 	}
 
 	@Override
-	public Review_paging review_paging(String pg) {
-		int totalA = furnitureDAO.getTotalReview();// 총글수
+	public Review_paging review_paging(String pg,String product_name) {
+		int totalA = furnitureDAO.getTotalReview(product_name);// 총글수
 
 		review_paging.setCurrentPage(Integer.parseInt(pg));// 현재페이지
 		review_paging.setPageBlock(3);

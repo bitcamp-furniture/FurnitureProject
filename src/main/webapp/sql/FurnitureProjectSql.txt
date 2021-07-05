@@ -82,18 +82,14 @@ CREATE SEQUENCE seq_product nocycle nocache;
 
 --이미지 테이블
 CREATE TABLE product_image(
+seq_Product_Image NUMBER PRIMARY KEY, -- seq
 id NUMBER,
 product_code  VARCHAR2(50), --상품코드
 product_img_thumb VARCHAR2(500), -- 썸네일 사진
 product_img_detail VARCHAR2(500) -- 디테일 사진
 );
-
---이미지 seq 문 
---CREATE SEQUENCE seq_product_image nocycle nocache; 
--- 이미지 시퀀스 삭제해주세요
-
-drop sequence seq_product_image;
-
+--이미지 테이블 seq 문
+CREATE SEQUENCE seq_Product_Image nocycle nocache;
 
 -----------------------------------------------------------------
 --옵션테이블
