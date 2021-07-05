@@ -302,14 +302,15 @@
 									<input type="hidden" id="orderPg" value="${orderPg}">
 									<%--주문 내역 --%>
 									<div class="cart-checkout-title">
-										<h4>주문내역</h4>
-										<div class="cart_product_name"></div>
+										<h2>주문내역</h2>
+										<div class="cart-orderList" style="height: 300px; width:400px"></div>
 									</div>
 									<br>
-									<div class="cart-line"></div>
 									<div class="cart-checkout-totalsum">
+										<div class="cart-line"></div>
 										<span class="cart-checkout-title">총 주문금액</span>
-										<span class="cart-checkout-sum">원</span>
+										<span class="cart-checkout-sum" style="float: right">원</span>
+										<span class="cart-total-price" style="float: right"></span>
 									</div>
 									<br>
 									<div class="cartPayBtn-wrap">

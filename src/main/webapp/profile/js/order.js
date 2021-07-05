@@ -63,7 +63,7 @@ $('#order-tap').click(function() {
                 })).append($('<td/>', {
                     align: 'center',
                     style: 'vertical-align: middle',
-                    text: item.product_amounts,
+                    text: item.product_amounts.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")
                 })).append($td).append($('<td/>', {
                         align: 'center',
                         style: 'vertical-align: middle',
@@ -159,7 +159,7 @@ function orderPaging(orderPg) {
                 })).append($('<td/>', {
                     align: 'center',
                     style: 'vertical-align: middle',
-                    text: item.product_amounts,
+                    text: item.product_amounts.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")
                 })).append($td).append($('<td/>', {
                         align: 'center',
                         style: 'vertical-align: middle',
