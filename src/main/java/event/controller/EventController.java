@@ -20,7 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import event.bean.EventDTO;
 import event.bean.EventListPaging;
+import event.bean.ProductManagingDTO;
+import event.bean.ProductManagingListPaging;
 import event.service.EventService;
+import furniture.bean.ProductDTO;
 
 // 판매자 이벤트 관리
 @Controller
@@ -119,6 +122,76 @@ public class EventController {
 	}
 
 	
+	// 상품관리 ... pg가지고 페이지 열기
+	@RequestMapping(value = "/product/productManaging", method = RequestMethod.GET)
+	public String productManaging(@RequestParam(required = false, defaultValue = "1") String productPg, Model model) {
+		// 페이징 추가 요망
+		model.addAttribute("display", "/admin/product/productManaging.jsp");
+		model.addAttribute("productPg", productPg);
+
+		return "/admin/adminIndex";
+	}
+
 	
+	// 페이징 + 전체 상품 + 색 옵션 배열 리스트로 가져오는 메소드
+	@ResponseBody
+	@RequestMapping(value = "/product/getProductManagingList", method = RequestMethod.POST)
+	public ModelAndView getProductManagingList(@RequestParam(required = false, defaultValue = "1") String productPg, String key, Model model) {
+		List<ProductManagingDTO> productList = eventService.getProductList(productPg);
+		ProductManagingListPaging productManagingListPaging = eventService.ProductManagingListPaging("0", "0", productPg);
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("productList", productList);
+		mav.addObject("productPg", productPg);
+		mav.addObject("productManagingListPaging", productManagingListPaging);
+
+		mav.setViewName("jsonView");
+		return mav;
+	}
+
+	// 상품 id로 해당 id의 리뷰 평점과 색상을 문자열과 숫자로 리턴
+	@ResponseBody
+	@RequestMapping(value = "/product/getProductColorReview", method = RequestMethod.POST)
+	public ModelAndView getProductColorReview(@RequestParam String id, Model model) {
+		double productReviewAvg = eventService.getproductReviewAvg(id);
+		List<String> productColors = eventService.getProductColors(id);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("productColors", productColors);
+		mav.addObject("id", id);
+		mav.addObject("productReviewAvg", productReviewAvg);
+		
+		mav.setViewName("jsonView");
+		return mav;
+	}
 	
+	// 상품 선택삭제
+	  @RequestMapping(value="/product/productListDelete", method=RequestMethod.GET)
+	  public ModelAndView adminReviewListwDelete(String[] check) {
+		  ModelAndView mav = new ModelAndView();
+		  eventService.productListDelete(check);
+      
+		  return new ModelAndView("redirect:/admin/product/productManaging");
+	  }
+	
+		// select요소로 정렬
+		@ResponseBody
+		@RequestMapping(value = "/product/sortProduct", method = RequestMethod.POST)
+		public ModelAndView sortProduct(@RequestParam(required = false, defaultValue = "1") String productPg,
+										String selectCate,
+										String selectProduct, 
+										Model model) {
+			List<ProductManagingDTO> productList = eventService.getSortedProductList(selectCate, selectProduct, productPg);
+			ProductManagingListPaging productManagingListPaging = eventService.ProductManagingListPaging(selectCate, selectProduct, productPg);
+
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("productList", productList);
+			mav.addObject("productPg", productPg);
+			mav.addObject("productManagingListPaging", productManagingListPaging);
+
+			mav.setViewName("jsonView");
+			return mav;
+		}
 }
+
+

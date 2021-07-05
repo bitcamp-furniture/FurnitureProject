@@ -12,6 +12,9 @@ import event.bean.FaQListPaging;
 import event.bean.NoticeDTO;
 import event.bean.NoticeListPaging;
 import furniture.bean.ReviewDTO;
+import event.bean.ProductManagingDTO;
+import event.bean.ProductManagingListPaging;
+import furniture.bean.ProductDTO;
 
 public interface EventService {
 
@@ -32,6 +35,18 @@ public interface EventService {
 	public NoticeListPaging noticeListPaging(String pg);
 
 	public NoticeDTO getNoticeView(String id);
+
+	public List<ProductManagingDTO> getProductList(String pg);
+
+	public ProductManagingListPaging ProductManagingListPaging(String selectCate, String selectProduct, String productPg);
+
+	public double getproductReviewAvg(String id);
+
+	public List<String> getProductColors(String id);
+
+	public void productListDelete(String[] check);
+
+	public List<ProductManagingDTO> getSortedProductList(String selectCate, String selectProduct, String productPg);
 
 	public List<FaQDTO> faQList(String pg, String div);
 

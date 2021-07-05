@@ -103,7 +103,6 @@
 
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-
 		<form id="loginForm">
 			<!-- 로그인 input -->
 			<div class="row">
@@ -183,6 +182,7 @@
 	$('#loginBtn').click(function(){
 		$('#emailDiv').empty();
 		$('#pwdDiv').empty();
+		//alert($('#login').val());
 
 		if($('#email').val() === ''){
 			$('#emailDiv').html('아이디(이메일)를 입력해주세요');
@@ -200,7 +200,15 @@
 				success: function(data){
 					alert(data);
 					if(data == 'success') {
-						location.href='/furniture/index.jsp';
+						//location.href='/furniture/index.jsp';
+						var loginValue = document.getElementById('login').value;
+						if (loginValue == 1){
+							location.href="/furniture/profile/profile";
+							
+						} else if (loginValue == 0) {
+							location.href="/furniture/index.jsp";
+						}
+						
 					} else {
 						//alert('로그인 실패하였습니다');
 						$('#pwdDiv').text('가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.');
@@ -242,7 +250,13 @@
 					success: function(data){
 						alert(data);
 						if(data == 'success') {
-							location.href='/furniture/index.jsp';
+							var loginValue = document.getElementById('login').value;
+							if (loginValue == 1){
+								location.href="/furniture/profile/profile";
+								
+							} else if (loginValue == 0) {
+								location.href="/furniture/index.jsp";
+							}
 						} else {
 							//alert('로그인 실패하였습니다');
 							$('#pwdDiv').text('가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.');
@@ -364,6 +378,5 @@ function getCookie(cookieName) {
 }
 
 </script>
-
 </body>
 </html>

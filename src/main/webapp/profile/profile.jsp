@@ -89,7 +89,7 @@
 
 						<!-- 이름,생일, 주소를 알려주는 제목 -->
 						<div id="mypageP" class="mypageP">
-							<h4>개인 정보</h4>
+							<h3>개인 정보</h3>
 
 							<!-- 수정버튼 -->
 							<div id="mypagePrivate">
@@ -330,7 +330,7 @@
 								<div class="wishlist-title col-lg-12">
 									<input type="hidden" id="wishlistPg" value="${wishlistPg }">
 									<div class="wishlist-title-h1">
-										<h1>위시리스트</h1>
+										<h3>위시리스트</h3>
 										<button class="wishlistTotalDeletebutton">전체삭제</button>
 									</div>
 								</div>
