@@ -44,4 +44,10 @@ public interface ProfileDAO {
     List<CartDTO> getCartList(Map<String, Object> map);
 
 	int getTotalCartList(String id);
+
+	void cartDelete(int id);
+
+	void cartTotalDelete(String memberId);
+
+	List<CartDTO> getAllCartList(String memberId);
 }
