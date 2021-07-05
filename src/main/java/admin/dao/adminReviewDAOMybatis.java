@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import admin.bean.adminReviewDTO;
+import furniture.bean.ReviewDTO;
 
 @Transactional
 @Repository
@@ -19,7 +19,7 @@ public class adminReviewDAOMybatis implements adminReviewDAO{
 	
 	//모든 리뷰리스트 뽑아오기
 	@Override
-	public List<adminReviewDTO> adminReviewList(Map<Object, Object> map) {
+	public List<ReviewDTO> adminReviewList(Map<Object, Object> map) {
 		return sqlSession.selectList("adminSQL.reviewList", map);
 	}
 	// 모든 리스트 개수
@@ -36,12 +36,12 @@ public class adminReviewDAOMybatis implements adminReviewDAO{
 	//리스트 정렬
 	//오름차순
 	@Override
-	public List<adminReviewDTO> adminreviewASCList(Map<Object, Object> map) {
+	public List<ReviewDTO> adminreviewASCList(Map<Object, Object> map) {
 		return sqlSession.selectList("adminSQL.adminreviewASCList", map);
 	}
 	//내림차순
 	@Override
-	public List<adminReviewDTO> adminreviewDESCList(Map<Object, Object> map) {
+	public List<ReviewDTO> adminreviewDESCList(Map<Object, Object> map) {
 		return sqlSession.selectList("adminSQL.adminreviewDESCList", map);
 	}
 

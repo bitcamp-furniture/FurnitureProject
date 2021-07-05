@@ -1,13 +1,17 @@
 package event.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import event.bean.EventDTO;
 import event.bean.FaQDTO;
 import event.bean.NoticeDTO;
+
+import furniture.bean.ReviewDTO;
 import event.bean.ProductManagingDTO;
 import furniture.bean.ProductDTO;
+
 
 public interface EventDAO {
 
@@ -50,4 +54,5 @@ public interface EventDAO {
 	public int getTotalAllFaQList();
 
 	public FaQDTO getFaQView(String id);
+
 }

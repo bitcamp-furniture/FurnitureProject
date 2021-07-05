@@ -36,7 +36,6 @@
 	<select id="getEventView" parameterType="String" resultType="event">
 		select * from event where id=#{id} 
 	</select>
-	
 	<!-- 최신 배너 리스트를 꺼내기 -->
    <select id="AllListBanner" resultType="event">
       select * from event where rownum &lt;= 2 order by id desc 
