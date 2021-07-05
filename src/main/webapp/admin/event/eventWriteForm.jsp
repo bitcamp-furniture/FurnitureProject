@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <style type="text/css">
-h2 {
+.line {
 	font-weight: normal;
 	font-family: sans-serif;
 	font-size: 30px;
@@ -19,7 +19,7 @@ h2 {
 <%-- <form id="imageboardWriteForm" enctype="multipart/form-data" action="imageboardWrite"> --%>
 <br>
 <h2 align="center">이벤트 등록</h2>
-<hr size="5" color="#0101DF" noshade></hr>
+<hr class="line" size="5" color="#0101DF" noshade></hr>
 <br>
 <form class="eventWriteForm" id="eventWriteForm">
 	<table border="0" cellspacing="0" cellpadding="3" align="center">
