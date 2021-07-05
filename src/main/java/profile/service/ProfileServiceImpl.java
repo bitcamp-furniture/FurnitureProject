@@ -146,7 +146,7 @@ public class ProfileServiceImpl implements ProfileService {
 
 		orderPaging.setCurrentPage(Integer.parseInt(orderPg)); //현재 페이지
 		orderPaging.setPageBlock(3);
-		orderPaging.setPageSize(3);
+		orderPaging.setPageSize(4);
 		orderPaging.setTotalA(totalA);
 		orderPaging.makePagingHTML();
 
@@ -186,6 +186,22 @@ public class ProfileServiceImpl implements ProfileService {
 		cartPaging.makePagingHTML();
 
 		return cartPaging;
+	}
+
+	@Override
+	public void cartDelete(int id)  {
+		profileDAO.cartDelete(id);
+	}
+
+	@Override
+	public void cartTotalDelete(String memberId) {
+		profileDAO.cartTotalDelete(memberId);
+	}
+
+	@Override
+	public List<CartDTO> getAllCartList(String memberId) {
+		return profileDAO.getAllCartList(memberId);
+
 	}
 
 }

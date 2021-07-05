@@ -43,4 +43,10 @@ public interface ProfileService {
     List<CartDTO> getCartList(String id, String cartPg);
 
 	CartPaging cartPaging(String id, String cartPg);
+
+    void cartDelete(int id);
+
+	void cartTotalDelete(String memberId);
+
+	List<CartDTO> getAllCartList(String memberId);
 }

@@ -67,7 +67,7 @@
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active"><a href="#mypage"
-						aria-controls="mypage" role="tab" data-toggle="tab">자기정보</a></li>
+						aria-controls="mypage" role="tab" data-toggle="tab">회원정보</a></li>
 					<li role="presentation" id="cart-tap"><a href="#cart" aria-controls="cart"
 						role="tab" data-toggle="tab">장바구니</a></li>
 					<li role="presentation" id="wishlist-tap"><a href="#wishList"
@@ -303,16 +303,21 @@
 									<%--주문 내역 --%>
 									<div class="cart-checkout-title">
 										<h4>주문내역</h4>
+										<div class="cart_product_name"></div>
 									</div>
 									<br>
 									<div class="cart-line"></div>
 									<div class="cart-checkout-totalsum">
-										<span class="cart-checkout-title">총 주문금액</span> <span
-											class="cart-checkout-sum">money</span>
+										<span class="cart-checkout-title">총 주문금액</span>
+										<span class="cart-checkout-sum">원</span>
 									</div>
 									<br>
-									<div class="cart-checkout-btn-wrap">
-										<button type="button" class="payBtn">결제하기</button>
+									<div class="cartPayBtn-wrap">
+										<button type="button" class="orderPaymentBtn" id="orderPaymentBtn">주문하기</button>
+									</div>
+									<br>
+									<div class="kakaoPayBtn-wrap">
+										<button type="button" class="kakaoPayBtn"><img src="/furniture/img/kakaoPayBtn.png" alt="kakaoPay"></button>
 									</div>
 								</div>
 
@@ -441,13 +446,14 @@
 	<script type="text/javascript" 	src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<script src="js/profile.js"></script>
 	<script type="text/javascript" src="js/mypage.js"></script>
 	<script type="text/javascript" src="js/cart.js"></script>
 	<script type="text/javascript" src="js/wishlist.js"></script>
 	<script type="text/javascript" src="js/order.js"></script>
 	<script type="text/javascript" src="js/askList.js"></script>
-
+	<script type="text/javascript" src="js/orderPayment.js"></script>
 	<script type="text/javascript">
 		
 	</script>

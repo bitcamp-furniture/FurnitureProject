@@ -51,12 +51,17 @@
     margin: 5px;
     height: 30px;
 }
-.payBtn{
+.orderPaymentBtn{
     background: #292f86;
     color : white;
     border:0;
     margin: 5px;
     height: 50px;
     width: 400px;
+}
+.kakaoPayBtn{
+    margin-left: 37%;
+    background: white;
+    border:0;
 }
 

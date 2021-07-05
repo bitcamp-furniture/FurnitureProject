@@ -25,6 +25,7 @@ import member.bean.MemberDTO;
 import profile.bean.*;
 import profile.service.ProfileService;
 
+
 @Controller
 @RequestMapping(value="profile")
 public class ProfileController {
@@ -236,7 +237,7 @@ public class ProfileController {
 	}
 
 //----------------------------------------------------------------
-//찜목록 선택삭제
+//찜목록 전체삭제
 	@RequestMapping(value="totalDelete", method=RequestMethod.POST)
 	@ResponseBody
 	public void totalDelete(@RequestParam String memberId) {
@@ -280,17 +281,52 @@ public class ProfileController {
 									@RequestParam(required = false, defaultValue="1") String cartPg) {
 		System.out.println("cartPg = "+cartPg);
 		List<CartDTO> list = profileService.getCartList(id,cartPg);
-
+		List<CartDTO> cartList = profileService.getAllCartList(id);
 		//페이징 처리
 		CartPaging cartPaging = profileService.cartPaging(id, cartPg);
 
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("cartList", cartList);
 		mav.addObject("cartPg", cartPg);
 		mav.addObject("list", list);
 		mav.addObject("cartPaging", cartPaging);
 		mav.setViewName("jsonView");
 		return mav;
 	}
+
+//----------------------------------------------------------------
+//장바구니 선택삭제
+	@RequestMapping(value="cartDelete", method=RequestMethod.POST)
+	@ResponseBody
+	public void cartDelete(@RequestParam int id) {
+		//System.out.println("memberId = "+ memberId);
+		profileService.cartDelete(id);
+	}
+//----------------------------------------------------------------
+//장바구니 전체삭제
+	@RequestMapping(value="cartTotalDelete", method=RequestMethod.POST)
+	@ResponseBody
+	public void cartTotalDelete(@RequestParam String memberId) {
+		//System.out.println("memberId = "+ memberId);
+		profileService.cartTotalDelete(memberId);
+	}
+
+//-------------------------------------------------------------------
+//주문하기 창
+@RequestMapping(value="orderPaymentView", method=RequestMethod.GET)
+public String orderPaymentView(Model model, HttpSession session, MemberDTO memberDTO) {
+	int memId = (Integer) session.getAttribute("memId");
+	List<CartDTO> cartList = profileService.getAllCartList(memId+"");
+	memberDTO = profileService.getMember(memId);
+
+	model.addAttribute("memId",memId);
+	model.addAttribute("memberDTO",memberDTO);
+	model.addAttribute("cartList", cartList);
+	model.addAttribute("display", "/profile/orderPayment.jsp");
+	return "/index";
+}
+
+//---------------------------------------------------------------------------------------
 }
 
 
