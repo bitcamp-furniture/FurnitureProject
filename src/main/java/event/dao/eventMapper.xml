@@ -99,7 +99,8 @@
 		</foreach>
 	</delete>
 
-
+	
+	<!-- /////////////////////////////////// 상품 관리 - 정렬 -->
 
 	<select id="getSortedProductListYESCATEreview" parameterType="java.util.Map" resultType="event.bean.ProductManagingDTO" >
 	<![CDATA[
@@ -135,6 +136,37 @@
 		    )
 		where rn >= #{startNum} and rn <= #{endNum}
 	]]>
+	</select>
+
+	<select id="getSortedProductListYESCATEprice" parameterType="java.util.Map" resultType="event.bean.ProductManagingDTO" >
+		<![CDATA[
+		select * from
+		    (
+		    select rownum rn, tt.* from
+		        (
+		        select id, product_code, product_name, product_price, product_category_name, product_category1
+		        from product
+		    	where product_category2 = #{selectCate}
+		    	order by ${sortOption} ${orderBy}
+		        )tt
+		    )
+			where rn >= #{startNum} and rn <= #{endNum}
+		]]>
+	</select>
+
+	<select id="getSortedProductListNOCATEprice" parameterType="java.util.Map" resultType="event.bean.ProductManagingDTO" >
+		<![CDATA[
+		select * from
+		    (
+		    select rownum rn, tt.* from
+		        (
+		        select id, product_code, product_name, product_price, product_category_name, product_category1
+		        from product
+		    	order by ${sortOption} ${orderBy}
+		        )tt
+		    )
+			where rn >= #{startNum} and rn <= #{endNum}
+		]]>
 	</select>
 
 	

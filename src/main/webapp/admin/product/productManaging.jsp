@@ -96,7 +96,7 @@
 						<th width="250px">상품명</th>
 						<th width="80px">가격</th>
 						<th width="100px">색상</th>
-						<th width="80px">카테고리</th>
+						<th width="120px">카테고리</th>
 						<th width="80px">고객평점</th>
 					</tr>
 				</thead>
