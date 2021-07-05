@@ -78,12 +78,17 @@ window.onload=(function() {
              $.each(data.allList,function(index,items){
              
                $('<div/>', {class: "col-lg-4 col-md-6 col-sm-6"}).append($('<div/>', {class:"product__item"}).append($('<div/>',{class:"product__item__pic set-bg"})
-                        .append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/category/storage/"+items.product_img_thumb}))
+                  		.append($('<a/>',{
+           					href: "/furniture/main/productView?id="+items.id+"&pg=1"
+           				}) 
+            		    .append($('<img/>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/"+items.product_img_thumb})))
                           .append($('<ul/>',{class:"product__item__pic__hover"})
                                 .append($('<li/>').append($('<a/>', {href:"#"}).append($('<i/>',{class:"fa fa-heart"}))))   
                           
                           )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>',{id:"product_name",text: items.product_name})
-                            .append($('<a/>',{href: '#'}))).append($('<h5/>',{id:"product_price",text: items.product_price.toLocaleString()+"원"}))))
+                            .append($('<a/>',{
+               					href: "/furniture/main/productView?id="+items.id+"&pg=1"
+                            }))).append($('<h5/>',{id:"product_price",text: items.product_price.toLocaleString()+"원"}))))
                           .appendTo($("#product_list"));
                
               });
