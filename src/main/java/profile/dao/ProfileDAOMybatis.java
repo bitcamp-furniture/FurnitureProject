@@ -32,8 +32,8 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
-	public int getTotalA() {
-		return sqlSession.selectOne("profileSQL.getTotalA");
+	public int getTotalA(Map<String, String> map) {
+		return sqlSession.selectOne("profileSQL.getTotalA", map);
 	}
 
 	@Override

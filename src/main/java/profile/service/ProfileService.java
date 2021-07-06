@@ -14,7 +14,7 @@ public interface ProfileService {
 
 	public List<AskDTO> getAskList(Map<String, String> map);
 
-	public AskPaging askPaging(String pg);
+	public AskPaging askPaging(Map<String, String> map);
 
 	public AskDTO getAsk(String seq);
 
