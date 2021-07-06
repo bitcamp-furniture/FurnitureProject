@@ -55,7 +55,8 @@
 	
 	<p class="clearing"></p>
 	<div id="chart3">
-		fkfkfk
+		<div id="recentReview"></div>
+		<div id="recentQnA"></div>
 	</div>
 	<div id="chart4">
 		fkfkfk
