@@ -8,6 +8,6 @@
 </head>
 <body>
 뀨뀨뀨뀨뀨규
-
+<canvas id="siteUse"></canvas>
 </body>
 </html>
