@@ -32,7 +32,7 @@ public interface ProfileService {
 
 	public void totalDelete(String memberId);
 
-	public WishlistPaging wishlistPaging(String wishlistPg);
+	public WishlistPaging wishlistPaging(String id, String wishlistPg);
 
     List<OrderDTO> getOrderList(String id, String orderPg);
 

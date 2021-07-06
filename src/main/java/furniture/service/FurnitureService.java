@@ -42,5 +42,7 @@ public interface FurnitureService {
 
 	public List<Integer> reviewDay();
 
-	
+	public List<Product_OptionDTO> getIdOption(Integer id);
+
+    public void addCart(Map<String, String> map);
 }

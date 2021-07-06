@@ -71,7 +71,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                
                    <!-- 상품 상세샷 넣을 자리 -->
                    
                    
@@ -101,14 +100,14 @@
                         <h5>가격 ₩ <fmt:formatNumber value="${productDTO.product_price}" pattern="#,###,###"/></h5>
                         <p>하루를 최상의 컨디션으로 시작하려면 숙면을 취해야 하죠. 다양한 스타일의 튼튼한 IKEA 침대는 최고의 편안함과 품질을 약속해드려요. 
                           빌트인 수납처럼 스마트한 기능이 있거나 밑에 수납함을 밀어넣을 수 있는 크기의 침대도 많답니다. IKEA의 침대로 오랫동안 달콤한 꿈을 꾸는 숙면을 즐겨보세요.</p>
-
+		
             <select name="option_color" id="option_color">
+             <c:forEach var="optionlist" items="${optionlist}">
+            
                  <!--<option value="">--색상을 선택해주세요 --</option> --> 
-                 <option value="B">black</option>
-                <option value="W">white</option>
-                <option value="R">red</option>
-                <option value="S">silver</option>
-                <option value="P">purple</option>
+                <option value="${optionlist.color}">${optionlist.color_name}</option>
+               
+              </c:forEach>
             </select>
          <br>
          <div>&emsp;</div>
@@ -119,10 +118,10 @@
                         <div class="product__details__option">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input type="text" id="product_qty" value="1">
                                 </div>
                             </div>
-                            <a href="#" class="primary-btn">Add to cart</a>
+                            <a id="addCartBtn" class="primary-btn">Add to cart</a>
                             <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
                         </div>
                     </div>
@@ -196,7 +195,7 @@
                             <table style="width:100%;" cellpadding="5">                        
                                <tr>
                                   <td align="center">
-                                     <input type="hidden" class="product_id" value="${productDTO.id}">
+                                     <input type="hidden" id="product_id" class="product_id" value="${productDTO.id}">
                                    <input type="hidden" class="product_name" value="${productDTO.product_name}">
                                      <input type="text" class="qna_write_subject" placeholder="제목입력" style="width:90%;"> 
                                   </td>
@@ -356,14 +355,14 @@
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="/furniture/img/3.jpg">
                                 <div class="product__label">
-                                    <span>Cupcake</span>
+                                    <span>${productDTO.product_category_name}</span>
                                 </div>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#">Dozen Cupcakes</a></h6>
-                                <div class="product__item__price">$32.00</div>
+                                <h6><a href="#">${productDTO.product_name}</a></h6>
+                                <div class="product__item__price">${productDTO.product_price}</div>
                                 <div class="cart_add">
-                                    <a href="#">Add to cart</a>
+                                    <a href="#">Wish List</a>
                                 </div>
                             </div>
                         </div>
@@ -372,14 +371,14 @@
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="/furniture/img/4.jpg">
                                 <div class="product__label">
-                                    <span>Cupcake</span>
+                                    <span>${productDTO.product_category_name}</span>
                                 </div>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#">Cookies and Cream</a></h6>
-                                <div class="product__item__price">$30.00</div>
+                                <h6><a href="#">${productDTO.product_name}</a></h6>
+                                <div class="product__item__price">${productDTO.product_price}</div>
                                 <div class="cart_add">
-                                    <a href="#">Add to cart</a>
+                                    <a href="#">Wish List</a>
                                 </div>
                             </div>
                         </div>
@@ -388,14 +387,14 @@
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="/furniture/img/5.jpg">
                                 <div class="product__label">
-                                    <span>Cupcake</span>
+                                    <span>${productDTO.product_category_name}</span>
                                 </div>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#">Gluten Free Mini Dozen</a></h6>
-                                <div class="product__item__price">$31.00</div>
+                                <h6><a href="#">${productDTO.product_name}</a></h6>
+                                <div class="product__item__price">${productDTO.product_price}</div>
                                 <div class="cart_add">
-                                    <a href="#">Add to cart</a>
+                                    <a href="#">Wish List</a>
                                 </div>
                             </div>
                         </div>
@@ -404,14 +403,14 @@
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="/furniture/img/6.jpg">
                                 <div class="product__label">
-                                    <span>Cupcake</span>
+                                    <span>${productDTO.product_category_name}</span>
                                 </div>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#">Cookie Dough</a></h6>
-                                <div class="product__item__price">$25.00</div>
+                                <h6><a href="#">${productDTO.product_name}</a></h6>
+                                <div class="product__item__price">${productDTO.product_price}</div>
                                 <div class="cart_add">
-                                    <a href="#">Add to cart</a>
+                                    <a href="#">Wish List</a>
                                 </div>
                             </div>
                         </div>
@@ -420,14 +419,14 @@
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="/furniture/img/7.jpg">
                                 <div class="product__label">
-                                    <span>Cupcake</span>
+                                    <span>${productDTO.product_category_name}</span>
                                 </div>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#">Vanilla Salted Caramel</a></h6>
-                                <div class="product__item__price">$05.00</div>
+                                <h6><a href="#">${productDTO.product_name}</a></h6>
+                                <div class="product__item__price">${productDTO.product_price}</div>
                                 <div class="cart_add">
-                                    <a href="#">Add to cart</a>
+                                    <a href="#">Wish List</a>
                                 </div>
                             </div>
                         </div>
@@ -436,14 +435,14 @@
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="/furniture/img/8.jpg">
                                 <div class="product__label">
-                                    <span>Cupcake</span>
+                                    <span>${productDTO.product_category_name}</span>
                                 </div>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#">German Chocolate</a></h6>
-                                <div class="product__item__price">$14.00</div>
+                                <h6><a href="#">${productDTO.product_name}</a></h6>
+                                <div class="product__item__price">${productDTO.product_price}/div>
                                 <div class="cart_add">
-                                    <a href="#">Add to cart</a>
+                                    <a href="#">Wish List</a>
                                 </div>
                             </div>
                         </div>

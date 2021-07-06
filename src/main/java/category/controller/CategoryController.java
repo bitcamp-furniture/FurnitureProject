@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import furniture.bean.ProductDTO;
 import category.bean.ProductListDTO;
 import category.bean.ProductPaging;
+import category.bean.SortedListPaging;
 import category.service.ProductService;
 import event.bean.EventDTO;
 import event.service.EventService;
@@ -129,6 +130,26 @@ public class CategoryController {
 			mav.addObject("keyword", keyword);
 			mav.addObject("searchList", searchList);
 			mav.addObject("productSearchPaging", productSearchPaging);
+			
+			mav.setViewName("jsonView");
+			return mav;
+		}
+		
+		// 선택 상품을 리스트로 가져오는 메소드 + 페이징 작업중
+		@ResponseBody
+		@RequestMapping(value = "/sortedSelectList", method = RequestMethod.POST)
+		public ModelAndView sortedSelectList(@RequestParam(required = false, defaultValue = "1") String pg,
+											 @RequestParam String key,
+											 @RequestParam String category) {
+			ModelAndView mav = new ModelAndView();
+			
+			List<ProductListDTO> sortedSelectList = productService.sortedSelectList(pg, key, category);
+			SortedListPaging sortedListPaging = productService.sortedListPaging(pg, key, category);
+			
+			mav.addObject("pg", pg);
+			mav.addObject("key", key);
+			mav.addObject("sortedSelectList", sortedSelectList);
+			mav.addObject("sortedListPaging", sortedListPaging);
 			
 			mav.setViewName("jsonView");
 			return mav;

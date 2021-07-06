@@ -96,7 +96,9 @@ CREATE SEQUENCE seq_Product_Image nocycle nocache;
 CREATE TABLE product_option(
 option_seq NUMBER PRIMARY KEY, --seq
 id NUMBER, --product ID
-color VARCHAR2(50) -- 컬러
+color VARCHAR2(50), -- 컬러
+color_name VARCHAR2(50) -- 컬러풀네임
+
 ); 
 
 -- option_seq
@@ -140,17 +142,18 @@ create sequence seq_member nocycle nocache;
 
 -- 장바구니, 위시리스트
 CREATE TABLE cart(
-   id NUMBER PRIMARY KEY,               
-   member_id VARCHAR2(80),  -- 회원아이디
-   product_id VARCHAR2(80), -- 상품아이디
-   product_count NUMBER -- 상품개수
+	id NUMBER PRIMARY KEY,
+	member_id VARCHAR2(80),  -- 회원아이디
+	product_id VARCHAR2(80), -- 상품아이디
+	product_option_color VARCHAR2(50), -- 컬러
+	product_count NUMBER -- 상품개수
 );
 create sequence seq_cart nocycle nocache;
 
 create table wishlist(
    id NUMBER PRIMARY KEY,               
    member_id VARCHAR2(80),  -- 회원아이디
-   product_code VARCHAR2(80) -- 상품아이디
+   product_id NUMBER -- 상품아이디
 );
 create sequence seq_wishlist nocycle nocache;
 
@@ -204,3 +207,28 @@ CREATE TABLE event (
    event_img_detail VARCHAR2(100)   -- 디테일 이미지 2개 고정
 );
 create sequence seq_event nocycle nocache;
+
+
+--주문테이블
+create table orders(
+order_number NUMBER primary key, -- 기본키, 주문번호
+total_amount NUMBER, --총 금액
+member_id VARCHAR2(30), --회원아이디
+order_date date -- 주문날짜
+);
+create sequence seq_orders nocycle nocache;
+
+
+--주문내역상세 테이블
+create table orders_detail(
+id NUMBER primary key, -- 기본키
+product_price NUMBER,-- 상품별 금액
+product_qty NUMBER,--상품별 구매수량
+product_amounts NUMBER, --한 줄 총 금액
+order_number VARCHAR2(30), --주문번호, orders 테이블의 기본키
+product_id VARCHAR2(30), --상품아이디
+order_status VARCHAR2(30), --주문처리상태
+product_color VARCHAR2(30) --상품컬러
+);
+create sequence seq_orders_detail nocycle nocache;
+

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import furniture.bean.ProductDTO;
 import category.bean.ProductListDTO;
 import category.bean.ProductPaging;
+import category.bean.SortedListPaging;
 
 
 public interface ProductService {
@@ -28,6 +29,10 @@ public interface ProductService {
 	public List<ProductDTO> searchList(String pg, String keyword);
 
 	public ProductPaging productSearchPaging(String pg, String keyword);
+
+	public List<ProductListDTO> sortedSelectList(String pg, String key, String category);
+
+	public SortedListPaging sortedListPaging(String pg, String key, String category);
 
 
 

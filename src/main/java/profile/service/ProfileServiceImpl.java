@@ -112,8 +112,8 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public WishlistPaging wishlistPaging(String wishlistPg) {
-		int totalA = profileDAO.getTotalWishlist();
+	public WishlistPaging wishlistPaging(String id, String wishlistPg) {
+		int totalA = profileDAO.getTotalWishlist(id);
 
 		wishlistPaging.setCurrentPage(Integer.parseInt(wishlistPg)); //현재 페이지
 		wishlistPaging.setPageBlock(3);

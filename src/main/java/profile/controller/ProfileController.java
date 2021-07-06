@@ -226,7 +226,7 @@ public class ProfileController {
 		//System.out.println("list = "+list);
 
 		//페이징 처리
-		WishlistPaging wishlistPaging = profileService.wishlistPaging(wishlistPg);
+		WishlistPaging wishlistPaging = profileService.wishlistPaging(id, wishlistPg);
 
         ModelAndView mav = new ModelAndView();
 		mav.addObject("wishlistPg", wishlistPg);
