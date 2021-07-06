@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import admin.bean.MemberListPaging;
 import admin.dao.AdminDAO;
+import furniture.bean.ReviewDTO;
 import member.bean.MemberDTO;
+import profile.bean.AskDTO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -82,6 +84,16 @@ public class AdminServiceImpl implements AdminService {
 		map.put("array", check);
 		adminDAO.memberListDelete(map);
 		
+	}
+
+	@Override
+	public List<ReviewDTO> getRecentReviewList() {
+		return adminDAO.getRecentReviewList();
+	}
+
+	@Override
+	public List<AskDTO> getRecentQnAList() {
+		return adminDAO.getRecentQnAList();
 	}
 
 }

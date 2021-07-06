@@ -74,5 +74,23 @@
 		)where rn >= #{startNum} and rn <= #{endNum}
 		]]>
 	</select>
+	
+	<!-- 대시보드 ... 최신 리뷰 리스트 -->
+	<select id="getRecentReviewList" resultType="review">
+	<![CDATA[
+		select * from (
+			select * from review order by created_at desc
+		) where rownum <= 3
+	]]>
+	</select>
+
+	<!-- 대시보드 ... 최신 문의 리스트 -->
+	<select id="getRecentQnAList" resultType="ask">
+	<![CDATA[
+		select * from (
+			select * from ask order by created_at desc
+		) where rownum <= 5
+	]]>
+	</select>
 
 </mapper>
