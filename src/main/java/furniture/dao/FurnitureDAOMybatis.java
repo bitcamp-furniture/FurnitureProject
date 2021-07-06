@@ -112,6 +112,11 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 	public List<ReviewDTO> reviewDay() {
 		return sqlSession.selectList("productSQL.reviewDay");
 	}
-	
+
+	@Override
+	public void addCart(Map<String, String> map) {
+		sqlSession.selectList("productSQL.addCart", map);
+	}
+
 
 }

@@ -283,9 +283,6 @@ public class ProfileController {
 	}
 
 //----------------------------------------------------------------
-//장바구니 넣기
-	
-//----------------------------------------------------------------
 //장바구니
  	@RequestMapping(value="getCartList", method=RequestMethod.POST)
 	@ResponseBody

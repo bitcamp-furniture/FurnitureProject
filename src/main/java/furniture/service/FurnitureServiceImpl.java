@@ -138,4 +138,9 @@ public class FurnitureServiceImpl implements FurnitureService {
 	public List<ReviewDTO> reviewDay() {
 		return furnitureDAO.reviewDay();
 	}
+
+	@Override
+	public void addCart(Map<String, String> map) {
+		furnitureDAO.addCart(map);
+	}
 }
