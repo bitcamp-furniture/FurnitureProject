@@ -409,12 +409,12 @@ $('#addCartBtn').click(function(){
 	alert($('#option_color').val());
 	alert($('#product_qty').val());
 	$.ajax({
-		url: '/furniture/profile/addCart',
+		url: '/furniture/main/addCart',
 		type: 'post',
 		data: {'member_id': $('#memId').val(),
 			   'product_id': $('#product_id').val(),
 			   'product_option_color': $('#option_color').val(),
-			   'product_qty': $('#product_qty').val()
+			   'product_count': $('#product_qty').val()
 		},
 		success: function(){
 			alert('성공');
@@ -425,6 +425,9 @@ $('#addCartBtn').click(function(){
 		}
 	}); //ajax
 });
+
+var express = require('express');
+var cookieParser = require
 
 
 

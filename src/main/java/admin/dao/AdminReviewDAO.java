@@ -5,8 +5,8 @@ import java.util.Map;
 
 import furniture.bean.ReviewDTO;
 
-public interface adminReviewDAO {
-
+public interface AdminReviewDAO {
+	
 	public List<ReviewDTO> adminReviewList(Map<Object, Object> map);
 
 	public int getTotalReviewList();

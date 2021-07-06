@@ -69,7 +69,14 @@ public class FurnitureController {
 			//ProductImageDTO productImageDTO = new ProductImageDTO();
 			productDTO = furnitureService.getIdToOneData(id);
 			List<ProductImageDTO> list = furnitureService.getIdToImageData(id);
-			int memId = (Integer) session.getAttribute("memId");
+
+			int memId;
+			if(session.getAttribute("memId")==null) {
+				memId = 0;
+			} else {
+				memId = (Integer) session.getAttribute("memId");
+			}
+
 
 			List<Product_OptionDTO> optionlist=furnitureService.getIdOption(id);
 
@@ -413,6 +420,18 @@ public class FurnitureController {
 		System.out.println(productDTO+"3");
 		
 		return "redirect:/admin/productRegistrationView";
+	}
+
+//----------------------------------------------------------------
+//장바구니 넣기
+	@RequestMapping(value="/main/addCart", method=RequestMethod.POST)
+	@ResponseBody
+	public void addCart(@RequestParam Map<String, String> map, HttpSession session) {
+		furnitureService.addCart(map);
+
+		if(session.getAttribute("memId")==null) {
+
+		}
 	}
 }
 
