@@ -45,9 +45,19 @@
 		)where rn &lt;= 6
     </select> 
 
-	<!-- 상품 리뷰 총 글수 -->
+	<!-- 상품 리뷰 일간  글수 -->
 	<select id="getTotalReview" resultType="int" parameterType="String">
 		select count(*) from review where product_name=#{product_name} order by created_at desc
+	</select>
+	<!-- 리뷰 일별 수 -->
+	<select id="reviewDay" resultType="review">
+ 		<![CDATA[
+ 		select TO_CHAR(created_at,'YYMMDD') as 날짜, count(*) as 리뷰수 
+ 		from review
+		where created_at >='210101' 
+		and created_at < to_char(sysdate,'YYMMDD') 
+		GROUP BY to_char(created_at, 'YYMMDD');
+		]]>
 	</select>
 	
 	<!--베스트 셀러 -->
@@ -119,7 +129,9 @@
 	<select id="getProductId" parameterType="String" resultType="Integer">
 		select id from product where product_code=#{product_code}
 	</select>
-	
-	
-	
+
+
+	<select id="getIdOption" parameterType="Integer" resultType="productOption">
+		select * from product_option where id=#{id}
+	</select>
 </mapper>

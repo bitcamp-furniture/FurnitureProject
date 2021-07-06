@@ -195,8 +195,9 @@ body {
                 	<hr class="line" style="margin:0;">
                     <ul class="big_menu">
 						<li><ion-icon name="bed" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;<a href="/furniture/">사이트 바로가기</a></li>
-						<li id="dashBoardShow"><ion-icon name="grid" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;<a href="#">대시보드</a></li>
+						<li id="dashBoardShow"><ion-icon name="grid" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;<a href="/furniture/admin/adminIndex">대시보드</a></li>
                     </ul><hr class="line" style="margin:0;">
+
                     <ul class="big_menu">
 						<li><ion-icon name="person-sharp" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;사용자 관리 &emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu admin">
@@ -208,7 +209,8 @@ body {
                         <li><ion-icon name="bag" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;쇼핑 &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu"> 
                             <li><a href="#">주문관리</a></li>
-                            <li><a href="#">재고관리</a></li>
+                            <li><a href="#">주문내역</a></li>
+                            <li><a href="/furniture/admin/product/productManaging">상품관리</a></li>
                             <li><a href="#">상품등록</a></li>
                         </ul>
                     </ul>
@@ -230,7 +232,7 @@ body {
                         <li><ion-icon name="megaphone" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;마케팅 관리 &emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu">
                             <li id="eventWriteShow"><a href="/furniture/admin/event/eventWriteForm">이벤트 등록</a></li>
-                            <li><a href="#">이벤트 목록</a></li>
+                            <li><a href="/furniture/admin/event/eventList">이벤트 목록</a></li>
                         </ul>
                     </ul>
 <!-- 서브메뉴 end -->

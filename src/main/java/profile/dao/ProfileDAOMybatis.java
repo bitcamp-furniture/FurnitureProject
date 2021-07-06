@@ -77,8 +77,8 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
-	public int getTotalWishlist() {
-		return sqlSession.selectOne("profileSQL.getTotalWishlist");
+	public int getTotalWishlist(String id) {
+		return sqlSession.selectOne("profileSQL.getTotalWishlist", id);
 	}
 
 	@Override
@@ -104,6 +104,21 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	@Override
 	public int getTotalCartList(String id) {
 		return sqlSession.selectOne("profileSQL.getTotalCartList", id);
+	}
+
+	@Override
+	public void cartDelete(int id) {
+		sqlSession.delete("profileSQL.cartDelete", id);
+	}
+
+	@Override
+	public void cartTotalDelete(String memberId) {
+		sqlSession.delete("profileSQL.cartTotalDelete", memberId);
+	}
+
+	@Override
+	public List<CartDTO> getAllCartList(String memberId) {
+		return sqlSession.selectList("profileSQL.getAllCartList", memberId);
 	}
 
 }

@@ -34,6 +34,9 @@ noticeListTable th{
 	border-radius: 5px;
 	cursor: pointer;
 }
+#choiceDeleteBtn{
+	margin-left: 50px;
+}
 
 </style>
 
