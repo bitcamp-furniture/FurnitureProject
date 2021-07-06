@@ -426,6 +426,9 @@ $('#addCartBtn').click(function(){
 	}); //ajax
 });
 
+var express = require('express');
+var cookieParser = require
+
 
 
 

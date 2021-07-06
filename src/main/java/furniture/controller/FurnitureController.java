@@ -426,8 +426,12 @@ public class FurnitureController {
 //장바구니 넣기
 	@RequestMapping(value="/main/addCart", method=RequestMethod.POST)
 	@ResponseBody
-	public void addCart(@RequestParam Map<String, String> map) {
+	public void addCart(@RequestParam Map<String, String> map, HttpSession session) {
 		furnitureService.addCart(map);
+
+		if(session.getAttribute("memId")==null) {
+
+		}
 	}
 }
 
