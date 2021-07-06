@@ -111,10 +111,6 @@
             </select>
          <br>
          <div>&emsp;</div>
-                        <ul>
-                            <li>규격: <span>150x200cm</span></li>
-                            <li>Tags: <span>Gadgets, minimalisstic</span></li>
-                        </ul>
                         <div class="product__details__option">
                             <div class="quantity">
                                 <div class="pro-qty">
@@ -123,6 +119,16 @@
                             </div>
                             <a id="addCartBtn" class="primary-btn" style="color: white">Add to cart</a>
                             <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
+       					    <!-- 비회원은 뚫린하트 -->
+                            <!-- 자기 목록으로 셀렉트 했을 때 목록에 있으면 없으면 달리 띄워줘야함 -->
+                      		<c:choose>
+                      			<c:when test="${wishQ eq true}">
+                      				<a href="#" class="heart__btn"><span class="icon_heart"></span></a>
+                      			</c:when>	
+                      			<c:otherwise>
+                      				<a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
+                      			</c:otherwise>
+                      		</c:choose>     
                         </div>
                     </div>
                 </div>
@@ -212,7 +218,7 @@
                               </tr>
                            </table>       
                                       
-                           <br>                                            
+                           <br>
                                       
                                     <!-- 문의 리스트 -->
                            <div style="width:100%;  overflow:auto">
@@ -453,8 +459,10 @@
     </section>
     <!-- Related Products Section End   -->
     
+    	<input type="hidden" value="${memId }" id="memid"/>
+    	<input type="hidden" value="${param.id }" id="id"/>
      <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
   
 
-        <script src="/furniture/js/productQnA.js"></script>
-    
+     <script src="/furniture/js/productQnA.js"></script>
+     <script src="/furniture/js/wishList.js"></script>

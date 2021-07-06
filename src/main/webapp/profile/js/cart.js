@@ -254,5 +254,3 @@ $('.kakaoPayBtn').click(function(){
         }
     });
 });
-
-
