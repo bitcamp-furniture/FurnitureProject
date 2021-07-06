@@ -104,10 +104,8 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 	public List<Product_OptionDTO> getIdOption(Integer id) {
 		return sqlSession.selectList("productSQL.getIdOption", id);
 	}
-	
-	
-	
 
+	
 	@Override
 	public List<Integer> reviewDay() {
 		return sqlSession.selectList("productSQL.reviewDay");
