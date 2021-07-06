@@ -138,8 +138,6 @@ public class ProfileController {
 		map.put("askPg", askPg);
 		map.put("memEmail", memEmail);
 		
-		
-		
 		//1페이지당 5개씩
 		List<AskDTO> list = profileService.getAskList(map);
 		

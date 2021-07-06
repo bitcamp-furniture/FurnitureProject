@@ -130,8 +130,27 @@
 		select id from product where product_code=#{product_code}
 	</select>
 
-
 	<select id="getIdOption" parameterType="Integer" resultType="productOption">
 		select * from product_option where id=#{id}
 	</select>
+	
+	<!-- 페이지띄울 때 찜했는지 안했는지 -->
+	<select id="wishQ" parameterType="java.util.Map" resultType="wishList">
+		select * from wishlist where member_id=#{memId} and product_id=#{id}
+	</select>
+	
+	<!-- 찜추가 -->
+	<insert id="addWishButton" parameterType="java.util.Map">
+		insert into wishlist values(
+									seq_wishlist.nextval
+									, #{memId}
+									, #{id}
+									)
+	</insert>
+	
+	<!-- 찜제거 -->
+	<delete id="deleteWishButton" parameterType="java.util.Map">
+		delete from wishlist where member_id=#{memId} and product_id=#{id}
+	</delete>
+	
 </mapper>

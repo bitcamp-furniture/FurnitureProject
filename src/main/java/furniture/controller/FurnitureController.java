@@ -3,6 +3,7 @@ package furniture.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +41,7 @@ import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
 import furniture.bean.Review_paging;
 import furniture.service.FurnitureService;
+import profile.bean.WishlistDTO;
 
 @Controller
 public class FurnitureController {
@@ -56,57 +58,84 @@ public class FurnitureController {
 	//주소는 각자의 컴퓨터 경로
 	
 	// 상품 상세컷 ... DB연결, 상품id 필요
-		@RequestMapping(value = "/main/productView", method = RequestMethod.GET)
-		public String productView(@RequestParam(required = false, defaultValue = "1") String pg
-								, Integer id
-								, Model model
+	@RequestMapping(value = "/main/productView", method = RequestMethod.GET)
+	public String productView(@RequestParam(required = false, defaultValue = "1") String pg
+							, Integer id
+							, Model model
+                            , HttpSession session
+							,Product_OptionDTO product_OptionDTO
+                            ) {
 
-	                            , HttpSession session
-								,Product_OptionDTO product_OptionDTO
+		ProductDTO productDTO = new ProductDTO();
+		//ProductImageDTO productImageDTO = new ProductImageDTO();
+		productDTO = furnitureService.getIdToOneData(id);
+		List<ProductImageDTO> list = furnitureService.getIdToImageData(id);
 
-	                            ) {
-
-
-			ProductDTO productDTO = new ProductDTO();
-			//ProductImageDTO productImageDTO = new ProductImageDTO();
-			productDTO = furnitureService.getIdToOneData(id);
-			List<ProductImageDTO> list = furnitureService.getIdToImageData(id);
-			int memId = (Integer) session.getAttribute("memId");
-
-			List<Product_OptionDTO> optionlist=furnitureService.getIdOption(id);
-
-			System.out.println(optionlist +"옵션");
-			//테스트
-			System.out.println(list);
-			System.out.println(productDTO);
-			System.out.println(list.size());
-
-			model.addAttribute("memId", memId);
-			model.addAttribute("productDTO", productDTO);//뷰가서 게터로, ${productDTO.product_id} 이런식으로 하는것 같은데
-			//model.addAttribute("productImageDTO", productImageDTO);//뷰가서 게터로, 이거는forEach로 반복문 돌리면서
-			model.addAttribute("ImageList", list);
-			model.addAttribute("optionlist", optionlist);
-			model.addAttribute("pg", pg);
-			model.addAttribute("display", "/main/productView.jsp");
-			return "/index";
+		int memId;
+		if(session.getAttribute("memId")==null) {
+			memId = 0;
+		} else {
+			memId = (Integer) session.getAttribute("memId");
 		}
+		
+		//이 회원이 이 상품을 찜 했는지 안했는지
+		Map<String, Integer> wishMap = new HashMap<String, Integer>();
+		wishMap.put("memId", memId);
+		wishMap.put("id", id);
+		boolean wishQ = furnitureService.wishQ(wishMap);
+		System.out.println(memId+"memId");
+		System.out.println(id+"id");
+		System.out.println(wishMap+"위시맵");
+		System.out.println(wishQ+"돌아온 wishQ");
+		
+		List<Product_OptionDTO> optionlist=furnitureService.getIdOption(id);
+
+		System.out.println(optionlist +"옵션");
+		//테스트
+		System.out.println(list);
+		System.out.println(productDTO);
+		System.out.println(list.size());
+
+		model.addAttribute("wishQ", wishQ);
+		model.addAttribute("memId", memId);
+		model.addAttribute("productDTO", productDTO);//뷰가서 게터로, ${productDTO.product_id} 이런식으로 하는것 같은데
+		//model.addAttribute("productImageDTO", productImageDTO);//뷰가서 게터로, 이거는forEach로 반복문 돌리면서
+		model.addAttribute("ImageList", list);
+		model.addAttribute("optionlist", optionlist);
+		model.addAttribute("pg", pg);
+		model.addAttribute("display", "/main/productView.jsp");
+		return "/index";
+	}
 
 
-		   // 상품 상세컷 ... 상품 문의 작성
+	
+	//상품 위시리스트 찜 누르기 add, delete
+	@ResponseBody
+	@RequestMapping(value = "/main/addWish", method = RequestMethod.POST)
+	public void addItemToWishList(@RequestParam Map<String, Object> addWishMap) {
+		System.out.println(addWishMap.get("memId")+"addWish의 memId 3");
+		System.out.println(addWishMap.get("id")+"addWish의 Id");
+		furnitureService.addWishButton(addWishMap);
+	}
+	@ResponseBody
+	@RequestMapping(value = "/main/deleteWish", method = RequestMethod.POST)
+	public void deleteItemFromWishList(@RequestParam Map<String, Object> deleteWishMap) {
+		System.out.println(deleteWishMap.get("memId")+"addWish의 memId 3");
+		System.out.println(deleteWishMap.get("id")+"addWish의 Id");
+		furnitureService.deleteWishButton(deleteWishMap);
+	}
+	
+	// 상품 상세컷 ... 상품 문의 작성
 		   @RequestMapping(value = "/main/productQnAWrite", method = RequestMethod.POST)
 		   @ResponseBody
 		   public ModelAndView productQnAWrite(@ModelAttribute Product_qnaDTO product_qnaDTO
 									         ,@RequestParam Map<String, String>map
 									         ,HttpSession session) {
-		      
-
-		  
 		      product_qnaDTO.setEmail((String) session.getAttribute("memEmail"));
 		     
 		      //product_qnaDTO.setEmail("무야호");
 		      product_qnaDTO.setProduct_id(map.get("product_id"));
 		      product_qnaDTO.setProduct_name(map.get("product_name"));
-
 		      
 		      System.out.println(product_qnaDTO +"product_qnaDTO 찍엇어요");
 		      
