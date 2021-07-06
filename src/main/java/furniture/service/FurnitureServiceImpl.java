@@ -128,4 +128,19 @@ public class FurnitureServiceImpl implements FurnitureService {
 		furnitureDAO.productOptionRegistration(product_OptionDTO);
 		
 	}
+
+	@Override
+	public List<Product_OptionDTO> getIdOption(Integer id) {
+		return furnitureDAO.getIdOption(id);
+	}
+	//최근 한달 리뷰수~~~
+	@Override
+	public List<ReviewDTO> reviewDay() {
+		return furnitureDAO.reviewDay();
+	}
+
+	@Override
+	public void addCart(Map<String, String> map) {
+		furnitureDAO.addCart(map);
+	}
 }

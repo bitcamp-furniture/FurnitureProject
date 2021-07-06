@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import admin.bean.adminReviewDTO;
+import furniture.bean.ReviewDTO;
 import admin.dao.adminReviewDAO;
 import admin.bean.adminReviewPaging;
 import admin.bean.adminReviewSelectListPaging;
@@ -22,7 +22,7 @@ public class adminReviewServiceImple implements adminReviewService
 	@Autowired
 	private adminReviewSelectListPaging adminreviewSelectListPaging;
 	@Override
-	public List<adminReviewDTO> adminReviewList(String pg) {
+	public List<ReviewDTO> adminReviewList(String pg) {
 		
 		//1페이지당 9개씩
 		int endNum = Integer.parseInt(pg)*5;
@@ -57,7 +57,7 @@ public class adminReviewServiceImple implements adminReviewService
 
 	//오름 차순 정렬
 	@Override
-	public List<adminReviewDTO> adminreviewASCList(String pg, String sort1) {
+	public List<ReviewDTO> adminreviewASCList(String pg, String sort1) {
 		int endNum = Integer.parseInt(pg)*5;
 		int startNum = endNum-4;
 		
@@ -71,7 +71,7 @@ public class adminReviewServiceImple implements adminReviewService
 	}
 	//내림차순
 	@Override
-	public List<adminReviewDTO> adminreviewDESCtList(String pg, String sort1) {
+	public List<ReviewDTO> adminreviewDESCtList(String pg, String sort1) {
 		int endNum = Integer.parseInt(pg)*5;
 		int startNum = endNum-4;
 

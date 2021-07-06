@@ -12,10 +12,8 @@ $('#wishlist-tap').click(function(){
 			dataType: 'json',
 			success: function(data){
 				//alert(JSON.stringify(data));
-
 				$.each(data.list, function(index, items){
 					//alert(JSON.stringify(items));
-
 					$('<li/>',{
 						class: 'wishlistLi'
 					}).append($('<div/>',{
@@ -25,34 +23,13 @@ $('#wishlist-tap').click(function(){
 						//id: 'subjectA',
 					}).append($('<img>',{
 						class: 'wishlist-list-img _'+items.id,
-						src: '/furniture/img/'+items.product_img_thumb
+						src: '/furniture/storage/'+items.product_img_thumb
 
 					}))).append($('<button/>',{
-						class: 'wishDelBtn wishlistDeletebutton_'+items.id,
+						class: 'wishDelBtn wishlistDeletebutton_ '+items.id,
 						type: 'button',
 						text: 'X'
 					}))).appendTo($('#wishlist-list-container-ul'));
-
-
-					$(document).on('click', '.wishlistDeletebutton_'+items.id, function(){
-						//alert(items.id);
-
-						$.ajax({
-							url: '/furniture/profile/choiceDelete',
-							type: 'post',
-							data: 'id=' + items.id,
-							success: function(){
-								alert('삭제 성공');
-								location.href='/furniture/profile/profile';
-							},
-							error: function(err){
-								console.log(err);
-								alert('삭제 실패');
-							}
-						}); //ajax
-
-					}); //선택삭제
-
 				}); //each
 
 				//페이징 처리
@@ -68,7 +45,7 @@ $('#wishlist-tap').click(function(){
 });
 
 //---------------------------------------------------------------
-
+//페이징처리
 function wishlistPaging(wishlistPg){
 	$('.wishlistLi *').remove();
 	//alert(wishlistPg);
@@ -82,7 +59,6 @@ function wishlistPaging(wishlistPg){
 		dataType: 'json',
 		success: function(data){
 			//alert(JSON.stringify(data));
-
 			$.each(data.list, function(index, items){
 				$('<li/>',{
 					class: 'wishlistLi'
@@ -96,31 +72,10 @@ function wishlistPaging(wishlistPg){
 					src: '/furniture/storage/'+items.product_img_thumb
 
 				}))).append($('<button/>',{
-					class: 'wishDelBtn wishlistDeletebutton_'+items.id,
+					class: 'wishDelBtn wishlistDeletebutton_ '+items.id,
 					type: 'button',
 					text: 'X'
 				}))).appendTo($('#wishlist-list-container-ul'));
-
-
-				$(document).on('click', '.wishlistDeletebutton_'+items.id, function(){
-					alert(items.id);
-
-					$.ajax({
-						url: '/furniture/profile/choiceDelete',
-						type: 'post',
-						data: 'id=' + items.id,
-						success: function(){
-							alert('삭제 성공');
-							location.href='/furniture/profile/profile';
-						},
-						error: function(err){
-							console.log(err);
-							alert('삭제 실패');
-						}
-					}); //ajax
-
-				}); //선택삭제
-
 			});//each
 
 			$('#wishlistPagingDiv').html(data.wishlistPaging.pagingHTML);
@@ -135,17 +90,36 @@ function wishlistPaging(wishlistPg){
 
 }
 
-//---------------------------------------------------------------
-$('.wishlistTotalDeletebutton').click(function(){
-	alert($('#id').val());
+//---------------------------------------------------------------------
+//삭제
+$(document).on('click', '.wishlistDeletebutton_ ', function(){
+	//alert($(this).attr('class').slice(32));
+	$.ajax({
+		url: '/furniture/profile/choiceDelete',
+		type: 'post',
+		data: 'id=' + $(this).attr('class').slice(32),
+		success: function(){
+			alert('삭제 성공');
+			$('#wishlist-tap').trigger('click');
+		},
+		error: function(err){
+			console.log(err);
+			alert('삭제 실패');
+		}
+	}); //ajax
 
+});
+//---------------------------------------------------------------
+//전체삭제
+$('.wishlistTotalDeletebutton').click(function(){
+	//alert($('#id').val());
 	$.ajax({
 		url: '/furniture/profile/totalDelete',
 		type: 'post',
 		data: 'memberId=' +$('#id').val(),
 		success: function(){
 			alert('삭제 성공');
-			location.href='/furniture/profile/profile';
+			$('#wishlist-tap').trigger('click');
 		},
 		error: function(err){
 			console.log(err);

@@ -43,7 +43,10 @@
                     <div class="col-lg-12">
                         <div class="header__top__inner">
                             <div class="header__top__left">
-                                <ul>  
+                                <ul>
+                                    <input type="hidden" id="memEmail" value="${memEmail}">
+                                    <input type="hidden" id="memId" value="${memId}">
+                                <ul>
                                 <input type="hidden" id="memEmail" value="${memEmail}">
                                     <c:if test="${sessionScope.memEmail == null }">
                                         <li><a href="/furniture/member/joinPage">회원가입</a></li>
