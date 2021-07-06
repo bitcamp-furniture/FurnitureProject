@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import admin.service.adminReviewService;
 import furniture.bean.ReviewDTO;
-import admin.bean.adminReviewPaging;
-import admin.bean.adminReviewSelectListPaging;
+import admin.bean.AdminReviewPaging;
+import admin.bean.AdminReviewSelectListPaging;
+import admin.service.AdminReviewService;
 
 @Controller
 @RequestMapping("admin")
-public class adminReviewController {
+public class AdminReviewController {
 	@Autowired
-	adminReviewService adminreviewService;
+	AdminReviewService adminReviewService;
 	
 	// 관리자페이지 - 리뷰관리
 	@RequestMapping(value = "/review", method = RequestMethod.GET)
@@ -36,9 +36,9 @@ public class adminReviewController {
 			                    		Model model)
 	{
 
-		List<ReviewDTO> adminReviewList = adminreviewService.adminReviewList(pg);
+		List<ReviewDTO> adminReviewList = adminReviewService.adminReviewList(pg);
 
-		adminReviewPaging adminreviewPaging = adminreviewService.adminreviewPaging(pg);
+		AdminReviewPaging adminreviewPaging = adminReviewService.adminreviewPaging(pg);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("pg", pg);
 		mav.addObject("adminReviewList", adminReviewList);
@@ -51,7 +51,7 @@ public class adminReviewController {
 	@RequestMapping(value="adminReviewListwDelete", method=RequestMethod.GET)
 	public ModelAndView adminReviewListwDelete(String[] check) {
 		ModelAndView mav = new ModelAndView();
-		adminreviewService.adminReviewListDelete(check);
+		adminReviewService.adminReviewListDelete(check);
 		
 		 return new ModelAndView("redirect:/admin/review");
 	}
@@ -66,10 +66,10 @@ public class adminReviewController {
 	{
 		// sort1 = 글번호순,날짜순,상품이름순,아이디순,평점순
 		
-		List<ReviewDTO> adminreviewSelectList = adminreviewService.adminreviewASCList(pg,sort1);
+		List<ReviewDTO> adminreviewSelectList = adminReviewService.adminreviewASCList(pg,sort1);
 		ModelAndView mav = new ModelAndView();
 			
-		adminReviewSelectListPaging adminreviewSelectListPaging = adminreviewService.adminReviewSelectList(pg,sort1);
+		AdminReviewSelectListPaging adminreviewSelectListPaging = adminReviewService.adminReviewSelectList(pg,sort1);
 
 		mav.addObject("pg", pg);
 		mav.addObject("sort1", sort1);
@@ -89,10 +89,10 @@ public class adminReviewController {
 	{
 		// sort1 = 글번호순,날짜순,상품이름순,아이디순,평점순
 		
-		List<ReviewDTO> adminreviewSelectList = adminreviewService.adminreviewDESCtList(pg,sort1);
+		List<ReviewDTO> adminreviewSelectList = adminReviewService.adminreviewDESCtList(pg,sort1);
 		ModelAndView mav = new ModelAndView();
 	
-		adminReviewSelectListPaging adminreviewSelectListPaging = adminreviewService.adminReviewSelectList(pg,sort1);
+		AdminReviewSelectListPaging adminreviewSelectListPaging = adminReviewService.adminReviewSelectList(pg,sort1);
 			
 		mav.addObject("pg", pg);
 		mav.addObject("sort1", sort1);
@@ -105,3 +105,5 @@ public class adminReviewController {
 
 
 }
+
+

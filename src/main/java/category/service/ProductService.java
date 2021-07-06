@@ -4,14 +4,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import furniture.bean.ProductDTO;
 import category.bean.ProductListDTO;
 import category.bean.ProductPaging;
+import category.bean.SortedListPaging;
 
-@Controller
-@RequestMapping(value="productService")
+
 public interface ProductService {
 
 	//상품 등록하는 메소드
@@ -28,6 +29,10 @@ public interface ProductService {
 	public List<ProductDTO> searchList(String pg, String keyword);
 
 	public ProductPaging productSearchPaging(String pg, String keyword);
+
+	public List<ProductListDTO> sortedSelectList(String pg, String key, String category);
+
+	public SortedListPaging sortedListPaging(String pg, String key, String category);
 
 
 

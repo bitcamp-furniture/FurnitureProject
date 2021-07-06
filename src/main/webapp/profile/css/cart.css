@@ -64,4 +64,11 @@
     background: white;
     border:0;
 }
+.cart_product_name, .cart_product_price{
+    width: 200px;
+    float: left;
+}
+.cart_product_price{
+    text-align: right;
+}
 

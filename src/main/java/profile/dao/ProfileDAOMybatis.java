@@ -77,8 +77,8 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
-	public int getTotalWishlist() {
-		return sqlSession.selectOne("profileSQL.getTotalWishlist");
+	public int getTotalWishlist(String id) {
+		return sqlSession.selectOne("profileSQL.getTotalWishlist", id);
 	}
 
 	@Override

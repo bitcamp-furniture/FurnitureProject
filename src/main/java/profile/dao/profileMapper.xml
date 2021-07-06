@@ -65,8 +65,8 @@
 		delete from wishlist where member_id=#{memberId}
 	</delete>
 
-	<select id="getTotalWishlist"  resultType="Integer">
-		select count(*) as count from wishlist
+	<select id="getTotalWishlist" parameterType="String" resultType="Integer">
+		select count(*) as count from wishlist where member_id=#{id}
 	</select>
 
 	<select id="getOrderList" parameterType="java.util.Map" resultType="order">

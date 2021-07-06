@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import furniture.bean.ProductDTO;
 import category.bean.ProductListDTO;
 import category.bean.ProductPaging;
+import category.bean.SortedListPaging;
 import category.dao.ProductDAO;
 
 @Service
@@ -30,6 +31,8 @@ public class ProductServiceImpl implements ProductService
 	private ProductDAO productDAO;
 	@Autowired
 	private ProductPaging productPaging;
+	@Autowired
+	private SortedListPaging sortedListPaging;
 
 	//상품등록하는 메소드
 	public void categoryboardWrite(ProductDTO productDTO) {
@@ -98,6 +101,33 @@ public class ProductServiceImpl implements ProductService
 		productPaging.setTotalA(totalA);
 		productPaging.makePagingHTML();
 		return productPaging;
+	}
+
+	@Override
+	public List<ProductListDTO> sortedSelectList(String pg, String key, String category) {
+		//1페이지당 9개씩
+		int endNum = Integer.parseInt(pg)*9;
+		int startNum = endNum-8;
+		
+		Map<Object,Object> map = new HashMap<Object,Object>();
+		map.put("key", key);
+		map.put("category", category);
+		map.put("startNum",startNum);
+		map.put("endNum",endNum);
+
+		return productDAO.sortedSelectList(map);
+	}
+
+	@Override
+	public SortedListPaging sortedListPaging(String pg, String key, String category) {
+		int totalA  = productDAO.sortedListPagingA(key, category);
+		
+		sortedListPaging.setCurrentPage(Integer.parseInt(pg));
+		sortedListPaging.setPageBlock(3);
+		sortedListPaging.setPageSize(9);
+		sortedListPaging.setTotalA(totalA);
+		sortedListPaging.makePagingHTML();
+		return sortedListPaging;
 	}
 
 

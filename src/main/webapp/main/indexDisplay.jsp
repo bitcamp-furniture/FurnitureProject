@@ -267,16 +267,16 @@
             <div class="row">
                 <div class="testimonial__slider owl-carousel">
                     <div class="col-lg-6">
-                        <div class="testimonial__item">
-                            <div class="testimonial__author">
-                                <div class="testimonial__author__pic">
-                                    <img src="/furniture/storage/review (1).jpg" alt="" width="70px" height="70px">
-                                </div>
-                                <div class="testimonial__author__text">
-                                    <h5 class="write_email_h5_1"></h5>
-                                    <span class="product_name_span_1"></span>
-                                </div>
-                            </div>
+                        <div class="testimonial__item" >
+	                            <div class="testimonial__author">
+	                                <div class="testimonial__author__pic">
+	                                    <img src="/furniture/storage/review (1).jpg" alt="" width="70px" height="70px">
+	                                </div>
+	                                <div class="testimonial__author__text">
+	                                    <h5 class="write_email_h5_1"></h5>
+	                                    <span class="product_name_span_1"></span>
+	                                </div>
+	                            </div>
                             <div class="rating_1">
                             </div>
                             <p class="review_content_p_1"></p>
@@ -285,15 +285,15 @@
                     
                      <div class="col-lg-6">
                         <div class="testimonial__item">
-                            <div class="testimonial__author">
-                                <div class="testimonial__author__pic">
-                                    <img src="/furniture/storage/review (2).jpg" alt="" width="70px" height="70px">
-                                </div>
-                                <div class="testimonial__author__text">
-                                    <h5 class="write_email_h5_2"></h5>
-                                    <span class="product_name_span_2"></span>
-                                </div>
-                            </div>
+	                            <div class="testimonial__author">
+	                                <div class="testimonial__author__pic">
+	                                    <img src="/furniture/storage/review (2).jpg" alt="" width="70px" height="70px">
+	                                </div>
+	                                <div class="testimonial__author__text">
+	                                    <h5 class="write_email_h5_2"></h5>
+	                                    <span class="product_name_span_2"></span>
+	                                </div>
+	                            </div>
                             <div class="rating_2">
                             </div>
                             <p class="review_content_p_2"></p>
@@ -302,15 +302,15 @@
                       
                       <div class="col-lg-6">
                         <div class="testimonial__item">
-                            <div class="testimonial__author">
-                                <div class="testimonial__author__pic">
-                                    <img src="/furniture/storage/review (3).jpg" alt="" width="70px" height="70px">
-                                </div>
-                                <div class="testimonial__author__text">
-                                    <h5 class="write_email_h5_3"></h5>
-                                    <span class="product_name_span_3"></span>
-                                </div>
-                            </div>
+	                            <div class="testimonial__author">
+	                                <div class="testimonial__author__pic">
+	                                    <img src="/furniture/storage/review (3).jpg" alt="" width="70px" height="70px">
+	                                </div>
+	                                <div class="testimonial__author__text">
+	                                    <h5 class="write_email_h5_3"></h5>
+	                                    <span class="product_name_span_3"></span>
+	                                </div>
+	                            </div>
                             <div class="rating_3">
                                 <span class="icon_star"></span>
                                 <span class="icon_star"></span>
@@ -321,16 +321,17 @@
                             <p class="review_content_p_3"></p>
                         </div>
                     </div> 
+                    
                       <div class="col-lg-6">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
-                                <div class="testimonial__author__pic">
-                                    <img src="/furniture/storage/review (4).jpg" alt="" width="70px" height="70px">
-                                </div>
-                                <div class="testimonial__author__text">
-                                    <h5 class="write_email_h5_4"></h5>
-                                    <span class="product_name_span_4"></span>
-                                </div>
+	                                <div class="testimonial__author__pic">
+	                                    <img src="/furniture/storage/review (4).jpg" alt="" width="70px" height="70px">
+	                                </div>
+	                                <div class="testimonial__author__text">
+	                                    <h5 class="write_email_h5_4"></h5>
+	                                    <span class="product_name_span_4"></span>
+	                                </div>
                             </div>
                             <div class="rating_4">
                             </div>

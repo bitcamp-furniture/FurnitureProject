@@ -39,7 +39,15 @@
    }
 </style>
 
+<br>
+<select name="selectListSort" id="selectListSort">
+    <option value="1">최신순</option>
+	<option value="2">가격낮은순</option>
+    <option value="3">가격높은순</option>
+</select>
+<br>
 
+<input type="hidden" value="${key }" id="key">
 <input type="hidden" value="${category }" id="category">
 <input type="hidden" value="${pg }" id="pg">
 
@@ -66,7 +74,7 @@ $.ajax({
       $('<div/>',{class: "row",id:"product_list"}).appendTo($('#cover_product_list'));
          
       $.each(data.selectList,function(index,items){
-           $('<div/>', {class: "col-lg-4 col-md-6 col-sm-6"}).append($('<div/>', {class:"product__item"}).append($('<div/>',{class:"product__item__pic set-bg"})
+           $('<div/>', { class: "col-lg-4 col-md-6 col-sm-6" }).append($('<div/>', {class:"product__item"}).append($('<div/>',{class:"product__item__pic set-bg"})
            		.append($('<a/>',{
            					href: "/furniture/main/productView?id="+items.id+"&pg="+$('#pg').val()
            				}) 
@@ -79,7 +87,7 @@ $.ajax({
                       .append($('<a/>',{
                     	  id:"product_name",
                     	  text: items.product_name,
-      						href: "/furniture/main/productView?id="+items.id
+         					href: "/furniture/main/productView?id="+items.id+"&pg="+$('#pg').val()
                     	}))).append($('<h5/>',{id:"product_price",text: "₩"+items.product_price.toLocaleString()}))))
                       .appendTo($("#product_list"));
            $('<input/>', {
@@ -149,3 +157,61 @@ function productPaging(pg){
 
 
 </script>
+
+<script type="text/javascript">
+$('#selectListSort').on('change', function() {
+	// 1 최신순 2 가격낮은순 3 가격높은순
+	$('#key').val( $(this).val() );
+	selectListSort(1);
+});
+
+
+function selectListSort(pg) {
+	// 1 최신순 2 가격낮은순 3 가격높은순
+	$.ajax({
+		type: 'post',
+		url: '/furniture/category/view/sortedSelectList',
+		data: { 'key' : $('#key').val(),
+				'category':$('#category').val(),
+			 	'pg' : pg },
+		dataType: 'json',
+		success: function(data) {
+			console.log(data);
+			
+            $('#product_list').remove();
+            $('<div/>',{class: "row",id:"product_list"}).appendTo($('#cover_product_list'));
+               
+            $.each(data.sortedSelectList, function(index, items){
+               
+                $('<div/>', {class: "col-lg-4 col-md-6 col-sm-6"}).append($('<div/>', {class:"product__item"}).append($('<div/>',{class:"product__item__pic set-bg"})
+                        .append($('<a/>',{
+           					href: "/furniture/main/productView?id="+items.id+"&pg="+pg
+                        }) 
+                      .append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/"+items.product_img_thumb})))
+                           .append($('<ul/>',{class:"product__item__pic__hover"})
+                                 .append($('<li/>').append($('<a/>', {
+                    					href: "/furniture/main/productView?id="+items.id+"&pg="+pg
+                                }).append($('<i/>',{class:"fa fa-heart"}))))                                  
+                           
+                           )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>')
+                             .append($('<a/>',{
+             					href: "/furniture/main/productView?id="+items.id+"&pg="+pg,
+             					id:"product_name",
+             					text: items.product_name
+                            	 }))).append($('<h5/>',{id:"product_price",text: "₩"+items.product_price.toLocaleString()}))))
+                           .appendTo($("#product_list")); 
+            }); // each
+            
+            $('#selectCategoryPagingDiv').html(data.sortedListPaging.pagingHTML);
+
+		},
+		error: function(err) {
+			console.log(err);
+		}
+	});
+
+}
+
+</script>
+
+
