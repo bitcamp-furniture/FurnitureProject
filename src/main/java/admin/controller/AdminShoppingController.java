@@ -16,10 +16,10 @@ public class AdminShoppingController {
 	AdminService adminService;
 	
 	//주문관리 창 띄우기
-	@RequestMapping(value = "/orderControl", method = RequestMethod.GET)
+	@RequestMapping(value = "product/orderControl", method = RequestMethod.GET)
 	public String eventList(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
 		model.addAttribute("pg", pg);
-		model.addAttribute("display", "/admin/orderControl.jsp");
+		model.addAttribute("display", "/admin/product/orderControl.jsp");
 
 		return "/admin/adminIndex";
 	}
