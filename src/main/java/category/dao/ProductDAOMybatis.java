@@ -52,6 +52,32 @@ public class ProductDAOMybatis implements ProductDAO{
 		return sqlSession.selectOne("productSQL.getSearchProduct", keyword);
 	}
 
+	@Override
+	public List<ProductListDTO> sortedSelectList(Map<Object, Object> map) {
+		String key = (String)map.get("key");
+		
+		// 1 최신순 2 가격낮은순 3 가격높은순
+		if(key.equals("1")) {
+			map.put("sortOption", "id");
+			map.put("orderBy", "desc");
+			return sqlSession.selectList("productSQL.sortedSelectList", map);
+		} else if(key.equals("2")) {
+			map.put("sortOption", "product_price");
+			map.put("orderBy", "asc");
+			return sqlSession.selectList("productSQL.sortedSelectList", map);
+		} else if(key.equals("3")) {
+			map.put("sortOption", "product_price");
+			map.put("orderBy", "desc");
+			return sqlSession.selectList("productSQL.sortedSelectList", map);
+		}
+		return sqlSession.selectList("productSQL.sortedSelectList", map);
+	}
+
+	@Override
+	public int sortedListPagingA(String key, String category) {
+		return sqlSession.selectOne("productSQL.getTotalProduct", category);
+	}
+
 
 
 

@@ -21,5 +21,9 @@ public interface ProductDAO {
 	public List<ProductDTO> searchList(Map<Object, Object> map);
 	
 	public int getSearchProduct(String keyword);
+	
+	public List<ProductListDTO> sortedSelectList(Map<Object, Object> map);
+	
+	public int sortedListPagingA(String key, String category);
 
 }
