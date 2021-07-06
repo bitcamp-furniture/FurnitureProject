@@ -1,5 +1,7 @@
 $('#cart-tap').click(function() {
     $(".cartTable tr").remove();
+    $('.cart-orderList *').remove();
+
     $.ajax({
         type: 'post',
         url: '/furniture/profile/getCartList',
@@ -8,7 +10,7 @@ $('#cart-tap').click(function() {
         },
         dataType : 'json',
         success: function (data){
-            alert(JSON.stringify(data));
+            //alert(JSON.stringify(data));
             $.each(data.list, function (index, item) {
                 let color = null;
                 if (item.product_option_color === 'R') color = '빨강';
@@ -35,7 +37,7 @@ $('#cart-tap').click(function() {
                     style: 'text-align: center; vertical-align:middle;',
                     rowspan: 3,
                     width: 100,
-                    text: item.product_price
+                    text: item.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")
                 })).appendTo($('.cartTable'));
 
                 $('<tr/>').append($('<td/>',{
@@ -53,13 +55,27 @@ $('#cart-tap').click(function() {
                     class: 'cartDeleteBtn '+item.id,
                 }))).appendTo($('.cartTable'));
 
-                // $('<div/>',{
-                //     text: item
-                // }).append($('<div/>',{
-                //     text:
-                // })).appendTo($('.cart_product_name'));
+            });//each
+
+            let totalPrice=0;
+            $.each(data.cartList, function (index, item) {
+                let productPrice = item.product_count * item.product_price;
+
+                $('<div/>',{
+                    text: item.product_name,
+                    class: 'cart_product_name'
+                }).appendTo($('.cart-orderList'));
+
+                $('<div/>',{
+                    text: productPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g,","),
+                    class: 'cart_product_price'
+                }).appendTo($('.cart-orderList'));
+
+                totalPrice += productPrice;
 
             });//each
+
+            $('.cart-total-price').text(totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g,","));
 
             //페이징 처리
             $('#cartlistPagingDiv').html(data.cartPaging.pagingHTML);
@@ -111,7 +127,7 @@ function cartPaging(cartPg) {
                     style: 'text-align: center; vertical-align:middle;',
                     rowspan: 3,
                     width: 100,
-                    text: item.product_price
+                    text: item.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")
                 })).appendTo($('.cartTable'));
 
                 $('<tr/>').append($('<td/>',{
@@ -238,5 +254,3 @@ $('.kakaoPayBtn').click(function(){
         }
     });
 });
-
-

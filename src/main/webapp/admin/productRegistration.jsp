@@ -107,7 +107,7 @@
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script> 
-<script src="/furniture/js/dashBoard.js"></script>
+<script src="/furniture/js/productRegistration.js"></script>
 
 
 

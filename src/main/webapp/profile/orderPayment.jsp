@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,6 @@
 
     <div class="orderPayment_table">
 
-
         <table class="cartTable" width="50%" style="margin: 50px;">
             <tr>
                 <td style="text-align: center; vertical-align:middle;">상품</td>
@@ -44,12 +43,26 @@
                     <td class="tg-0pky" width="100"
                         style="text-align: center; vertical-align:middle;">${cart.product_option_color}</td>
                     <td class="tg-0pky" width="100"
-                        style="text-align: center; vertical-align:middle;">${cart.product_count}</td>
+                        style="text-align: center; vertical-align:middle;">${cart.product_count}</td> 
                     <td class="tg-0pky" width="100"
-                        style="text-align: center; vertical-align:middle;">${cart.product_price}</td>
+                        style="text-align: center; vertical-align:middle;">
+                        <fmt:formatNumber value="${cart.product_price}" pattern="#,###.##"/></td>
                 </tr>
+                <c:set var= "total" value="${total + cart.product_price}"/>
             </c:forEach>
+            
+
+            
+             <tr>
+                <td style="text-align: center; vertical-align:middle;" colspan="4">총 금액</td>
+                
+                <td style="text-align: center; vertical-align:middle;">
+                    <fmt:formatNumber value="${total}" pattern="#,###.##"/></td>
+            </tr>
         </table>
+
+                <input type="hidden" id="totalHidden" value="${total}">
+
 
 
     </div>   <!--   orderPayment_table_cart-->
@@ -65,10 +78,10 @@
 			<td></td>            
         </tr>
         
-        <tr>
+       <tr>
             <td style="text-align: center; vertical-align:middle;">주소</td>
             <td>
-             <p class="addTitle" style="font-size:13.5px">주소</p>
+             <p class="addTitle" style="font-size:13.5px"></p>
 		       <input class="postcode" id="zipcode" name="zipcode" placeholder="" formcontrolname="zipcode" autocorrect="off" autocapitalize="none" type="text" value="${memberDTO.zipcode}"style="width:270px" readonly>
 		       <input type="button" class="addSearchBtn" value="배송지수정" onclick="execDaumPostcode()" style="text-align:center;"><br><br>
 		       <input class="address" id="addr1" name="addr1" placeholder="" formcontrolname="addr1" autocorrect="off" autocapitalize="none" type="text" value="${memberDTO.addr1}" readonly><br><br>
@@ -76,7 +89,7 @@
 		       <input class="extraAddress" id="extraAddress" formcontrolname="addr2" autocorrect="off" autocapitalize="none" type="hidden">
 		       <div id="addressDiv"></div><br>
             </td>
-        </tr>
+        </tr> 
        
         
         
@@ -96,10 +109,92 @@
     </table>
 
 
+    <!-- 구분선 -->
+    <hr class="profile__divider">
+
+	<table class="pointTable" width="50%" style="margin: 50px;">
+        <tr>
+            <td style="text-align: center; vertical-align:middle;">포인트 </td>
+			<td></td>            
+        </tr>
+        
+       <tr>
+            <td style="text-align: center; vertical-align:middle;">보유포인트</td>
+            <td style="text-align: center; vertical-align:middle;"> ${memberDTO.point}</td>
+        </tr> 
+	<input type="hidden" id="memberpoint" value="${memberDTO.point}">
+        <tr>
+            <td style="text-align: center; vertical-align:middle;">
+            <input type="text" id="pointText" value="0">
+            
+            </td>
+            <td style="text-align: center; vertical-align:middle;">
+            <input type="button" id="pointCheckbox" value="전액 사용">
+                <td>
+        </tr>
+    </table>
+
+
+ <!-- 구분선 -->
+    <hr class="profile__divider">
+
+	<table class="payTable" width="50%" style="margin: 50px;">
+        <tr>
+            <td style="text-align: center; vertical-align:middle;">결제방법 </td>
+			<td></td>            
+        </tr>
+        
+       <tr>
+            <td style="text-align: center; vertical-align:middle;">카카오페이</td>
+            <td style="text-align: center; vertical-align:middle;">
+            <input type="radio" id="payRadio" checked="checked" value="카카오페이"></td>
+        </tr> 
+
+        
+    </table>
+
+ <!-- 구분선 -->
+    <hr class="profile__divider">
+
+	<table class="pointsavingTable" width="50%" style="margin: 50px;">
+        <tr>
+            <td style="text-align: center; vertical-align:middle;">포인트 적립 </td>
+			<td></td>            
+        </tr>
+        
+       <tr>
+            <td style="text-align: center; vertical-align:middle;">예상포인트</td>
+            <td style="text-align: center; vertical-align:middle;">
+            <c:set var= "savingPoint" value="${total * 0.01}"/>
+			<fmt:formatNumber value="${savingPoint}" pattern="#,###.##"/>
+            </td>
+        </tr> 
+    </table>
+
+ <!-- 구분선 -->
+    <hr class="profile__divider">
+
+	<table class="paymentDetailsTable" width="50%" style="margin: 50px;">
+        <tr>
+            <td style="text-align: center; vertical-align:middle;">결제 상세 </td>
+			<td style="text-align: center; vertical-align:middle;">
+			<span id="totalPay">${total}</span></td>
+			<%-- <fmt:formatNumber value="${total}" pattern="#,###.##"/> --%>
+			          
+        </tr>
+        
+       <tr>
+            <td style="text-align: center; vertical-align:middle;"></td>
+            <td style="text-align: center; vertical-align:middle;"></td>
+        </tr> 
+    </table>
+
+
+
+
 
     <div>
         <input type="submit" value="결제하기" id="paymentBtn">
-        <input type="reset" value="다시작성">
     </div>
 
 
