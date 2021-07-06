@@ -49,17 +49,17 @@
 	<select id="getTotalReview" resultType="int" parameterType="String">
 		select count(*) from review where product_name=#{product_name} order by created_at desc
 	</select>
-	<!-- 리뷰 일별 수 -->
-	<select id="reviewDay" resultType="review">
- 		<![CDATA[
- 		select TO_CHAR(created_at,'YYMMDD') as 날짜, count(*) as 리뷰수 
- 		from review
-		where created_at >='210101' 
-		and created_at < to_char(sysdate,'YYMMDD') 
-		GROUP BY to_char(created_at, 'YYMMDD');
+	
+	<!-- 리뷰 일별 글수 -->
+	<select id="reviewDay" resultType="int">
+		<![CDATA[
+		select count(*) 
+		from review
+		where created_at >='210101' and created_at < to_char(sysdate,'YYMMDD') 
+		GROUP BY to_char(created_at,'YYMMDD')
 		]]>
 	</select>
-	
+      
 	<!--베스트 셀러 -->
 	<select id="getBestSeller" resultType="productList">
  		<![CDATA[
@@ -72,17 +72,7 @@
                on p.PRODUCT_CODE = i.PRODUCT_CODE
               ORDER BY product_price desc)tt)
       WHERE ROWNUM <= 8
-
- 		
- 		
 		]]>
-<!--		select * from (
-			SELECT distinct PRODUCT_CODE, PRODUCT_NAME,PRODUCT_PRICE, PRODUCT_CATEGORY1,
-			PRODUCT_CATEGORY2, PRODUCT_CATEGORY_NAME,PRODUCT_IMG_THUMB
-			FROM product
-			join product_image using (PRODUCT_CODE)
-			ORDER BY product_price desc
-		) WHERE ROWNUM <= 8-->
 	</select>
 	
 	
@@ -130,8 +120,11 @@
 		select id from product where product_code=#{product_code}
 	</select>
 
-
 	<select id="getIdOption" parameterType="Integer" resultType="productOption">
 		select * from product_option where id=#{id}
 	</select>
+	
+	
+	
+	
 </mapper>

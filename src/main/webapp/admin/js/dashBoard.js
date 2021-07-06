@@ -13,13 +13,6 @@ $(document).ready(function(){
 		contentType : 'application/json;charset=utf-8',
 		success : function(map) {
 			console.log(map);
-			//만든다면 총 리뷰수
-//			if(map.storecount != null || map.standbycount != null){
-//			 	var count = "<tr><td>총 가입업체 수</td><td>" + map.storecount+"</td></tr>"
-//			 		count += "<tr><td>인증대기업체 수</td><td>" + map.standbycount+"</td></tr>"
-//		
-//				   $('.storecount').append(count);  
-//			}//if
 			if(map.reviewdDay != null && map.reviewdDay != ""){
 				console.log("reviewdDay")
 				console.log(map.reviewdDay)
