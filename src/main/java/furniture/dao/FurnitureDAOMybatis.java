@@ -107,7 +107,7 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 
 	
 	@Override
-	public List<ReviewDTO> reviewDay() {
+	public List<Integer> reviewDay() {
 		return sqlSession.selectList("productSQL.reviewDay");
 	}
 

@@ -51,12 +51,27 @@
 	</select>
 	
 	<!-- 리뷰 일별 글수 -->
-	<select id="reviewDay" resultType="int">
-		<![CDATA[
-		select count(*) 
-		from review
-		where created_at >='210101' and created_at < to_char(sysdate,'YYMMDD') 
+	<!--  
+	<select id="reviewDay" resultType="review">
+ 		<![CDATA[
+ 		select TO_CHAR(created_at,'YYMMDD'),
+ 		count(*) 
+ 		from review
+		where created_at >='210101' 
+		and created_at < to_char(sysdate,'YYMMDD') 
 		GROUP BY to_char(created_at,'YYMMDD')
+		]]>
+	</select>
+	-->
+	<!-- 리뷰 일별 글수 -->
+	<select id="reviewDay" resultType="int">
+ 		<![CDATA[
+	 		select 
+	 		count(*) 
+	 		from review
+			where created_at >='210101' 
+			and created_at < to_char(sysdate,'YYMMDD') 
+			GROUP BY to_char(created_at,'YYMMDD')
 		]]>
 	</select>
       

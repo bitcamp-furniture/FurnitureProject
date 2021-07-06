@@ -40,9 +40,9 @@ public interface FurnitureService {
 
 	public void productOptionRegistration(Product_OptionDTO product_OptionDTO);
 
-	public List<Product_OptionDTO> getIdOption(Integer id);
+	public List<Integer> reviewDay();
 
-	public List<ReviewDTO> reviewDay();
+	public List<Product_OptionDTO> getIdOption(Integer id);
 
     public void addCart(Map<String, String> map);
 }

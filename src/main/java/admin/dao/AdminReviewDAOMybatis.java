@@ -13,7 +13,6 @@ import furniture.bean.ReviewDTO;
 @Transactional
 @Repository
 public class AdminReviewDAOMybatis implements AdminReviewDAO{
-	
 	@Autowired
 	private SqlSession sqlSession;
 	
