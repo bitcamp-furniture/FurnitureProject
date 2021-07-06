@@ -84,18 +84,8 @@ public class FurnitureController {
 		wishMap.put("memId", memId);
 		wishMap.put("id", id);
 		boolean wishQ = furnitureService.wishQ(wishMap);
-		System.out.println(memId+"memId");
-		System.out.println(id+"id");
-		System.out.println(wishMap+"위시맵");
-		System.out.println(wishQ+"돌아온 wishQ");
 		
 		List<Product_OptionDTO> optionlist=furnitureService.getIdOption(id);
-
-		System.out.println(optionlist +"옵션");
-		//테스트
-		System.out.println(list);
-		System.out.println(productDTO);
-		System.out.println(list.size());
 
 		model.addAttribute("wishQ", wishQ);
 		model.addAttribute("memId", memId);
@@ -114,15 +104,11 @@ public class FurnitureController {
 	@ResponseBody
 	@RequestMapping(value = "/main/addWish", method = RequestMethod.POST)
 	public void addItemToWishList(@RequestParam Map<String, Object> addWishMap) {
-		System.out.println(addWishMap.get("memId")+"addWish의 memId 3");
-		System.out.println(addWishMap.get("id")+"addWish의 Id");
 		furnitureService.addWishButton(addWishMap);
 	}
 	@ResponseBody
 	@RequestMapping(value = "/main/deleteWish", method = RequestMethod.POST)
 	public void deleteItemFromWishList(@RequestParam Map<String, Object> deleteWishMap) {
-		System.out.println(deleteWishMap.get("memId")+"addWish의 memId 3");
-		System.out.println(deleteWishMap.get("id")+"addWish의 Id");
 		furnitureService.deleteWishButton(deleteWishMap);
 	}
 	

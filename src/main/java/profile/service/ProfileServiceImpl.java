@@ -72,9 +72,7 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	public void updateMember(Map<String, String> map, HttpSession session) {
 		//session.removeAttribute("memId");
-		System.out.println("service name1 = " + session.getAttribute("memName"));
 		session.setAttribute("memName", map.get("name"));
-		System.out.println("service name2 = " + session.getAttribute("memName"));
 		profileDAO.updateMember(map);
 	}
 
@@ -129,9 +127,6 @@ public class ProfileServiceImpl implements ProfileService {
 		int endNum = Integer.parseInt(orderPg)*4;
 		int startNum = endNum-3;
 
-		System.out.println("endNum = " + endNum);
-		System.out.println("startNum = " + startNum);
-
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
@@ -163,10 +158,6 @@ public class ProfileServiceImpl implements ProfileService {
 		int endNum = Integer.parseInt(cartPg)*3;
 		int startNum = endNum-2;
 
-		System.out.println("startNum = " + startNum);
-		System.out.println("endNum = " + endNum);
-
-		System.out.println("id = " + id);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
