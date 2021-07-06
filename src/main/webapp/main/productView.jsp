@@ -121,7 +121,7 @@
                                     <input type="text" id="product_qty" value="1">
                                 </div>
                             </div>
-                            <a id="addCartBtn" class="primary-btn">Add to cart</a>
+                            <a id="addCartBtn" class="primary-btn" style="color: white">Add to cart</a>
                             <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
                         </div>
                     </div>

@@ -428,10 +428,6 @@ public class FurnitureController {
 	@ResponseBody
 	public void addCart(@RequestParam Map<String, String> map, HttpSession session) {
 		furnitureService.addCart(map);
-
-		if(session.getAttribute("memId")==null) {
-
-		}
 	}
 }
 
