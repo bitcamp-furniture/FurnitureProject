@@ -286,7 +286,6 @@ public class ProfileController {
 	@ResponseBody
 	public ModelAndView getCartList(@RequestParam String id,
 									@RequestParam(required = false, defaultValue="1") String cartPg) {
-		System.out.println("cartPg = "+cartPg);
 		List<CartDTO> list = profileService.getCartList(id,cartPg);
 		List<CartDTO> cartList = profileService.getAllCartList(id);
 		//페이징 처리

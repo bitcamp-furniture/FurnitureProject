@@ -1,7 +1,4 @@
 $(document).on("click",".icon_heart",function(){
-	alert($('#id').val());
-	alert($('#memId').val());
-	
 	$.ajax({
 		url : "/furniture/main/deleteWish",
 		type : "post",
@@ -23,8 +20,6 @@ $(document).on("click",".icon_heart",function(){
 });
 
 $(document).on("click",".icon_heart_alt",function(){
-	alert($('#id').val());
-	alert($('#memId').val());
 	if($('#memId').val() == '0'){
 		alert("로그인이 필요한 서비스입니다.");
 		location.href = "/furniture/member/loginForm";
