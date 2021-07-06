@@ -23,5 +23,8 @@ public class AdminShoppingController {
 
 		return "/admin/adminIndex";
 	}
+	
+	//주문목록 띄우기
+	
 
 }
