@@ -118,7 +118,6 @@
                                 </div>
                             </div>
                             <a id="addCartBtn" class="primary-btn" style="color: white">Add to cart</a>
-                            <a href="#" class="heart__btn"><span class="icon_heart_alt"></span></a>
        					    <!-- 비회원은 뚫린하트 -->
                             <!-- 자기 목록으로 셀렉트 했을 때 목록에 있으면 없으면 달리 띄워줘야함 -->
                       		<c:choose>
