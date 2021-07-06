@@ -1,4 +1,4 @@
-package admin.bean;
+package category.bean;
 
 import org.springframework.stereotype.Component;
 
@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Component
-public class adminReviewPaging {
+public class SortedListPaging {
 	private int currentPage;//현재페이지
 	private int pageBlock;//[이전][1][2][3][다음]
 	private int pageSize;//1페이지당 5개씩
@@ -25,18 +25,18 @@ public class adminReviewPaging {
 		if(endPage > totalP) endPage = totalP;
 		
 		if(startPage > pageBlock)
-			pagingHTML.append("<span id='paging' onclick='reviewPaging("+(startPage-1)+")'>◀</span>");
+			pagingHTML.append("<span id='paging' onclick='productPaging("+(startPage-1)+")'>◀</span>");
 		
 		for(int i=startPage; i<=endPage; i++) {
 			if(i==currentPage) {
-				pagingHTML.append("<span id='currentPaging' onclick='reviewPaging("+i+")'>"+i+"</span>");
+				pagingHTML.append("<span id='currentPaging' onclick='productPaging("+i+")'>"+i+"</span>");
 			}else {
-				pagingHTML.append("<span id='paging' onclick='reviewPaging("+i+")'>"+i+"</span>");
+				pagingHTML.append("<span id='paging' onclick='productPaging("+i+")'>"+i+"</span>");
 			}
 		}//for
 		
 		if(endPage < totalP)
-			pagingHTML.append("<span id='paging' onclick='reviewPaging("+(endPage+1)+")'>▶</span>");
-	}
-
+			pagingHTML.append("<span id='paging' onclick='productPaging("+(endPage+1)+")'>▶</span>");
+	}	
+	
 }

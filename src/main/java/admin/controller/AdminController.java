@@ -3,19 +3,13 @@ package admin.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +26,7 @@ import furniture.service.FurnitureService;
 import admin.bean.MemberListPaging;
 import admin.service.AdminService;
 import member.bean.MemberDTO;
+import profile.bean.AskDTO;
 
 
 @Controller
@@ -48,21 +43,6 @@ public class AdminController {
 		return "/admin/adminIndex";
 	}
 	
-	//실험중
-	//라인 차트 : 리뷰 
-	@RequestMapping(value = "/reviewLineChart")
-	@ResponseBody
-	 public ModelAndView reviewLineChart(Model model) {
-		        	   
-		//라인 차트 : 일별 리뷰수
-		List<ReviewDTO> reviewdDay = furnitureService.reviewDay();	 
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("reviewdDay", reviewdDay);
-		mav.setViewName("jsonView");
-		      
-		return mav;
-	  }
-	//----------------------------------------------------------------
 	//memberList 창 띄우기
 	@RequestMapping(value = "/memberList", method = RequestMethod.GET)
 	public String eventList(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
@@ -121,4 +101,19 @@ public class AdminController {
 		return new ModelAndView("redirect:/admin/memberList");
 	}	
 
+	// 대시보드 ... 최신 리뷰, 문의 n건씩
+	@RequestMapping(value="/getRecentList", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getRecentList() {
+		List<ReviewDTO> lastReviewList = adminService.getRecentReviewList();
+		List<AskDTO> lastQnAList = adminService.getRecentQnAList();
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("lastReviewList", lastReviewList);
+		mav.addObject("lastQnAList", lastQnAList);
+		mav.setViewName("jsonView");
+
+		return mav;
+	}
 }
+

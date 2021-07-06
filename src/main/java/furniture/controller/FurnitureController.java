@@ -58,6 +58,7 @@ public class FurnitureController {
 	//주소는 각자의 컴퓨터 경로
 	
 	// 상품 상세컷 ... DB연결, 상품id 필요
+
 	@RequestMapping(value = "/main/productView", method = RequestMethod.GET)
 	public String productView(@RequestParam(required = false, defaultValue = "1") String pg
 							, Integer id
@@ -444,6 +445,18 @@ public class FurnitureController {
 		System.out.println(productDTO+"3");
 		
 		return "redirect:/admin/productRegistrationView";
+	}
+
+//----------------------------------------------------------------
+//장바구니 넣기
+	@RequestMapping(value="/main/addCart", method=RequestMethod.POST)
+	@ResponseBody
+	public void addCart(@RequestParam Map<String, String> map, HttpSession session) {
+		furnitureService.addCart(map);
+
+		if(session.getAttribute("memId")==null) {
+
+		}
 	}
 }
 

@@ -41,13 +41,15 @@ public interface FurnitureDAO {
 	public void productOptionRegistration(Product_OptionDTO product_OptionDTO);
 
 
-	public List<Product_OptionDTO> getIdOption(Integer id);
-
-	public List<ReviewDTO> reviewDay();
+	public List<Integer> reviewDay();
 
 	public boolean wishQ(Map<String, Integer> wishMap);
 
 	public void addWishButton(Map<String, Object> addWishMap);
 
 	public void deleteWishButton(Map<String, Object> deleteWishMap);
+
+	public List<Product_OptionDTO> getIdOption(Integer id);
+
+    public void addCart(Map<String, String> map);
 }

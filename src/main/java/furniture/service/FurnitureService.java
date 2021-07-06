@@ -41,6 +41,7 @@ public interface FurnitureService {
 
 	public void productOptionRegistration(Product_OptionDTO product_OptionDTO);
 
+	public List<Integer> reviewDay();
 
 	public List<Product_OptionDTO> getIdOption(Integer id);
 
@@ -51,4 +52,7 @@ public interface FurnitureService {
 	public void addWishButton(Map<String, Object> addWishMap);
 
 	public void deleteWishButton(Map<String, Object> deleteWishMap);
+
+	public void addCart(Map<String, String> map);
+
 }

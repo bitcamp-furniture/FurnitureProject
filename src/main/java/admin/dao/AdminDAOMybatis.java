@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import furniture.bean.ReviewDTO;
 import member.bean.MemberDTO;
+import profile.bean.AskDTO;
 
 @Repository
 @Transactional
@@ -40,6 +42,16 @@ public class AdminDAOMybatis implements AdminDAO{
 	public void memberListDelete(Map<String, String[]> map) {
 		sqlSession.delete("adminSQL.memberListDelete", map);
 		
+	}
+
+	@Override // 최신 리뷰순으로 5개 가져오기
+	public List<ReviewDTO> getRecentReviewList() {
+		return sqlSession.selectList("adminSQL.getRecentReviewList");
+	}
+
+	@Override
+	public List<AskDTO> getRecentQnAList() {
+		return sqlSession.selectList("adminSQL.getRecentQnAList");
 	}
 
 }

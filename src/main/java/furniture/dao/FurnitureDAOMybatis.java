@@ -120,13 +120,18 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 		System.out.println(wishQ+"wishQ");
 		return wishQ;
 	}	
+
 	
 	@Override
-	public List<ReviewDTO> reviewDay() {
+	public List<Integer> reviewDay() {
 		return sqlSession.selectList("productSQL.reviewDay");
 	}
 
-	
+
+	@Override
+	public void addCart(Map<String, String> map) {
+		sqlSession.selectList("productSQL.addCart", map);
+	}
 
 	@Override
 	public void addWishButton(Map<String, Object> addWishMap) {
