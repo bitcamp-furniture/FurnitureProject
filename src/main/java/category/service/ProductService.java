@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import furniture.bean.ProductDTO;
 import category.bean.ProductListDTO;
 import category.bean.ProductPaging;
 
-@Controller
-@RequestMapping(value="productService")
+
 public interface ProductService {
 
 	//상품 등록하는 메소드

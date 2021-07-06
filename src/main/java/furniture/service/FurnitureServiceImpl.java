@@ -130,7 +130,7 @@ public class FurnitureServiceImpl implements FurnitureService {
 	}
 	//최근 한달 리뷰수~~~
 	@Override
-	public List<ReviewDTO> reviewDay() {
+	public List<Integer> reviewDay() {
 		return furnitureDAO.reviewDay();
 	}
 }

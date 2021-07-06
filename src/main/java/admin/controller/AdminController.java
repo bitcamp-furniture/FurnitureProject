@@ -3,19 +3,13 @@ package admin.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,18 +42,23 @@ public class AdminController {
 		return "/admin/adminIndex";
 	}
 	
+	//-------------------------------------------------------------
 	//실험중
-	//라인 차트 : 리뷰 
+	//라인 차트 : 리뷰
 	@RequestMapping(value = "/reviewLineChart")
 	@ResponseBody
 	 public ModelAndView reviewLineChart(Model model) {
 		        	   
 		//라인 차트 : 일별 리뷰수
-		List<ReviewDTO> reviewdDay = furnitureService.reviewDay();	 
+		//List<ReviewDTO> reviewdDay = furnitureService.reviewDay();	 
+		List<Integer> reviewdDay = furnitureService.reviewDay();	 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("reviewdDay", reviewdDay);
 		mav.setViewName("jsonView");
-		      
+		//model.addAttribute("reviewdDay", reviewdDay);
+		//model.addAttribute("display","/admin/dashBoard.jsp");
+		//return "/admin/adminIndex";
+		
 		return mav;
 	  }
 	//----------------------------------------------------------------

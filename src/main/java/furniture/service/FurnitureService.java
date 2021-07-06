@@ -40,7 +40,7 @@ public interface FurnitureService {
 
 	public void productOptionRegistration(Product_OptionDTO product_OptionDTO);
 
-	public List<ReviewDTO> reviewDay();
+	public List<Integer> reviewDay();
 
 	
 }
