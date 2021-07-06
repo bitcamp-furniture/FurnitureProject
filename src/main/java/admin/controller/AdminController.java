@@ -9,7 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import javax.xml.namespace.QName;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +32,7 @@ import furniture.service.FurnitureService;
 import admin.bean.MemberListPaging;
 import admin.service.AdminService;
 import member.bean.MemberDTO;
+import profile.bean.AskDTO;
 
 
 @Controller
@@ -121,4 +122,19 @@ public class AdminController {
 		return new ModelAndView("redirect:/admin/memberList");
 	}	
 
+	// 대시보드 ... 최신 리뷰, 문의 n건씩
+	@RequestMapping(value="/getRecentList", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getRecentList() {
+		List<ReviewDTO> lastReviewList = adminService.getRecentReviewList();
+		List<AskDTO> lastQnAList = adminService.getRecentQnAList();
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("lastReviewList", lastReviewList);
+		mav.addObject("lastQnAList", lastQnAList);
+		mav.setViewName("jsonView");
+
+		return mav;
+	}
 }
+

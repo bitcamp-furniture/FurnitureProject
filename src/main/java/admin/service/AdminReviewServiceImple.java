@@ -8,19 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import furniture.bean.ReviewDTO;
-import admin.dao.adminReviewDAO;
-import admin.bean.adminReviewPaging;
-import admin.bean.adminReviewSelectListPaging;
+import admin.bean.AdminReviewPaging;
+import admin.bean.AdminReviewSelectListPaging;
+import admin.dao.AdminReviewDAO;
 
 @Service
-public class adminReviewServiceImple implements adminReviewService
+public class AdminReviewServiceImple implements AdminReviewService
 {
 	@Autowired
-	private adminReviewDAO adminreviewDAO;
+	private AdminReviewDAO adminreviewDAO;
 	@Autowired
-	private adminReviewPaging adminreviewPaging;
+	private AdminReviewPaging adminreviewPaging;
 	@Autowired
-	private adminReviewSelectListPaging adminreviewSelectListPaging;
+	private AdminReviewSelectListPaging adminreviewSelectListPaging;
+	
 	@Override
 	public List<ReviewDTO> adminReviewList(String pg) {
 		
@@ -35,7 +36,7 @@ public class adminReviewServiceImple implements adminReviewService
 	}
 
 	@Override
-	public adminReviewPaging adminreviewPaging(String pg) {
+	public AdminReviewPaging adminreviewPaging(String pg) {
 		int totalaAdmin = adminreviewDAO.getTotalReviewList();
 		
 		adminreviewPaging.setCurrentPage(Integer.parseInt(pg));
@@ -85,7 +86,7 @@ public class adminReviewServiceImple implements adminReviewService
 	}
 
 	@Override
-	public adminReviewSelectListPaging adminReviewSelectList(String pg, String sort1) {
+	public AdminReviewSelectListPaging adminReviewSelectList(String pg, String sort1) {
 		int SelectaAdmin = adminreviewDAO.getTotalReviewList();
 		
 		adminreviewSelectListPaging.setCurrentPage(Integer.parseInt(pg));

@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import admin.service.adminReviewService;
+import admin.bean.AdminReviewPaging;
+import admin.bean.AdminReviewSelectListPaging;
+import admin.service.AdminReviewService;
 import furniture.bean.ReviewDTO;
-import admin.bean.adminReviewPaging;
-import admin.bean.adminReviewSelectListPaging;
 
 @Controller
 @RequestMapping("admin")
-public class adminReviewController {
+public class AdminReviewController {
 	@Autowired
-	adminReviewService adminreviewService;
+	AdminReviewService adminreviewService;
 	
 	// 관리자페이지 - 리뷰관리
 	@RequestMapping(value = "/review", method = RequestMethod.GET)
@@ -38,7 +38,7 @@ public class adminReviewController {
 
 		List<ReviewDTO> adminReviewList = adminreviewService.adminReviewList(pg);
 
-		adminReviewPaging adminreviewPaging = adminreviewService.adminreviewPaging(pg);
+		AdminReviewPaging adminreviewPaging = adminreviewService.adminreviewPaging(pg);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("pg", pg);
 		mav.addObject("adminReviewList", adminReviewList);
@@ -69,7 +69,7 @@ public class adminReviewController {
 		List<ReviewDTO> adminreviewSelectList = adminreviewService.adminreviewASCList(pg,sort1);
 		ModelAndView mav = new ModelAndView();
 			
-		adminReviewSelectListPaging adminreviewSelectListPaging = adminreviewService.adminReviewSelectList(pg,sort1);
+		AdminReviewSelectListPaging adminreviewSelectListPaging = adminreviewService.adminReviewSelectList(pg,sort1);
 
 		mav.addObject("pg", pg);
 		mav.addObject("sort1", sort1);
@@ -92,7 +92,7 @@ public class adminReviewController {
 		List<ReviewDTO> adminreviewSelectList = adminreviewService.adminreviewDESCtList(pg,sort1);
 		ModelAndView mav = new ModelAndView();
 	
-		adminReviewSelectListPaging adminreviewSelectListPaging = adminreviewService.adminReviewSelectList(pg,sort1);
+		AdminReviewSelectListPaging adminreviewSelectListPaging = adminreviewService.adminReviewSelectList(pg,sort1);
 			
 		mav.addObject("pg", pg);
 		mav.addObject("sort1", sort1);

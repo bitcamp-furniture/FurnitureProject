@@ -453,8 +453,6 @@
     </section>
     <!-- Related Products Section End   -->
     
-     <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
-
-        <script src="/furniture/js/productQnA.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="/furniture/js/productQnA.js"></script>
     
