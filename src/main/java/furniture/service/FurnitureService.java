@@ -44,5 +44,5 @@ public interface FurnitureService {
 
 	public List<ReviewDTO> reviewDay();
 
-	
+    public void addCart(Map<String, String> map);
 }

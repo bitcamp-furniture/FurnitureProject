@@ -71,7 +71,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <input type="hidden" id="memId" value="${memId}">
                    <!-- 상품 상세샷 넣을 자리 -->
                    
                    

@@ -44,6 +44,5 @@ public interface FurnitureDAO {
 
 	public List<ReviewDTO> reviewDay();
 
-
-
+    public void addCart(Map<String, String> map);
 }
