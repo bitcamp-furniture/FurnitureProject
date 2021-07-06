@@ -45,8 +45,6 @@ public interface FurnitureService {
 
 	public List<Product_OptionDTO> getIdOption(Integer id);
 
-	public List<ReviewDTO> reviewDay();
-
 	public boolean wishQ(Map<String, Integer> wishMap);
 
 	public void addWishButton(Map<String, Object> addWishMap);
