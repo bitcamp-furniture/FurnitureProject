@@ -912,6 +912,21 @@ function checkBir(){
 		return false;
 	}
 	
+	else if ($("#bir_yy").val() && month !="월" && $("#bir_dd").val()){
+		$("#birthDiv").val("");
+		
+		$('.page-btn6').css('display', 'block');
+		$('.page-btn6').css('border-radius', '5px');
+		$('.page-btn6').css('border', 'none');
+		$('.page-btn6').css('transition', 'all 0.5s');
+		$('.page-btn6').css('background', '#223894');
+		$('.page-btn6').css('color', 'white');
+		$('.page-btn6').attr('disabled', false);
+		
+		return true;
+		
+	}
+	
 	else if (month == 2) {
 		var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
 		if (day>29 || (day==29 && !isleap)) {
@@ -946,21 +961,6 @@ function checkBir(){
 		return false;
 		
 	}
-	
-	else if ($("#bir_yy").val() && $("#bir_dd").val()){
-		$("#birthDiv").val("");
-		
-		$('.page-btn6').css('display', 'block');
-		$('.page-btn6').css('border-radius', '5px');
-		$('.page-btn6').css('border', 'none');
-		$('.page-btn6').css('transition', 'all 0.5s');
-		$('.page-btn6').css('background', '#223894');
-		$('.page-btn6').css('color', 'white');
-		$('.page-btn6').attr('disabled', false);
-		
-		return true;
-		
-		}
 	
 }
 

@@ -13,6 +13,7 @@ import furniture.bean.ProductImageDTO;
 import furniture.bean.Product_OptionDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.ReviewDTO;
+import profile.bean.WishlistDTO;
 
 @Repository
 @Transactional
@@ -73,7 +74,6 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 
 	@Override
 	public void productImageRegistration(ProductImageDTO productImageDTO) {
-		System.out.println(productImageDTO+"5");
 		sqlSession.insert("productSQL.productImageRegistration",productImageDTO);
 	}
 
@@ -104,6 +104,21 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 	public List<Product_OptionDTO> getIdOption(Integer id) {
 		return sqlSession.selectList("productSQL.getIdOption", id);
 	}
+	
+	@Override
+	public boolean wishQ(Map<String, Integer> wishMap) {
+		WishlistDTO wishlistDTO = new WishlistDTO();
+		wishlistDTO = sqlSession.selectOne("productSQL.wishQ", wishMap);
+		boolean wishQ;
+		if(wishlistDTO!=null) {
+			wishQ = true;
+		}else {
+			wishQ = false;
+		}
+		System.out.println(wishlistDTO+"위시리스트DTO");
+		System.out.println(wishQ+"wishQ");
+		return wishQ;
+	}	
 
 	
 	@Override
@@ -111,10 +126,22 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 		return sqlSession.selectList("productSQL.reviewDay");
 	}
 
+
 	@Override
 	public void addCart(Map<String, String> map) {
 		sqlSession.selectList("productSQL.addCart", map);
 	}
 
+	@Override
+	public void addWishButton(Map<String, Object> addWishMap) {
+		sqlSession.insert("productSQL.addWishButton", addWishMap);
+	}
+
+	@Override
+	public void deleteWishButton(Map<String, Object> deleteWishMap) {
+		sqlSession.delete("productSQL.deleteWishButton", deleteWishMap);
+		
+		
+	}
 
 }

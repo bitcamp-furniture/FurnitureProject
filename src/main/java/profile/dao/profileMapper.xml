@@ -50,9 +50,13 @@
 	<select id="getWishlist" parameterType="java.util.Map" resultType="wishlist">
 		select * from
 			(select rownum rn, tt. * from
-					(select distinct w.id, w.member_id, w.product_code, p.product_img_thumb from wishlist w
-					 inner join product_image p
-					 on w.product_code=p.product_code
+					(select distinct w.id,
+					                 w.member_id,
+					                 w.product_id,
+					                 p.product_img_thumb
+					 from wishlist w
+						inner join product_image p
+								on w.product_id=p.id
 					 where w.member_id = #{id} order by id desc)tt
 			)where rn between #{startNum} and #{endNum}
 	</select>
