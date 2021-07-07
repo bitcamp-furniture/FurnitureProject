@@ -184,10 +184,10 @@
 		$('#pwdDiv').empty();
 		//alert($('#login').val());
 
-		if($('#email').val() === ''){
+		if($('#email').val() == ''){
 			$('#emailDiv').html('아이디(이메일)를 입력해주세요');
 			$("#email").focus();
-		} else if($('#password').val() === '') {
+		} else if($('#password').val() == '') {
 			$('#pwdDiv').text('비밀번호를 입력해주세요');
 		} else {
 			$.ajax({
@@ -199,13 +199,13 @@
 				dataType: 'text',
 				success: function(data){
 					alert(data);
-					if(data === 'success') {
+					if(data == 'success') {
 						//location.href='/furniture/index.jsp';
 						var loginValue = document.getElementById('login').value;
-						if (loginValue === 1){
+						if (loginValue == 1){
 							location.href="/furniture/profile/profile";
 							
-						} else if (loginValue === 0) {
+						} else if (loginValue == 0) {
 							location.href="/furniture/index.jsp";
 						}
 						
