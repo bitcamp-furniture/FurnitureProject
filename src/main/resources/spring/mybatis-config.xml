@@ -20,6 +20,7 @@
 		<typeAlias type="event.bean.NoticeDTO" alias="notice"/>
 		<typeAlias type="furniture.bean.Product_OptionDTO" alias="productOption"/>
 		<typeAlias type="profile.bean.CartDTO" alias="cart"/>
+		<typeAlias type="admin.bean.AdminProductDTO" alias="adminProduct"/>
 	</typeAliases>
 	
 </configuration>

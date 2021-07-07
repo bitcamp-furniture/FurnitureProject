@@ -7,22 +7,37 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import admin.bean.MemberListPaging;
+import admin.bean.AdminProductDTO;
+import admin.bean.OrderControlPaging;
 import admin.dao.AdminProductDAO;
-import member.bean.MemberDTO;
 
 @Service
 public class AdminProductServiceImpl implements AdminProductService{
 	@Autowired
 	private AdminProductDAO adminProductDAO;
-	
 	@Autowired
-	private MemberListPaging memberListPaging;
+	private OrderControlPaging orderControlPaging;
 
+	//배송준비 버튼 클릭 시
 	@Override
-	public List<MemberDTO> getMemberList(String pg) {
-		//1페이지당 5개씩 (15개로 수정)
-		int endNum = Integer.parseInt(pg)*15;
+	public void deliveryReady(String[] check) {
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("array", check);
+		adminProductDAO.deliveryReady(map);
+	}
+
+	//입금 확인 처리 버튼 클릭 시
+	@Override
+	public void paymentConfirm(String[] check) {
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("array", check);
+		adminProductDAO.paymentConfirm(map);
+		
+	}
+	
+	@Override
+	public List<AdminProductDTO> getOrderControl(String orderControlPg) {
+		int endNum = Integer.parseInt(orderControlPg)*15;
 		int startNum = endNum-14;
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
@@ -30,22 +45,22 @@ public class AdminProductServiceImpl implements AdminProductService{
 		map.put("endNum", endNum);
 		
 		//DB
-		List<MemberDTO> list = adminProductDAO.getAdminList(map);
+		List<AdminProductDTO> list = adminProductDAO.getOrderControl(map);
 		
 		return list;
 	}
 
 	@Override
-	public MemberListPaging memberListPaging(String pg) {
-		int totalA = adminProductDAO.getTotalA();//총글수 계산하려면 db 다녀와야함.
+	public OrderControlPaging orderControlPaging(String orderControlPg) {
+		int totalA = adminProductDAO.getTotalA();
 		
-		memberListPaging.setCurrentPage(Integer.parseInt(pg));//현재 페이지를 줘. 현재 페이지를 빨갛게 표시하기 위행..		
-		memberListPaging.setPageBlock(5);
-		memberListPaging.setPageSize(15);
-		memberListPaging.setTotalA(totalA);
-		memberListPaging.makePagingHTML();
+		orderControlPaging.setCurrentPage(Integer.parseInt(orderControlPg));
+		orderControlPaging.setPageBlock(5);
+		orderControlPaging.setPageSize(15);
+		orderControlPaging.setTotalA(totalA);
+		orderControlPaging.makePagingHTML();
 		
-		return memberListPaging;//controller에서 페이징 처리한 것 아님. 여기서 처리한 것.
+		return orderControlPaging;
 	}
 
 }
