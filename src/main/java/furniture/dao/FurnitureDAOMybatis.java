@@ -74,7 +74,6 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 
 	@Override
 	public void productImageRegistration(ProductImageDTO productImageDTO) {
-		System.out.println(productImageDTO+"5");
 		sqlSession.insert("productSQL.productImageRegistration",productImageDTO);
 	}
 

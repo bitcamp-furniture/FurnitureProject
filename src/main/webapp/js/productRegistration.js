@@ -201,5 +201,5 @@ $('#productRegistrationBtn').click(function(){
    }else if($('#category2-7').val() == '705'){
          $('#product_category_name').val()
    }
-   
+      
 });
