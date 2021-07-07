@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -35,16 +36,21 @@ public class ProfileController {
 	
 	@RequestMapping(value="profile", method=RequestMethod.GET)
 	public String profile(Model model, HttpSession session) {
-		int id = (Integer) session.getAttribute("memId");
-		String name = (String) session.getAttribute("memName");
-		String email = (String) session.getAttribute("memEmail");
-		
-		model.addAttribute("id", id);
-		model.addAttribute("profileName", name);
-		model.addAttribute("profileEmail", email);
-		model.addAttribute("display", "/profile/profile.jsp");
-		model.addAttribute("askdisplay", "/profile/order.jsp");
-		return "/index";
+		if(session.getAttribute("memId") == null) {
+			model.addAttribute("display", "/profile/profile.jsp");
+			return "/index";
+		} else {
+			int id = (Integer) session.getAttribute("memId");
+			String name = (String) session.getAttribute("memName");
+			String email = (String) session.getAttribute("memEmail");
+
+			model.addAttribute("id", id);
+			model.addAttribute("profileName", name);
+			model.addAttribute("profileEmail", email);
+			model.addAttribute("display", "/profile/profile.jsp");
+			model.addAttribute("askdisplay", "/profile/order.jsp");
+			return "/index";
+		}
 	}
 	
 //	@RequestMapping(value="mypage", method=RequestMethod.GET)
@@ -106,10 +112,10 @@ public class ProfileController {
 		String filePath = "D:\\FurnitureProject\\src\\main\\webapp\\profile\\storage";
 		String fileName;
 		File file;
-		for(MultipartFile img : list ) {
+		for (MultipartFile img : list) {
 			fileName = img.getOriginalFilename();
 			file = new File(filePath, fileName);
-			
+
 			//파일 복사
 			try {
 				FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
@@ -290,6 +296,7 @@ public class ProfileController {
 		List<CartDTO> cartList = profileService.getAllCartList(id);
 		//페이징 처리
 		CartPaging cartPaging = profileService.cartPaging(id, cartPg);
+
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("cartList", cartList);

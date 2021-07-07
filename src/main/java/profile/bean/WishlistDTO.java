@@ -7,5 +7,5 @@ public class WishlistDTO {
 	private int id;
 	private String member_id;
 	private int product_id;
-	//private String product_img_thumb;
+	private String product_img_thumb;
 }

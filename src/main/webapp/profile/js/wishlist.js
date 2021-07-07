@@ -11,7 +11,7 @@ $('#wishlist-tap').click(function(){
 			},
 			dataType: 'json',
 			success: function(data){
-				//alert(JSON.stringify(data));
+				alert(JSON.stringify(data));
 				$.each(data.list, function(index, items){
 					//alert(JSON.stringify(items));
 					$('<li/>',{
