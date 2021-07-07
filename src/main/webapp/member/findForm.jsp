@@ -293,7 +293,7 @@
 					if(data == '') {
 						confirm('사용자 정보가 없습니다. 회원가입하시겠습니까?');
 						if(confirm==null){
-							alert("1111");
+							//alert("1111");
 					        location.href = "/furniture/member/signPage";
 					    }else{
 					         return false;

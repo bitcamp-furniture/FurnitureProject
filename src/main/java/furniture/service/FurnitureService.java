@@ -10,6 +10,7 @@ import furniture.bean.Product_qnaDTO;
 import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
 import furniture.bean.Review_paging;
+import profile.bean.WishlistDTO;
 
 public interface FurnitureService {
 
@@ -44,5 +45,12 @@ public interface FurnitureService {
 
 	public List<Product_OptionDTO> getIdOption(Integer id);
 
-    public void addCart(Map<String, String> map);
+	public boolean wishQ(Map<String, Integer> wishMap);
+
+	public void addWishButton(Map<String, Object> addWishMap);
+
+	public void deleteWishButton(Map<String, Object> deleteWishMap);
+
+	public void addCart(Map<String, String> map);
+
 }

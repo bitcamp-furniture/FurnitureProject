@@ -54,7 +54,8 @@
       </tr>
       
       <tr>
-          <td align="center">색상</td>
+          <td align="center">색상 <input type="hidden" name="product_color_name" id="product_color_name" value="">
+          </td>
           <td>
                     <label><input type="checkbox" name="product_colors" value="B" > BLACK</label>
                     <label><input type="checkbox" name="product_colors" value="W" > WHITE</label>
@@ -107,7 +108,7 @@
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
+<script src="/furniture/js/dashBoard.js"></script>
+
 <script src="/furniture/js/productRegistration.js"></script>
-
-
-
