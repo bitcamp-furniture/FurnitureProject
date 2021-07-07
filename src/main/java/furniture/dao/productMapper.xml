@@ -120,6 +120,7 @@
 									seq_product_option.nextval
 									, #{id}
 									, #{color}
+									, #{color_name}
 									)
 	</insert>
 	

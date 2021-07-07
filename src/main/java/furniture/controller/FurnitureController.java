@@ -125,8 +125,6 @@ public class FurnitureController {
 		      product_qnaDTO.setProduct_id(map.get("product_id"));
 		      product_qnaDTO.setProduct_name(map.get("product_name"));
 		      
-		      System.out.println(product_qnaDTO +"product_qnaDTO 찍엇어요");
-		      
 		      furnitureService.productQnAWrite(product_qnaDTO);
 
 		      ModelAndView mav = new ModelAndView();
@@ -363,37 +361,23 @@ public class FurnitureController {
 									, @RequestParam("detailImg[]") List<MultipartFile> list
 									, String[] product_colors
 									) {
-//				productDTO.setProduct_category2("1");
-//				ProductDTO productDTO = new ProductDTO();
-//				ProductImageDTO productImageDTO = new ProductImageDTO();
-//				productDTO.setId(id);
-//				productDTO.setId(id);
-//				productDTO.setId(id);
-//				productDTO.setId(id);
 		//String realPath = ctx.getRealPath(webPath);
 		//System.out.println(realPath);
 		//이게 realPath 경로를 찍은건데 복붙해서 탐색기에 넣으면 나옴
 		
 		//category테이블에서 product_category1를 select해서 category_name을 끌고 와서 하려다가 hidden값으로 하기
 
-		//productDTO.setProduct_category1("550");
-		//productDTO.setProduct_category2("120");
-
 		String fileName = thumbImg.getOriginalFilename();
 		File file = new File(webPath, fileName); // 파일 생성, 경로와 파일 이름
 		//파일올리기thumbImg.transferTo(file);
 		
-		System.out.println(productDTO+"1");	
 		furnitureService.productRegistration(productDTO); //담겨진 DTO를 DB에 넣기
 		
-		/////////////////////////productDTO의 id값을 ImageDTO에 수동으로 넣기
+		//productDTO의 id값을 ImageDTO에 수동으로 넣기
 		int productId = furnitureService.getProductId(productDTO.getProduct_code());
 		productImageDTO.setId(productId);
-		/////////////////////////
-		System.out.println(productDTO+"2");
-		System.out.println(productImageDTO+"2");
-		// 파일 복사
 		
+		// 파일 복사
 		// 썸네일 이미지(이미지1개)
 		try {
 			FileCopyUtils.copy(thumbImg.getInputStream(), new FileOutputStream(file));
@@ -402,12 +386,10 @@ public class FurnitureController {
 		}
 		
 		productImageDTO.setProduct_img_thumb(fileName);
-		System.out.println(productImageDTO);
 		
 		// 디테일 이미지(이미지 여러개)
 		for (MultipartFile detailImg : list) {
 			fileName = detailImg.getOriginalFilename();
-			System.out.println(fileName);
 			file = new File(webPath, fileName);
 			// 파일복사
 			try {
@@ -417,19 +399,27 @@ public class FurnitureController {
 			}
 			productImageDTO.setProduct_img_detail(fileName);//ImageDTO에 다담았다
 			furnitureService.productImageRegistration(productImageDTO);//다 담았으니 DB로감
-			System.out.println(productDTO);
-			System.out.println(productImageDTO);
 		} //for
 		
 		Product_OptionDTO product_OptionDTO = new Product_OptionDTO(); 
 		product_OptionDTO.setId(productId);
 		
+		//컬러풀네임 받아오는거 넣어야함
+		
 		for(int i=0; i<product_colors.length; i++) {
 		product_OptionDTO.setColor(product_colors[i]);
+		String color_name = null;
+		if(product_colors[i].equals("B")) color_name = "BLACK";  
+		else if(product_colors[i].equals("W")) color_name = "WHITE";
+		else if(product_colors[i].equals("R")) color_name = "RED";
+		else if(product_colors[i].equals("S")) color_name = "SILVER";
+		else if(product_colors[i].equals("N")) color_name = "NAVY";
+		else if(product_colors[i].equals("P")) color_name = "PUPPLE";
+
+		product_OptionDTO.setColor_name(color_name);
+		
 		furnitureService.productOptionRegistration(product_OptionDTO);//다 담았으니 DB로감
 		}
-		
-		System.out.println(productDTO+"3");
 		
 		return "redirect:/admin/productRegistrationView";
 	}

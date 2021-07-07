@@ -307,5 +307,7 @@ function myPage() {
 	//alert($('#login').val());
 }
 </script>
+
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 </body>
 </html>
