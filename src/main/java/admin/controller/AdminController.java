@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import furniture.bean.ReviewDTO;
 import furniture.service.FurnitureService;
-
+import admin.bean.DailysummaryDTO;
 import admin.bean.MemberListPaging;
 import admin.service.AdminService;
 import member.bean.MemberDTO;
@@ -145,6 +145,18 @@ public class AdminController {
 		
 		return mav;
 	  }	
+	
+	//일자별 요약
+	@RequestMapping(value = "/dailySummary")
+	@ResponseBody
+	public ModelAndView dailySummary(Model model) {
+		ModelAndView mav = new ModelAndView();
+		List<DailysummaryDTO> dailyList = adminService.dailySummary();
+		
+		mav.addObject("dailyList", dailyList);
+		mav.setViewName("jsonView");
+		return mav;
+	}
 	
 }
 

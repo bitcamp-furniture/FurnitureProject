@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import admin.bean.DailysummaryDTO;
 import admin.bean.MemberListPaging;
 import admin.dao.AdminDAO;
 import furniture.bean.ReviewDTO;
@@ -126,5 +127,10 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<String> orderCateName() {
 		return adminDAO.orderCateName();
+	}
+
+	@Override
+	public List<DailysummaryDTO> dailySummary() {
+		return adminDAO.dailySummary();
 	}
 }
