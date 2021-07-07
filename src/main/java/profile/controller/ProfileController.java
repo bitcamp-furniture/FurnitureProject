@@ -369,7 +369,7 @@ public void paymentWrite(HttpSession session
 //주문완료
 @RequestMapping(value="orderComplete", method=RequestMethod.GET)
 public String orderComplete(Model model, HttpSession session, OrderDetailDTO orderDetailDTO, MemberDTO memberDTO) {
-	
+	System.out.println("1111111111");
 	//세션에서 id,email 을 받아옴
 	String email = (String) session.getAttribute("memEmail");
 	int memId = (Integer) session.getAttribute("memId");

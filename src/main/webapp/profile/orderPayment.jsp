@@ -146,7 +146,7 @@
         
        <tr>
             <td style="text-align: center; vertical-align:middle;">보유포인트</td>
-            <td style="text-align: center; vertical-align:middle;"> ${memberDTO.point}</td>
+            <td style="text-align: center; vertical-align:middle;" id="memberpointval"> ${memberDTO.point}</td>
         </tr> 
 	<input type="hidden" id="memberpoint" value="${memberDTO.point}">
         <tr>
