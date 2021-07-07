@@ -51,7 +51,7 @@ public class AdminQNAController {
 		//1페이지당 5개씩
 		List<AskDTO> list = adminQNAService.getAskList(map);
 		
-		//페이징 처리
+		//페이징 처리 profile paging 가져옴
 		AskPaging askPaging = adminQNAService.askPaging(map);
 				
 		//세션
@@ -65,6 +65,26 @@ public class AdminQNAController {
 		mav.setViewName("jsonView");
 		
 		return mav;
+	}
+	
+
+	@RequestMapping(value="/askAnswer", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView askAnswer(@RequestParam String seq) {
+		AskDTO askDTO = adminQNAService.askAnswer(seq);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("askDTO", askDTO);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	@RequestMapping(value="/askAnswerDone", method=RequestMethod.POST)
+	@ResponseBody
+	public void askAnswerDone(@RequestParam String answer, @RequestParam String seq) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("answer", answer);
+		map.put("seq", seq);
+		adminQNAService.askAnswerDone(map);
 	}
 	
 }

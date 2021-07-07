@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <meta charset="UTF-8">
 <title>IKEZKE</title>
-</head>
 <style>
 @font-face {
   font-family: 'Glyphicons Halflings';
@@ -177,7 +176,6 @@ body {
 	text-decoration: none;
 }
 </style>
-<head>
 <meta charset="UTF-8">
 <title>IKEZKE</title>
 </head>

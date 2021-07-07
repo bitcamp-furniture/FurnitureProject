@@ -84,6 +84,13 @@
  	<select id="getAskTotalA"  parameterType="java.util.Map" resultType="Integer">
  		select count(*) as count from ask
  	</select>
+ 	
+ 	<select id="askAnswer" parameterType="String" resultType="ask">
+		select * from ask where seq=#{seq}
+	</select>
 	
-
+	<select id="askAnswerDone" parameterType="java.util.Map">
+		update ask set answer=#{answer}, reply=1 where seq=#{seq}
+	</select>
+	
 </mapper>

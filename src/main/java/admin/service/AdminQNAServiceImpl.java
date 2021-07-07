@@ -44,6 +44,16 @@ public class AdminQNAServiceImpl implements AdminQNAService {
 		
 		return askPaging;
 	}
+
+	@Override
+	public AskDTO askAnswer(String seq) {
+		return adminQNADAO.askAnswer(seq);
+	}
+
+	@Override
+	public void askAnswerDone(Map<String, String> map) {
+		adminQNADAO.askAnswerDone(map);
+	}
 	
 	
 

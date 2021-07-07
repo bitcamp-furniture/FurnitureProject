@@ -5,7 +5,7 @@ $(function(){
 		data: 'askPg='+$('#askPg').val(),
 		dataType: 'json',
 		success: function(data){
-			console.log(data);
+			//console.log(data);
 			$.each(data.list, function(index, items){
 				if(items.reply=='0'){
 					$('<tr/>').append($('<td/>',{
@@ -31,7 +31,7 @@ $(function(){
 							.append($('<input/>',{
 								align:'center',
 								type: 'button',
-								class: 'askBtn',
+								id: 'askBtn',
 								name: 'askBtn',
 								value: '답변하기'
 							}))
@@ -58,8 +58,15 @@ $(function(){
 						text: items.created_at
 					})).append(
 							
-							$('<td/>',{ align:'center',	text: '답변완료' })
-							
+							$('<td/>',{ align:'center'})
+							.append($('<input/>',{
+								align:'center',
+								type: 'button',
+								id: 'askDoneBtn',
+								name: 'askDoneBtn',
+								value: '답변완료'
+							}))
+
 					).appendTo($('#askListTable'));
 				}//else end
 				
@@ -92,14 +99,14 @@ $(function(){
 
 function askPaging(askPg){
     $("#askListTable tr:gt(0)").remove();
-    console.log(askPg);
+    //console.log(askPg);
 	$.ajax({
 		type: 'post',
 		url: '/furniture/admin/getAskList',
 		data: 'askPg='+askPg,
 		dataType: 'json',
 		success: function(data){
-			console.log(data);
+			//console.log(data);
 
 			$.each(data.list, function(index, items){
 				if(items.reply=='0'){
@@ -122,7 +129,14 @@ function askPaging(askPg){
 						text: items.created_at
 					})).append(
 							
-							$('<td/>',{ align:'center',	text: items.reply })
+							$('<td/>',{ align:'center'})
+							.append($('<input/>',{
+								align:'center',
+								type: 'button',
+								id: 'askBtn',
+								name: 'askBtn',
+								value: '답변하기'
+							}))
 							
 					).appendTo($('#askListTable'));
 					
@@ -146,11 +160,19 @@ function askPaging(askPg){
 						text: items.created_at
 					})).append(
 							
-							$('<td/>',{ align:'center',	text: '답변완료' })
+							$('<td/>',{ align:'center'})
+							.append($('<input/>',{
+								align:'center',
+								type: 'button',
+								id: 'askDoneBtn',
+								name: 'askDoneBtn',
+								value: '답변완료'
+							}))
 							
 					).appendTo($('#askListTable'));
 				}//else end
-
+				
+				
 		});//each
 
 			$(document).on('click','#subjectA', function(){
@@ -174,8 +196,10 @@ function askPaging(askPg){
 
 }
 
+$(document).on('click','#askBtn', function(){
+	//alert($(this).parent().prev().prev().prev().prev().text());
+	var seq = $(this).parent().prev().prev().prev().prev().text();
 
-$('#askBtn').click(function(){
 	var nWidth = "700";
 	var nHeight = "700";			  
 
@@ -183,6 +207,6 @@ $('#askBtn').click(function(){
 	xPos += window.screenLeft;	 //듀얼 모니터
 	var yPos = (screen.availHeight / 2) - (nHeight / 2);
 
-	window.open("askWrite.jsp?name=" + $('#profileName').val() + "&email=" + $('#profileEmail').val(),"문의","width="+nWidth+",height="+nHeight+", left="+xPos+", top="+yPos+", toolbars=no, resizable=no, scrollbars=no");
+	window.open("askAnswer.jsp?seq="+seq,"답변 작성","width="+nWidth+",height="+nHeight+", left="+xPos+", top="+yPos+", toolbars=no, resizable=no, scrollbars=no");
 
 });

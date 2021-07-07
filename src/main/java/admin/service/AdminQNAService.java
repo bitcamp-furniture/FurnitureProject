@@ -8,8 +8,12 @@ import profile.bean.AskPaging;
 
 public interface AdminQNAService {
 
-	List<AskDTO> getAskList(Map<String, String> map);
+	public List<AskDTO> getAskList(Map<String, String> map);
 
-	AskPaging askPaging(Map<String, String> map);
+	public AskPaging askPaging(Map<String, String> map);
+
+	public AskDTO askAnswer(String seq);
+
+	public void askAnswerDone(Map<String, String> map);
 
 }

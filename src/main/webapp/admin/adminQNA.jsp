@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel="stylesheet" href="css/adminQNA.css">
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -17,7 +20,7 @@
 		<th style="text-align: center;">답변유무</th>
 	</tr>
 </table>
-<div id="askPagingDiv" style="float: left; width: 750px; text-align: center;"></div>
+<div id="askPagingDiv" style="text-align: center;"></div>
 
 
 <script type="text/javascript" 	src="http://code.jquery.com/jquery-3.6.0.min.js"></script>

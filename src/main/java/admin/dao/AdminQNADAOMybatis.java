@@ -26,5 +26,15 @@ public class AdminQNADAOMybatis implements AdminQNADAO {
 	public int getAskTotalA(Map<String, String> map) {
 		return sqlSession.selectOne("adminSQL.getAskTotalA", map);
 	}
+
+	@Override
+	public AskDTO askAnswer(String seq) {
+		return sqlSession.selectOne("adminSQL.askAnswer", seq);
+	}
+
+	@Override
+	public void askAnswerDone(Map<String, String> map) {
+		sqlSession.update("adminSQL.askAnswerDone", map);
+	}
 	
 }

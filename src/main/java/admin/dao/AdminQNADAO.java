@@ -7,8 +7,12 @@ import profile.bean.AskDTO;
 
 public interface AdminQNADAO {
 
-	List<AskDTO> getAskList(Map<String, String> map);
+	public List<AskDTO> getAskList(Map<String, String> map);
 
-	int getAskTotalA(Map<String, String> map);
+	public int getAskTotalA(Map<String, String> map);
+
+	public AskDTO askAnswer(String seq);
+
+	public void askAnswerDone(Map<String, String> map);
 
 }

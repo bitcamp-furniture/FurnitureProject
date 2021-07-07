@@ -425,7 +425,7 @@
 							</tr>
 
 						</table>
-						<div id="askPagingDiv" style="float: left; width: 750px; text-align: center;"></div>
+						<div id="askPagingDiv" style="text-align: center;"></div>
 
 					</div>
 					<%--askList tap end--%>
