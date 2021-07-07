@@ -12,6 +12,7 @@ import admin.dao.AdminDAO;
 import furniture.bean.ReviewDTO;
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
+import profile.bean.OrderDTO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -96,4 +97,34 @@ public class AdminServiceImpl implements AdminService {
 		return adminDAO.getRecentQnAList();
 	}
 
+
+	// 주문 날짜만 가져오는 메소드
+	@Override
+	public List<String> orderDay() {
+		return adminDAO.orderDay();
+	}
+	
+	// 주문 건수만 가져오는 메소드
+	@Override
+	public List<Integer> orderCount() {
+		return adminDAO.orderCount();
+	}
+	
+	// 일별 매출만 가져오는 메소드
+	@Override
+	public List<Integer> orderSales() {
+		return adminDAO.orderSales();
+	}
+	
+	//매출만
+	@Override
+	public List<Integer> orderCateSales() {
+		return adminDAO.orderCateSales();
+	}
+	
+	//카테만
+	@Override
+	public List<String> orderCateName() {
+		return adminDAO.orderCateName();
+	}
 }
