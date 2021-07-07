@@ -336,6 +336,55 @@ public String orderPaymentView(Model model, HttpSession session, MemberDTO membe
 }
 
 //---------------------------------------------------------------------------------------
+//결제하기
+@RequestMapping(value="paymentWrite", method=RequestMethod.POST)
+@ResponseBody
+public void paymentWrite(HttpSession session
+		,@RequestParam int total
+		) {
+	String email = (String) session.getAttribute("memEmail");
+	
+	int memId = (Integer) session.getAttribute("memId");
+	List<CartDTO> cartList = profileService.getAllCartList(memId+"");
+	
+	Map<String, Object> map = new HashMap<String, Object>();
+	
+	
+	map.put("email", email);
+	map.put("total", total);
+	map.put("cartList", cartList);
+	
+
+	profileService.paymentWrite(map);
+}
+
+
+
+
+
+//주문완료
+@RequestMapping(value="orderComplete", method=RequestMethod.GET)
+public String orderComplete(Model model, HttpSession session, OrderDetailDTO orderDetailDTO, MemberDTO memberDTO) {
+	
+	//세션에서 id,email 을 받아옴
+	String email = (String) session.getAttribute("memEmail");
+	int memId = (Integer) session.getAttribute("memId");
+
+	List<CartDTO> cartList = profileService.getAllCartList(memId+"");
+	memberDTO = profileService.getMember(memId);
+	
+	int orderNumber= profileService.getOrderNum(email);
+	orderDetailDTO.setOrder_number(orderNumber);
+	
+	
+	profileService.cartTotalDelete(memId+"");
+
+			
+	model.addAttribute("memberDTO",memberDTO);
+	model.addAttribute("orderDetailDTO",orderDetailDTO);
+	model.addAttribute("display", "/profile/orderComplete.jsp");
+	return "/index";
+}
 }
 
 

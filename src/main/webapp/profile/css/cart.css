@@ -1,8 +1,8 @@
-.cart-bag-title h1, .cart-bag-title button {
+.cart-bag-title h1, .cart-bag-title button,{
     display: inline;
 }
 
-.cart-checkout-title h4 {
+.cart-checkout-title h4,{
     display: inline;
 }
 
@@ -17,13 +17,12 @@
     margin: 50px 0px;
 }
 
-.cart-checkout-title {
+.cart-checkout-title,{
     float: left;
 }
 
 .cart-checkout-sum {
     float: right;
-
 }
 
 .cart-checkout-totalsum {
@@ -51,7 +50,7 @@
     margin: 5px;
     height: 30px;
 }
-.orderPaymentBtn{
+.orderPaymentBtn,#paymentBtn{
     background: #292f86;
     color : white;
     border:0;
@@ -72,3 +71,7 @@
     text-align: right;
 }
 
+.cartTable,.deliveryTable,.pointTable,.payTable,.pointsavingTable.paymentDetailsTable{
+	text-align: center;
+	
+}

@@ -222,13 +222,13 @@ create sequence seq_orders nocycle nocache;
 --주문내역상세 테이블
 create table orders_detail(
 id NUMBER primary key, -- 기본키
-product_price NUMBER,-- 상품별 금액
-product_qty NUMBER,--상품별 구매수량
-product_amounts NUMBER, --한 줄 총 금액
+product_price NUMBER,-- 상품별 금액--
+product_qty NUMBER,--상품별 구매수량--
+product_amounts NUMBER, --한 줄 총 금액(상품가격*수량)
 order_number VARCHAR2(30), --주문번호, orders 테이블의 기본키
-product_id VARCHAR2(30), --상품아이디
+product_id VARCHAR2(30), --상품아이디--
 order_status VARCHAR2(30), --주문처리상태
-product_color VARCHAR2(30) --상품컬러
+product_color VARCHAR2(30) --상품컬러--
 );
 create sequence seq_orders_detail nocycle nocache;
 
