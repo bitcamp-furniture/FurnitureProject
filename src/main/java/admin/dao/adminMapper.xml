@@ -42,6 +42,7 @@
 		(select * from REVIEW order by id)tt
 		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
 	</select>
+	
 	<!-- 모든 리스트 개수  -->
 	<select id="getTotalReviewList" resultType="int">
 		select count(*) from REVIEW
@@ -55,6 +56,7 @@
 			<!--${array[i]}  -->
 		</foreach>
 	</delete>
+	
 	<!-- sort1 오름차순-->
 	<select id="adminreviewASCList" parameterType="java.util.Map" resultType="review">
 	<![CDATA[
@@ -149,4 +151,44 @@
       where rownum <= 6
    ]]>
    </select>
+   
+ 	<select id="getOrderControl" parameterType="java.util.Map" resultType="adminProduct">
+		select distinct o.order_number,
+					o.order_date,
+					p.product_name,
+					od.product_color,
+					od.product_qty,
+					o.total_amount,
+					od.order_status,
+	                   o.member_id
+				 from orders o
+					  inner join orders_detail od
+								 on o.order_number=od.order_number
+					  Inner join product p
+								 on od.product_id=p.id
+	</select>
+	
+	<!-- 배송준비 버튼 클릭 했을 때 -->
+	<update id="deliveryReady" parameterType="java.util.Map">
+		update member set point = '배송준비' where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</update>
+	
+	<!-- 입금확인 버튼 클릭 했을 때 -->
+	<update id="paymentConfirm" parameterType="java.util.Map">
+		update member set point = '입금확인' where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</update>
+	
+	
 </mapper>
+
+
+
+
+
+
