@@ -184,6 +184,30 @@
 		</foreach>
 	</update>
 	
+	<!-- ////////////////////////////////////////// 대시보드 ... 일간 요약표 -->
+	<select id="dailySummaryPC" parameterType="int" resultType="int">
+		select nvl(count(*), 0) as product_count from orders where to_char(order_date,'MM/DD')=to_char(sysdate-${i},'MM/DD')
+   </select>
+
+	<select id="dailySummaryPP" parameterType="int" resultType="int">
+		select nvl(sum(total_amount), 0) as product_price from orders where to_char(order_date,'MM/DD')=to_char(sysdate-${i},'MM/DD')
+   </select>
+	
+	<select id="dailySummaryJC" parameterType="int" resultType="int">
+	   	select nvl(count(*), 0) as join_count from member where to_char(created_at,'MM/DD')=to_char(sysdate-${i},'MM/DD')
+   </select>
+
+	<select id="dailySummaryAC" parameterType="int" resultType="int">
+	   	select nvl(count(*), 0) as ask_count from ask where to_char(created_at,'MM/DD')=to_char(sysdate-${i},'MM/DD')
+   </select>
+
+	<select id="dailySummaryRC" parameterType="int" resultType="int">
+	   	select nvl(count(*), 0) as review_count from review where to_char(created_at,'MM/DD')=to_char(sysdate-${i},'MM/DD')
+   </select>
+	
+	<select id="dailySummaryDate" parameterType="int" resultType="java.sql.Date">
+		select sysdate-${i} from dual
+   </select>
 	
 </mapper>
 

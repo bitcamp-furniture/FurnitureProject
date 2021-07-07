@@ -15,7 +15,7 @@ import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
 import furniture.bean.Review_paging;
 import furniture.dao.FurnitureDAO;
-import profile.bean.WishlistDTO;
+import profile.bean.CartDTO;
 
 @Service
 public class FurnitureServiceImpl implements FurnitureService {
@@ -161,4 +161,16 @@ public class FurnitureServiceImpl implements FurnitureService {
 	public void addCart(Map<String, String> map) {
 		furnitureDAO.addCart(map);
 	}
+
+	@Override
+	public boolean getcart(Map<String, String> map) {
+		if(furnitureDAO.getcart(map)) return true;
+		else return false;
+	}
+
+	@Override
+	public void updateCart(Map<String, String> map) {
+		furnitureDAO.updateCart(map);
+	}
+
 }

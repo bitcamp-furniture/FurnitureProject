@@ -67,10 +67,21 @@
 	cursor: default;
 }
 #wait{
-	background-color: DarkRed;      
+	background-color: SteelBlue;      
 }
 #done{
 	background-color: LightSteelBlue;      
+}
+#dailySummaryDiv{
+	width: 100%;
+	height: 180px;
+	border: 1px solid lightgray;
+	background: white;
+}
+#dailySummaryTbl{
+	margin-top: 2px;
+	width: 90%;
+	height: 95%;
 }
 </style>
 
@@ -86,8 +97,21 @@
 		일간 매출 차트
 		<canvas id="lineChart"></canvas>
 	</div>
-	<div id="chart2">
-		일별 요약본(표)
+	<div id="chart2" align="center">
+		일자별 요약
+		<div id="dailySummaryDiv" align="center">
+			<table id="dailySummaryTbl" cellspacing="3" cellpadding="2" border="1" 
+			cellpadding="5" frame="hsides" rules="rows" align="center" >
+				<tr>
+					<th align="center">일자</th>
+					<th align="center">주문</th>
+					<th align="center">매출액</th>
+					<th align="center">가입</th>
+					<th align="center">문의</th>
+					<th align="center">리뷰</th>
+				</tr>
+			</table>
+		</div>
 	</div>
 	
 	<p class="clearing"></p>
@@ -123,5 +147,6 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- 최신 리뷰, 최신 문의 -->
 <script src="/furniture/admin/js/dashboardRecentList.js"></script>
+<script src="/furniture/admin/js/dashboardDailySum.js"></script>
 
  

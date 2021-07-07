@@ -3,6 +3,7 @@ package admin.service;
 import java.util.List;
 import java.util.Map;
 
+import admin.bean.DailysummaryDTO;
 import admin.bean.MemberListPaging;
 import furniture.bean.ReviewDTO;
 import member.bean.MemberDTO;
@@ -34,5 +35,7 @@ public interface AdminService {
 	public List<Integer> orderCateSales();
 
 	public List<String> orderCateName();
+
+	public List<DailysummaryDTO> dailySummary();
 
 }

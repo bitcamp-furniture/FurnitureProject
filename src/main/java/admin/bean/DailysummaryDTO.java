@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 @Data
-public class DailysummeryDTO {
+public class DailysummaryDTO {
 	// 일자 주문수 매출액 가입 문의 리뷰
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy.MM.dd")
 	private Date Daily; // 일자

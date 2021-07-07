@@ -13,6 +13,7 @@ import furniture.bean.ProductImageDTO;
 import furniture.bean.Product_OptionDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.ReviewDTO;
+import profile.bean.CartDTO;
 import profile.bean.WishlistDTO;
 
 @Repository
@@ -131,6 +132,21 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 	public void addCart(Map<String, String> map) {
 		sqlSession.selectList("productSQL.addCart", map);
 	}
+
+	@Override
+	public boolean getcart(Map<String, String> map) {
+		if(sqlSession.selectOne("productSQL.getcart", map)!=null){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	@Override
+	public void updateCart(Map<String, String> map) {
+		sqlSession.update("productSQL.updateCart", map);
+	}
+
 
 	@Override
 	public void addWishButton(Map<String, Object> addWishMap) {
