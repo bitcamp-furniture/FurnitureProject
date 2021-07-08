@@ -72,7 +72,8 @@ product_code VARCHAR2(50), -- 제품코드 ex.BED_UNIT2_
 product_price NUMBER, -- 가격
 product_category_name VARCHAR2(50), -- 카테고리명
 product_category1 NUMBER, -- 카테고리1
-product_category2 NUMBER-- 카테고리2
+product_category2 NUMBER,-- 카테고리2
+product_memo VARCHAR2(4000) --상품 상세설명
 );
 
 --상품 seq문
