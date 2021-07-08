@@ -389,19 +389,15 @@ public String orderComplete(Model model, HttpSession session, OrderDetailDTO ord
 	model.addAttribute("display", "/profile/orderComplete.jsp");
 	return "/index";
 }
+
+	//회원 탈퇴
+	@ResponseBody
+	@RequestMapping(value="memberDelete", method=RequestMethod.POST)
+	public void memberDelete(@RequestParam String id,Model model,HttpSession session) {
+		profileService.memberDelete(id);
+		session.invalidate();
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

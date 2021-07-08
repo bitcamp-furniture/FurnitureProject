@@ -158,4 +158,10 @@ public class ProfileDAOMybatis implements ProfileDAO {
 		return sqlSession.selectOne("profileSQL.getOrderNum", map);
 	}
 
+	@Override
+	public void memberDelete(String id) {
+		
+		sqlSession.delete("profileSQL.memberDelete",id);
+	}
+
 }
