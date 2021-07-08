@@ -26,8 +26,6 @@
     <title>Insert title here</title>
 </head>
 <body>
-
-
 <div class="profile container">
     <div class="profile row">
         <div>
@@ -419,7 +417,7 @@
                         </tr>
 
                     </table>
-                    <div id="askPagingDiv" style="float: left; width: 750px; text-align: center;"></div>
+                    <div id="askPagingDiv" style="text-align: center;"></div>
 
                 </div>
                 <%--askList tap end--%>
@@ -427,7 +425,6 @@
             <%--tap content --%>
 
         </div>
-
 
     </div>
 </div>

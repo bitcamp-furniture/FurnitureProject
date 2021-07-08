@@ -8,16 +8,14 @@
 
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="css/askView.css">
+<link rel="stylesheet" href="css/askAnswer.css">
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="askViewForm">
-		<input type="hidden" name="seq" id="seq" value="${seq }">
-		<input type="hidden" name="pg" id="pg" value="${pg }"> 
-		<input type="hidden" name="email" id="email" value="${email}">
+	<form name="askAnswerForm">
+		<input type="hidden" name="seq" id="seq" value=${param.seq}>
 
 		<table class="table">
 		<!-- <table border="1" width="500" frame="hsides" rules="rows" cellpadding="5" > -->
@@ -56,19 +54,19 @@
 				<td colspan="1" height="150">
 					<div style="width: 100; height: 200; overflow: auto;">
 					<pre style="white-space: pre-line; word-break: normal;">
-					<span id="answerSpan"></span>
+					<textarea cols="50" rows="15" name="answer" id="answer" placeholder="답변 입력"></textarea>
 				</pre>
 					</div>
 				</td>
 			<tr>
 				<td>
-					<input class="listBtn" type="button" value="목록" onclick="window.open('','_self').close();">
+					<input id="answerBtn" type="button" value="답변 작성" >
 				</td>
 			</tr>
 		</table>
 	</form>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src = "./js/askView.js"></script>
+	<script src = "./js/askAnswer.js"></script>
 
 </body>
 </html>

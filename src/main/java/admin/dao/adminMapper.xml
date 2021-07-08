@@ -77,6 +77,24 @@
 		]]>
 	</select>
 	
+	 	<select id="getAskList" parameterType="java.util.Map" resultType="ask">
+ 		select * from(select rownum rn, tt.* from
+ 				(select * from ask order by seq desc)tt)
+ 				         where <![CDATA[rn>= #{startNum}]]> and  <![CDATA[rn<= #{endNum}]]>   
+ 	</select>
+ 	
+ 	<select id="getAskTotalA"  parameterType="java.util.Map" resultType="Integer">
+ 		select count(*) as count from ask
+ 	</select>
+ 	
+ 	<select id="askAnswer" parameterType="String" resultType="ask">
+		select * from ask where seq=#{seq}
+	</select>
+	
+	<select id="askAnswerDone" parameterType="java.util.Map">
+		update ask set answer=#{answer}, reply=1 where seq=#{seq}
+	</select>
+	
 	<!-- 대시보드 ... 최신 리뷰 리스트 -->
 	<select id="getRecentReviewList" resultType="review">
 	<![CDATA[

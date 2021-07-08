@@ -15,7 +15,7 @@ public interface ProfileDAO {
 
 	public List<AskDTO> getAskList(Map<String, String> map);
 
-	public int getTotalA();
+	public int getTotalA(Map<String, String> map);
 
 	public AskDTO getAsk(String seq);
 

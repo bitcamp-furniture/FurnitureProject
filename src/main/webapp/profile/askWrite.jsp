@@ -83,6 +83,7 @@
    <button type="button" id="askWriteBtn">문의하기</button>
    </td>
   </tr>
+  <input type="hidden" name="answer" id="answer" value="빠른 시일 내에 답변 드리겠습니다 :)">
 
 </table>
 </form>

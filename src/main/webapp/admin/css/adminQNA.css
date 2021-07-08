@@ -1,20 +1,6 @@
-.askBtn {
+#askBtn {
 	box-shadow: inset 0px 1px 0px 0px #ffffff;
 	background-color: #2F3894;
-	border-radius: 6px;
-	border: 1px solid #dcdcdc;
-	display: inline-block;
-	cursor: pointer;
-	color: #ffff;
-	font-family: Arial;
-	font-size: 13px;
-	font-weight: bold;
-	padding: 6px 24px;
-}
-
-#askWaitBtn {
-	box-shadow: inset 0px 1px 0px 0px #ffffff;
-	background-color: #595959;
 	border-radius: 6px;
 	border: 1px solid #dcdcdc;
 	display: inline-block;
@@ -28,7 +14,7 @@
 
 #askDoneBtn {
 	box-shadow: inset 0px 1px 0px 0px #ffffff;
-	background-color: #2F3894;
+	background-color: #595959;
 	border-radius: 6px;
 	border: 1px solid #dcdcdc;
 	display: inline-block;

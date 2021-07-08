@@ -86,8 +86,8 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(value="askList", method=RequestMethod.GET)
-	public String asklist(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
-		model.addAttribute("pg", pg);
+	public String asklist(@RequestParam(required = false, defaultValue = "1") String askPg, Model model) {
+		model.addAttribute("askPg", askPg);
 		model.addAttribute("display", "/profile/profile.jsp");
 		model.addAttribute("askdisplay", "/profile/askList.jsp");
 		return "/index";
@@ -148,7 +148,7 @@ public class ProfileController {
 		List<AskDTO> list = profileService.getAskList(map);
 		
 		//페이징 처리
-		AskPaging askPaging = profileService.askPaging(askPg);
+		AskPaging askPaging = profileService.askPaging(map);
 				
 		//세션
 		

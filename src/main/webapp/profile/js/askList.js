@@ -17,29 +17,71 @@ $(function(){
 		data: 'askPg='+$('#askPg').val(),
 		dataType: 'json',
 		success: function(data){
-			console.log(data);
+			//console.log(data);
+			
 			$.each(data.list, function(index, items){
-				$('<tr/>').append($('<td/>',{
-					align:'center',
-					text: items.seq
-				})).append($('<td/>',{
-					align:'center',
-					text: items.ask_category
-				})).append($('<td/>',{
-					align:'center'
-				}).append($('<a/>',{
-					href: '#',
-					align:'center',
-					text: items.subject,
-					id: 'subjectA'
-				}))
-				).append($('<td/>',{
-					align:'center',
-					text: items.created_at
-				})).append($('<td/>',{
-					align:'center',
-					text: items.reply
-				})).appendTo($('#askListTable'));
+				if(items.reply=='0'){
+					$('<tr/>').append($('<td/>',{
+						align:'center',
+						text: items.seq
+					})).append($('<td/>',{
+						align:'center',
+						text: items.ask_category
+					})).append($('<td/>',{
+						align:'center'
+					}).append($('<a/>',{
+						href: '#',
+						align:'center',
+						text: items.subject,
+						id: 'subjectA'
+					}))
+					).append($('<td/>',{
+						align:'center',
+						text: items.created_at
+					})).append(
+							
+							$('<td/>',{ align:'center'})
+							.append($('<input/>',{
+								align:'center',
+								type: 'button',
+								id: 'askWaitBtn',
+								name: 'askWaitBtn',
+								value: '답변대기'
+							}))
+							
+					).appendTo($('#askListTable'));
+					
+				}else{
+					$('<tr/>').append($('<td/>',{
+						align:'center',
+						text: items.seq
+					})).append($('<td/>',{
+						align:'center',
+						text: items.ask_category
+					})).append($('<td/>',{
+						align:'center'
+					}).append($('<a/>',{
+						href: '#',
+						align:'center',
+						text: items.subject,
+						id: 'subjectA'
+					}))
+					).append($('<td/>',{
+						align:'center',
+						text: items.created_at
+					})).append(
+							
+							$('<td/>',{ align:'center'})
+							.append($('<input/>',{
+								align:'center',
+								type: 'button',
+								id: 'askDoneBtn',
+								name: 'askDoneBtn',
+								value: '답변완료'
+							}))
+							
+					).appendTo($('#askListTable'));
+				}
 				
 		});//each
 		
@@ -57,9 +99,7 @@ $(function(){
 		},
 		error: function(err){
 			console.log(err);
-		}
-			
-			
+		}					
 			
 		});
 });
@@ -76,27 +116,64 @@ function askPaging(askPg){
 			console.log(data);
 
 			$.each(data.list, function(index, items){
-				$('<tr/>').append($('<td/>',{
-					align:'center',
-					text: items.seq
-				})).append($('<td/>',{
-					align:'center',
-					text: items.ask_category
-				})).append($('<td/>',{
-					align:'center'
-				}).append($('<a/>',{
-					href: '#',
-					align:'center',
-					text: items.subject,
-					id: 'subjectA'
-				}))
-				).append($('<td/>',{
-					align:'center',
-					text: items.created_at
-				})).append($('<td/>',{
-					align:'center',
-					text: items.reply
-				})).appendTo($('#askListTable'));
+				if(items.reply==='0'){
+					$('<tr/>').append($('<td/>',{
+						align:'center',
+						text: items.seq
+					})).append($('<td/>',{
+						align:'center',
+						text: items.ask_category
+					})).append($('<td/>',{
+						align:'center'
+					}).append($('<a/>',{
+						href: '#',
+						align:'center',
+						text: items.subject,
+						id: 'subjectA'
+					}))
+					).append($('<td/>',{
+						align:'center',
+						text: items.created_at
+					})).append(
+							$('<td/>',{ align:'center'})
+							.append($('<input/>',{
+								align:'center',
+								type: 'button',
+								id: 'askWaitBtn',
+								name: 'askWaitBtn',
+								value: '답변대기'
+							}))
+					).appendTo($('#askListTable'));
+					
+				}else{
+					$('<tr/>').append($('<td/>',{
+						align:'center',
+						text: items.seq
+					})).append($('<td/>',{
+						align:'center',
+						text: items.ask_category
+					})).append($('<td/>',{
+						align:'center'
+					}).append($('<a/>',{
+						href: '#',
+						align:'center',
+						text: items.subject,
+						id: 'subjectA'
+					}))
+					).append($('<td/>',{
+						align:'center',
+						text: items.created_at
+					})).append(
+							$('<td/>',{ align:'center'})
+							.append($('<input/>',{
+								align:'center',
+								type: 'button',
+								id: 'askDoneBtn',
+								name: 'askDoneBtn',
+								value: '답변완료'
+							}))
+					).appendTo($('#askListTable'));
+				}
 
 		});//each
 
