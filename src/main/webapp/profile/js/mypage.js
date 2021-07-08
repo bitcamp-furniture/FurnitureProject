@@ -54,7 +54,7 @@ $(document).ready(function(){
 
 				$('#name').text(data.name);
 				$('#birth').text(data.bir_yy + data.bir_mm + data.bir_dd);
-				$('#address').text(data.addr1 + data.addr2);
+				$('#address').text(data.addr1 + '\n' +data.addr2);
 				$('#phone').text(data.phone);
 				$('#email').text(data.email);
 
