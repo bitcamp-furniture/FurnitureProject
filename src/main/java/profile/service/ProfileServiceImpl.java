@@ -205,4 +205,10 @@ public class ProfileServiceImpl implements ProfileService {
 		return profileDAO.getOrderNum(email);
 	}
 
+	@Override
+	public void memberDelete(String id) {
+		profileDAO.memberDelete(id);
+		
+	}
+
 }

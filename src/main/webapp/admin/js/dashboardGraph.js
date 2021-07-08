@@ -61,7 +61,6 @@ window.onload = function(){
       url : '/furniture/admin/orderChart',
       dataType:'json',
       success : function(data) {
-         console.log(data);
             //도넛 차트 : 카테고리별 매출
             var categoryChart = new Chart(pie,{
                type: 'doughnut',

@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import admin.bean.AdminProductDTO;
+import admin.bean.MemberListPaging;
 import admin.bean.OrderControlPaging;
 import admin.service.AdminProductService;
+import member.bean.MemberDTO;
 
 @Controller
 @RequestMapping("admin")
@@ -71,6 +73,51 @@ public class AdminProductController {
 		adminProductService.paymentConfirm(check);
 		
 		return new ModelAndView("redirect:/admin/product/orderControl");
+	}
+	
+	//배송중으로 되돌리기
+	@RequestMapping(value="product/delivery", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView delivery(@RequestParam String[] check) {
+		adminProductService.delivery(check);
+		
+		return new ModelAndView("redirect:/admin/product/orderControl");
+	}
+	
+	//발송지연 처리
+	@RequestMapping(value="product/delay", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView delay(@RequestParam String[] check) {
+		adminProductService.delay(check);
+		
+		return new ModelAndView("redirect:/admin/product/orderControl");
+	}
+
+	//판매취소 처리
+	@RequestMapping(value="product/cancelSales", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView cancelSales(@RequestParam String[] check) {
+		adminProductService.cancelSales(check);
+		
+		return new ModelAndView("redirect:/admin/product/orderControl");
+	}
+	
+	//주문관련 검색
+	@RequestMapping(value="product/getSearchOrderList", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getSearchOrderList(@RequestParam Map map) {
+		List<AdminProductDTO> list = adminProductService.getSearchOrderList(map);
+		
+		//MemberListPaging memberListPaging = adminProductService.memberListSearchPaging(map);
+		
+		ModelAndView mav = new ModelAndView();
+		//mav.addObject("memberListPaging", memberListPaging);
+		mav.addObject("pg", map.get("pg"));
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+
+		
+		return mav;
 	}
 	
 

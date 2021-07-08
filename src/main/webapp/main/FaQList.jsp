@@ -65,9 +65,6 @@
     <td onclick="clickDiv('교환/반품');">
       	교환/반품
    </td>
-    <td onclick="clickDiv('AS');">
-      	A/S
-   </td>
     <td onclick="clickDiv('회원정보');">
       	회원정보
    </td>
@@ -131,7 +128,7 @@ function faQAllListPaging(pg)
 					text: items.div
 				})).append($('<td/>', {
 					}).append($('<a/>', {
-						href: '#',
+						//href: '#',
 						text: items.subject,
 						id: 'subjectA',
 						href: '/furniture/main/FaQView?id='+items.id,

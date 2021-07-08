@@ -69,13 +69,8 @@
                             <div class="header__top__right">
                             
                                 <div class="header__top__right__links">
-                               <input type="text" class="search-input" placeholder="검색어를 입력하세요" onkeyup="enterkey();" size="20" />&emsp;
+                               <input type="text" class="search-input" placeholder="검색어를 입력하세요" onkeyup="enterkey();" size="30" />&emsp;
                                     <a class="search-icon" ><img src="/furniture/img/icon/search.png" alt=""  style="cursor: pointer;"></a>
-                                    <a href="#"><img src="/furniture/img/icon/heart.png" alt=""></a>
-                                </div>
-                                <div class="header__top__right__cart">
-                                    <a href="#"><img src="/furniture/img/icon/cart.png" alt=""> <span>0</span></a>
-                                    <div class="cart__price">Cart: <span id="장바구니_총금액"></span></div>
                                 </div>
                             </div>
                         </div>

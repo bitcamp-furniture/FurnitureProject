@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 
 <style type="text/css">
+#eventWriteForm{
+	font-size: 20px;
+	width: 100%;
+}
 .line {
 	font-weight: normal;
 	font-family: sans-serif;
@@ -25,13 +29,14 @@
 <form class="eventWriteForm" id="eventWriteForm">
 	<table border="0" cellspacing="0" cellpadding="3" align="center">
 		<tr>
-			<td width="100" align="center">이벤트 제목</td>
-			<td><input type="text" size="30" name="event_subject"
-				id="event_subject" placeholder="이벤트 제목 입력">
-				<div id=event_subjectDiv></div></td>
+			<td width="150" lign="left">이벤트 제목</td>
+			<td>
+				<input type="text" size="30" name="event_subject"id="event_subject" placeholder="이벤트 제목 입력">
+				<div id=event_subjectDiv></div>
+			</td>
 		</tr>
 		<tr>
-			<td width="100" align="center">이벤트 카테고리</td>
+			<td width="100" align="left">이벤트 카테고리</td>
 			<td><select onchange="event_categoryChange(this)">
 					<option value="">카테고리 선택1</option>
 					<option value="침대">침대</option>
@@ -46,19 +51,20 @@
 			</select></td>
 		</tr>
 		<tr>
-			<td width="100" align="center">이벤트 기간</td>
-			<td><input type="date" size="30" name="event_startDate"
-				id="event_startDate"> ~ <input type="date" size="30"
-				name="event_endDate" id="event_endDate">
-				<div id="event_endDateDiv"></div></td>
+			<td width="100" align="left">이벤트 기간</td>
+			<td>
+				<input type="date" size="30" name="event_startDate"id="event_startDate"> ~ 
+				<input type="date" size="30"name="event_endDate" id="event_endDate">
+				<div id="event_endDateDiv"></div>
+			</td>
 		</tr>
 		<%-- 배너 이미지 --%>
 		<%-- accept =".gif,.jpg,.png" 파일 확장자를 판매자에서 제한해야할지 말아야할지 --%>
 		<tr>
 			<td colspan="2">
-				<div id="imgSize">-권장 이미지 가로는 400 세로는 200</div> <label
-				for="bannerLabel">&nbsp;배너 이미지&nbsp;&nbsp;</label> <input
-				type="file" size="50" name="event_banner">
+				<div id="imgSize">-권장 이미지 가로는 400 세로는 200</div> 
+				<label for="bannerLabel">&nbsp;배너 이미지&nbsp;&nbsp;</label> 
+				<input type="file" size="50" name="event_banner">
 				<div id="event_img_bannerDiv"></div>
 			</td>
 		</tr>
@@ -66,23 +72,25 @@
 		<%-- accept =".gif,.jpg,.png" 파일 확장자를 판매자에서 제한해야할지 말아야할지 --%>
 		<tr>
 			<td colspan="2">
-				<div id="imgSize">&emsp;&emsp;&emsp;&emsp;-권장 이미지 가로는 1080 세로는
-					1480입니다</div> <label for="detailLabel">&nbsp;상세 이미지&nbsp;&nbsp;</label> <input
-				type="file" multiple size="50" name="event_detail[]"
-				id="event_img_detail">
+				<div id="imgSize">&emsp;&emsp;&emsp;&emsp;-권장 이미지 가로는 1080 세로는1480입니다</div> 
+				<label for="detailLabel">&nbsp;상세 이미지&nbsp;&nbsp;</label> 
+				<input type="file" multiple size="50" name="event_detail[]"id="event_img_detail">
 				<div id="event_img_detailDiv"></div>
 			</td>
 
 		</tr>
 		<tr>
 			<td align="center">이벤트 내용</td>
-			<td><textarea cols="50" rows="15" name="event_content"
-					id="event_content" placeholder="내용입력"></textarea>
-				<div id="imageContentDiv"></div></td>
+			<td>
+				<textarea cols="50" rows="15" name="event_content"id="event_content" placeholder="내용입력">
+				</textarea>
+				<div id="imageContentDiv"></div>
+			</td>
 		</tr>
 		<tr>
-			<td colspan="2" align="right"><input type="button" value="등록"
-				id="eventWriteBtn"> <input type="reset" value="다시작성">
+			<td colspan="2" align="right">
+			<input type="button" value="등록"id="eventWriteBtn"> 
+			<input type="reset" value="다시작성">
 			</td>
 		</tr>
 	</table>

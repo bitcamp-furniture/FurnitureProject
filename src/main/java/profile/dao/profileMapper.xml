@@ -213,5 +213,9 @@
 										 )
 	
 	</insert>
+	
+	<delete id="memberDelete">
+		delete from MEMBER where id=#{id}
+	</delete>
 
  </mapper>
