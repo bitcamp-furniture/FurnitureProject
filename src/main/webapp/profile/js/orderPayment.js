@@ -15,7 +15,6 @@ $('#pointCheckbox').click(function(){
 	$('#totalPay').text(($('#total').val()-$('#pointText').val()).toLocaleString());
 
 	$('#memberpointval').text('0');
-
 //	var totalPay=$('#total').val()-$('#pointText').val()
 });
 
