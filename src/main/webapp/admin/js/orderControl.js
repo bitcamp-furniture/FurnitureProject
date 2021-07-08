@@ -19,17 +19,23 @@ $(function(){
             }))
             ).append($('<td/>',{
                //align:'center',
-               text: items.order_date
-            })).append($('<td/>',{
-               //align:'center',
-               text: items.name
+               text: items.order_date +'\n'+ items.order_number
             })).append($('<td/>',{
                //align:'center',
                text: items.order_number
             })).append($('<td/>',{
-               //align:'center',
-               text: items.img_thumb
+            	//align:'center',
+            	text: items.name
             })).append($('<td/>',{
+            	align: 'center',
+            }).append($('<img/>',{
+               //align:'center',
+            	src: '/furniture/storage/' + items.product_img_thumb,
+            	width: '80px',
+            	height: '80px'
+            	//height="20px" width="20px"
+            }))
+            ).append($('<td/>',{
                //align:'center',
                text: items.product_name
             })).append($('<td/>',{
@@ -42,8 +48,13 @@ $(function(){
                //align:'center',
                text: items.total_amount
             })).append($('<td/>',{
+            	text: items.delivery_number
+            })).append($('<td/>',{
                //align:'center',
                text: items.zipcode
+            })).append($('<td/>',{
+                //align:'center',
+                text: items.phone
             })).append($('<td/>',{
                //align:'center',
                text: items.addr1

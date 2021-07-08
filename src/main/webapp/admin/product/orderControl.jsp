@@ -58,15 +58,18 @@
 						  <tr>
 						    <th><input type='checkbox' id="allCheck"/></th>
 						     <th>결제날짜</th>
-		                     <th>주문자</th>
 		                     <th>주문번호</th>
+		                     <th>주문자</th>
 		                     <th>주문상품</th>
 		                     <th></th>
 		                     <th>옵션</th>
 		                     <th>수량</th>
 		                     <th>결제금액</th>
+		                     <th>운송장번호</th>
 		                     <th>우편번호</th>
+		                     <th>핸드폰번호</th>
 		                     <th>주소</th>
+		                     <th>주소2</th>
 		                     <th>상태</th>
 						  </tr>
 						</table>
