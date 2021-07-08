@@ -3,9 +3,11 @@ package admin.dao;
 import java.util.List;
 import java.util.Map;
 
+import admin.bean.DailysummaryDTO;
 import furniture.bean.ReviewDTO;
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
+import profile.bean.OrderDTO;
 
 public interface AdminDAO {
 
@@ -22,5 +24,17 @@ public interface AdminDAO {
 	public List<ReviewDTO> getRecentReviewList();
 
 	public List<AskDTO> getRecentQnAList();
+
+	public List<String> orderDay();
+
+	public List<Integer> orderCount();
+
+	public List<Integer> orderSales();
+
+	public List<Integer> orderCateSales();
+
+	public List<String> orderCateName();
+
+	public List<DailysummaryDTO> dailySummary();
 
 }

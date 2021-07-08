@@ -41,6 +41,7 @@ import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
 import furniture.bean.Review_paging;
 import furniture.service.FurnitureService;
+import profile.bean.CartDTO;
 import profile.bean.WishlistDTO;
 
 @Controller
@@ -428,8 +429,13 @@ public class FurnitureController {
 	@RequestMapping(value="/main/addCart", method=RequestMethod.POST)
 	@ResponseBody
 	public void addCart(@RequestParam Map<String, String> map, HttpSession session) {
-		furnitureService.addCart(map);
+		if(furnitureService.getcart(map)){
+			furnitureService.updateCart(map);
+		} else {
+			furnitureService.addCart(map);
+		}
 	}
+
 }
 
 

@@ -15,7 +15,7 @@ public interface ProfileDAO {
 
 	public List<AskDTO> getAskList(Map<String, String> map);
 
-	public int getTotalA();
+	public int getTotalA(Map<String, String> map);
 
 	public AskDTO getAsk(String seq);
 
@@ -50,4 +50,8 @@ public interface ProfileDAO {
 	void cartTotalDelete(String memberId);
 
 	List<CartDTO> getAllCartList(String memberId);
+
+	public void paymentWrite(Map<String, Object> map);
+
+	public int getOrderNum(String email);
 }

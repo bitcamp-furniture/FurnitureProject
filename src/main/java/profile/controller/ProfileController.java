@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -35,16 +36,21 @@ public class ProfileController {
 	
 	@RequestMapping(value="profile", method=RequestMethod.GET)
 	public String profile(Model model, HttpSession session) {
-		int id = (Integer) session.getAttribute("memId");
-		String name = (String) session.getAttribute("memName");
-		String email = (String) session.getAttribute("memEmail");
-		
-		model.addAttribute("id", id);
-		model.addAttribute("profileName", name);
-		model.addAttribute("profileEmail", email);
-		model.addAttribute("display", "/profile/profile.jsp");
-		model.addAttribute("askdisplay", "/profile/order.jsp");
-		return "/index";
+		if(session.getAttribute("memId") == null) {
+			model.addAttribute("display", "/profile/profile.jsp");
+			return "/index";
+		} else {
+			int id = (Integer) session.getAttribute("memId");
+			String name = (String) session.getAttribute("memName");
+			String email = (String) session.getAttribute("memEmail");
+
+			model.addAttribute("id", id);
+			model.addAttribute("profileName", name);
+			model.addAttribute("profileEmail", email);
+			model.addAttribute("display", "/profile/profile.jsp");
+			model.addAttribute("askdisplay", "/profile/order.jsp");
+			return "/index";
+		}
 	}
 	
 //	@RequestMapping(value="mypage", method=RequestMethod.GET)
@@ -80,8 +86,8 @@ public class ProfileController {
 	}
 	
 	@RequestMapping(value="askList", method=RequestMethod.GET)
-	public String asklist(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
-		model.addAttribute("pg", pg);
+	public String asklist(@RequestParam(required = false, defaultValue = "1") String askPg, Model model) {
+		model.addAttribute("askPg", askPg);
 		model.addAttribute("display", "/profile/profile.jsp");
 		model.addAttribute("askdisplay", "/profile/askList.jsp");
 		return "/index";
@@ -106,10 +112,10 @@ public class ProfileController {
 		String filePath = "D:\\FurnitureProject\\src\\main\\webapp\\profile\\storage";
 		String fileName;
 		File file;
-		for(MultipartFile img : list ) {
+		for (MultipartFile img : list) {
 			fileName = img.getOriginalFilename();
 			file = new File(filePath, fileName);
-			
+
 			//파일 복사
 			try {
 				FileCopyUtils.copy(img.getInputStream(), new FileOutputStream(file));
@@ -142,7 +148,7 @@ public class ProfileController {
 		List<AskDTO> list = profileService.getAskList(map);
 		
 		//페이징 처리
-		AskPaging askPaging = profileService.askPaging(askPg);
+		AskPaging askPaging = profileService.askPaging(map);
 				
 		//세션
 		
@@ -291,6 +297,7 @@ public class ProfileController {
 		//페이징 처리
 		CartPaging cartPaging = profileService.cartPaging(id, cartPg);
 
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("cartList", cartList);
 		mav.addObject("cartPg", cartPg);
@@ -333,6 +340,55 @@ public String orderPaymentView(Model model, HttpSession session, MemberDTO membe
 }
 
 //---------------------------------------------------------------------------------------
+//결제하기
+@RequestMapping(value="paymentWrite", method=RequestMethod.POST)
+@ResponseBody
+public void paymentWrite(HttpSession session
+		,@RequestParam int total
+		) {
+	String email = (String) session.getAttribute("memEmail");
+	
+	int memId = (Integer) session.getAttribute("memId");
+	List<CartDTO> cartList = profileService.getAllCartList(memId+"");
+	
+	Map<String, Object> map = new HashMap<String, Object>();
+	
+	
+	map.put("email", email);
+	map.put("total", total);
+	map.put("cartList", cartList);
+	
+
+	profileService.paymentWrite(map);
+}
+
+
+
+
+
+//주문완료
+@RequestMapping(value="orderComplete", method=RequestMethod.GET)
+public String orderComplete(Model model, HttpSession session, OrderDetailDTO orderDetailDTO, MemberDTO memberDTO) {
+	System.out.println("1111111111");
+	//세션에서 id,email 을 받아옴
+	String email = (String) session.getAttribute("memEmail");
+	int memId = (Integer) session.getAttribute("memId");
+
+	List<CartDTO> cartList = profileService.getAllCartList(memId+"");
+	memberDTO = profileService.getMember(memId);
+	
+	int orderNumber= profileService.getOrderNum(email);
+	orderDetailDTO.setOrder_number(orderNumber);
+	
+	
+	profileService.cartTotalDelete(memId+"");
+
+			
+	model.addAttribute("memberDTO",memberDTO);
+	model.addAttribute("orderDetailDTO",orderDetailDTO);
+	model.addAttribute("display", "/profile/orderComplete.jsp");
+	return "/index";
+}
 }
 
 

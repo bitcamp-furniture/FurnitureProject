@@ -53,7 +53,7 @@ $('#askWriteBtn').click(function(){
 		contentType:false,
 		data: formData,
 		success: function(){
-			swal("등록 완료", "문의가 등록되었습니다", "success");
+			alert('문의가 등록되었습니다');
 			window.opener.location.reload();
 			self.close();
 			

@@ -25,18 +25,18 @@ public class MemberListPaging {
 		if(endPage > totalP) endPage = totalP;
 		
 		if(startPage > pageBlock)
-			pagingHTML.append("<span id='paging' onclick='memberListPaging("+(startPage-1)+")'>[이전]</span>");
+			pagingHTML.append("<span id='paging' onclick='memberListPaging("+(startPage-1)+")'>◀</span>");
 		
 		for(int i=startPage; i<=endPage; i++) {
 			if(i==currentPage) {
-				pagingHTML.append("[ <span id='currentPaging' onclick='memberListPaging("+i+")'>"+i+"</span> ]");
+				pagingHTML.append("<span id='currentPaging' onclick='memberListPaging("+i+")'>"+i+"</span>");
 			}else {
-				pagingHTML.append("[ <span id='paging' onclick='memberListPaging("+i+")'>"+i+"</span> ]");
+				pagingHTML.append("<span id='paging' onclick='memberListPaging("+i+")'>"+i+"</span>");
 			}
 		}//for
 		
 		if(endPage < totalP)
-			pagingHTML.append("<span id='paging' onclick='memberListPaging("+(endPage+1)+")'>[다음]</span>");
+			pagingHTML.append("<span id='paging' onclick='memberListPaging("+(endPage+1)+")'>▶</span>");
 	}
 
 }
