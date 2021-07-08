@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,13 +50,23 @@ public class CategoryController {
 	// 전체 상품을 리스트로 가져오는 메소드 +페이징 필요 없음 
 	@ResponseBody
 	@RequestMapping(value = "/getAllList", method = RequestMethod.POST)
-	public ModelAndView getAllList(@RequestParam(required = false, defaultValue = "1") String pg)
+	public ModelAndView getAllList(@RequestParam(required = false, defaultValue = "1") String pg
+								   , HttpSession session)
 	   {
 	      ModelAndView mav = new ModelAndView();
 	      List<ProductDTO> allList = productService.getAllList();
 	      List<EventDTO> AllListBanner = eventService.AllListBanner();
 	      //eventService.
 	      
+			int memId;
+			if(session.getAttribute("memId")==null) {
+				memId = 0;
+			} else {
+				memId = (Integer) session.getAttribute("memId");
+			}
+
+	      
+			mav.addObject("memId", memId);
 	      mav.addObject("allList", allList);
 	      mav.addObject("AllListBanner", AllListBanner);
 	      mav.addObject("pg", pg);
@@ -76,8 +88,17 @@ public class CategoryController {
 
 	   @RequestMapping(value = "/selectList", method = RequestMethod.GET)
 	   public String selectList(@RequestParam(required = false, defaultValue = "1") String pg,
-	                      		@RequestParam String category, Model model) {
+	                      		@RequestParam String category, Model model,
+	                      		HttpSession session) {
 
+			int memId;
+			if(session.getAttribute("memId")==null) {
+				memId = 0;
+			} else {
+				memId = (Integer) session.getAttribute("memId");
+			}
+
+	      model.addAttribute("memId", memId);
 	      model.addAttribute("category", category);
 	      model.addAttribute("pg", pg);
 	      model.addAttribute("display", "/category/view/category.jsp");

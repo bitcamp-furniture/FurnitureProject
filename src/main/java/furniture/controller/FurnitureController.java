@@ -178,11 +178,19 @@ public class FurnitureController {
 	// 메인 페이지 ... review ... 최신순 5개만!!!
 	@ResponseBody
 	@RequestMapping(value = "/main/reviewListTop5", method = RequestMethod.POST)
-	public ModelAndView reviewListTop5() {
+	public ModelAndView reviewListTop5(HttpSession session) {
 		List<ReviewDTO> reviewListTop5 = furnitureService.reviewListTop5();
 //		System.out.println(reviewListTop5);
+		int memId;
+		if(session.getAttribute("memId")==null) {
+			memId = 0;
+		} else {
+			memId = (Integer) session.getAttribute("memId");
+		}
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("reviewListTop5", reviewListTop5);
+		mav.addObject("memId", memId);
 		mav.setViewName("jsonView");
 		return mav;
 	}
