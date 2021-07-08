@@ -12,6 +12,7 @@ public class ProductDTO {
 
 	private String product_category1; //카테고리1
 	private String product_category2; //카테고리2
+	private String product_memo;
 	/*
 	 * private String product_color; //컬러 private int stock; //재고
 	 */

@@ -72,14 +72,14 @@
          </tr>
          
          
-         <!-- <tr>   
-          <td align="center">재고</td>
+         <tr>   
+          <td align="center">상품상세설명</td>
           <td>
-              <input type="text" name="stock" id="stock" size="50" placeholder="재고입력">
+              <textarea name="product_memo" id="product_memo" cols="100" rows="20" >상품 상세 설명 입력</textarea>
               <div id="stockDiv"></div>
               
           </td>
-         </tr> -->
+         </tr> 
       
       
       
