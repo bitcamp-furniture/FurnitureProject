@@ -244,7 +244,7 @@ $('#cancelSales').click(function(){
 /*검색*/
 $('#orderSearchBtn').click(function(){
 	var cc = $('#keyword').val()
-	alert(cc);
+	alert(cc); 
 	
 	if($('#keyword').val()==''){
 		alert('검색어를 입력하세요');
