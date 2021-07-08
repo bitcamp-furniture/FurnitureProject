@@ -112,7 +112,7 @@ public class AdminProductController {
 		
 		ModelAndView mav = new ModelAndView();
 		//mav.addObject("memberListPaging", memberListPaging);
-		mav.addObject("pg", map.get("pg"));
+		mav.addObject("orderControlPg", map.get("orderControlPg"));
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
 

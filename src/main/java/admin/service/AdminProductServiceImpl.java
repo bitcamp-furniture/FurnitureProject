@@ -96,7 +96,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//주문 검색
 	@Override
 	public List<AdminProductDTO> getSearchOrderList(Map<String, String> map) {
-		int endNum = Integer.parseInt(map.get("pg"))*15;
+		int endNum = Integer.parseInt(map.get("orderControlPg"))*15;
 		int startNum = endNum-14;
 		
 		map.put("startNum", startNum+"");

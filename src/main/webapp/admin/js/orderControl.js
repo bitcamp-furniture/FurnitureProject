@@ -19,7 +19,7 @@ $(function(){
             }))
             ).append($('<td/>',{
                //align:'center',
-               text: items.order_date
+               text: items.order_date + items.name
             })).append($('<td/>',{
                //align:'center',
                text: items.name
@@ -243,8 +243,6 @@ $('#cancelSales').click(function(){
 
 /*검색*/
 $('#orderSearchBtn').click(function(){
-	var cc = $('#keyword').val()
-	alert(cc); 
 	
 	if($('#keyword').val()==''){
 		alert('검색어를 입력하세요');
@@ -256,38 +254,59 @@ $('#orderSearchBtn').click(function(){
 			dataType: 'json',
 			success: function(data){
 				alert(JSON.stringify(data));
-//				$('#memberListTable tr:gt(0)').remove();
-//				$("input[name=check_all]").prop("checked", false);
-//				
-//				$.each(data.list, function(index, items){
-//					$('<tr/>').append($('<td/>',{
-//						
-//						}).append($('<input/>',{
-//							align: 'center',
-//							type: 'checkbox',
-//							name: 'check',
-//							value: items.id
-//						}))
-//					).append($('<td/>',{
-//						align: 'center',
-//						text: items.name
-//					})).append($('<td/>',{
-//						align: 'center',
-//						text: items.email
-//					})).append($('<td/>',{
-//						align: 'center',
-//						text: items.created_at
-//					})).append($('<td/>',{
-//						align: 'center',
-//						text: items.point					
-//					})).append($('<td/>',{
-//						align: 'center',
-//						text: items.amount					
-//					})).appendTo($('#memberListTable'));
-//					
-//				});
-//				
-//				$('#memberListPagingDiv').html(data.memberListPaging.pagingHTML);
+				$('#orderControlTable tr:gt(0)').remove();
+				$("input[name=check_all]").prop("checked", false);
+		         
+		         $.each(data.list, function(index, items){
+				
+		            $('<tr/>').append($('<td/>',{
+		            }).append($('<input/>',{
+		               align: 'center',
+		               type: 'checkbox',
+		               class: 'normal',
+		               name: 'check',
+		               value: items.id
+		            }))
+		            ).append($('<td/>',{
+		               //align:'center',
+		               text: items.order_date
+		            })).append($('<td/>',{
+		               //align:'center',
+		               text: items.name
+		            })).append($('<td/>',{
+		               //align:'center',
+		               text: items.order_number
+		            })).append($('<td/>',{
+		               //align:'center',
+		               text: items.img_thumb
+		            })).append($('<td/>',{
+		               //align:'center',
+		               text: items.product_name
+		            })).append($('<td/>',{
+		               //align:'center',
+		               text: items.product_color
+		            })).append($('<td/>',{
+		               //align:'center',
+		               text: items.product_qty
+		            })).append($('<td/>',{
+		               //align:'center',
+		               text: items.total_amount
+		            })).append($('<td/>',{
+		               //align:'center',
+		               text: items.zipcode
+		            })).append($('<td/>',{
+		               //align:'center',
+		               text: items.addr1
+		            })).append($('<td/>',{
+		               //align:'center',
+		               text: items.addr2
+		            })).append($('<td/>',{
+		               //align:'center',
+		               text: items.order_status
+		            })).appendTo($('#orderControlTable'));
+		      });//each
+				
+				//$('#memberListPagingDiv').html(data.memberListPaging.pagingHTML);
 				
 			},
 			error: function(err){
@@ -295,16 +314,8 @@ $('#orderSearchBtn').click(function(){
 			}
 		});
 	}
-	
+
 });
-
-
-
-
-
-
-
-
 
 
 
