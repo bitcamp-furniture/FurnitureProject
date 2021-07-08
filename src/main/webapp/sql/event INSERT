@@ -1,0 +1,9 @@
+insert into event values(SEQ_EVENT.nextval, '침실가구 기획전', '푹신하고 부드러운 IKEZKE의 침구가 당신의 피로를 풀어드립니다!', sysdate-200, sysdate+150, '침대', 'bedTh.jpg', 'bedDe.jpg');
+insert into event values(SEQ_EVENT.nextval, '주방가구 기획전', '아름다운 IKEZKE의 식탁 세트로 당신의 주방을 한층 화사하게 업그레이드 하세요!', sysdate-320, sysdate+50, '식탁세트', 'KitTh.jpg', 'KitDe.jpg');
+insert into event values(SEQ_EVENT.nextval, '몸에 편안한 기능성 의자 BEST', '코로나로 늘어난 작업시간, 인체공학적으로 설계되어 인체를 정확하고 편안하게 받쳐주는 의자들을 만나보세요.', sysdate-110, sysdate+30, '사무용의자', 'ChrTh.jpg', 'ChrDe.jpg');
+
+
+insert into event values(SEQ_EVENT.nextval, '침실가구 기획전', '푹신하고 부드러운 IKEZKE의 침구가 당신의 피로를 풀어드립니다!', sysdate-200, sysdate+150, 침대, 'bedTh.jpg', 'bedDe.jpg');
+
+
+
