@@ -13,6 +13,8 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/memberList.css">
+	  
 <style>
 .memberList th {
 	text-align: center;
@@ -27,9 +29,6 @@
 </head>
 <body id="memberListBody">
 	<form class="memberList" id="memberList" name="memberList" method="get" action="/furniture/admin/memberListDelete">
-		<div class="memberList container">
-			<div class="memberList row">
-				<div class="col-lg-12">
 					<!-- search start -->
 					<div class="search">
 						<input type="search" name="keyword" id="keyword" value="${keyword }">
@@ -50,10 +49,7 @@
 					<input type="hidden" id="pg" value="${pg }">
 					<input type="hidden" name="pg" value="1">
 					<!-- paging start -->
-					<div id="memberListPagingDiv" style="width: 750px; text-align:center;"></div>	
-				</div>
-			</div>
-		</div>
+					<div id="memberListPagingDiv" style="text-align:center;"></div>	
 	</form>
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script type="text/javascript" 	src="http://code.jquery.com/jquery-3.6.0.min.js"></script>

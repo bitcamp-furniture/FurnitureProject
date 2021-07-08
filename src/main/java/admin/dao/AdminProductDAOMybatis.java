@@ -38,5 +38,28 @@ public class AdminProductDAOMybatis implements AdminProductDAO {
 		
 	}
 
+	@Override
+	public void delivery(Map<String, String[]> map) {
+		sqlSession.update("adminSQL.delivery", map);
+		
+	}
+
+	@Override
+	public void delay(Map<String, String[]> map) {
+		sqlSession.update("adminSQL.delay", map);
+		
+	}
+
+	@Override
+	public void cancelSales(Map<String, String[]> map) {
+		sqlSession.delete("adminSQL.cancelSales", map);
+		
+	}
+
+	@Override
+	public List<AdminProductDTO> getSearchOrderList(Map<String, String> map) {
+		return sqlSession.selectList("adminSQL.getSearchOrderList", map);
+	}
+
 
 }

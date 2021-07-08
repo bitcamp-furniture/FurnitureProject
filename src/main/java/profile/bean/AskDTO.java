@@ -17,6 +17,7 @@ public class AskDTO {
 	private String content;
 	private int reply;
 	private String image1;
+	private String answer;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy.MM.dd")
 	private Date created_at;
 

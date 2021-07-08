@@ -21,7 +21,6 @@
 				  <!-- Nav tabs -->
 				  <ul class="nav nav-tabs" role="tablist">
 				    <li role="presentation" class="active"><a href="#newOrder" aria-controls="newOrder" role="tab" data-toggle="tab">신규주문</a></li>
-				    <li role="presentation"><a href="#deposit" aria-controls="deposit" role="tab" data-toggle="tab">입금대기</a></li>
 				    <li role="presentation"><a href="#payment" aria-controls="payment" role="tab" data-toggle="tab">결제완료</a></li>
 				    <li role="presentation"><a href="#delivery" aria-controls="delivery" role="tab" data-toggle="tab">배송준비중</a></li>
 				    <li role="presentation"><a href="#duringDeliver" aria-controls="duringDeliver" role="tab" data-toggle="tab">배송중</a></li>
@@ -41,28 +40,34 @@
 						    기타주문 처리<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-						    <li id="deliveryReady"><a href="#">배송준비로 되돌리기</a></li>
-						    <li><a href="#">결제완료로 되돌리기</a></li>
-						    <li><a href="#">배송중으로 되돌리기</a></li>
-						    <li><a href="#">발송 지연처리</a></li>
+						    <li onclick="deliveryReady()"><a href="#">배송준비로 되돌리기</a></li>
+						    <li onclick="paymentConfirm()"><a href="#">결제완료로 되돌리기</a></li>
+						    <li onclick="delivery()"><a href="#">배송중으로 되돌리기</a></li>
+						    <li onclick="delay()"><a href="#">발송 지연처리</a></li>
 						  </ul>
 						</div>
-						<button type="button" class="">판매취소</button>
-						<button type="button" class="">반품처리</button>
-						<button type="button" class="">교환처리</button>
+						<button type="button" id="cancelSales">판매취소</button>
+						<!-- search start -->
+						<div class="search">
+							<input type="search" name="keyword" id="keyword" value="${keyword }">
+							<input type="button" value="검색" id="orderSearchBtn">
+						</div><br>
 						<br><br><br>
 						
 						<table class="table" id="orderControlTable">
 						  <tr>
 						    <th><input type='checkbox' id="allCheck"/></th>
-						    <th>주문날짜</th>
-						    <th>주문번호</th>
-						    <th>주문상품</th>
-						    <th>옵션</th>
-						    <th>수량</th>
-						    <th>주문자</th>
-						    <th>결제금액</th>
-						    <th>상태</th>
+						     <th>결제날짜</th>
+		                     <th>주문자</th>
+		                     <th>주문번호</th>
+		                     <th>주문상품</th>
+		                     <th></th>
+		                     <th>옵션</th>
+		                     <th>수량</th>
+		                     <th>결제금액</th>
+		                     <th>우편번호</th>
+		                     <th>주소</th>
+		                     <th>상태</th>
 						  </tr>
 						</table>
 				    </div>

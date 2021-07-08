@@ -18,10 +18,10 @@
 
 	<!-- 상품 문의 리스트 + 페이징 -->
 	<select id="productQnAListPaging" resultType="qna" parameterType="java.util.Map">
- 		select * from 
-		(select rownum rn, tt.* from 
+ 		select * from
+		(select rownum rn, tt.* from
 		(select * from product_qna where product_name=#{product_name} order by id desc)tt
-		)where rn &gt;= #{startNum} and rn &lt;= #{endNum} 
+		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
 	</select>
 
 	<!-- 상품 문의 총 글수 -->
@@ -158,7 +158,8 @@
 	<delete id="deleteWishButton" parameterType="java.util.Map">
 		delete from wishlist where member_id=#{memId} and product_id=#{id}
 	</delete>
-	
+
+	<!-- 장바구니 추가 -->
 	<insert id="addCart" parameterType="java.util.Map">
 		insert into cart values(seq_cart.nextval
 							   , #{member_id}
@@ -167,5 +168,16 @@
 							   , #{product_count}
 							   )
 	</insert>
-	
+
+	<select id="getcart" parameterType="java.util.Map" resultType="cart">
+		select * from cart where product_id=#{product_id} and product_option_color=#{product_option_color} and member_id=#{member_id}
+	</select>
+
+	<update id="updateCart" parameterType="java.util.Map">
+		update cart set product_count=(product_count+#{product_count})
+			where product_id=#{product_id}
+			  and product_option_color=#{product_option_color}
+			  and member_id=#{member_id}
+	</update>
+
 </mapper>

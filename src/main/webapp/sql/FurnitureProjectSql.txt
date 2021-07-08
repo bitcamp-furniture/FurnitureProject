@@ -169,6 +169,7 @@ subject varchar2(250), -- 제목
 content varchar2(4000), -- 내용
 reply number, -- 답변
 image1 varchar2(200),
+answer varchar2(4000),
 created_at date -- 생성일
 );
 create sequence seq_ask nocycle nocache;

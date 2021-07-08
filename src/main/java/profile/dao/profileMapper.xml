@@ -13,6 +13,7 @@
 									, #{content}
 									, 0
 									, #{image1}
+									, #{answer}
 									, sysdate)
 	</insert>
 	
@@ -22,8 +23,8 @@
  				         where <![CDATA[rn>= #{startNum}]]> and  <![CDATA[rn<= #{endNum}]]>   
  	</select>
  	
- 	<select id="getTotalA"  resultType="Integer">
- 		select count(*) as count from ask
+ 	<select id="getTotalA"  parameterType="java.util.Map" resultType="Integer">
+ 		select count(*) as count from ask where email=#{memEmail}
  	</select>
  	
  	<select id="getAsk" parameterType="int" resultType="ask">
