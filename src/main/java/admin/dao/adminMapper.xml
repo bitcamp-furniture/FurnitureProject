@@ -17,7 +17,6 @@
 	
 	<!-- 검색 -->
 	<select id="getSearchMemberList" parameterType="java.util.Map" resultType="member">
-      
          select * from(select rownum rn, tt. * from
           (select * from member where (name || email) like '%'||#{keyword}||'%' order by created_at desc)tt) 
           where <![CDATA[rn >= #{startNum}]]> and <![CDATA[rn <= #{endNum}]]>
@@ -42,6 +41,7 @@
 		(select * from REVIEW order by id)tt
 		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
 	</select>
+	
 	<!-- 모든 리스트 개수  -->
 	<select id="getTotalReviewList" resultType="int">
 		select count(*) from REVIEW
@@ -55,6 +55,7 @@
 			<!--${array[i]}  -->
 		</foreach>
 	</delete>
+	
 	<!-- sort1 오름차순-->
 	<select id="adminreviewASCList" parameterType="java.util.Map" resultType="review">
 	<![CDATA[
@@ -75,6 +76,24 @@
 		]]>
 	</select>
 	
+	 	<select id="getAskList" parameterType="java.util.Map" resultType="ask">
+ 		select * from(select rownum rn, tt.* from
+ 				(select * from ask order by seq desc)tt)
+ 				         where <![CDATA[rn>= #{startNum}]]> and  <![CDATA[rn<= #{endNum}]]>   
+ 	</select>
+ 	
+ 	<select id="getAskTotalA"  parameterType="java.util.Map" resultType="Integer">
+ 		select count(*) as count from ask
+ 	</select>
+ 	
+ 	<select id="askAnswer" parameterType="String" resultType="ask">
+		select * from ask where seq=#{seq}
+	</select>
+	
+	<select id="askAnswerDone" parameterType="java.util.Map">
+		update ask set answer=#{answer}, reply=1 where seq=#{seq}
+	</select>
+	
 	<!-- 대시보드 ... 최신 리뷰 리스트 -->
 	<select id="getRecentReviewList" resultType="review">
 	<![CDATA[
@@ -92,5 +111,153 @@
 		) where rownum <= 5
 	]]>
 	</select>
+	
+	<!-- 주문내역 띄우기 -->
+ 	<select id="getOrderControl" parameterType="java.util.Map" resultType="adminProduct">
+		select distinct o.order_number,
+					o.order_date,
+					p.product_name,
+					od.product_color,
+					od.product_qty,
+					o.total_amount,
+					od.order_status,
+	                o.member_id,
+	                od.id
+				 from orders o
+					  inner join orders_detail od
+								 on o.order_number=od.order_number
+					  Inner join product p
+								 on od.product_id=p.id
+
+	</select>
+
+	<!-- 주문 날짜만 가져오는  SQL -->
+	<select id="orderDay" resultType="String">
+	<![CDATA[
+	   select TO_CHAR(order_date,'MM/DD')
+	   from orders
+	   where sysdate-order_date <= 7
+	   GROUP BY TO_CHAR(order_date,'MM/DD')
+	   order by TO_CHAR(order_date,'MM/DD')
+	]]>
+	</select>
+	
+	<!-- 주문 건수만 가져오는 SQL -->
+	<select id="orderCount" resultType="int">
+	<![CDATA[
+	   select count(*) from orders 
+	   where sysdate-order_date <= 7
+	   GROUP BY TO_CHAR(order_date,'MM/DD')
+	   order by TO_CHAR(order_date,'MM/DD')
+	]]>
+	</select>
+	
+	<!-- 일별 매출만 가져오는 SQL -->
+	<select id="orderSales" resultType="int">
+	<![CDATA[
+	   select sum(total_amount)/1000000 
+	   from orders
+	   where sysdate-order_date <= 7
+	   GROUP BY TO_CHAR(order_date,'MM/DD')
+	   order by TO_CHAR(order_date,'MM/DD')   
+	]]>
+	</select>
+	
+   <!-- 카테고리별 매출 높은 순으로  -->
+   <select id="orderCateSales" resultType="String">
+   <![CDATA[
+      select * from(
+      select sum(o.product_amounts)
+      from orders_detail o,product p
+      where o.product_id = p.id
+      group by p.product_category_name,o.product_amounts
+      order by o.product_amounts desc)
+      where rownum <= 6
+   ]]>
+   </select>
+   
+   <select id="orderCateName" resultType="String">
+   <![CDATA[
+      select * from(
+      select p.product_category_name 
+      from orders_detail o,product p
+      where o.product_id = p.id
+      group by p.product_category_name,o.product_amounts
+      order by o.product_amounts desc)
+      where rownum <= 6
+   ]]>
+   </select>
+	
+	<!-- 배송준비 버튼 클릭 했을 때 -->
+	<update id="deliveryReady" parameterType="java.util.Map">
+		update orders_detail set order_status = '배송준비' where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</update>
+	
+	<!-- 입금확인 버튼 클릭 시 -->
+	<update id="paymentConfirm" parameterType="java.util.Map">
+		update orders_detail set order_status = '입금확인' where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</update>
+	
+	<!-- 배송중 버튼 클릭 시 -->
+	<update id="delivery" parameterType="java.util.Map">
+		update orders_detail set order_status = '배송중' where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</update>
+	
+	<!-- 발송지연 -->
+	<update id="delay" parameterType="java.util.Map">
+		update orders_detail set order_status = '발송지연중' where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</update>
+	
+	<!-- 주문취소 --> <!-- order_number로 삭제시켜야함 (추후 수정) orders, order_detail 삭제 -->
+	<delete id="cancelSales" parameterType="java.util.Map">
+		delete orders_detail where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</delete>
+	
+	<!-- 주문검색 -->
+	<select id="getSearchOrderList" parameterType="java.util.Map" resultType="adminProduct">
+         select * from(select rownum rn, tt. * from
+          (select * from orders where order_number like '%'||#{keyword}||'%' order by order_date desc)tt) 
+          where <![CDATA[rn >= #{startNum}]]> and <![CDATA[rn <= #{endNum}]]>
+    </select>
+
+	<!-- ////////////////////////////////////////// 대시보드 ... 일간 요약표 -->
+	<select id="dailySummaryPC" parameterType="int" resultType="int">
+		select nvl(count(*), 0) as product_count from orders where to_char(order_date,'MM/DD')=to_char(sysdate-${i},'MM/DD')
+   </select>
+
+	<select id="dailySummaryPP" parameterType="int" resultType="int">
+		select nvl(sum(total_amount), 0) as product_price from orders where to_char(order_date,'MM/DD')=to_char(sysdate-${i},'MM/DD')
+   </select>
+	
+	<select id="dailySummaryJC" parameterType="int" resultType="int">
+	   	select nvl(count(*), 0) as join_count from member where to_char(created_at,'MM/DD')=to_char(sysdate-${i},'MM/DD')
+   </select>
+
+	<select id="dailySummaryAC" parameterType="int" resultType="int">
+	   	select nvl(count(*), 0) as ask_count from ask where to_char(created_at,'MM/DD')=to_char(sysdate-${i},'MM/DD')
+   </select>
+
+	<select id="dailySummaryRC" parameterType="int" resultType="int">
+	   	select nvl(count(*), 0) as review_count from review where to_char(created_at,'MM/DD')=to_char(sysdate-${i},'MM/DD')
+   </select>
+	
+	<select id="dailySummaryDate" parameterType="int" resultType="java.sql.Date">
+		select sysdate-${i} from dual
+   </select>
 
 </mapper>

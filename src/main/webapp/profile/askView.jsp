@@ -37,6 +37,7 @@
 					<div style="width: 100; height: 200; overflow: auto;">
 					<pre style="white-space: pre-line; word-break: normal;">
 					<span id="contentSpan"></span>
+					<br>
 					<img id="image1" width="400" height="300" alt="No Image">
 					</pre>
 					</div>
@@ -55,15 +56,17 @@
 				<td colspan="1" height="150">
 					<div style="width: 100; height: 200; overflow: auto;">
 					<pre style="white-space: pre-line; word-break: normal;">
-					<span id="">안녕하세요 답변해드릴게요 억적후 적적후 예시 저시</span>
+					<span id="answerSpan"></span>
 				</pre>
 					</div>
 				</td>
 			<tr>
+				<td>
+					<input class="listBtn" type="button" value="목록" onclick="window.open('','_self').close();">
+				</td>
 			</tr>
 		</table>
 	</form>
-	<input class="listBtn" type="button" value="목록" onclick="window.open('','_self').close();">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src = "./js/askView.js"></script>
 

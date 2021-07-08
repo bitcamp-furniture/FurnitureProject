@@ -117,7 +117,7 @@
                                     <input type="text" id="product_qty" value="1">
                                 </div>
                             </div>
-                            <a id="addCartBtn" class="primary-btn" style="color: white">Add to cart</a>
+                            <a id="addCartBtn" class="primary-btn" style="color: white" href="#">Add to cart</a>
        					    <!-- 비회원은 뚫린하트 -->
                             <!-- 자기 목록으로 셀렉트 했을 때 목록에 있으면 없으면 달리 띄워줘야함 -->
                       		<c:choose>

@@ -25,18 +25,18 @@ public class AskPaging {
 		if(endPage > totalP) endPage = totalP;
 		
 		if(startPage > pageBlock)
-			pagingHTML.append("<span id='paging' onclick='askPaging("+(startPage-1)+")'>[이전]</span>");
+			pagingHTML.append("<span id='paging' onclick='askPaging("+(startPage-1)+")'>◀</span>");
 		
 		for(int i=startPage; i<=endPage; i++) {
 			if(i==currentPage) {
-				pagingHTML.append("[ <span id='currentPaging' onclick='askPaging("+i+")'>"+i+"</span> ]");
+				pagingHTML.append("<span id='currentPaging' onclick='askPaging("+i+")'>"+i+"</span>");
 			}else {
-				pagingHTML.append("[ <span id='paging' onclick='askPaging("+i+")'>"+i+"</span> ]");
+				pagingHTML.append("<span id='paging' onclick='askPaging("+i+")'>"+i+"</span>");
 			}
 		}//for
 		
 		if(endPage < totalP)
-			pagingHTML.append("<span id='paging' onclick='askPaging("+(endPage+1)+")'>[다음]</span>");
+			pagingHTML.append("<span id='paging' onclick='askPaging("+(endPage+1)+")'>▶</span>");
 	}	
 	
 }

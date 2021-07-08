@@ -47,10 +47,10 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public AskPaging askPaging(String pg) {
-		int totalA = profileDAO.getTotalA();//총 글 수
+	public AskPaging askPaging(Map<String, String> map) {
+		int totalA = profileDAO.getTotalA(map);//총 글 수
 		
-		askPaging.setCurrentPage(Integer.parseInt(pg));
+		askPaging.setCurrentPage(Integer.parseInt(map.get("askPg")));
 		askPaging.setPageBlock(3);
 		askPaging.setPageSize(5);
 		askPaging.setTotalA(totalA);
@@ -193,6 +193,16 @@ public class ProfileServiceImpl implements ProfileService {
 	public List<CartDTO> getAllCartList(String memberId) {
 		return profileDAO.getAllCartList(memberId);
 
+	}
+
+	@Override
+	public void paymentWrite(Map<String, Object> map) {
+		profileDAO.paymentWrite(map);		
+	}
+
+	@Override
+	public int getOrderNum(String email) {
+		return profileDAO.getOrderNum(email);
 	}
 
 }

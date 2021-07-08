@@ -14,7 +14,7 @@ public interface ProfileService {
 
 	public List<AskDTO> getAskList(Map<String, String> map);
 
-	public AskPaging askPaging(String pg);
+	public AskPaging askPaging(Map<String, String> map);
 
 	public AskDTO getAsk(String seq);
 
@@ -34,19 +34,23 @@ public interface ProfileService {
 
 	public WishlistPaging wishlistPaging(String id, String wishlistPg);
 
-    List<OrderDTO> getOrderList(String id, String orderPg);
+	public List<OrderDTO> getOrderList(String id, String orderPg);
 
-	OrderPaging orderPaging(String id, String orderPg);
+    public OrderPaging orderPaging(String id, String orderPg);
 
-	void updateOrderStatus(int id);
+	public void updateOrderStatus(int id);
 
-    List<CartDTO> getCartList(String id, String cartPg);
+	public List<CartDTO> getCartList(String id, String cartPg);
 
-	CartPaging cartPaging(String id, String cartPg);
+    public CartPaging cartPaging(String id, String cartPg);
 
-    void cartDelete(int id);
+	public void cartDelete(int id);
 
-	void cartTotalDelete(String memberId);
+    public void cartTotalDelete(String memberId);
 
-	List<CartDTO> getAllCartList(String memberId);
+	public List<CartDTO> getAllCartList(String memberId);
+
+	public void paymentWrite(Map<String, Object> map);
+
+	public int getOrderNum(String email);
 }
