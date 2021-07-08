@@ -16,4 +16,12 @@ public interface AdminProductDAO {
 
 	public void deliveryReady(Map<String, String[]> map);
 
+	public void delivery(Map<String, String[]> map);
+
+	public void delay(Map<String, String[]> map);
+
+	public void cancelSales(Map<String, String[]> map);
+
+	public List<AdminProductDTO> getSearchOrderList(Map<String, String> map);
+
 }

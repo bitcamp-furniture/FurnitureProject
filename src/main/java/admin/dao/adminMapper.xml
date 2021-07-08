@@ -17,7 +17,6 @@
 	
 	<!-- 검색 -->
 	<select id="getSearchMemberList" parameterType="java.util.Map" resultType="member">
-      
          select * from(select rownum rn, tt. * from
           (select * from member where (name || email) like '%'||#{keyword}||'%' order by created_at desc)tt) 
           where <![CDATA[rn >= #{startNum}]]> and <![CDATA[rn <= #{endNum}]]>
@@ -95,6 +94,7 @@
 	]]>
 	</select>
 	
+	<!-- 주문내역 띄우기 -->
  	<select id="getOrderControl" parameterType="java.util.Map" resultType="adminProduct">
 		select distinct o.order_number,
 					o.order_date,
@@ -103,33 +103,61 @@
 					od.product_qty,
 					o.total_amount,
 					od.order_status,
-	                   o.member_id
+	                o.member_id,
+	                od.id
 				 from orders o
 					  inner join orders_detail od
 								 on o.order_number=od.order_number
 					  Inner join product p
 								 on od.product_id=p.id
+
 	</select>
 	
 	<!-- 배송준비 버튼 클릭 했을 때 -->
 	<update id="deliveryReady" parameterType="java.util.Map">
-		update member set point = '배송준비' where id in
+		update orders_detail set order_status = '배송준비' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
 	</update>
 	
-	<!-- 입금확인 버튼 클릭 했을 때 -->
+	<!-- 입금확인 버튼 클릭 시 -->
 	<update id="paymentConfirm" parameterType="java.util.Map">
-		update member set point = '입금확인' where id in
+		update orders_detail set order_status = '입금확인' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
 	</update>
+	
+	<!-- 배송중 버튼 클릭 시 -->
+	<update id="delivery" parameterType="java.util.Map">
+		update orders_detail set order_status = '배송중' where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</update>
+	
+	<!-- 발송지연 -->
+	<update id="delay" parameterType="java.util.Map">
+		update orders_detail set order_status = '발송지연중' where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</update>
+	
+	<!-- 주문취소 --> <!-- order_number로 삭제시켜야함 (추후 수정) orders, order_detail 삭제 -->
+	<delete id="cancelSales" parameterType="java.util.Map">
+		delete orders_detail where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</delete>
+	
+	<!-- 주문검색 -->
+	<select id="getSearchOrderList" parameterType="java.util.Map" resultType="adminProduct">
+         select * from(select rownum rn, tt. * from
+          (select * from orders where order_number like '%'||#{keyword}||'%' order by order_date desc)tt) 
+          where <![CDATA[rn >= #{startNum}]]> and <![CDATA[rn <= #{endNum}]]>
+    </select>
+	
 </mapper>
-
-
-
-
-
-
