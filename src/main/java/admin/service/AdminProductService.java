@@ -17,5 +17,13 @@ public interface AdminProductService {
 	public void deliveryReady(String[] check);
 
 	public void paymentConfirm(String[] check);
+
+	public void delivery(String[] check);
+
+	public void delay(String[] check);
+
+	public void cancelSales(String[] check);
+
+	public List<AdminProductDTO> getSearchOrderList(Map<String, String> map);
 	
 }
