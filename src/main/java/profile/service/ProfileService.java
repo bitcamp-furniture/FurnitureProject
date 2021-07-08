@@ -53,4 +53,6 @@ public interface ProfileService {
 	public void paymentWrite(Map<String, Object> map);
 
 	public int getOrderNum(String email);
+
+	public void memberDelete(String id);
 }

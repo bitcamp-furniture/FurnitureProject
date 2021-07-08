@@ -100,6 +100,7 @@
 									, #{product_category_name}
 									, #{product_category1}
 									, #{product_category2}
+									, #{product_memo}
 									)
 	</insert>
 	

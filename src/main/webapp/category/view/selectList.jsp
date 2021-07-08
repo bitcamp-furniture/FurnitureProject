@@ -46,7 +46,7 @@
     <option value="3">가격높은순</option>
 </select>
 <br>
-
+<p></p>
 <input type="hidden" value="${key }" id="key">
 <input type="hidden" value="${category }" id="category">
 <input type="hidden" value="${pg }" id="pg">

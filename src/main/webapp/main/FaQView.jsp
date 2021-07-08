@@ -27,6 +27,17 @@
 #FaQeCreatedAt {
 	float: right;
 }
+#FaQListBtn{
+	border-radius:5px;
+	border: 1px solid darkblue; 
+	background-color: rgba(0,0,0,0); 
+	color: darkblue; 
+	padding: 5px;
+}
+#FaQListBtn:hover{
+	color:white;
+	background-color: darkblue;
+}
 
 </style>
 

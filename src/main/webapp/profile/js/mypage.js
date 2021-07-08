@@ -54,7 +54,7 @@ $(document).ready(function(){
 
 				$('#name').text(data.name);
 				$('#birth').text(data.bir_yy + data.bir_mm + data.bir_dd);
-				$('#address').text(data.addr1 + data.addr2);
+				$('#address').text(data.addr1 + '\n' +data.addr2);
 				$('#phone').text(data.phone);
 				$('#email').text(data.email);
 
@@ -397,5 +397,32 @@ function execDaumPostcode() {
             //document.getElementById("addr2").focus();
         }
     }).open();
-	
 }
+//-----------------------------------------------------------------------------------------------------
+//회원 탈퇴
+$('#mypageWithdrawalBtn').click(function(){
+	
+	var confirmResult = confirm("정말 탈퇴하시겠습니까?");
+	if(confirmResult == true)
+	{
+		$.ajax({
+			url: '/furniture/profile/memberDelete',
+			type: 'post',
+			data: 'id=' +$('#id').val(),
+			success: function(){
+				alert('회원탈퇴가 완료되었습니다.');
+				location.href='/furniture/index.jsp';
+			
+			},
+			error: function(err){
+				console.log(err);
+				alert('실패');
+			}
+		}); //ajax
+	}
+	else 
+	{
+		history.back();
+	}
+		
+});

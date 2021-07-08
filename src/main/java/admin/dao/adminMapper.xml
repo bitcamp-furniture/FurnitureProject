@@ -114,20 +114,36 @@
 	
 	<!-- 주문내역 띄우기 -->
  	<select id="getOrderControl" parameterType="java.util.Map" resultType="adminProduct">
-		select distinct o.order_number,
+ 		<!-- 	select name, phone, zipcode, addr1, addr2 from member -->
+
+
+		select distinct 	
+                    oc.delivery_number,
+                    o.order_number,
 					o.order_date,
 					p.product_name,
 					od.product_color,
 					od.product_qty,
-					o.total_amount,
-					od.order_status,
-	                o.member_id,
-	                od.id
-				 from orders o
-					  inner join orders_detail od
-								 on o.order_number=od.order_number
-					  Inner join product p
-								 on od.product_id=p.id
+					o.total_amount, 
+					od.order_status, 
+                    m.name,
+                    m.phone,
+					m.zipcode,
+					m.addr1,
+					m.addr2,
+					pi.product_img_thumb
+				
+				 from member m
+                    inner join ordercontrol oc
+					    on m.id = oc.member_id
+                    inner join orders o
+                        on oc.order_number=o.order_number
+					inner join orders_detail od
+						on o.order_number=od.order_number
+					inner join product p
+						on od.product_id=p.id
+					inner join product_image pi
+						on m.id=pi.id
 
 	</select>
 
