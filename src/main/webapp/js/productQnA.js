@@ -404,30 +404,34 @@ function review_paging(pg) {
 //-----------------------------------------------------------------
 //장바구니 추가
 $('#addCartBtn').click(function(){
-	alert($('#memId').val());
-	alert($('#product_id').val());
-	alert($('#option_color').val());
-	alert($('#product_qty').val());
-	$.ajax({
-		url: '/furniture/main/addCart',
-		type: 'post',
-		data: {'member_id': $('#memId').val(),
-			   'product_id': $('#product_id').val(),
-			   'product_option_color': $('#option_color').val(),
-			   'product_count': $('#product_qty').val()
-		},
-		success: function(){
-			alert('성공');
-		},
-		error: function(err){
-			console.log(err);
-			alert('삭제 실패');
-		}
-	}); //ajax
+
+	if($('#memId').val()==='0'){
+		alert("로그인 후 이용해주시기 바랍니다.");
+		location.href = "/furniture/member/loginForm"
+
+	}else{
+		$.ajax({
+			url: '/furniture/main/addCart',
+			type: 'post',
+			data: {'member_id': $('#memId').val(),
+				   'product_id': $('#product_id').val(),
+				   'product_option_color': $('#option_color').val(),
+				   'product_count': $('#product_qty').val()
+			},
+			success: function(){
+				alert('성공');
+			},
+			error: function(err){
+				console.log(err);
+				alert('');
+			}
+		}); //ajax
+	}
+
+
 });
 
-var express = require('express');
-var cookieParser = require
+
 
 
 

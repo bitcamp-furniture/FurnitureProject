@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Component
-public class adminReviewSelectListPaging {
+public class AdminReviewSelectListPaging {
 	private int currentPage;//현재페이지
 	private int pageBlock;//[이전][1][2][3][다음]
 	private int pageSize;//1페이지당 5개씩

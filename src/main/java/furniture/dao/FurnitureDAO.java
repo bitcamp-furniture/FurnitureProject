@@ -8,6 +8,7 @@ import furniture.bean.ProductImageDTO;
 import furniture.bean.Product_OptionDTO;
 import furniture.bean.Product_qnaDTO;
 import furniture.bean.ReviewDTO;
+import profile.bean.CartDTO;
 
 public interface FurnitureDAO {
 
@@ -40,9 +41,20 @@ public interface FurnitureDAO {
 	public void productOptionRegistration(Product_OptionDTO product_OptionDTO);
 
 
+	public List<Integer> reviewDay();
+
+	public boolean wishQ(Map<String, Integer> wishMap);
+
+	public void addWishButton(Map<String, Object> addWishMap);
+
+	public void deleteWishButton(Map<String, Object> deleteWishMap);
+
 	public List<Product_OptionDTO> getIdOption(Integer id);
 
-	public List<ReviewDTO> reviewDay();
-
     public void addCart(Map<String, String> map);
+
+    public boolean getcart(Map<String, String> map);
+
+	public void updateCart(Map<String, String> map);
+
 }

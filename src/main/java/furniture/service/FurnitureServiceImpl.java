@@ -15,6 +15,7 @@ import furniture.bean.Product_qna_paging;
 import furniture.bean.ReviewDTO;
 import furniture.bean.Review_paging;
 import furniture.dao.FurnitureDAO;
+import profile.bean.CartDTO;
 
 @Service
 public class FurnitureServiceImpl implements FurnitureService {
@@ -133,14 +134,43 @@ public class FurnitureServiceImpl implements FurnitureService {
 	public List<Product_OptionDTO> getIdOption(Integer id) {
 		return furnitureDAO.getIdOption(id);
 	}
+	
 	//최근 한달 리뷰수~~~
 	@Override
-	public List<ReviewDTO> reviewDay() {
+	public List<Integer> reviewDay() {
 		return furnitureDAO.reviewDay();
 	}
 
 	@Override
+	public boolean wishQ(Map<String, Integer> wishMap) {
+		return furnitureDAO.wishQ(wishMap);
+	}
+
+	@Override
+	public void addWishButton(Map<String, Object> addWishMap) {
+		furnitureDAO.addWishButton(addWishMap);
+		
+	}
+
+	@Override
+	public void deleteWishButton(Map<String, Object> deleteWishMap) {
+		furnitureDAO.deleteWishButton(deleteWishMap);
+		
+	}
+
 	public void addCart(Map<String, String> map) {
 		furnitureDAO.addCart(map);
 	}
+
+	@Override
+	public boolean getcart(Map<String, String> map) {
+		if(furnitureDAO.getcart(map)) return true;
+		else return false;
+	}
+
+	@Override
+	public void updateCart(Map<String, String> map) {
+		furnitureDAO.updateCart(map);
+	}
+
 }

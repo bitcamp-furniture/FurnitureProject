@@ -3,19 +3,13 @@ package admin.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,10 +22,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import furniture.bean.ReviewDTO;
 import furniture.service.FurnitureService;
-
+import admin.bean.DailysummaryDTO;
 import admin.bean.MemberListPaging;
 import admin.service.AdminService;
 import member.bean.MemberDTO;
+import profile.bean.AskDTO;
+import profile.bean.OrderDTO;
 
 
 @Controller
@@ -48,21 +44,6 @@ public class AdminController {
 		return "/admin/adminIndex";
 	}
 	
-	//실험중
-	//라인 차트 : 리뷰 
-	@RequestMapping(value = "/reviewLineChart")
-	@ResponseBody
-	 public ModelAndView reviewLineChart(Model model) {
-		        	   
-		//라인 차트 : 일별 리뷰수
-		List<ReviewDTO> reviewdDay = furnitureService.reviewDay();	 
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("reviewdDay", reviewdDay);
-		mav.setViewName("jsonView");
-		      
-		return mav;
-	  }
-	//----------------------------------------------------------------
 	//memberList 창 띄우기
 	@RequestMapping(value = "/memberList", method = RequestMethod.GET)
 	public String eventList(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
@@ -121,4 +102,61 @@ public class AdminController {
 		return new ModelAndView("redirect:/admin/memberList");
 	}	
 
+	// 대시보드 ... 최신 리뷰, 문의 n건씩
+	@RequestMapping(value="/getRecentList", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getRecentList() {
+		List<ReviewDTO> lastReviewList = adminService.getRecentReviewList();
+		List<AskDTO> lastQnAList = adminService.getRecentQnAList();
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("lastReviewList", lastReviewList);
+		mav.addObject("lastQnAList", lastQnAList);
+		mav.setViewName("jsonView");
+
+		return mav;
+	}
+	
+
+	// 라인 차트그리기 : 주문
+	// 바 차트 :  매출
+	// 도넛차트 : 카테고리중에서 매출이 높은 순
+	@RequestMapping(value = "/orderChart")
+	@ResponseBody
+	 public ModelAndView orderChart(Model model) {
+   
+		List<String> orderDay = adminService.orderDay();	 
+		List<Integer> orderCount = adminService.orderCount();	 
+		List<Integer> orderSales = adminService.orderSales();
+		List<String> orderCateName = adminService.orderCateName();	
+		List<Integer> orderCateSales = adminService.orderCateSales();	 
+		
+		ModelAndView mav = new ModelAndView();
+		//주문날짜
+		mav.addObject("orderDay", orderDay);
+		//주문 건수
+		mav.addObject("orderCount", orderCount);
+		// 일별 주문 매출
+		mav.addObject("orderSales", orderSales);
+		//카테고리별 매출
+		mav.addObject("orderCateName",orderCateName);
+		mav.addObject("orderCateSales",orderCateSales);
+		mav.setViewName("jsonView");
+		
+		return mav;
+	  }	
+	
+	//일자별 요약
+	@RequestMapping(value = "/dailySummary")
+	@ResponseBody
+	public ModelAndView dailySummary(Model model) {
+		ModelAndView mav = new ModelAndView();
+		List<DailysummaryDTO> dailyList = adminService.dailySummary();
+		
+		mav.addObject("dailyList", dailyList);
+		mav.setViewName("jsonView");
+		return mav;
+	}
+	
 }
+

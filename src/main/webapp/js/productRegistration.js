@@ -36,7 +36,7 @@ $(function(){
    
 });
 
-
+//상품등록버튼 클릭시
 $('#productRegistrationBtn').click(function(){
    $('#product_codeDiv').empty();
    $('#product_nameDiv').empty();
@@ -201,5 +201,5 @@ $('#productRegistrationBtn').click(function(){
    }else if($('#category2-7').val() == '705'){
          $('#product_category_name').val()
    }
-   
+
 });

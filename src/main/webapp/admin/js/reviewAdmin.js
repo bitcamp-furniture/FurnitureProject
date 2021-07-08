@@ -99,7 +99,6 @@ function reviewAdminSortPaging(pg)
 	//내림차순으로 보내기
 	else if(sort2 == "desc")
 	{
-	
 		$.ajax({
 			type:'post',
 			url:'/furniture/admin/adminReviewDESCList',

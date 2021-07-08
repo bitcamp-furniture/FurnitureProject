@@ -51,9 +51,13 @@
 	<select id="getWishlist" parameterType="java.util.Map" resultType="wishlist">
 		select * from
 			(select rownum rn, tt. * from
-					(select distinct w.id, w.member_id, w.product_code, p.product_img_thumb from wishlist w
-					 inner join product_image p
-					 on w.product_code=p.product_code
+					(select distinct w.id,
+					                 w.member_id,
+					                 w.product_id,
+					                 p.product_img_thumb
+					 from wishlist w
+						inner join product_image p
+								on w.product_id=p.id
 					 where w.member_id = #{id} order by id desc)tt
 			)where rn between #{startNum} and #{endNum}
 	</select>
@@ -169,6 +173,7 @@
 	<select id="getAllCartList" parameterType="String" resultType="cart">
 		select distinct
 		c.id,
+		c.product_id,
 		p.product_name,
 		c.product_option_color,
 		c.product_count,
@@ -181,5 +186,32 @@
 		on p.product_code = I.product_code
 		where c.member_id=#{memberId} order by c.id desc
 	</select>
+
+	<insert id="paymentWriteOrders" parameterType="java.util.Map">
+		insert into orders values(seq_orders.nextval,#{total},#{email},sysdate)
+	</insert>
+	
+	
+
+	<select id="getOrderNum"  parameterType="java.util.Map" resultType="Integer">
+		select order_number from
+		(
+		select * from orders where member_id=#{email} order by order_date desc
+		)
+		where rownum=1	
+	</select>
+	
+	<insert id="paymentWriteDetailOrders" parameterType="profile.bean.OrderDetailDTO" >
+		insert into orders_detail values(seq_orders_detail.nextval
+										, #{product_price}
+										,#{product_qty}
+										,#{product_amounts}
+										,#{order_number}
+										,#{product_id}
+										,'READY'
+										,#{product_color}
+										 )
+	
+	</insert>
 
  </mapper>

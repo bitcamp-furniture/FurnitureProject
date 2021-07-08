@@ -50,4 +50,8 @@ public interface ProfileDAO {
 	void cartTotalDelete(String memberId);
 
 	List<CartDTO> getAllCartList(String memberId);
+
+	public void paymentWrite(Map<String, Object> map);
+
+	public int getOrderNum(String email);
 }

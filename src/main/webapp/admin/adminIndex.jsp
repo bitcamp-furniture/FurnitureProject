@@ -206,7 +206,7 @@ body {
                     <ul class="big_menu">
                         <li><ion-icon name="bag" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;쇼핑 &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu"> 
-                            <li><a href="#">주문관리</a></li>
+                            <li><a href="/furniture/admin/product/orderControl">주문관리</a></li>
                             <li><a href="#">주문내역</a></li>
                             <li><a href="/furniture/admin/product/productManaging">상품관리</a></li>
                             <li><a href="#">상품등록</a></li>
