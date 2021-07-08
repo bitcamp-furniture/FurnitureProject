@@ -10,8 +10,25 @@ a{
 #subjectA:hover { color:darkblue; text-decoration: underline; cursor: pointer; }
 #subjectA:active {  text-decoration: none; }
 #list a:hover{  text-decoration: underline; }
-noticeListTable th{
-	align-items: center;
+#sort1{
+	font-size: 20px;
+}
+#sort2{
+	font-size: 20px;
+}
+
+#choiceDeleteBtn {
+	border-radius:5px;
+	border: 1px solid darkblue; 
+	background-color: rgba(0,0,0,0); 
+	color: darkblue; 
+	padding: 5px;
+	font-size: 15px;
+	margin-left: 15%;
+}
+#choiceDeleteBtn:hover {
+	color:white;
+	background-color: darkblue;
 }
 #paging {
 	margin: 5px;
@@ -34,21 +51,33 @@ noticeListTable th{
 	border-radius: 5px;
 	cursor: pointer;
 }
-#choiceDeleteBtn{
-	margin-left: 50px;
+#reviewSortTable{
+	width: 80%;
+	font-size: 20px;
+	text-align: center;
 }
+#reviewListTable{
+	width: 80%;
+	font-size: 20px;
+	text-align: center;
+
+}
+#reviewListTable th{
+	text-align: center;
+
+}
+
 
 </style>
 
 
 
-<div align="center">
 <br>
-<h2>리뷰관리</h2>
+<h2 align="center">리뷰관리</h2>
 <br>
 <form name="reviewDeleteForm" id="reviewDeleteForm" method="get" action="adminReviewListwDelete">
 <input type="hidden" value="${pg}" id="pg" >
-<table>
+<table align="center" id="reviewSortTable">
 	<tr>
 		<td>
 		<select id="sort1" onchange="reviewAdminSort1()">
@@ -66,25 +95,29 @@ noticeListTable th{
 	</tr>
 
 </table>
-<table id="reviewListTable" border="1" width="1100" cellpadding="5" frame="hsides" rules="rows" align="center" >
+<br>
+<br>
+<table id="reviewListTable" border="1" cellpadding="5" frame="hsides" rules="rows" align="center" >
 		<tr>
 		<!-- (상품ID), 상품이름, 리뷰이미지, 작성자ID, 리뷰내용, 별점, 등록일 -->
-			<th width="50" align="center" ><input type="checkbox" id="checkAllRe">전체</th>
-			<th width="50" align="center" >게시글 No</th>
-			<th width="100" align="center" >상품명</th>
-			<th width="100" align="center" >상품이미지</th>
-			<th width="300" align="center" >내용</th>
-			<th width="100" align="center" >작성자</th>
-			<th width="100" align="center" >작성일</th>
-			<th width="50" align="center" >평점</th>
+			<th width="50"><input type="checkbox" id="checkAllRe">전체</th>
+			<th width="100">게시글 No</th>
+			<th width="100">상품명</th>
+			<th width="100">상품이미지</th>
+			<th width="300">내용</th>
+			<th width="100">작성자</th>
+			<th width="100">작성일</th>
+			<th width="50">평점</th>
+		
 		</tr>
 	</table>
 	<br>
-<div align="left">
+<div id="choiceDeleteDiv" align="left">
 <input type="button" value="선택삭제" id="choiceDeleteBtn">
 </div>
 <br>
-	<div id="reviewPagingDiv"></div>
+<br>
+	<div align="center" id="reviewPagingDiv"></div>
 <br>
 <br>  
 </form>
@@ -132,7 +165,7 @@ function reviewPaging(pg)
 			$.each(data.adminReviewList, function(index, items) {
 				$('<tr/>').append($('<td/>',{
 					align: 'center',
-					width: '50'
+					//width: '50'
 				}).append($('<input/>',{
 					//여기가 체크 박스  input타입
 					type: 'checkbox',
@@ -141,18 +174,18 @@ function reviewPaging(pg)
 				}))).append($('<td/>',{
 					//게시글
 					align: 'center',
-					width: '50',
+					//width: '50',
 					text: items.id
 				})).append($('<td/>',{
 					//상품명
 					align: 'center',
-					width: '100',
+					//width: '100',
 					text: items.product_name
 					
 				})).append($('<td/>',{
 					//상품 이미지
 					align: 'center',
-					width: '100',
+					//width: '100',
 				}).append($('<img/>',{
 					src: '/furniture/storage/review/'+items.review_image,
 					style: 'width: 80px; height: 80px; cursor: pointer;',
@@ -160,22 +193,22 @@ function reviewPaging(pg)
 				}))).append($('<td/>',{
 					//내용(짤려져 나올지 안나올지 봐야함)
 					align: 'center',
-					width: '300',
+					//width: '300',
 					text: items.review_content
 				})).append($('<td/>',{
 					//작성자
 					align: 'center',
-					width: '100',
+					//width: '100',
 					text: items.email
 				})).append($('<td/>',{
 					//작성일
 					align: 'center',
-					width: '100',
+					//width: '100',
 					text: items.created_at
 				})).append($('<td/>',{
 					//평점 이건 또  foreach돌려야 할지도 모른다 이따 평점 관련해서 별 어떻게 출력했는지 확인할것 
 					align: 'center',
-					width: '50',
+					//width: '50',
 					text: items.review_stars
 				})).appendTo($('#reviewListTable'));
 	
