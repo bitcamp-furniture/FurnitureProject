@@ -63,7 +63,7 @@
                     <label><input type="checkbox" name="product_colors" value="W" > WHITE</label>
                     <label><input type="checkbox" name="product_colors" value="R" > RED</label>
                     <label><input type="checkbox" name="product_colors" value="S" > SILVER</label>
-                    <!--  <label><input type="checkbox" name="product_colors" value="N" > NAVY</label>-->
+                    <label><input type="checkbox" name="product_colors" value="N" > NAVY</label>
                     <label><input type="checkbox" name="product_colors" value="P" > PUPPLE</label>
        				<div id="checkboxDiv"></div>
        				

@@ -55,7 +55,7 @@ public class FurnitureController {
 	@Autowired
 	private ServletContext ctx;
 
-	private String webPath = "C:\\Users\\A\\Desktop\\최종프로젝트 관련\\프로젝트클론\\210629.1525\\src\\main\\webapp\\upload";
+	private String webPath = "D:\\123123\\src\\main\\webapp\\storage";
 	//주소는 각자의 컴퓨터 경로
 	
 	// 상품 상세컷 ... DB연결, 상품id 필요
