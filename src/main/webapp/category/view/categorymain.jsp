@@ -20,6 +20,7 @@
 
                     <div class="hero__item set-bg" data-setbg="/furniture/category/image/hero/banner.png">
                         <div class="hero__text">
+    <input type="hidden" id="memId"/>
                             <span>편안한 침대</span>
                             <h2>숙면보장<br />푹신푹신한 침대</h2>
                             <p>Free Pickup and Delivery Available</p>
@@ -70,6 +71,8 @@ window.onload=(function() {
        url:'/furniture/category/view/getAllList',
        dataType: 'json',
        success:function(data){
+    	   $('#memId').val(data.memId);
+
           //console.log(JSON.stringify(data));
           //console.log(data); 
           $('#product_list').remove();
@@ -83,8 +86,9 @@ window.onload=(function() {
            				}) 
             		    .append($('<img/>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/"+items.product_img_thumb})))
                           .append($('<ul/>',{class:"product__item__pic__hover"})
-                                .append($('<li/>').append($('<a/>', {href:"#"}).append($('<i/>',{class:"fa fa-heart"}))))   
-                          
+                                  .append($('<li/>').append($('<a/>', {
+                                  	onclick: 'addWish('+items.id+')'
+                                  }).append($('<i/>',{class:"fa fa-heart"}))))                                  
                           )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>',{id:"product_name",text: items.product_name})
                             .append($('<a/>',{
                					href: "/furniture/main/productView?id="+items.id+"&pg=1"
@@ -112,4 +116,29 @@ window.onload=(function() {
     });
  }); 
 	</script>
+    
+<script type="text/javascript">
+function addWish(id) {
+	if($('#memId').val() == '0'){
+		alert("로그인이 필요한 서비스입니다.");
+		location.href = "/furniture/member/loginForm";
+	}else{
+
+		$.ajax({
+			url : "/furniture/main/addWish",
+			type : "post",
+			data : {'id' : id,
+					'memId' : $('#memId').val()
+			},
+			dataType : "text",
+			success : function(data){
+				alert('위시리스트 추가 완료');
+			},
+			error : function(){
+				alert("실패 :");
+			}
+		});
+	}
+}
+</script>
     

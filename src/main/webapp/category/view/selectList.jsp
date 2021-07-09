@@ -50,6 +50,7 @@
 <input type="hidden" value="${key }" id="key">
 <input type="hidden" value="${category }" id="category">
 <input type="hidden" value="${pg }" id="pg">
+<input type="hidden" value="${memId }" id="memid"/>
 
 	<div class="cover_product_list" id="cover_product_list">
 		<div class="row" id="product_list"></div>
@@ -59,6 +60,30 @@
 
 
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+function addWish(id) {
+	if($('#memId').val() == '0'){
+		alert("로그인이 필요한 서비스입니다.");
+		location.href = "/furniture/member/loginForm";
+	}else{
+
+		$.ajax({
+			url : "/furniture/main/addWish",
+			type : "post",
+			data : {'id' : id,
+					'memId' : $('#memId').val()
+			},
+			dataType : "text",
+			success : function(data){
+				alert('위시리스트 추가 완료');
+			},
+			error : function(){
+				alert("실패 :");
+			}
+		});
+	}
+}
+</script>
 <script type="text/javascript">
 $.ajax({
    type:'post',
@@ -81,12 +106,12 @@ $.ajax({
            		.append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/"+items.product_img_thumb})))
                       .append($('<ul/>',{class:"product__item__pic__hover"})
                             .append($('<li/>').append($('<a/>', {
-               					href: "/furniture/main/productView?id="+items.id+"&pg="+$('#pg').val()
+                            	onclick: 'addWish('+items.id+')'
                             }).append($('<i/>',{class:"fa fa-heart"}))))                                  
                       )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>')
                       .append($('<a/>',{
-                    	  id:"product_name",
-                    	  text: items.product_name,
+                    		id:"product_name",
+                    		text: items.product_name,
          					href: "/furniture/main/productView?id="+items.id+"&pg="+$('#pg').val()
                     	}))).append($('<h5/>',{id:"product_price",text: "₩"+items.product_price.toLocaleString()}))))
                       .appendTo($("#product_list"));
@@ -134,7 +159,7 @@ function productPaging(pg){
                       .append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/"+items.product_img_thumb})))
                            .append($('<ul/>',{class:"product__item__pic__hover"})
                                  .append($('<li/>').append($('<a/>', {
-                    					href: "/furniture/main/productView?id="+items.id+"&pg="+pg
+                                 	onclick: 'addWish('+items.id+')'
                                 }).append($('<i/>',{class:"fa fa-heart"}))))                                  
                            
                            )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>')
@@ -190,7 +215,7 @@ function selectListSort(pg) {
                       .append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/"+items.product_img_thumb})))
                            .append($('<ul/>',{class:"product__item__pic__hover"})
                                  .append($('<li/>').append($('<a/>', {
-                    					href: "/furniture/main/productView?id="+items.id+"&pg="+pg
+                                 	onclick: 'addWish('+items.id+')'
                                 }).append($('<i/>',{class:"fa fa-heart"}))))                                  
                            
                            )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>')
