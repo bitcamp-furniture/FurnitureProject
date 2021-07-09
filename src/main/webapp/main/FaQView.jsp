@@ -16,7 +16,8 @@
 #wholeDiv {
 	margin: 0 auto;
 	align-items: center;
-	width: 800px;
+	width: 60%;
+	
 }
 
 #FaQSubject {
@@ -24,6 +25,11 @@
 	font-weight: bold;
 }
 
+#FaQContent pre{
+	font-family: 'Malgun Gothic';
+	font-size: 16px;
+	
+}
 #FaQeCreatedAt {
 	float: right;
 }
@@ -58,6 +64,7 @@
 		<br>
 
 		<input type="button" value="목록으로" id="FaQListBtn" >
+		<br>
 		<br>
 	</div>
 </form>
