@@ -54,4 +54,6 @@ public interface ProfileDAO {
 	public void paymentWrite(Map<String, Object> map);
 
 	public int getOrderNum(String email);
+
+	public void payment(Map outputMap);
 }

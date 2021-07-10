@@ -205,4 +205,9 @@ public class ProfileServiceImpl implements ProfileService {
 		return profileDAO.getOrderNum(email);
 	}
 
+	@Override
+	public void payment(Map outputMap) {
+		profileDAO.payment(outputMap);
+	}
+
 }

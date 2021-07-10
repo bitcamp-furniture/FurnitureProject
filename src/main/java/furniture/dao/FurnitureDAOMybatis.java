@@ -147,7 +147,6 @@ public class FurnitureDAOMybatis implements FurnitureDAO {
 		sqlSession.update("productSQL.updateCart", map);
 	}
 
-
 	@Override
 	public void addWishButton(Map<String, Object> addWishMap) {
 		sqlSession.insert("productSQL.addWishButton", addWishMap);

@@ -158,4 +158,9 @@ public class ProfileDAOMybatis implements ProfileDAO {
 		return sqlSession.selectOne("profileSQL.getOrderNum", map);
 	}
 
+	@Override
+	public void payment(Map outputMap) {
+		sqlSession.insert("profileSQL.payment", outputMap);
+	}
+
 }

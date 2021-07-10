@@ -49,7 +49,7 @@ $('#order-tap').click(function() {
                         align: 'center',
                         id: 'subjectA'
                     })).append($('<img>', {
-                        src: '/furniture/img/' + item.product_img_thumb,
+                        src: '/furniture/storage/' + item.product_img_thumb,
                         class: 'orderlist_img _' + item.order_number
                     }))
                 ).append($('<td/>', {

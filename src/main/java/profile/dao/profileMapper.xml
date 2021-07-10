@@ -155,10 +155,10 @@
 				i.product_img_thumb
 			from cart c
 				inner join product p
-					on p.id=c.product_id
+					on p.id = c.product_id
 				inner join product_image i
-					on p.product_code=I.product_code
-				where c.member_id=#{id} order by c.id desc
+					on p.product_code = i.product_code
+				where c.member_id = #{id} order by c.id desc
 			)
 	</select>
 
@@ -203,7 +203,7 @@
 	
 	<insert id="paymentWriteDetailOrders" parameterType="profile.bean.OrderDetailDTO" >
 		insert into orders_detail values(seq_orders_detail.nextval
-										, #{product_price}
+										,#{product_price}
 										,#{product_qty}
 										,#{product_amounts}
 										,#{order_number}
@@ -212,6 +212,16 @@
 										,#{product_color}
 										 )
 	
+	</insert>
+
+	<insert id="payment" parameterType="java.util.Map">
+		insert into payment (id, amount, pay_type, transaction_id, response_msg, created_at)
+					values(seq_payment.nextval
+						  ,#{amount}
+					      ,#{pay_type}
+						  ,#{transaction_id}
+						  ,#{response_msg}
+						  ,sysdate)
 	</insert>
 
  </mapper>
