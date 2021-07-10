@@ -98,7 +98,7 @@
 
     <table class="deliveryTable" width="50%" >
         <tr>
-            <td class="tg-0pky" vertical-align:middle;"><h4>배송지정보</h4></td>
+            <td class="tg-0pky" vertical-align:middle;><h4>배송지정보</h4></td>
 			<td></td>            
         </tr>
         
