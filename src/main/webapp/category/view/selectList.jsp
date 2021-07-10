@@ -78,10 +78,6 @@ function addWish(id) {
 				  }
 				});
 				
-		
-		
-			
-			
 	}else{
 
 		$.ajax({

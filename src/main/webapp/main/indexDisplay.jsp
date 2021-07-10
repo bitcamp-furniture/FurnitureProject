@@ -294,7 +294,7 @@ cursor: pointer;
                     </div>
                     
                      <div class="col-lg-6">
-                     <a class="reviewALink1" href="#">
+                     <a class="reviewALink2" href="#">
                         <div class="testimonial__item">
 	                            <div class="testimonial__author">
 	                                <div class="testimonial__author__pic">
@@ -313,7 +313,7 @@ cursor: pointer;
                     </div> 
                       
                       <div class="col-lg-6">
-                     <a class="reviewALink1" href="#">
+                     <a class="reviewALink3" href="#">
                         <div class="testimonial__item">
 	                            <div class="testimonial__author">
 	                                <div class="testimonial__author__pic">
@@ -332,7 +332,7 @@ cursor: pointer;
                     </div> 
                     
                       <div class="col-lg-6">
-                     <a class="reviewALink1" href="#">
+                     <a class="reviewALink4" href="#">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
 	                                <div class="testimonial__author__pic">
@@ -351,7 +351,7 @@ cursor: pointer;
                     </div> 
                     
                       <div class="col-lg-6">
-                     <a class="reviewALink1" href="#">
+                     <a class="reviewALink5" href="#">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
@@ -370,7 +370,7 @@ cursor: pointer;
                     </div> 
                     
                     <div class="col-lg-6">
-                     <a class="reviewALink1" href="#">
+                     <a class="reviewALink6" href="#">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">

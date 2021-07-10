@@ -200,7 +200,6 @@ body {
 						<li><ion-icon name="person-sharp" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;사용자 관리 &emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
                         <ul class="small_menu admin">
                             <li id="memberListShow"><a href="/furniture/admin/memberList">회원목록</a></li><!-- id="memberListShow" -->
-                            <li><a href="#">메일 발송 설정</a></li>
                         </ul>
                     </ul>
                     <ul class="big_menu">
