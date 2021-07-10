@@ -2,8 +2,9 @@ $('#wishlist-tap').click(function(){
 	//$(this).parent().remove(); return false;
 	$('.wishlistLi *').remove();
 
-	if($('#id').val() !== ''){
-		$.ajax({
+	if($('#id').val() != ''){
+		wishlistPaging(1);
+		/*$.ajax({
 			url: '/furniture/profile/getWishlist',
 			type: 'post',
 			data: {'id': $('#id').val(),
@@ -11,7 +12,7 @@ $('#wishlist-tap').click(function(){
 			},
 			dataType: 'json',
 			success: function(data){
-				alert(JSON.stringify(data));
+				//alert(JSON.stringify(data));
 				$.each(data.list, function(index, items){
 					//alert(JSON.stringify(items));
 					$('<li/>',{
@@ -19,12 +20,11 @@ $('#wishlist-tap').click(function(){
 					}).append($('<div/>',{
 						class: 'imgDiv'
 					}).append($('<a/>',{
-						href: '#',
+						href: "/furniture/main/productView?id="+items.product_id+"&pg=1"
 						//id: 'subjectA',
 					}).append($('<img>',{
-						class: 'wishlist-list-img _'+items.id,
+						class: 'wishlist-list-img _'+items.id, 
 						src: '/furniture/storage/'+items.product_img_thumb
-
 					}))).append($('<button/>',{
 						class: 'wishDelBtn wishlistDeletebutton_ '+items.id,
 						type: 'button',
@@ -41,6 +41,7 @@ $('#wishlist-tap').click(function(){
 				alert('실패');
 			}
 		}); //ajax
+		*/
 	}
 });
 
@@ -65,12 +66,11 @@ function wishlistPaging(wishlistPg){
 				}).append($('<div/>',{
 					class: 'imgDiv'
 				}).append($('<a/>',{
-					href: '#',
+					href: "/furniture/main/productView?id="+items.product_id+"&pg=1"
 					//id: 'subjectA',
 				}).append($('<img>',{
 					class: 'wishlist-list-img _'+items.id,
 					src: '/furniture/storage/'+items.product_img_thumb
-
 				}))).append($('<button/>',{
 					class: 'wishDelBtn wishlistDeletebutton_ '+items.id,
 					type: 'button',

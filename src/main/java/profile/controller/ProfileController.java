@@ -290,12 +290,12 @@ public class ProfileController {
 //장바구니
  	@RequestMapping(value="getCartList", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView getCartList(@RequestParam String id,
+	public ModelAndView getCartList(@RequestParam int id,
 									@RequestParam(required = false, defaultValue="1") String cartPg) {
-		List<CartDTO> list = profileService.getCartList(id,cartPg);
+		List<CartDTO> list = profileService.getCartList(id+"",cartPg);
 		List<CartDTO> cartList = profileService.getAllCartList(id);
 		//페이징 처리
-		CartPaging cartPaging = profileService.cartPaging(id, cartPg);
+		CartPaging cartPaging = profileService.cartPaging(id+"", cartPg);
 
 
 		ModelAndView mav = new ModelAndView();
@@ -329,7 +329,7 @@ public class ProfileController {
 @RequestMapping(value="orderPaymentView", method=RequestMethod.GET)
 public String orderPaymentView(Model model, HttpSession session, MemberDTO memberDTO) {
 	int memId = (Integer) session.getAttribute("memId");
-	List<CartDTO> cartList = profileService.getAllCartList(memId+"");
+	List<CartDTO> cartList = profileService.getAllCartList(memId);
 	memberDTO = profileService.getMember(memId);
 
 	model.addAttribute("memId",memId);
@@ -349,12 +349,12 @@ public void paymentWrite(HttpSession session
 	String email = (String) session.getAttribute("memEmail");
 	
 	int memId = (Integer) session.getAttribute("memId");
-	List<CartDTO> cartList = profileService.getAllCartList(memId+"");
+	List<CartDTO> cartList = profileService.getAllCartList(memId);
 	
 	Map<String, Object> map = new HashMap<String, Object>();
 	
 	
-	map.put("email", email);
+	map.put("memId", memId);
 	map.put("total", total);
 	map.put("cartList", cartList);
 	
@@ -369,20 +369,15 @@ public void paymentWrite(HttpSession session
 //주문완료
 @RequestMapping(value="orderComplete", method=RequestMethod.GET)
 public String orderComplete(Model model, HttpSession session, OrderDetailDTO orderDetailDTO, MemberDTO memberDTO) {
-	System.out.println("1111111111");
 	//세션에서 id,email 을 받아옴
 	String email = (String) session.getAttribute("memEmail");
 	int memId = (Integer) session.getAttribute("memId");
-
-	List<CartDTO> cartList = profileService.getAllCartList(memId+"");
 	memberDTO = profileService.getMember(memId);
 	
-	int orderNumber= profileService.getOrderNum(email);
+	int orderNumber= profileService.getOrderNum(memId+"");
 	orderDetailDTO.setOrder_number(orderNumber);
 	
-	
 	profileService.cartTotalDelete(memId+"");
-
 			
 	model.addAttribute("memberDTO",memberDTO);
 	model.addAttribute("orderDetailDTO",orderDetailDTO);
