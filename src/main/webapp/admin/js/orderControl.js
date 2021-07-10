@@ -691,7 +691,7 @@ $('#deliveryReadyBtn').click(function(){
       });
       
    }
-});
+}); 
 
 /*배송완료 클릭 시*/
 $('#deliveryCompleteBtn').click(function(){
