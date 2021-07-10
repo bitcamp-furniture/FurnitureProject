@@ -53,7 +53,10 @@ public interface ProfileDAO {
 
 	public void paymentWrite(Map<String, Object> map);
 
+	public void payment(Map outputMap);
+
 	public int getOrderNum(String memId);
 
 	public void memberDelete(String id);
+
 }

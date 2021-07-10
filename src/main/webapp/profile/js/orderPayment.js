@@ -41,7 +41,49 @@ $('#pointText').change(function(){
 
 //결제하기 버튼 클릭 시 
 $('#paymentBtn').click(function(){
-	//alert($('#total').val() +" "+  $('#cartList').val())
+	
+	// 카카오페이 결제 api로 연결
+    $.ajax({
+        type:'post',
+        url:'/furniture/pay/order',
+        data: {'total':$('#total').val(),
+               'product_name': $('#product_name').val(),
+               'cartList_count': $('#cartList_count').val()
+        },
+        dataType: 'json',
+        success:function(data){
+            alert(JSON.stringify(data));
+            $('input[name=ordr_idxx]').val(data.Response.ordr_idxx);
+            $('input[name=good_name]').val(data.Response.good_name);
+            $('input[name=good_mny]').val(data.Response.good_mny);
+            $('input[name=buyr_name]').val(data.Response.buyr_name);
+            $('input[name=site_cd]').val(data.Response.site_cd);
+
+            jsf__pay();
+            //location.href='/furniture/profile/orderComplete'
+
+        },
+        errer:function(err){
+            console.log(err);
+        }
+    });//ajax
+
+	// $.ajax({
+	// 	type:'post',
+	// 	url:'/furniture/profile/paymentWrite',
+	// 	data: {'total':$('#total').val()},
+	// 	success:function(){
+	// 		alert('성공');
+	//
+	// 		location.href='/furniture/profile/orderComplete'
+	//
+	// 	},
+	// 	errer:function(err){
+	// 		console.log(err);
+	// 	}
+	// });//ajax
+
+
 
 	$.ajax({
 		type:'post',
@@ -67,9 +109,29 @@ $('#paymentBtn').click(function(){
 			console.log(err);
 		}
 	});//ajax
+
 });
 
+//결제하기 버튼 클릭 시
+$('#paymentCancelBtn').click(function(){
+    $.ajax({
+        type:'post',
+        url:'/furniture/pay/cancel',
+        data: {'transactionId':$('#transactionId').val()
+        },
+        dataType: 'json',
+        success:function(data){
+            alert(JSON.stringify(data));
+            $('input[name=responseCode]').val(data.Response.responseCode);
+            $('input[name=responseMsg]').val(data.Response.responseMsg);
+            $('input[name=cancelDateTime]').val(data.Response.cancelDateTime);
 
+        },
+        errer:function(err){
+            console.log(err);
+        }
+    });//ajax
+});
 
 
 

@@ -211,4 +211,9 @@ public class ProfileServiceImpl implements ProfileService {
 		
 	}
 
+	@Override
+	public void payment(Map outputMap) {
+		profileDAO.payment(outputMap);
+	}
+
 }
