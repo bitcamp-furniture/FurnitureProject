@@ -34,12 +34,14 @@ $(function(){
          //alert(JSON.stringify(data));
          console.log(data);
          $.each(data.reviewListTop5, function(index,items){
+        	alert(index+"   "+items.product_id);
             var writerEmail = items.email;
             var stars = ''; 
             for(i=1; i<=items.review_stars; i++){
             	stars = stars + '★';
             }
             items.email = writerEmail.slice(0, 2)+'***';
+            items.review_stars = stars;
             
             $('.write_email_h5_'+(index+1)).html(items.product_name)
             $('.product_name_span_'+(index+1)).html(items.email)
@@ -47,7 +49,6 @@ $(function(){
             $('.rating_'+(index+1)).html(stars).css('color', 'gold')
             $('.reviewALink'+(index+1)).attr('href', '/furniture/main/productView?id='+items.product_id+'&pg=1')
             
-            items.review_stars = stars;
          });//each 
          
       },
