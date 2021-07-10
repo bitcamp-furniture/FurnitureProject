@@ -278,7 +278,7 @@ cursor: pointer;
                         <div class="testimonial__item" >
 	                            <div class="testimonial__author">
 	                                <div class="testimonial__author__pic">
-	                                    <img src="/furniture/storage/review (1).jpg" alt="" width="70px" height="70px">
+	                                    <img src="/furniture/storage/review1.jpg" alt="" width="70px" height="70px">
 	                                </div>
 	                                <div class="testimonial__author__text">
 	                                    <h5 class="write_email_h5_1"></h5>
@@ -295,7 +295,7 @@ cursor: pointer;
                         <div class="testimonial__item">
 	                            <div class="testimonial__author">
 	                                <div class="testimonial__author__pic">
-	                                    <img src="/furniture/storage/review (2).jpg" alt="" width="70px" height="70px">
+	                                    <img src="/furniture/storage/review2.jpg" alt="" width="70px" height="70px">
 	                                </div>
 	                                <div class="testimonial__author__text">
 	                                    <h5 class="write_email_h5_2"></h5>
@@ -312,7 +312,7 @@ cursor: pointer;
                         <div class="testimonial__item">
 	                            <div class="testimonial__author">
 	                                <div class="testimonial__author__pic">
-	                                    <img src="/furniture/storage/review (3).jpg" alt="" width="70px" height="70px">
+	                                    <img src="/furniture/storage/review3.jpg" alt="" width="70px" height="70px">
 	                                </div>
 	                                <div class="testimonial__author__text">
 	                                    <h5 class="write_email_h5_3"></h5>
@@ -334,7 +334,7 @@ cursor: pointer;
                         <div class="testimonial__item">
                             <div class="testimonial__author">
 	                                <div class="testimonial__author__pic">
-	                                    <img src="/furniture/storage/review (4).jpg" alt="" width="70px" height="70px">
+	                                    <img src="/furniture/storage/review4.jpg" alt="" width="70px" height="70px">
 	                                </div>
 	                                <div class="testimonial__author__text">
 	                                    <h5 class="write_email_h5_4"></h5>
@@ -351,7 +351,7 @@ cursor: pointer;
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    <img src="/furniture/storage/review (5).jpg" alt="" width="70px" height="70px">
+                                    <img src="/furniture/storage/review5.jpg" alt="" width="70px" height="70px">
                                 </div>
                                 <div class="testimonial__author__text">
                                     <h5 class="write_email_h5_5"></h5>
@@ -368,7 +368,7 @@ cursor: pointer;
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    <img src="/furniture/storage/review (6).jpg" alt="" width="70px" height="70px">
+                                    <img src="/furniture/storage/review6.jpg" alt="" width="70px" height="70px">
                                 </div>
                                 <div class="testimonial__author__text">
                                     <h5 class="write_email_h5_6"></h5>
