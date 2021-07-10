@@ -174,6 +174,7 @@
 
                     <!-- 핸드폰, 이메일 구분제목-->
                     <div id="mypageC">
+
                         <h4>연락처</h4>
 
                         <div id="mypageContact">
