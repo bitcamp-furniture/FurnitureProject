@@ -34,7 +34,7 @@
 
             <c:forEach var="cart" items="${cartList}">
             
-                <c:set var= "total" value="${total + cart.product_price}"/>
+               
                 <c:set var="product_amounts" value="${cart.product_price * cart.product_count}"/>
                 <c:set var="total_product_qty" value="${total_product_qty + cart.product_count}"/>
                
@@ -63,7 +63,7 @@
                     <td class="tg-0pky" name="product_amounts" width="100" style="text-align: center; vertical-align:middle;">
                         <fmt:formatNumber value="${product_amounts}" pattern="#,###.##"/></td>    
                 </tr>
-               
+                <c:set var= "total" value="${total + product_amounts}"/>
        
                 
             </c:forEach>
@@ -71,9 +71,8 @@
 
             
              <tr>
-                <td style="text-align: center; vertical-align:middle;" colspan="3"><h4>합계</h4></td>
-                <td style="text-align: center; vertical-align:middle;" >
-					<h4><fmt:formatNumber value="${product_amounts + cart.product_count}" pattern="#,###.##"/></h4></td>
+                <td style="text-align: center; vertical-align:middle;" colspan="4"><h4>합계</h4></td>
+                
                 <td style="text-align: center; vertical-align:middle;" >
 					<h4>${total_product_qty}</h4></td>
                 <td style="text-align: center; vertical-align:middle;">
