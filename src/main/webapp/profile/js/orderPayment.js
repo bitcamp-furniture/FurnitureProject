@@ -41,7 +41,8 @@ $('#pointText').change(function(){
 
 //결제하기 버튼 클릭 시 
 $('#paymentBtn').click(function(){
-	alert($('#total').val() +" "+  $('#cartList').val())
+	
+	// 카카오페이 결제 api로 연결
     $.ajax({
         type:'post',
         url:'/furniture/pay/order',
@@ -81,6 +82,7 @@ $('#paymentBtn').click(function(){
 	// 		console.log(err);
 	// 	}
 	// });//ajax
+
 
 
 	$.ajax({
