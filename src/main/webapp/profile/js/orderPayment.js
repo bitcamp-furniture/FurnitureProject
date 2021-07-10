@@ -134,7 +134,6 @@ function execDaumPostcode() {
 
 //주문완료후 , 주문내역확인하기 버튼 클릭시
 $('#orderCheckGo').click(function(){
-	alert('gg')
 	location.href = '/furniture/profile/profile';
 });
 

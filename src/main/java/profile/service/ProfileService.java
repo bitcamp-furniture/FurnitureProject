@@ -48,7 +48,7 @@ public interface ProfileService {
 
     public void cartTotalDelete(String memberId);
 
-	public List<CartDTO> getAllCartList(String memberId);
+	public List<CartDTO> getAllCartList(int memId);
 
 	public void paymentWrite(Map<String, Object> map);
 
