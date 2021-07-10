@@ -12,7 +12,7 @@ function addWish(id) {
 			},
 			dataType : "text",
 			success : function(data){
-				alert('위시리스트 추가 완료');
+				swal("성공!", "위시리스트에 상품을 추가하였습니다", "success");
 			},
 			error : function(){
 				alert("실패 :");
@@ -34,7 +34,6 @@ $(function(){
          //alert(JSON.stringify(data));
          console.log(data);
          $.each(data.reviewListTop5, function(index,items){
-        	alert(index+"   "+items.product_id);
             var writerEmail = items.email;
             var stars = ''; 
             for(i=1; i<=items.review_stars; i++){
