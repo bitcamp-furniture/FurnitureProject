@@ -170,7 +170,7 @@
 		delete from cart where member_id=#{memberId}
 	</delete>
 
-	<select id="getAllCartList" parameterType="String" resultType="cart">
+	<select id="getAllCartList" parameterType="int" resultType="cart">
 		select distinct
 		c.id,
 		c.product_id,
@@ -184,11 +184,11 @@
 		on p.id = c.product_id
 		inner join product_image i
 		on p.product_code = I.product_code
-		where c.member_id=#{memberId} order by c.id desc
+		where c.member_id=#{memId} order by c.id desc
 	</select>
 
 	<insert id="paymentWriteOrders" parameterType="java.util.Map">
-		insert into orders values(seq_orders.nextval,#{total},#{email},sysdate)
+		insert into orders values(seq_orders.nextval,#{total},#{memId},sysdate)
 	</insert>
 	
 	
@@ -196,7 +196,7 @@
 	<select id="getOrderNum"  parameterType="java.util.Map" resultType="Integer">
 		select order_number from
 		(
-		select * from orders where member_id=#{email} order by order_date desc
+		select * from orders where member_id=#{memId} order by order_date desc
 		)
 		where rownum=1	
 	</select>

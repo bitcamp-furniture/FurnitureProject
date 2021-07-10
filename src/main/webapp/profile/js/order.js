@@ -9,7 +9,8 @@ $('#order-tap').click(function() {
         },
         dataType: 'json',
         success: function (data) {
-            //alert(JSON.stringify(data));
+//            alert(JSON.stringify(data));
+            console.log(data);
             $.each(data.list, function (index, item) {
                 //alert(item.order_status);
                 let $td = $('<td/>', {
@@ -34,9 +35,11 @@ $('#order-tap').click(function() {
                 } //if
 
                 var color = null
-                if (item.product_color === 'R') color = '빨강';
-                if (item.product_color === 'S') color = '실버';
-                if (item.product_color === 'B') color = '검정';
+                if (item.product_color === 'B') color = 'BLACK';
+                if (item.product_color === 'W') color = 'WHITE';
+                if (item.product_color === 'R') color = 'RED';
+                if (item.product_color === 'S') color = 'SILVER';
+                if (item.product_color === 'P') color = 'BLACK';
 
                 $('<tr/>').append($('<td/>', {
                     align: 'center',
@@ -130,9 +133,11 @@ function orderPaging(orderPg) {
                 } //if
 
                 var color = null
-                if (item.product_color === 'R') color = '빨강';
-                if (item.product_color === 'S') color = '실버';
-                if (item.product_color === 'B') color = '검정';
+                if (item.product_color === 'B') color = 'BLACK';
+                if (item.product_color === 'W') color = 'WHITE';
+                if (item.product_color === 'R') color = 'RED';
+                if (item.product_color === 'S') color = 'SILVER';
+                if (item.product_color === 'P') color = 'BLACK';
 
                 $('<tr/>').append($('<td/>', {
                     align: 'center',
