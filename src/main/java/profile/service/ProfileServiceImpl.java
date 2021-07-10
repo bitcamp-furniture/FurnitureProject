@@ -196,8 +196,8 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public void paymentWrite(Map<String, Object> map) {
-		profileDAO.paymentWrite(map);		
+	public int paymentWrite(Map<String, Object> map) {
+		return profileDAO.paymentWrite(map);
 	}
 
 	@Override
@@ -209,6 +209,11 @@ public class ProfileServiceImpl implements ProfileService {
 	public void memberDelete(String id) {
 		profileDAO.memberDelete(id);
 		
+	}
+
+	@Override
+	public String gettId(String orderNumber) {
+		return profileDAO.gettId(orderNumber);
 	}
 
 	@Override

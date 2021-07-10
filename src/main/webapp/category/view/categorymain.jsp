@@ -26,7 +26,7 @@
 
                     <div class="hero__item set-bg" data-setbg="/furniture/category/image/hero/banner.png">
                         <div class="hero__text">
-    <input type="hidden" id="memId"/>
+    						<input type="hidden" id="memId"/>
                             <span>편안한 침대</span>
                             <h2>숙면보장<br />푹신푹신한 침대</h2>
                             <p>Free Pickup and Delivery Available</p>
@@ -138,7 +138,7 @@ function addWish(id) {
 			},
 			dataType : "text",
 			success : function(data){
-				alert('위시리스트 추가 완료');
+				swal("성공!", "위시리스트에 상품을 추가하였습니다", "success");
 			},
 			error : function(){
 				alert("실패 :");

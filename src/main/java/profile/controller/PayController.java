@@ -14,12 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import profile.bean.CartDTO;
 import profile.service.ProfileService;
 
 import javax.servlet.http.HttpSession;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -30,7 +32,7 @@ public class PayController {
     @RequestMapping(value = "/pay/order")
     @org.springframework.web.bind.annotation.ResponseBody
     public ModelAndView order(@RequestParam Map<String, String> map, HttpSession session) {
-        //System.out.println(map);
+        System.out.println(map);
         int cartList_count = Integer.parseInt(map.get("cartList_count"));
 
         String product_name;
@@ -109,9 +111,7 @@ public class PayController {
 
     @RequestMapping(value = "/pay/payment")
     @org.springframework.web.bind.annotation.ResponseBody
-    public ModelAndView payment(@RequestParam Map<String, String> map) {
-
-        ModelAndView mav = new ModelAndView();
+    public void payment(@RequestParam Map<String, String> map, HttpSession session) {
 
         try {
             String url = "https://api.testpayup.co.kr/ep/api/kakao/test_kakao/pay";
@@ -159,24 +159,34 @@ public class PayController {
             // MAP -> JSON 예제
             Map outputMap = gsonObj.fromJson(body.string(), Map.class);
 
+            int memId = (Integer) session.getAttribute("memId");
+            List<CartDTO> cartList = profileService.getAllCartList(memId);
+
+            Map<String, Object> orderMap = new HashMap<String, Object>();
+
+
+            orderMap.put("memId", memId);
+            orderMap.put("total", map.get("total"));
+            orderMap.put("cartList", cartList);
+
+
+            int order_number = profileService.paymentWrite(orderMap);
+
+            outputMap.put("order_number", order_number);
+
+
+            System.out.println("outputMap = " + outputMap);
             profileService.payment(outputMap);
 
-
-
-            mav.addObject("Response", outputMap);
-            mav.setViewName("jsonView");
-            return mav;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        mav.addObject("Response", "");
-        mav.setViewName("jsonView");
-        return mav;
     }
     @RequestMapping(value = "/pay/cancel")
     @org.springframework.web.bind.annotation.ResponseBody
     public ModelAndView cancel(@RequestParam Map<String, String> map) {
+        String tId = profileService.gettId(map.get("check"));
 
         ModelAndView mav = new ModelAndView();
 
@@ -187,7 +197,7 @@ public class PayController {
             Gson gsonObj = new Gson();
 
             Map<String, Object> cancelMap = new HashMap<String, Object>();
-            cancelMap.put("transactionId", map.get("transactionId"));
+            cancelMap.put("transactionId", tId);
             String signature = Sha256("test_kakao|"+map.get("transactionId")+"|5a594647c79a45deb579ff5c96cfb4cf");
             cancelMap.put("signature", signature);
 

@@ -275,10 +275,11 @@ cursor: pointer;
             <div class="row">
                 <div class="testimonial__slider owl-carousel">
                     <div class="col-lg-6">
+                     <a class="reviewALink1" href="#">
                         <div class="testimonial__item" >
 	                            <div class="testimonial__author">
 	                                <div class="testimonial__author__pic">
-	                                    <img src="/furniture/storage/review (1).jpg" alt="" width="70px" height="70px">
+	                                    <img src="/furniture/storage/review1.jpg" alt="" width="70px" height="70px">
 	                                </div>
 	                                <div class="testimonial__author__text">
 	                                    <h5 class="write_email_h5_1"></h5>
@@ -289,13 +290,15 @@ cursor: pointer;
                             </div>
                             <p class="review_content_p_1"></p>
                         </div>
+                        </a>
                     </div>
                     
                      <div class="col-lg-6">
+                     <a class="reviewALink2" href="#">
                         <div class="testimonial__item">
 	                            <div class="testimonial__author">
 	                                <div class="testimonial__author__pic">
-	                                    <img src="/furniture/storage/review (2).jpg" alt="" width="70px" height="70px">
+	                                    <img src="/furniture/storage/review2.jpg" alt="" width="70px" height="70px">
 	                                </div>
 	                                <div class="testimonial__author__text">
 	                                    <h5 class="write_email_h5_2"></h5>
@@ -306,13 +309,15 @@ cursor: pointer;
                             </div>
                             <p class="review_content_p_2"></p>
                         </div>
+                     </a>
                     </div> 
                       
                       <div class="col-lg-6">
+                     <a class="reviewALink3" href="#">
                         <div class="testimonial__item">
 	                            <div class="testimonial__author">
 	                                <div class="testimonial__author__pic">
-	                                    <img src="/furniture/storage/review (3).jpg" alt="" width="70px" height="70px">
+	                                    <img src="/furniture/storage/review3.jpg" alt="" width="70px" height="70px">
 	                                </div>
 	                                <div class="testimonial__author__text">
 	                                    <h5 class="write_email_h5_3"></h5>
@@ -320,21 +325,18 @@ cursor: pointer;
 	                                </div>
 	                            </div>
                             <div class="rating_3">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
                             </div>
                             <p class="review_content_p_3"></p>
                         </div>
+                        </a>
                     </div> 
                     
                       <div class="col-lg-6">
+                     <a class="reviewALink4" href="#">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
 	                                <div class="testimonial__author__pic">
-	                                    <img src="/furniture/storage/review (4).jpg" alt="" width="70px" height="70px">
+	                                    <img src="/furniture/storage/review4.jpg" alt="" width="70px" height="70px">
 	                                </div>
 	                                <div class="testimonial__author__text">
 	                                    <h5 class="write_email_h5_4"></h5>
@@ -345,13 +347,15 @@ cursor: pointer;
                             </div>
                             <p class="review_content_p_4"></p>
                         </div>
+                        </a>
                     </div> 
                     
                       <div class="col-lg-6">
+                     <a class="reviewALink5" href="#">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    <img src="/furniture/storage/review (5).jpg" alt="" width="70px" height="70px">
+                                    <img src="/furniture/storage/review5.jpg" alt="" width="70px" height="70px">
                                 </div>
                                 <div class="testimonial__author__text">
                                     <h5 class="write_email_h5_5"></h5>
@@ -362,13 +366,15 @@ cursor: pointer;
                             </div>
                             <p class="review_content_p_5"></p>
                         </div>
+                        </a>
                     </div> 
                     
                     <div class="col-lg-6">
+                     <a class="reviewALink6" href="#">
                         <div class="testimonial__item">
                             <div class="testimonial__author">
                                 <div class="testimonial__author__pic">
-                                    <img src="/furniture/storage/review (6).jpg" alt="" width="70px" height="70px">
+                                    <img src="/furniture/storage/review6.jpg" alt="" width="70px" height="70px">
                                 </div>
                                 <div class="testimonial__author__text">
                                     <h5 class="write_email_h5_6"></h5>
@@ -379,6 +385,7 @@ cursor: pointer;
                             </div>
                             <p class="review_content_p_6"></p>
                         </div>
+                        </a>
                     </div> 
                     
                 </div>
@@ -386,57 +393,6 @@ cursor: pointer;
         </div>
     </section>
     <!-- Testimonial Section End -->
-     <!-- Instagram Section Begin -->
-    <section class="instagram spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 p-0">
-                    <div class="instagram__text">
-                        <div class="section-title">
-                            <span>Follow us on instagram</span>
-                            <h2>#IKEZKE 공식 계정 개설</h2>
-                        </div>
-                        <h5><i class="fa fa-instagram"></i> @ikezke.official</h5>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                            <div class="instagram__pic">
-                                <img src="img/3.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                            <div class="instagram__pic middle__pic">
-                                <img src="img/4.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                            <div class="instagram__pic">
-                                <img src="img/5.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                            <div class="instagram__pic">
-                                <img src="img/6.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                            <div class="instagram__pic middle__pic">
-                                <img src="img/7.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-6">
-                            <div class="instagram__pic">
-                                <img src="img/8.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Instagram Section End -->
 
         <!-- Map Begin -->
     <div class="map">

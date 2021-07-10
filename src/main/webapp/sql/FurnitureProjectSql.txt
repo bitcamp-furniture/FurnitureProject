@@ -179,7 +179,7 @@ create sequence seq_ask nocycle nocache;
 create table FAQ(
    id NUMBER primary key,
    div varchar2(50),   --구분(AS,환불,주문,배송,교환,회원정보)
-   subject varchar2(50),   --제목
+   subject varchar2(500),   --제목
    content varchar2(1000),   --내용
    created_faq date    --등록일
 );
@@ -239,4 +239,23 @@ create table orderControl(
 id NUMBER primary key,
 order_number VARCHAR2(80),
 member_id VARCHAR2(80),
-delivery_number VARCHAR2(80));
+delivery_number VARCHAR2(80)
+);
+create sequence seq_orderControl nocycle nocache;
+
+— 결제
+CREATE TABLE payment(
+	id NUMBER PRIMARY KEY, -- 결제번호(아이디)
+	order_number VARCHAR2(20), -- 주문번호
+	amount NUMBER, -- 결제 총 금액
+	pay_type VARCHAR2(20),  -- 결제방법
+	transaction_id VARCHAR2(120), -- 발급번호
+	response_msg VARCHAR2(20), -- 결제상태
+	auth_number VARCHAR2(100), -- 카드 승인 번호
+	card_name VARCHAR2(50), -- 결제 카드사 명
+	card_no VARCHAR2(50), -- 카드번호
+	quota VARCHAR2(10), -- 할부개월
+	created_at date, -- 결제일자
+	updated_at date -- 수정된 일자
+);
+create sequence seq_payment nocycle nocache;

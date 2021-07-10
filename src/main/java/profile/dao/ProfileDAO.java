@@ -51,7 +51,7 @@ public interface ProfileDAO {
 
 	List<CartDTO> getAllCartList(int memId);
 
-	public void paymentWrite(Map<String, Object> map);
+	public int paymentWrite(Map<String, Object> map);
 
 	public void payment(Map outputMap);
 
@@ -59,4 +59,5 @@ public interface ProfileDAO {
 
 	public void memberDelete(String id);
 
+    String gettId(String orderNumber);
 }

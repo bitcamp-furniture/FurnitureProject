@@ -6,7 +6,7 @@ $(function(){
       data: 'orderControlPg='+$('#orderControlPg').val(),
       dataType: 'json',
       success: function(data){
-         //alert(JSON.stringify(data));
+         alert(JSON.stringify(data));
 		 $('#newOrderTable tr:gt(0)').remove();
 		 $("input[name=check_all]").prop("checked", false);
          
@@ -923,13 +923,14 @@ $('#cancelSales').click(function(){
 	if(count == 0){
 		alert("선택한 주문이 없습니다.");
 	}else{
-		$.ajax({
+        $.ajax({
 			type: 'post',
-			url: '/furniture/admin/product/cancelSales',
+			url: '/furniture/pay/cancel',
 			data: $('#orderForm').serialize(),
-			dataType: 'text',
-			success: function() {
-				alert('주문이 취소되었습니다.');
+			dataType: 'json',
+			success: function(data) {
+			    console.log(JSON.stringify(data));
+				//alert('주문이 취소되었습니다.');
 				location.reload()
 
 			},
@@ -937,7 +938,7 @@ $('#cancelSales').click(function(){
 				console.log(err);
 			}
 		});
-		
+
 	}
 });
 

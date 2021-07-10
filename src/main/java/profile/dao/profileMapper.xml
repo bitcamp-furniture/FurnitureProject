@@ -208,7 +208,7 @@
 										,#{product_amounts}
 										,#{order_number}
 										,#{product_id}
-										,'READY'
+										,'PAYMENTCOMPLETED'
 										,#{product_color}
 										 )
 	
@@ -219,13 +219,26 @@
 	</delete>
 
 	<insert id="payment" parameterType="java.util.Map">
-		insert into payment (id, amount, pay_type, transaction_id, response_msg, created_at)
+		insert into payment (id, order_number, amount, pay_type, transaction_id, response_msg, created_at)
 					values(seq_payment.nextval
+					      ,#{order_number}
 						  ,#{amount}
-					      ,#{pay_type}
-						  ,#{transaction_id}
-						  ,#{response_msg}
+					      ,#{type}
+						  ,#{transactionId}
+						  ,#{responseMsg}
 						  ,sysdate)
 	</insert>
+
+	<insert id="ordercontrol" parameterType="java.util.Map">
+		insert into ordercontrol (id, order_number, member_id)
+		values(seq_ordercontrol.nextval
+			  ,#{order_number}
+			  ,#{member_id}
+			  )
+	</insert>
+
+	<select id="gettId"  parameterType="String" resultType="String">
+		select transactionId from payment where orderNumber=#{orderNumber}
+	</select>
 
  </mapper>

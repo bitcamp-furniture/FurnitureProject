@@ -12,7 +12,7 @@ function addWish(id) {
 			},
 			dataType : "text",
 			success : function(data){
-				alert('위시리스트 추가 완료');
+				swal("성공!", "위시리스트에 상품을 추가하였습니다", "success");
 			},
 			error : function(){
 				alert("실패 :");
@@ -40,13 +40,14 @@ $(function(){
             	stars = stars + '★';
             }
             items.email = writerEmail.slice(0, 2)+'***';
+            items.review_stars = stars;
             
             $('.write_email_h5_'+(index+1)).html(items.product_name)
             $('.product_name_span_'+(index+1)).html(items.email)
             $('.review_content_p_'+(index+1)).html(items.review_content)
             $('.rating_'+(index+1)).html(stars).css('color', 'gold')
+            $('.reviewALink'+(index+1)).attr('href', '/furniture/main/productView?id='+items.product_id+'&pg=1')
             
-            items.review_stars = stars;
          });//each 
          
       },

@@ -173,7 +173,8 @@
                     <hr class="profile__divider">
 
                     <!-- 핸드폰, 이메일 구분제목-->
-                    <div id="mypageC">" class="mypageC">
+                    <div id="mypageC">
+
                         <h4>연락처</h4>
 
                         <div id="mypageContact">
@@ -255,7 +256,8 @@
                         <div id="mypagePasswordDiv"></div>
                         <input type="button" value="저장" id="mypagePasswordModifyBtn">
                     </div>
-                    <br>
+                    <br><br><br><br>
+                    <div></div>
                     <%--회원탈퇴 --%>
                     <div id="mypageWithdrawalDiv" align="center">
                     	<input type="button" value="회원탈퇴" id="mypageWithdrawalBtn">
@@ -436,6 +438,7 @@
 
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

@@ -14,7 +14,7 @@ public class OrderDetailDTO {
 	private int product_amounts; //상품가격*수량
 	private int order_number;//주문번호
     private String product_id;//상품id
-    private OrderStatusType order_status; //주문상태 기본 "READY"
+    private OrderStatusType order_status; //주문상태 기본 "PAYMENTCOMPLETED"
     private String product_color; //상품색상
     private String product_img_thumb;//썸네일
 

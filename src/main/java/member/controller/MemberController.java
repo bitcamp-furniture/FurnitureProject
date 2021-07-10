@@ -215,9 +215,7 @@ public class MemberController {
 								,HttpSession session
 								,MemberDTO memberDTO
 								,Map<String, String> map) {
-			//int temp=Integer.parseInt(savingPoint);
-			//String point = temp+"";
-			//memberDTO.setEmail((String) session.getAttribute("memEmail"));
+
 			String email = ((String)session.getAttribute("memEmail"));
 			
 			map.put("email", email);
