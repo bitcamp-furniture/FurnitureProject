@@ -24,4 +24,6 @@ public interface MemberService {
 
 	public void kakaoUpdate(Map<String, String> map, HttpSession session);
 
+	public void pointUpdate(Map<String, String> map);
+
 }

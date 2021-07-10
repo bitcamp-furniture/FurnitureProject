@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<style type="text/css">
+.cart_add{
+cursor: pointer;
+}
+</style>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
@@ -24,6 +30,8 @@
     
 <!-- Hero Section Begin 큰 배너사진-->
     <section class="hero">
+    <input type="hidden" value="${memId }" id="memId"/>
+    
         <div class="hero__slider owl-carousel">
             <div class="hero__item set-bg" data-setbg="/furniture/image/123.jpg">
                 <div class="container">
@@ -120,8 +128,8 @@
                         <div class="product__item__text">
                             <h6><a id="product_item_text_a1"></a></h6>
                             <div class="product__item__price" id="product_item_price_div1"></div>
-                            <div class="cart_add">
-                                <a href="#" >Wish List</a>
+                            <div class="cart_add" id="cart_add1">
+                                <a>Wish List</a>
                             </div>
                         </div>
                     </div>
@@ -137,8 +145,8 @@
                         <div class="product__item__text">
                             <h6><a id="product_item_text_a2"></a></h6>
                             <div class="product__item__price" id="product_item_price_div2"></div>
-                            <div class="cart_add">
-                                <a href="#" >Wish List</a>
+                            <div class="cart_add" id="cart_add2">
+                                <a>Wish List</a>
                             </div>
                         </div>
                     </div>
@@ -153,8 +161,8 @@
                         <div class="product__item__text">
                             <h6><a id="product_item_text_a3"></a></h6>
                             <div class="product__item__price" id="product_item_price_div3"></div>
-                            <div class="cart_add">
-                                <a href="#" >Wish List</a>
+                            <div class="cart_add" id="cart_add3">
+                                <a>Wish List</a>
                             </div>
                         </div>
                     </div>
@@ -169,8 +177,8 @@
                         <div class="product__item__text">
                             <h6><a id="product_item_text_a4"></a></h6>
                             <div class="product__item__price" id="product_item_price_div4"></div>
-                            <div class="cart_add">
-                                <a href="#" >Wish List</a>
+                            <div class="cart_add" id="cart_add4">
+                                <a>Wish List</a>
                             </div>
                         </div>
                     </div>
@@ -185,8 +193,8 @@
                         <div class="product__item__text">
                             <h6><a id="product_item_text_a5"></a></h6>
                             <div class="product__item__price" id="product_item_price_div5"></div>
-                            <div class="cart_add">
-                                <a href="#" >Wish List</a>
+                            <div class="cart_add" id="cart_add5">
+                                <a>Wish List</a>
                             </div>
                         </div>
                     </div>
@@ -201,8 +209,8 @@
                         <div class="product__item__text">
                             <h6><a id="product_item_text_a6"></a></h6>
                             <div class="product__item__price" id="product_item_price_div6"></div>
-                            <div class="cart_add">
-                                <a href="#" >Wish List</a>
+                            <div class="cart_add" id="cart_add6">
+                                <a>Wish List</a>
                             </div>
                         </div>
                     </div>
@@ -217,8 +225,8 @@
                         <div class="product__item__text">
                             <h6><a id="product_item_text_a7"></a></h6>
                             <div class="product__item__price" id="product_item_price_div7"></div>
-                            <div class="cart_add">
-                                <a href="#" >Wish List</a>
+                            <div class="cart_add" id="cart_add7">
+                                <a>Wish List</a>
                             </div>
                         </div>
                     </div>
@@ -233,8 +241,8 @@
                         <div class="product__item__text">
                             <h6><a id="product_item_text_a8"></a></h6>
                             <div class="product__item__price" id="product_item_price_div8"></div>
-                            <div class="cart_add">
-                                <a href="#" >Wish List</a>
+                            <div class="cart_add" id="cart_add8">
+                                <a>Wish List</a>
                             </div>
                         </div>
                     </div>
