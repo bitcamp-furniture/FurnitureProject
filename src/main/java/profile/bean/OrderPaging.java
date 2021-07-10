@@ -21,7 +21,7 @@ public class OrderPaging {
         if(endPage > totalP) endPage = totalP;
 
         if(startPage > pageBlock)
-            pagingHTML.append("<span id='paging' onclick='orderPaging("+(startPage-1)+")'>[이전]</span>");
+            pagingHTML.append("<span id='paging' onclick='orderPaging("+(startPage-1)+")'>◀</span>");
 
         for(int i=startPage; i<=endPage; i++) {
             if(i==currentPage) {
@@ -32,6 +32,6 @@ public class OrderPaging {
         }//for
 
         if(endPage < totalP)
-            pagingHTML.append("<span id='paging' onclick='orderPaging("+(endPage+1)+")'>[다음]</span>");
+            pagingHTML.append("<span id='paging' onclick='orderPaging("+(endPage+1)+")'>▶</span>");
     }
 }

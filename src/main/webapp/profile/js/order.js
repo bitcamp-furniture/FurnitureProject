@@ -9,7 +9,8 @@ $('#order-tap').click(function() {
         },
         dataType: 'json',
         success: function (data) {
-            //alert(JSON.stringify(data));
+//            alert(JSON.stringify(data));
+            console.log(data);
             $.each(data.list, function (index, item) {
                 //alert(item.order_status);
                 let $td = $('<td/>', {
@@ -34,9 +35,11 @@ $('#order-tap').click(function() {
                 } //if
 
                 var color = null
-                if (item.product_color === 'R') color = '빨강';
-                if (item.product_color === 'S') color = '실버';
-                if (item.product_color === 'B') color = '검정';
+                if (item.product_color === 'B') color = 'BLACK';
+                if (item.product_color === 'W') color = 'WHITE';
+                if (item.product_color === 'R') color = 'RED';
+                if (item.product_color === 'S') color = 'SILVER';
+                if (item.product_color === 'P') color = 'BLACK';
 
                 $('<tr/>').append($('<td/>', {
                     align: 'center',
@@ -45,11 +48,11 @@ $('#order-tap').click(function() {
                 })).append($('<td/>', {
                         align: 'center'
                     }).append($('<a/>', {
-                        href: '#',
+                    	href: '/furniture/main/productView?id='+item.product_id+'&pg=1',
                         align: 'center',
                         id: 'subjectA'
-                    })).append($('<img>', {
-                        src: '/furniture/img/' + item.product_img_thumb,
+                    })).append($('<img/>', {
+                        src: '/furniture/storage/' + item.product_img_thumb,
                         class: 'orderlist_img _' + item.order_number
                     }))
                 ).append($('<td/>', {
@@ -130,9 +133,11 @@ function orderPaging(orderPg) {
                 } //if
 
                 var color = null
-                if (item.product_color === 'R') color = '빨강';
-                if (item.product_color === 'S') color = '실버';
-                if (item.product_color === 'B') color = '검정';
+                if (item.product_color === 'B') color = 'BLACK';
+                if (item.product_color === 'W') color = 'WHITE';
+                if (item.product_color === 'R') color = 'RED';
+                if (item.product_color === 'S') color = 'SILVER';
+                if (item.product_color === 'P') color = 'BLACK';
 
                 $('<tr/>').append($('<td/>', {
                     align: 'center',
@@ -141,7 +146,7 @@ function orderPaging(orderPg) {
                 })).append($('<td/>', {
                         align: 'center'
                     }).append($('<a/>', {
-                        href: '#',
+                    	href: '/furniture/main/productView?id='+item.product_id+'&pg=1',
                         align: 'center',
                         id: 'subjectA'
                     })).append($('<img>', {

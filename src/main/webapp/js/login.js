@@ -160,8 +160,8 @@ $('#kakaoImg').click(function(){
                         url: '/furniture/member/kakaoWrite',
                         type: 'post',
                         data: {'email': response.kakao_account.email,
-                            'kakaoId': response.id,
-                            'birth': response.kakao_account.birthday
+                               'kakaoId': response.id,
+                               'birth': response.kakao_account.birthday
                         },
                         success: function(){
                             alert('성공');

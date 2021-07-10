@@ -30,7 +30,7 @@
                             <span>편안한 침대</span>
                             <h2>숙면보장<br />푹신푹신한 침대</h2>
                             <p>Free Pickup and Delivery Available</p>
-                            <a href="http://localhost:8080/furniture/category/view/selectList?category=소파베드" class="primary-btn">SHOP NOW</a>
+                            <a href="http://localhost:8080/furniture/category/view/selectList?category=침대" class="primary-btn">SHOP NOW</a>
                         </div> 
                     </div>
      

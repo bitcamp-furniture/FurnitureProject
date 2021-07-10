@@ -48,11 +48,14 @@ public interface ProfileService {
 
     public void cartTotalDelete(String memberId);
 
-	public List<CartDTO> getAllCartList(String memberId);
+	public List<CartDTO> getAllCartList(int memId);
 
 	public void paymentWrite(Map<String, Object> map);
 
 	public int getOrderNum(String email);
 
+	public void payment(Map outputMap);
+
 	public void memberDelete(String id);
+
 }
