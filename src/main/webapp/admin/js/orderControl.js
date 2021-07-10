@@ -7,6 +7,7 @@ $(function(){
       dataType: 'json',
       success: function(data){
          //alert(JSON.stringify(data));
+    	  
 		 $('#newOrderTable tr:gt(0)').remove();
 		 $("input[name=check_all]").prop("checked", false);
          
@@ -17,7 +18,7 @@ $(function(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',
@@ -48,8 +49,8 @@ $(function(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
-            })).append($('<td>',{
+               text: items.product_price
+            })).append($('<td/>',{
             	
             }).append($('<input/>',{
                 type: 'hidden'
@@ -61,7 +62,7 @@ $(function(){
                //align:'center',
                text: items.name + '\n\n' + '/' + '\n\n' + items.phone
 	            }).append($('<td>',{
-	            	text:items.addr1 + items.addr2 + '\n\n' + '우)' + items.zipcode
+	            	text: items.addr1 + items.addr2 + '\n\n' + '우)' + items.zipcode
 	            }))
             ).append($('<td/>',{
                //align:'center',
@@ -107,7 +108,7 @@ function newOrder(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',
@@ -138,7 +139,7 @@ function newOrder(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: items.product_price
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -196,7 +197,7 @@ $('#deliveryReady').click(function(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',
@@ -227,7 +228,7 @@ $('#deliveryReady').click(function(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: items.product_price
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -290,7 +291,7 @@ function duringDeliver(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',
@@ -321,7 +322,7 @@ function duringDeliver(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: items.product_price
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -414,7 +415,7 @@ function deliverComplete(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: iitems.product_price
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -507,7 +508,7 @@ function orderCancle(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: items.product_price
             })).append($('<td>',{
             	
             }).append($('<td/>',{
@@ -565,7 +566,7 @@ function purchaseConfirmed(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',
@@ -596,7 +597,7 @@ function purchaseConfirmed(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: items.product_price
             })).append($('<td>',{
             	
             }).append($('<td/>',{
@@ -647,13 +648,13 @@ $('#check_all').click(function(){
 
 /*운송장 발송 버튼 클릭 시*/
 $(document).on('click', '#invoiceBtn',function(){
-	var order_number = $(this).parent().prev().prev().prev().prev().prev().prev().prev().text();
+	var id = $(this).parent().prev().prev().prev().prev().prev().prev().prev().prev().prev().val();
 	var delivery_number = $(this).prev().val();
 	
 	$.ajax({
         type: 'post',
         url: '/furniture/admin/product/invoice',
-        data: {'order_number' : order_number, 'delivery_number' : delivery_number },
+        data: {'id' : id, 'delivery_number' : delivery_number },
         dataType: 'text',
         success: function() {
            alert('운송장 번호를 등록하였습니다.');
@@ -944,7 +945,7 @@ $('#orderSearchBtn').click(function(){
 		               text: items.product_qty
 		            })).append($('<td/>',{
 		               //align:'center',
-		               text: items.total_amount
+		               text: items.product_price
 		            })).append($('<td/>',{
 		               //align:'center',
 		               text: items.zipcode

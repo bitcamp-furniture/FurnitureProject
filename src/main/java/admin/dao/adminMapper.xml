@@ -122,8 +122,9 @@
 					p.product_name,
 					od.product_color,
 					od.product_qty,
-					o.total_amount, 
-					od.order_status, 
+					od.product_price, 
+					od.order_status,
+					od.id,
                     m.name,
                     m.phone,
 					m.zipcode,
@@ -133,7 +134,7 @@
 				
 				 from member m
                     inner join ordercontrol oc
-					    on m.email = oc.member_id
+					    on m.id = oc.member_id
                     inner join orders o
                         on oc.order_number=o.order_number
 					inner join orders_detail od
@@ -141,7 +142,7 @@
 					inner join product p
 						on od.product_id=p.id
 					inner join product_image pi
-						on m.id=pi.id
+						on p.id=pi.id
 					                        
                     where od.order_status = '결제완료'
 				 order by order_date desc
@@ -157,8 +158,9 @@
 					p.product_name,
 					od.product_color,
 					od.product_qty,
-					o.total_amount, 
-					od.order_status, 
+					od.product_price,
+					od.order_status,
+					od.id,
                     m.name,
                     m.phone,
 					m.zipcode,
@@ -168,7 +170,7 @@
 				
 				 from member m
                     inner join ordercontrol oc
-					    on m.email = oc.member_id
+					    on m.id = oc.member_id
                     inner join orders o
                         on oc.order_number=o.order_number
 					inner join orders_detail od
@@ -176,7 +178,7 @@
 					inner join product p
 						on od.product_id=p.id
 					inner join product_image pi
-						on m.id=pi.id
+						on p.id=pi.id
                         
                     where od.order_status = '배송준비'
 				 order by order_date desc
@@ -191,8 +193,9 @@
 					p.product_name,
 					od.product_color,
 					od.product_qty,
-					o.total_amount, 
+					od.product_price, 
 					od.order_status, 
+					od.id,
                     m.name,
                     m.phone,
 					m.zipcode,
@@ -202,7 +205,7 @@
 				
 				 from member m
                     inner join ordercontrol oc
-					    on m.email = oc.member_id
+					    on m.id = oc.member_id
                     inner join orders o
                         on oc.order_number=o.order_number
 					inner join orders_detail od
@@ -210,7 +213,7 @@
 					inner join product p
 						on od.product_id=p.id
 					inner join product_image pi
-						on m.id=pi.id
+						on p.id=pi.id
                         
                     where od.order_status = '배송중'
 				 order by order_date desc
@@ -225,8 +228,9 @@
 					p.product_name,
 					od.product_color,
 					od.product_qty,
-					o.total_amount, 
-					od.order_status, 
+					od.product_price, 
+					od.order_status,
+					od.id,
                     m.name,
                     m.phone,
 					m.zipcode,
@@ -236,7 +240,7 @@
 				
 				 from member m
                     inner join ordercontrol oc
-					    on m.email = oc.member_id
+					    on m.id = oc.member_id
                     inner join orders o
                         on oc.order_number=o.order_number
 					inner join orders_detail od
@@ -244,7 +248,7 @@
 					inner join product p
 						on od.product_id=p.id
 					inner join product_image pi
-						on m.id=pi.id
+						on p.id=pi.id
                         
                     where od.order_status = '배송완료'
 				 order by order_date desc
@@ -259,8 +263,9 @@
 					p.product_name,
 					od.product_color,
 					od.product_qty,
-					o.total_amount, 
-					od.order_status, 
+					od.product_price,
+					od.order_status,
+					od.id,
                     m.name,
                     m.phone,
 					m.zipcode,
@@ -270,7 +275,7 @@
 				
 				 from member m
                     inner join ordercontrol oc
-					    on m.email = oc.member_id
+					    on m.id = oc.member_id
                     inner join orders o
                         on oc.order_number=o.order_number
 					inner join orders_detail od
@@ -278,7 +283,7 @@
 					inner join product p
 						on od.product_id=p.id
 					inner join product_image pi
-						on m.id=pi.id
+						on p.id=pi.id
                         
                     where od.order_status = '구매확정'
 				 order by order_date desc
@@ -293,8 +298,9 @@
 					p.product_name,
 					od.product_color,
 					od.product_qty,
-					o.total_amount, 
-					od.order_status, 
+					od.product_price,
+					od.order_status,
+					od.id,
                     m.name,
                     m.phone,
 					m.zipcode,
@@ -304,7 +310,7 @@
 				
 				 from member m
                     inner join ordercontrol oc
-					    on m.email = oc.member_id
+					    on m.id = oc.member_id
                     inner join orders o
                         on oc.order_number=o.order_number
 					inner join orders_detail od
@@ -312,7 +318,7 @@
 					inner join product p
 						on od.product_id=p.id
 					inner join product_image pi
-						on m.id=pi.id
+						on p.id=pi.id
                         
                     where od.order_status = '주문취소'
 				 order by order_date desc
@@ -378,15 +384,15 @@
    	<!-- 운송장 발송 버튼 클릭 했을 때 -->
 	<update id="invoice" parameterType="java.util.Map">
 	Begin
-		update ordercontrol set delivery_number = #{delivery_number} where order_number = #{order_number};
+		update ordercontrol set delivery_number = #{delivery_number} from orders_detail where id = #{id};
 		
-		update orders_detail set order_status = '배송중' where order_number = #{order_number};
+		update orders_detail set order_status = '배송중' where id = #{id};
 	end;
 	</update>
 	
 	<!-- 배송준비 버튼 클릭 했을 때 -->
 	<update id="deliveryReady" parameterType="java.util.Map">
-		update orders_detail set order_status = '배송준비' where order_number in
+		update orders_detail set order_status = '배송준비' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -394,7 +400,7 @@
 	
 	<!-- 입금확인 버튼 클릭 시 -->
 	<update id="paymentConfirm" parameterType="java.util.Map">
-		update orders_detail set order_status = '결제완료' where order_number in
+		update orders_detail set order_status = '결제완료' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -402,7 +408,7 @@
 	
 	<!-- 배송중 버튼 클릭 시 -->
 	<update id="delivery" parameterType="java.util.Map">
-		update orders_detail set order_status = '배송중' where order_number in
+		update orders_detail set order_status = '배송중' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -410,7 +416,7 @@
 	
 	<!-- 발송지연 -->
 	<update id="delay" parameterType="java.util.Map">
-		update orders_detail set order_status = '발송지연중' where order_number in
+		update orders_detail set order_status = '발송지연중' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -418,7 +424,7 @@
 	
 	<!-- 주문취소 -->
 	<update id="cancelSales" parameterType="java.util.Map">
-		update orders_detail set order_status = '주문취소' where order_number in
+		update orders_detail set order_status = '주문취소' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -426,7 +432,7 @@
 	
 	<!-- 배송완료 -->
 	<update id="deliveryComplete" parameterType="java.util.Map">
-		update orders_detail set order_status = '배송완료' where order_number in
+		update orders_detail set order_status = '배송완료' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -434,7 +440,7 @@
 	
 	<!-- 구매확정 -->
 	<update id="purchaseConfirmed" parameterType="java.util.Map">
-		update orders_detail set order_status = '구매확정' where order_number in
+		update orders_detail set order_status = '구매확정' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
