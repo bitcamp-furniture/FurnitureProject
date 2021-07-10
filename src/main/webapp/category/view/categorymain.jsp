@@ -26,7 +26,7 @@
 
                     <div class="hero__item set-bg" data-setbg="/furniture/category/image/hero/banner.png">
                         <div class="hero__text">
-    <input type="hidden" id="memId"/>
+    						<input type="hidden" id="memId"/>
                             <span>편안한 침대</span>
                             <h2>숙면보장<br />푹신푹신한 침대</h2>
                             <p>Free Pickup and Delivery Available</p>

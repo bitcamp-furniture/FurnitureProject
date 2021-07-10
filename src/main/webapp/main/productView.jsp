@@ -444,7 +444,7 @@
                             </div>
                             <div class="product__item__text">
                                 <h6><a href="#">${productDTO.product_name}</a></h6>
-                                <div class="product__item__price">${productDTO.product_price}/div>
+                                <div class="product__item__price">${productDTO.product_price}</div>
                                 <div class="cart_add">
                                     <a href="#">Wish List</a>
                                 </div>

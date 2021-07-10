@@ -45,6 +45,7 @@ $(function(){
             $('.product_name_span_'+(index+1)).html(items.email)
             $('.review_content_p_'+(index+1)).html(items.review_content)
             $('.rating_'+(index+1)).html(stars).css('color', 'gold')
+            $('.reviewALink'+(index+1)).attr('href', '/furniture/main/productView?id='+items.product_id+'&pg=1')
             
             items.review_stars = stars;
          });//each 
