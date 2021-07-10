@@ -72,7 +72,8 @@ product_code VARCHAR2(50), -- 제품코드 ex.BED_UNIT2_
 product_price NUMBER, -- 가격
 product_category_name VARCHAR2(50), -- 카테고리명
 product_category1 NUMBER, -- 카테고리1
-product_category2 NUMBER-- 카테고리2
+product_category2 NUMBER,-- 카테고리2
+product_memo VARCHAR2(4000) --상품 상세설명
 );
 
 --상품 seq문
@@ -233,3 +234,9 @@ product_color VARCHAR2(30) --상품컬러--
 );
 create sequence seq_orders_detail nocycle nocache;
 
+--배송 테이블
+create table orderControl(
+id NUMBER primary key,
+order_number VARCHAR2(80),
+member_id VARCHAR2(80),
+delivery_number VARCHAR2(80));

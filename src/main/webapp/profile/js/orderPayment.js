@@ -13,7 +13,8 @@ $('#orderPaymentBtn').click(function(){
 $('#pointCheckbox').click(function(){
 	$('#pointText').val($('#memberpoint').val());
 	$('#totalPay').text(($('#total').val()-$('#pointText').val()).toLocaleString());
-    $('#memberpointval').text('0');
+
+	$('#memberpointval').text('0');
 //	var totalPay=$('#total').val()-$('#pointText').val()
 });
 

@@ -46,7 +46,7 @@
 		<br>
 		<br>
 
-		<input type="button" value="목록으로"  >
+		<input type="button" value="목록으로" id="FaQListBtn" >
 		<br>
 	</div>
 </form>
@@ -54,6 +54,8 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-
+$('#FaQListBtn').click(function() {
+	location.href='/furniture/main/FaQ'
+});
 </script>
 
