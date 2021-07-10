@@ -208,7 +208,7 @@
 										,#{product_amounts}
 										,#{order_number}
 										,#{product_id}
-										,'READY'
+										,'결제완료'
 										,#{product_color}
 										 )
 	
