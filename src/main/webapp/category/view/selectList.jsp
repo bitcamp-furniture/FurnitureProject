@@ -68,16 +68,14 @@
 <script type="text/javascript">
 function addWish(id) {
 	if($('#memId').val() == '0'){
-		swal("로그인이 필요한 서비스입니다.", {
-			buttons: true,
-		})
-		.then((value) => {
-				  switch (value) {
-				    default:
-						location.href = "/furniture/member/loginForm";
-				  }
-				});
-				
+	      swal("로그인이 필요한 서비스입니다.", {
+	         buttons: true,
+	         
+	      }).then((value) => {
+	              if (value) {
+	               location.href = "/furniture/member/loginForm";
+	              }
+	            });				
 	}else{
 
 		$.ajax({

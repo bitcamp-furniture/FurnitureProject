@@ -197,8 +197,13 @@ $('#mypagePrivateModifyBtn').click(function(){
 				   'addr2': $('#mypagePrivateModifyAddr2').val(),
 			},
 			success: function(){
-				alert('성공');
-				location.href='/furniture/profile/profile';
+				swal({
+		             title: "성공!",
+		             text: "회원정보가 업데이트되었습니다.", 
+		             type: "success"
+		          }).then(function(){
+		             window.location = '/furniture/profile/profile';
+		          });
 			},
 			error: function(err){
 				console.log(err);
@@ -250,8 +255,13 @@ $('#mypageContactModifyBtn').click(function(){
 				   'phone': $('#mypageContactModifyPhone').val(),
 			},
 			success: function(){
-				alert('성공');
-				location.href='/furniture/profile/profile';
+				swal({
+		             title: "성공!",
+		             text: "회원정보가 업데이트되었습니다.", 
+		             type: "success"
+		          }).then(function(){
+		             window.location = '/furniture/profile/profile';
+		          });
 			},
 			error: function(err){
 				console.log(err);
@@ -336,8 +346,13 @@ $('#mypagePasswordModifyBtn').click(function(){
 				   'password': newPwd,
 			},
 			success: function(){
-				alert('성공');
-				location.href='/furniture/profile/profile';
+				swal({
+		             title: "성공!",
+		             text: "회원정보가 업데이트되었습니다.", 
+		             type: "success"
+		          }).then(function(){
+		             window.location = '/furniture/profile/profile';
+		          });
 			},
 			error: function(err){
 				console.log(err);
@@ -410,19 +425,17 @@ $('#mypageWithdrawalBtn').click(function(){
 			type: 'post',
 			data: 'id=' +$('#id').val(),
 			success: function(){
-				alert('회원탈퇴가 완료되었습니다.');
-				location.href='/furniture/index.jsp';
-			
+				swal({
+		             title: "회원탈퇴가 완료되었습니다."
+		          }).then(function(){
+		             window.location = '/furniture/index.jsp';
+		          });
 			},
 			error: function(err){
 				console.log(err);
 				alert('실패');
 			}
 		}); //ajax
-	}
-	else 
-	{
-		history.back();
 	}
 		
 });
