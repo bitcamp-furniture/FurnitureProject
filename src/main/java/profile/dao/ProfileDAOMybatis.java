@@ -159,8 +159,12 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
+	public void payment(Map outputMap) {
+		sqlSession.insert("profileSQL.payment", outputMap);
+	}
+
+	@Override	
 	public void memberDelete(String id) {
-		
 		sqlSession.delete("profileSQL.memberDelete",id);
 	}
 

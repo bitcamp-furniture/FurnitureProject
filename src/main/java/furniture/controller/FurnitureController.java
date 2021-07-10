@@ -42,7 +42,6 @@ import furniture.bean.ReviewDTO;
 import furniture.bean.Review_paging;
 import furniture.service.FurnitureService;
 import profile.bean.CartDTO;
-import profile.bean.WishlistDTO;
 
 @Controller
 public class FurnitureController {
@@ -443,6 +442,8 @@ public class FurnitureController {
 			furnitureService.addCart(map);
 		}
 	}
+
+
 
 }
 
