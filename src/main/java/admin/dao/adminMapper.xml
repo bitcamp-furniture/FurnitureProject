@@ -144,7 +144,7 @@
 					inner join product_image pi
 						on p.id=pi.id
 					                        
-                    where od.order_status = '결제완료'
+                    where od.order_status = 'READY'
 				 order by order_date desc
 
 	</select>
@@ -364,7 +364,7 @@
       from orders_detail o,product p
       where o.product_id = p.id
       group by p.product_category_name,o.product_amounts
-      order by o.product_amounts desc)
+      order by sum(o.product_amounts) desc)
       where rownum <= 6
    ]]>
    </select>
@@ -376,7 +376,7 @@
       from orders_detail o,product p
       where o.product_id = p.id
       group by p.product_category_name,o.product_amounts
-      order by o.product_amounts desc)
+      order by sum(o.product_amounts) desc)
       where rownum <= 6
    ]]>
    </select>

@@ -17,7 +17,6 @@ $('#loginBtn').click(function(){
             },
             dataType: 'text',
             success: function(data){
-                alert(data);
                 if(data == 'success') {
                     //location.href='/furniture/index.jsp';
                     var loginValue = document.getElementById('login').value;

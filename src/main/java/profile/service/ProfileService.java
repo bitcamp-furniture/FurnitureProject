@@ -50,7 +50,7 @@ public interface ProfileService {
 
 	public List<CartDTO> getAllCartList(int memId);
 
-	public void paymentWrite(Map<String, Object> map);
+	public int paymentWrite(Map<String, Object> map);
 
 	public int getOrderNum(String email);
 

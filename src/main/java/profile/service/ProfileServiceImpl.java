@@ -196,8 +196,8 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public void paymentWrite(Map<String, Object> map) {
-		profileDAO.paymentWrite(map);		
+	public int paymentWrite(Map<String, Object> map) {
+		return profileDAO.paymentWrite(map);
 	}
 
 	@Override

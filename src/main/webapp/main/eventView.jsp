@@ -140,7 +140,7 @@ $(function() {
 			$.each(data.selectList,function(index,items){
 		         
 		           $('<div/>', {class: "col-lg-4 col-md-6 col-sm-6"}).append($('<div/>', {class:"product__item"}).append($('<div/>',{class:"product__item__pic set-bg"})
-		                   .append($('<a/>',{href: "/furniture/main/productView"}) 
+		                   .append($('<a/>',{href:"/furniture/main/productView?id="+items.id+"&pg=1"}) 
 		                 .append($('<img>',{
 		                	 id:"product_img_thumb", 
 		                	 alt:items.product_name,
@@ -153,7 +153,7 @@ $(function() {
 		                    	  style: 'padding: 0',
 		                    	  text: items.product_name
 		                    	  })
-		                        .append($('<a/>',{href: '#'}))).append($('<h5/>',{id:"product_price",text: "₩"+items.product_price.toLocaleString()}))))
+		                        .append($('<a/>',{href:"/furniture/main/productView?id="+items.id+"&pg=1"}))).append($('<h5/>',{id:"product_price",text: "₩"+items.product_price.toLocaleString()}))))
 		                      .appendTo($("#product_list"));
 			}); // each
 
@@ -182,12 +182,12 @@ function productPaging(pg){
 			$.each(data.selectList,function(index,items){
 		         
 		           $('<div/>', {class: "col-lg-4 col-md-6 col-sm-6"}).append($('<div/>', {class:"product__item"}).append($('<div/>',{class:"product__item__pic set-bg"})
-		                   .append($('<a/>',{href: "/furniture/main/productView"}) 
+		                   .append($('<a/>',{href:"/furniture/main/productView?id="+items.id+"&pg=1"}) 
 		                 .append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/"+items.product_img_thumb})))
 		                      .append($('<ul/>',{class:"product__item__pic__hover"})
 		                      
 		                      )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>',{id:"product_name",text: items.product_name})
-		                        .append($('<a/>',{href: '#'}))).append($('<h5/>',{id:"product_price",text: "₩"+items.product_price.toLocaleString()}))))
+		                        .append($('<a/>',{href:"/furniture/main/productView?id="+items.id+"&pg=1"}))).append($('<h5/>',{id:"product_price",text: "₩"+items.product_price.toLocaleString()}))))
 		                      .appendTo($("#product_list"));
 			}); // each
 

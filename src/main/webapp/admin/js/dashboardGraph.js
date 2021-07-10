@@ -24,7 +24,7 @@ window.onload = function(){
                         //borderWidth: 1
                   },{
                      type:'bar',
-                     label:'일간매출',
+                     label:'일간매출(백만원단위)',
                      data:data.orderSales,
                      backgroundColor:"rgb(30,144,255)",
                      borderColor:"rgb(30,144,255)",
@@ -90,16 +90,16 @@ window.onload = function(){
                      fill:false,
                      lineTension:0
                         //borderWidth: 1
-                  }]
+                  }],
 
                },
                options:{               
                   legend:{
                      position:'right'
                      //display: false
-                  }                  
-               },
-            
+                  },        
+               }
+
             });//차트 그리기
       },
       error : function(err) {

@@ -126,13 +126,10 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
-	public void paymentWrite(Map<String, Object> map) {
+	public int paymentWrite(Map<String, Object> map) {
 		sqlSession.insert("profileSQL.paymentWriteOrders",map);
 		int orderNumber = sqlSession.selectOne("profileSQL.getOrderNum", map);
-	
-		
-		
-		System.out.println();
+
 		List<CartDTO> cartList = (List<CartDTO>) map.get("cartList");
 		for(CartDTO data: cartList) {
 			OrderDetailDTO temp = new OrderDetailDTO();
@@ -142,11 +139,16 @@ public class ProfileDAOMybatis implements ProfileDAO {
 			temp.setOrder_number(orderNumber);
 			temp.setProduct_id(data.getProduct_id());
 			temp.setProduct_color(data.getProduct_option_color());
-				
-			System.out.println(temp + "temp");
+
 			sqlSession.insert("profileSQL.paymentWriteDetailOrders",temp);
 		}//for
-		
+
+		Map<String, Object> ordercontrolMap = new HashMap<String, Object>();
+		ordercontrolMap.put("member_id", map.get("memId"));
+		ordercontrolMap.put("order_number", orderNumber);
+		sqlSession.insert("profileSQL.ordercontrol",ordercontrolMap);
+
+		return orderNumber;
 		
 		
 	}
