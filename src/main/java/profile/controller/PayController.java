@@ -186,6 +186,7 @@ public class PayController {
     @RequestMapping(value = "/pay/cancel")
     @org.springframework.web.bind.annotation.ResponseBody
     public ModelAndView cancel(@RequestParam Map<String, String> map) {
+        String tId = profileService.gettId(map.get("check"));
 
         ModelAndView mav = new ModelAndView();
 
@@ -196,7 +197,7 @@ public class PayController {
             Gson gsonObj = new Gson();
 
             Map<String, Object> cancelMap = new HashMap<String, Object>();
-            cancelMap.put("transactionId", map.get("transactionId"));
+            cancelMap.put("transactionId", tId);
             String signature = Sha256("test_kakao|"+map.get("transactionId")+"|5a594647c79a45deb579ff5c96cfb4cf");
             cancelMap.put("signature", signature);
 

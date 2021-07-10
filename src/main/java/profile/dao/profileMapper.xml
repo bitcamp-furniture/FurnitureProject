@@ -208,7 +208,7 @@
 										,#{product_amounts}
 										,#{order_number}
 										,#{product_id}
-										,'결제완료'
+										,'PAYMENTCOMPLETED'
 										,#{product_color}
 										 )
 	
@@ -236,5 +236,9 @@
 			  ,#{member_id}
 			  )
 	</insert>
+
+	<select id="gettId"  parameterType="String" resultType="String">
+		select transactionId from payment where orderNumber=#{orderNumber}
+	</select>
 
  </mapper>

@@ -878,28 +878,13 @@ $('#cancelSales').click(function(){
 		alert("선택한 주문이 없습니다.");
 	}else{
         $.ajax({
-            type: 'post',
-            url: '/furniture/admin/product/cancelSales',
-            data: $('#orderForm').serialize(),
-            dataType: 'text',
-            success: function() {
-                alert('주문이 취소되었습니다.');
-                location.reload()
-
-            },
-            error: function(err){
-                console.log(err);
-            }
-        });
-
-
-		$.ajax({
 			type: 'post',
-			url: '/furniture/profile/pay/cancel',
+			url: '/furniture/pay/cancel',
 			data: $('#orderForm').serialize(),
-			dataType: 'text',
-			success: function() {
-				alert('주문이 취소되었습니다.');
+			dataType: 'json',
+			success: function(data) {
+			    console.log(JSON.stringify(data));
+				//alert('주문이 취소되었습니다.');
 				location.reload()
 
 			},
@@ -907,7 +892,7 @@ $('#cancelSales').click(function(){
 				console.log(err);
 			}
 		});
-		
+
 	}
 });
 
