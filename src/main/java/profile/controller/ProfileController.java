@@ -265,7 +265,6 @@ public class ProfileController {
 	public ModelAndView getOrderList(@RequestParam String id,
 									@RequestParam(required = false, defaultValue="1") String orderPg) {
 
-    	System.out.println("id="+id);
 		List<OrderDTO> list = profileService.getOrderList(id, orderPg);
 
 		//페이징 처리
@@ -373,19 +372,12 @@ public String orderComplete(Model model, HttpSession session, OrderDetailDTO ord
 	//세션에서 id,email 을 받아옴
 	String email = (String) session.getAttribute("memEmail");
 	int memId = (Integer) session.getAttribute("memId");
-	System.out.println(1);
-	//List<CartDTO> cartList = profileService.getAllCartList(memId);
 	memberDTO = profileService.getMember(memId);
 	
-	System.out.println(2);
 	int orderNumber= profileService.getOrderNum(memId+"");
-	System.out.println(3);
 	orderDetailDTO.setOrder_number(orderNumber);
 	
-	
-	System.out.println(4);
 	profileService.cartTotalDelete(memId+"");
-
 			
 	model.addAttribute("memberDTO",memberDTO);
 	model.addAttribute("orderDetailDTO",orderDetailDTO);

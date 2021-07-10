@@ -48,11 +48,11 @@ $('#order-tap').click(function() {
                 })).append($('<td/>', {
                         align: 'center'
                     }).append($('<a/>', {
-                        href: '#',
+                    	href: '/furniture/main/productView?id='+item.product_id+'&pg=1',
                         align: 'center',
                         id: 'subjectA'
-                    })).append($('<img>', {
-                        src: '/furniture/img/' + item.product_img_thumb,
+                    })).append($('<img/>', {
+                        src: '/furniture/storage/' + item.product_img_thumb,
                         class: 'orderlist_img _' + item.order_number
                     }))
                 ).append($('<td/>', {
@@ -146,7 +146,7 @@ function orderPaging(orderPg) {
                 })).append($('<td/>', {
                         align: 'center'
                     }).append($('<a/>', {
-                        href: '#',
+                    	href: '/furniture/main/productView?id='+item.product_id+'&pg=1',
                         align: 'center',
                         id: 'subjectA'
                     })).append($('<img>', {

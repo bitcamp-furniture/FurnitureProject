@@ -41,7 +41,7 @@ $('#pointText').change(function(){
 
 //결제하기 버튼 클릭 시 
 $('#paymentBtn').click(function(){
-	alert($('#total').val() +" "+  $('#cartList').val())
+	//alert($('#total').val() +" "+  $('#cartList').val())
 
 	$.ajax({
 		type:'post',
