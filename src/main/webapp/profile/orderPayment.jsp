@@ -166,7 +166,7 @@
 	<table class="payTable" width="50%" >
         <tr >
 
-            <td width="300px" vertical-align:middle;"><h4>결제방법 </h4></td>
+            <td width="300px" vertical-align:middle;><h4>결제방법 </h4></td>
 			<td></td>            
         </tr>
         
