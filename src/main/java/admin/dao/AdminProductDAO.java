@@ -22,6 +22,25 @@ public interface AdminProductDAO {
 
 	public void cancelSales(Map<String, String[]> map);
 
+	public void deliveryComplete(Map<String, String[]> map);
+	
+	public void purchaseConfirmed(Map<String, String[]> map);
+
+	public void invoice(Map<String, String> map);
+
 	public List<AdminProductDTO> getSearchOrderList(Map<String, String> map);
+
+	public List<AdminProductDTO> getdeliveryReady(Map<String, Integer> map);
+
+	public List<AdminProductDTO> getduringDeliver(Map<String, Integer> map);
+
+	public List<AdminProductDTO> getDeliverComplete(Map<String, Integer> map);
+
+	public List<AdminProductDTO> getOrderCancle(Map<String, Integer> map);
+
+	public List<AdminProductDTO> getPurchaseConfirmed(Map<String, Integer> map);
+
+	public void membeCumulativerAmount(Map<String, String> map);
+
 
 }

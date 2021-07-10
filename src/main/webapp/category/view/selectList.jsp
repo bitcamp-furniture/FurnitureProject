@@ -37,7 +37,11 @@
       border-radius: 5px;
       cursor: pointer;
    }
+.product__item__pic__hover a{
+	cursor: pointer;
+}
 </style>
+   
 
 <br>
 <select name="selectListSort" id="selectListSort">
@@ -60,11 +64,24 @@
 
 
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 function addWish(id) {
 	if($('#memId').val() == '0'){
-		alert("로그인이 필요한 서비스입니다.");
-		location.href = "/furniture/member/loginForm";
+		swal("로그인이 필요한 서비스입니다.", {
+			buttons: true,
+		})
+		.then((value) => {
+				  switch (value) {
+				    default:
+						location.href = "/furniture/member/loginForm";
+				  }
+				});
+				
+		
+		
+			
+			
 	}else{
 
 		$.ajax({
@@ -75,7 +92,7 @@ function addWish(id) {
 			},
 			dataType : "text",
 			success : function(data){
-				alert('위시리스트 추가 완료');
+				swal("성공!", "위시리스트에 상품을 추가하였습니다", "success");
 			},
 			error : function(){
 				alert("실패 :");

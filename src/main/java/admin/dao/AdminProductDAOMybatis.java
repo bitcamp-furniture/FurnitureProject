@@ -28,6 +28,12 @@ public class AdminProductDAOMybatis implements AdminProductDAO {
 	}
 	
 	@Override
+	public void invoice(Map<String, String> map) {
+		sqlSession.update("adminSQL.invoice", map);
+		
+	}
+	
+	@Override
 	public void deliveryReady(Map<String, String[]> map) {
 		sqlSession.update("adminSQL.deliveryReady", map);
 	}
@@ -52,13 +58,56 @@ public class AdminProductDAOMybatis implements AdminProductDAO {
 
 	@Override
 	public void cancelSales(Map<String, String[]> map) {
-		sqlSession.delete("adminSQL.cancelSales", map);
+		sqlSession.update("adminSQL.cancelSales", map);
+		
+	}
+	
+	@Override
+	public void deliveryComplete(Map<String, String[]> map) {
+		sqlSession.update("adminSQL.deliveryComplete", map);
+		
+	}
+
+	@Override
+	public void purchaseConfirmed(Map<String, String[]> map) {
+		sqlSession.update("adminSQL.purchaseConfirmed", map);
 		
 	}
 
 	@Override
 	public List<AdminProductDTO> getSearchOrderList(Map<String, String> map) {
 		return sqlSession.selectList("adminSQL.getSearchOrderList", map);
+	}
+
+	@Override
+	public List<AdminProductDTO> getdeliveryReady(Map<String, Integer> map) {
+		return sqlSession.selectList("adminSQL.getDeliveryReady", map);
+	}
+
+	@Override
+	public List<AdminProductDTO> getduringDeliver(Map<String, Integer> map) {
+		return sqlSession.selectList("adminSQL.getDuringDeliver", map);
+	}
+
+	@Override
+	public List<AdminProductDTO> getDeliverComplete(Map<String, Integer> map) {
+		return sqlSession.selectList("adminSQL.getDeliverComplete", map);
+	}
+
+	@Override
+	public List<AdminProductDTO> getOrderCancle(Map<String, Integer> map) {
+		return sqlSession.selectList("adminSQL.getOrderCancle", map);
+	}
+
+	@Override
+	public List<AdminProductDTO> getPurchaseConfirmed(Map<String, Integer> map) {
+		return sqlSession.selectList("adminSQL.getPurchaseConfirmed", map);
+	}
+
+	@Override
+	public void membeCumulativerAmount(Map<String, String> map) {
+		sqlSession.update("adminSQL.membeCumulativerAmount", map);
+		
 	}
 
 

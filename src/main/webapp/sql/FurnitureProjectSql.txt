@@ -234,3 +234,9 @@ product_color VARCHAR2(30) --상품컬러--
 );
 create sequence seq_orders_detail nocycle nocache;
 
+--배송 테이블
+create table orderControl(
+id NUMBER primary key,
+order_number VARCHAR2(80),
+member_id VARCHAR2(80),
+delivery_number VARCHAR2(80));

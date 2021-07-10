@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<style type="text/css">
+.product__item__pic__hover a{
+	cursor: pointer;
+}
+</style>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
@@ -24,8 +30,8 @@
                             <span>편안한 침대</span>
                             <h2>숙면보장<br />푹신푹신한 침대</h2>
                             <p>Free Pickup and Delivery Available</p>
-                            <a href="http://localhost:8080/furniture/category/view/selectList?category=%EC%86%8C%ED%8C%8C%EB%B2%A0%EB%93%9C" class="primary-btn">SHOP NOW</a>
-                        </div>
+                            <a href="http://localhost:8080/furniture/category/view/selectList?category=소파베드" class="primary-btn">SHOP NOW</a>
+                        </div> 
                     </div>
      
 
