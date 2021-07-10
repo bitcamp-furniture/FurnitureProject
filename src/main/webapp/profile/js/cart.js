@@ -168,7 +168,7 @@ $(document).on('click', '.cartDeleteBtn ', function(){
         type: 'post',
         data: 'id=' + $(this).attr('class').slice(14),
         success: function(){
-            alert('삭제 성공');
+        	swal("선택하신 상품을 삭제하였습니다.", "");
             $('#cart-tap').trigger('click');
         },
         error: function(err){
@@ -188,7 +188,7 @@ $('.totalCartDeleteBtn').click(function(){
         type: 'post',
         data: 'memberId=' +$('#id').val(),
         success: function(){
-            alert('삭제 성공');
+        	swal("상품을 삭제하였습니다.", "");
             $('#cart-tap').trigger('click');
         },
         error: function(err){

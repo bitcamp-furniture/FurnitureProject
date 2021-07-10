@@ -71,7 +71,7 @@ function addWish(id) {
 	      swal("로그인이 필요한 서비스입니다.", {
 	         buttons: true,
 	         
-	      }).then((value) => {
+	      }).then((value) => { 
 	              if (value) {
 	               location.href = "/furniture/member/loginForm";
 	              }
