@@ -50,7 +50,7 @@
     margin: 5px;
     height: 30px;
 }
-.orderPaymentBtn,#paymentBtn{
+.orderPaymentBtn,#paymentBtn,#orderCheckGo{
     background: #292f86;
     color : white;
     border:0;
@@ -75,3 +75,35 @@
 	text-align: center;
 	
 }
+
+
+
+.title{
+    display: inline-block;
+    padding: 20px 50px;
+}
+.tg-0pky{
+	padding:5px 10px 15px 20px;
+}
+
+table{
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	
+}
+.paymentBtnDiv{
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+    padding: 90px 50px;
+}
+#orderThanks{
+	display: inline-block;
+	padding: 200px 500px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	
+}
+

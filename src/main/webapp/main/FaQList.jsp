@@ -65,9 +65,6 @@
     <td onclick="clickDiv('교환/반품');">
       	교환/반품
    </td>
-    <td onclick="clickDiv('AS');">
-      	A/S
-   </td>
     <td onclick="clickDiv('회원정보');">
       	회원정보
    </td>
@@ -131,7 +128,8 @@ function faQAllListPaging(pg)
 					text: items.div
 				})).append($('<td/>', {
 					}).append($('<a/>', {
-						href: '#',
+						//href: '#',
+						align: 'left',
 						text: items.subject,
 						id: 'subjectA',
 						href: '/furniture/main/FaQView?id='+items.id,
@@ -170,10 +168,12 @@ function faQListPaging(div,pg)
 			
 			$.each(data.faQList, function(index, items) {
 				$('<tr/>').append($('<td/>', {
+					width:'120',
 					align: 'center',
 					text: items.div
 				})).append($('<td/>', {
-					align: 'center'
+					width:'300',
+					align: 'left'
 					}).append($('<a/>', {
 						href: '#',
 						text: items.subject,
@@ -181,7 +181,8 @@ function faQListPaging(div,pg)
 						href: '/furniture/main/FaQView?id='+items.id,
 						class: 'subject_'+items.id  
 				}))).append($('<td/>', {
-					//align: 'center',
+					width:'150',
+					align: 'center',
 					text: items.created_faq
 				})).appendTo($('#FaQListTable'));
 	

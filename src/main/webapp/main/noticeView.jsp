@@ -28,10 +28,15 @@
 	float: right;
 }
 #noticeListBtn{
-	color: white;
-	background: darkblue;
-	border-radius: 5px;
-	border: none;
+	border-radius:5px;
+	border: 1px solid darkblue; 
+	background-color: rgba(0,0,0,0); 
+	color: darkblue; 
+	padding: 5px;
+}
+#noticeListBtn:hover{
+	color:white;
+	background-color: darkblue;
 }
 </style>
 

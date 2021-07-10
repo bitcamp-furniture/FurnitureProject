@@ -54,7 +54,7 @@ public class FurnitureController {
 	@Autowired
 	private ServletContext ctx;
 
-	private String webPath = "C:\\Users\\A\\Desktop\\최종프로젝트 관련\\프로젝트클론\\210629.1525\\src\\main\\webapp\\upload";
+	private String webPath = "D:\\123123\\src\\main\\webapp\\storage";
 	//주소는 각자의 컴퓨터 경로
 	
 	// 상품 상세컷 ... DB연결, 상품id 필요
@@ -177,11 +177,19 @@ public class FurnitureController {
 	// 메인 페이지 ... review ... 최신순 5개만!!!
 	@ResponseBody
 	@RequestMapping(value = "/main/reviewListTop5", method = RequestMethod.POST)
-	public ModelAndView reviewListTop5() {
+	public ModelAndView reviewListTop5(HttpSession session) {
 		List<ReviewDTO> reviewListTop5 = furnitureService.reviewListTop5();
 //		System.out.println(reviewListTop5);
+		int memId;
+		if(session.getAttribute("memId")==null) {
+			memId = 0;
+		} else {
+			memId = (Integer) session.getAttribute("memId");
+		}
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("reviewListTop5", reviewListTop5);
+		mav.addObject("memId", memId);
 		mav.setViewName("jsonView");
 		return mav;
 	}

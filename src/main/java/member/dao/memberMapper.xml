@@ -60,4 +60,9 @@
 	<select id="getkakaoId" parameterType="java.util.Map" resultType="member">
 		select * from member where kakaoId=#{kakaoId}
 	</select>
+	
+	<!-- 포인트 적립 -->
+	<update id="pointUpdate" parameterType="java.util.Map">
+		update member set point=#{point} where email=#{email}
+	</update>
 </mapper>

@@ -69,13 +69,8 @@
                             <div class="header__top__right">
                             
                                 <div class="header__top__right__links">
-                               <input type="text" class="search-input" placeholder="검색어를 입력하세요" onkeyup="enterkey();" size="20" />&emsp;
+                               <input type="text" class="search-input" placeholder="검색어를 입력하세요" onkeyup="enterkey();" size="30" />&emsp;
                                     <a class="search-icon" ><img src="/furniture/img/icon/search.png" alt=""  style="cursor: pointer;"></a>
-                                    <a href="#"><img src="/furniture/img/icon/heart.png" alt=""></a>
-                                </div>
-                                <div class="header__top__right__cart">
-                                    <a href="#"><img src="/furniture/img/icon/cart.png" alt=""> <span>0</span></a>
-                                    <div class="cart__price">Cart: <span id="장바구니_총금액"></span></div>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +87,7 @@
                         <li><a href="/furniture/category/view/category">전체상품보기</a>
                                 
                             </li>
-                             <li><a href="#">침대</a>
+                             <li><a href="/furniture/category/view/selectList?category=침대">침대</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=소파베드">소파베드</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=수납형침대">수납형 침대</a></li>
@@ -100,7 +95,7 @@
                                 </ul>
                             </li>
                         
-                             <li><a href="#">소파</a>
+                             <li><a href="/furniture/category/view/selectList?category=소파">소파</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=패브릭소파">패브릭소파</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=모듈식소파">모듈식소파</a></li>
@@ -108,7 +103,7 @@
                                 </ul>
                             </li>
                         
-                             <li><a href="#">책장/선반</a>
+                             <li><a href="/furniture/category/view/selectList?category=책장/선반">책장/선반</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=큐브형수납">큐브형수납</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=선반유닛">선반유닛</a></li>
@@ -117,7 +112,7 @@
                                 </ul>
                             </li>
 
-                             <li><a href="#">식탁/책상</a>
+                             <li><a href="/furniture/category/view/selectList?category=식탁/책상">식탁/책상</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=책상/컴퓨터책상">책상/컴퓨터 책상</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=침대협탁">침대 협탁</a></li>
@@ -127,7 +122,7 @@
                                 </ul>
                             </li>
                         
-                             <li><a href="#">수납장/장식장</a>
+                             <li><a href="/furniture/category/view/selectList?category=수납장/장식장">수납장/장식장</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=거실장/찬장">거실장/찬장</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=장식장">장식장</a></li>
@@ -136,7 +131,7 @@
                                 </ul>
                             </li>
                         
-                      <li><a href="#">옷장</a>
+                      		<li><a href="/furniture/category/view/selectList?category=옷장">옷장</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=여닫이옷장">여닫이 옷장</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=미닫이옷장">미닫이 옷장</a></li>
@@ -146,7 +141,7 @@
                                 </ul>
                             </li>
                         
-                             <li><a href="#">의자</a>
+                             <li><a href="/furniture/category/view/selectList?category=의자">의자</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=사무용의자">사무용 의자</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=식탁의자">식탁의자</a></li>
@@ -156,13 +151,11 @@
                                 </ul>
                             </li>
                             
-                            <!-- 추후 링크 수정 필요 -->
                             <li><a href="#">고객지원</a>
                             <ul class="dropdown">
                                     <li><a href="/furniture/main/notice">공지</a></li>
                                     <li><a href="/furniture/main/FaQ">FAQ</a></li>
                                     <li><a href="/furniture/main/event">이벤트</a></li>
-                                    <li><a href="/furniture/category/view/selectList?category=문의사항">문의사항</a></li>
                                 </ul>
                              </li>
                         </ul>
@@ -200,17 +193,19 @@
                         <h6>WORKING HOURS
                         <p class="text-white">
                      <br>
-                     IKEA 코리아 
+                     IKEZKE 
                      <br>
-                     주소 : (우) 14352 경기도 광명시 일직로 17 IKEA광명점
+                     주소 : 서울특별시 강남구 역삼동 
                      <br>
-                     사업자 등록번호 : 106-86-82871 사업자정보확인
+                     &emsp;강남대로94길 20 삼오빌딩 6층 
                      <br>
-                     대표자 : 프레드릭 요한손
+                     사업자 등록번호 : 106-86-12345
                      <br>
-                     통신판매업 신고 : 2018-경기광명-0209
+                     대표자 : 비트 캠프
                      <br>
-                     TEL : 1670-4532
+                     통신판매업 신고 : 2014-비트-0204
+                     <br>
+                     TEL : 1577-1577
                      </p>
                   </h6>
                     </div>

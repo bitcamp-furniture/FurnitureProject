@@ -190,8 +190,8 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public List<CartDTO> getAllCartList(String memberId) {
-		return profileDAO.getAllCartList(memberId);
+	public List<CartDTO> getAllCartList(int memId) {
+		return profileDAO.getAllCartList(memId);
 
 	}
 
@@ -201,8 +201,14 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public int getOrderNum(String email) {
-		return profileDAO.getOrderNum(email);
+	public int getOrderNum(String memId) {
+		return profileDAO.getOrderNum(memId);
+	}
+
+	@Override
+	public void memberDelete(String id) {
+		profileDAO.memberDelete(id);
+		
 	}
 
 	@Override

@@ -60,4 +60,9 @@ public class MemberDAOMybatis implements MemberDAO{
 		return sqlSession.selectOne("memberSQL.getkakaoId", map);
 	}
 
+	@Override
+	public void pointUpdate(Map<String, String> map) {
+		sqlSession.update("memberSQL.pointUpdate", map);		
+	}
+
 }

@@ -55,3 +55,16 @@
 #profile-tap4:checked ~ #profile-tap1-content1,
 #profile-tap5:checked ~ #profile-tap1-content1 {
     display: block;}
+    
+    
+#mypageWithdrawalBtn {
+	border-radius:5px;
+	border: 1px solid darkblue; 
+	background-color: rgba(0,0,0,0); 
+	color: darkblue; 
+	padding: 5px;
+}
+#mypageWithdrawalBtn:hover {
+	color:white;
+	background-color: darkblue;
+}

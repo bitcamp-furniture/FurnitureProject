@@ -256,6 +256,11 @@
                         <input type="button" value="저장" id="mypagePasswordModifyBtn">
                     </div>
                     <br>
+                    <%--회원탈퇴 --%>
+                    <div id="mypageWithdrawalDiv" align="center">
+                    	<input type="button" value="회원탈퇴" id="mypageWithdrawalBtn">
+                    </div>
+                    <br>
                     <br>
 
 

@@ -23,4 +23,6 @@ public interface MemberDAO {
 	public void kakaoUpdate(Map<String, String> map);
 
 	public MemberDTO getkakaoId(Map<String, String> map);
+
+	public void pointUpdate(Map<String, String> map);
 }

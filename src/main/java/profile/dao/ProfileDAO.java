@@ -49,11 +49,14 @@ public interface ProfileDAO {
 
 	void cartTotalDelete(String memberId);
 
-	List<CartDTO> getAllCartList(String memberId);
+	List<CartDTO> getAllCartList(int memId);
 
 	public void paymentWrite(Map<String, Object> map);
 
-	public int getOrderNum(String email);
-
 	public void payment(Map outputMap);
+
+	public int getOrderNum(String memId);
+
+	public void memberDelete(String id);
+
 }

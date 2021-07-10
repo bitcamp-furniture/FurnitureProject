@@ -121,8 +121,8 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
-	public List<CartDTO> getAllCartList(String memberId) {
-		return sqlSession.selectList("profileSQL.getAllCartList", memberId);
+	public List<CartDTO> getAllCartList(int memId) {
+		return sqlSession.selectList("profileSQL.getAllCartList", memId);
 	}
 
 	@Override
@@ -152,15 +152,20 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
-	public int getOrderNum(String email) {
+	public int getOrderNum(String memId) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("email", email);
+		map.put("memId", memId);
 		return sqlSession.selectOne("profileSQL.getOrderNum", map);
 	}
 
 	@Override
 	public void payment(Map outputMap) {
 		sqlSession.insert("profileSQL.payment", outputMap);
+	}
+
+	@Override	
+	public void memberDelete(String id) {
+		sqlSession.delete("profileSQL.memberDelete",id);
 	}
 
 }

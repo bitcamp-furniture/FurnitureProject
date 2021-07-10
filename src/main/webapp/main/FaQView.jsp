@@ -16,7 +16,8 @@
 #wholeDiv {
 	margin: 0 auto;
 	align-items: center;
-	width: 800px;
+	width: 60%;
+	
 }
 
 #FaQSubject {
@@ -24,8 +25,24 @@
 	font-weight: bold;
 }
 
+#FaQContent pre{
+	font-family: 'Malgun Gothic';
+	font-size: 16px;
+	
+}
 #FaQeCreatedAt {
 	float: right;
+}
+#FaQListBtn{
+	border-radius:5px;
+	border: 1px solid darkblue; 
+	background-color: rgba(0,0,0,0); 
+	color: darkblue; 
+	padding: 5px;
+}
+#FaQListBtn:hover{
+	color:white;
+	background-color: darkblue;
 }
 
 </style>
@@ -46,7 +63,8 @@
 		<br>
 		<br>
 
-		<input type="button" value="목록으로"  >
+		<input type="button" value="목록으로" id="FaQListBtn" >
+		<br>
 		<br>
 	</div>
 </form>
@@ -54,6 +72,8 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-
+$('#FaQListBtn').click(function() {
+	location.href='/furniture/main/FaQ'
+});
 </script>
 
