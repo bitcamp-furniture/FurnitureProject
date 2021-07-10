@@ -103,7 +103,7 @@
                                 </ul>
                             </li>
                         
-                             <li><a href="/furniture/category/view/selectList?category=책장/선반">책장/선반</a>
+                             <li><a href="/furniture/category/view/selectList?category=책장/선반유닛">책장/선반</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=큐브형수납">큐브형수납</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=선반유닛">선반유닛</a></li>
@@ -274,6 +274,7 @@
 
 <input type="hidden" name="login" id="login" value="${login12}">
 <!-- Js Plugins -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/furniture/js/jquery-3.3.1.min.js"></script>
 <script src="/furniture/js/bootstrap.min.js"></script>
 <script src="/furniture/js/jquery.nice-select.min.js"></script>
