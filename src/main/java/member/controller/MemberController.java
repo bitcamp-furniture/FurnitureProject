@@ -208,5 +208,22 @@ public class MemberController {
 		}
 		
 	//-------------------------------------------------------------------
-	
+		//포인트적립
+		@RequestMapping(value="/pointUpdate", method=RequestMethod.POST)
+		@ResponseBody	
+		public void pointUpdate(@RequestParam String point
+								,HttpSession session
+								,MemberDTO memberDTO
+								,Map<String, String> map) {
+			//int temp=Integer.parseInt(savingPoint);
+			//String point = temp+"";
+			//memberDTO.setEmail((String) session.getAttribute("memEmail"));
+			String email = ((String)session.getAttribute("memEmail"));
+			
+			map.put("email", email);
+			map.put("point", point);
+
+			memberService.pointUpdate(map);
+		
+		}
 }

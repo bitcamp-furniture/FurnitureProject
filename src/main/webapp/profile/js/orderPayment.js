@@ -11,10 +11,12 @@ $('#orderPaymentBtn').click(function(){
 
 //포인트 전액 사용 버튼
 $('#pointCheckbox').click(function(){
-	$('#pointText').val($('#memberpoint').val());
+	$('#pointText').val($('#memberpoint').val().slice(0,-2));
 	$('#totalPay').text(($('#total').val()-$('#pointText').val()).toLocaleString());
 
 	$('#memberpointval').text('0');
+	$('#pointUsing').text($('#memberpoint').val().slice(0,-2));
+
 //	var totalPay=$('#total').val()-$('#pointText').val()
 });
 
@@ -23,12 +25,14 @@ $('#pointCheckbox').click(function(){
 $('#pointText').change(function(){
 	
 	//alert(parseInt($('#pointText').val()) +parseInt($('#memberpoint').val()))
-	
 	if(parseInt($('#pointText').val()) > parseInt($('#memberpoint').val())){
 		alert('보유 금액 이상 사용은 불가능합니다.')
 		$('#pointText').val('0');
 	}else{
+		$('#pointUsing').text($('#pointText').val());
 		$('#totalPay').text(($('#total').val()-$('#pointText').val()).toLocaleString());
+		
+		
 	}
 	
 });
@@ -48,6 +52,16 @@ $('#paymentBtn').click(function(){
 			
 			location.href='/furniture/profile/orderComplete'
 			
+			//포인트적립	
+				$.ajax({
+					type:'post',
+					url:'/furniture/member/pointUpdate',
+					data:{'point':$('#savingPoint').val()},
+					success:function(){},
+					errer:function(err){
+						console.log(err);
+					}
+				});//ajax
 		},
 		errer:function(err){
 			console.log(err);
@@ -117,4 +131,10 @@ function execDaumPostcode() {
 }
 
 
+
+//주문완료후 , 주문내역확인하기 버튼 클릭시
+$('#orderCheckGo').click(function(){
+	alert('gg')
+	location.href = '/furniture/profile/profile';
+});
 

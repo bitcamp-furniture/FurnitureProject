@@ -94,4 +94,11 @@ public class MemberServiceImpl implements MemberService {
 		session.setAttribute("memName", memberDTO.getName());
 	}
 
+	@Override
+	public void pointUpdate(Map<String, String> map) {
+		memberDAO.pointUpdate(map);		
+	}
+
+
+
 }
