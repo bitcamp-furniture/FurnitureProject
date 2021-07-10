@@ -68,51 +68,9 @@ $('#paymentBtn').click(function(){
         }
     });//ajax
 
-	// $.ajax({
-	// 	type:'post',
-	// 	url:'/furniture/profile/paymentWrite',
-	// 	data: {'total':$('#total').val()},
-	// 	success:function(){
-	// 		alert('성공');
-	//
-	// 		location.href='/furniture/profile/orderComplete'
-	//
-	// 	},
-	// 	errer:function(err){
-	// 		console.log(err);
-	// 	}
-	// });//ajax
-
-
-
-	$.ajax({
-		type:'post',
-		url:'/furniture/profile/paymentWrite',
-		data: {'total':$('#total').val()},
-		success:function(){
-			alert('성공');
-			
-			location.href='/furniture/profile/orderComplete'
-			
-			//포인트적립	
-				$.ajax({
-					type:'post',
-					url:'/furniture/member/pointUpdate',
-					data:{'point':$('#savingPoint').val()},
-					success:function(){},
-					errer:function(err){
-						console.log(err);
-					}
-				});//ajax
-		},
-		errer:function(err){
-			console.log(err);
-		}
-	});//ajax
-
 });
 
-//결제하기 버튼 클릭 시
+//결제취소하기 버튼 클릭 시
 $('#paymentCancelBtn').click(function(){
     $.ajax({
         type:'post',

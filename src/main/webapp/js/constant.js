@@ -1,4 +1,8 @@
 const OrderStatusType = {
+    PAYMENTCOMPLETED: {
+        name: "PAYMENTCOMPLETED",
+        value: "결제완료"
+    },
     READY: {
         name: "READY",
         value: "배송준비중"
@@ -14,6 +18,10 @@ const OrderStatusType = {
     FINISH: {
         name: "FINISH",
         value: "구매확정"
+    },
+    CANCLE: {
+        name: "CANCLE",
+        value: "주문취소"
     }
 }
 

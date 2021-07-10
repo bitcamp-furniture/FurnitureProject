@@ -133,7 +133,7 @@
 				
 				 from member m
                     inner join ordercontrol oc
-					    on m.email = oc.member_id
+					    on m.id = oc.member_id
                     inner join orders o
                         on oc.order_number=o.order_number
 					inner join orders_detail od
@@ -141,9 +141,9 @@
 					inner join product p
 						on od.product_id=p.id
 					inner join product_image pi
-						on m.id=pi.id
+						on p.id=pi.id
 					                        
-                    where od.order_status = '결제완료'
+                    where od.order_status = 'READY'
 				 order by order_date desc
 
 	</select>
@@ -168,7 +168,7 @@
 				
 				 from member m
                     inner join ordercontrol oc
-					    on m.email = oc.member_id
+					    on m.id = oc.member_id
                     inner join orders o
                         on oc.order_number=o.order_number
 					inner join orders_detail od
@@ -176,7 +176,7 @@
 					inner join product p
 						on od.product_id=p.id
 					inner join product_image pi
-						on m.id=pi.id
+						on p.id=pi.id
                         
                     where od.order_status = '배송준비'
 				 order by order_date desc
