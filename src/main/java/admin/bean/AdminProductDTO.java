@@ -14,6 +14,7 @@ public class AdminProductDTO {
     private String product_color;
     private String product_qty;
     private String product_name;
+    private String product_price;
     private int total_amount;
     private String order_status;
     private String name;

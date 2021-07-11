@@ -18,7 +18,7 @@ $(function(){
 				}).append($('<img/>', {
 					width: '50px',
 					height: '50px',
-					src: '/furniture/storage/'+items.review_image,
+					src: '/furniture/storage/review/'+items.review_image,
 					alt: items.id
 				})))).append($('<td/>').append($('<a/>', {
 					text: items.product_name,
@@ -60,7 +60,7 @@ $(function(){
 				}).append($('<a/>',{
 					text: items.subject.substring(0, 12)+'...',
 					class: 'reviewA',
-					href: '/furniture/admin/review'
+					href: '/furniture/admin/adminQNA'
 				}))).append($('<td/>',{
 					width: '20%'
 				}).append($('<a/>',{

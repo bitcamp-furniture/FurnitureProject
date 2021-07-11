@@ -237,11 +237,23 @@ public class AdminProductController {
 	//구매확정 처리
 	@RequestMapping(value="product/purchaseConfirmed", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView purchaseConfirmed(@RequestParam String[] check, @RequestParam Map map) {
+	public ModelAndView purchaseConfirmed(@RequestParam String[] check) {
 		adminProductService.purchaseConfirmed(check);
-		adminProductService.membeCumulativerAmount(map);
 		
 		return new ModelAndView("redirect:/admin/product/orderControl");
+	}
+	
+	//구매확정 처리2
+	@RequestMapping(value="product/memberCumulativerAmount", method=RequestMethod.POST)
+	@ResponseBody
+	public void memberCumulativerAmount(@RequestParam String[] check) {
+		adminProductService.memberCumulativerAmount(check);
+		for(int i=0; i<check.length; i++) {
+			System.out.println("check: " + check[i]);
+			
+		}
+		
+		
 	}
 	
 	//주문관련 검색

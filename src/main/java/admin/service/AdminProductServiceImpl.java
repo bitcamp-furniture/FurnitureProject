@@ -300,8 +300,13 @@ public class AdminProductServiceImpl implements AdminProductService{
 
 	//membertable의 컬럼 amount -- 구매확정 버튼 클릭 시 소비자가 구매한 가구 가격 누적금액에 추가 
 	@Override
-	public void membeCumulativerAmount(Map map) {
-		adminProductDAO.membeCumulativerAmount(map);
+	public void memberCumulativerAmount(String[] check) {
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("array", check);
+		adminProductDAO.memberCumulativerAmount(map);
+		System.out.println(map.get("array"));
+		
+	
 		
 	}
 

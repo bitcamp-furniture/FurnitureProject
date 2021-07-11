@@ -42,6 +42,24 @@
      .primary-btn:hover, .primary-btn:focus{
         color: white;
      }
+     .productQnAreply{
+		font-size: 0.8em;
+		margin: 0;
+		padding : 4px;
+		color: white;
+		border-radius: 5px;
+	}
+	.productQnAreply:hover{
+		text-decoration: none;
+		color: white;
+		cursor: default;
+	}
+	#wait{
+		background-color: SteelBlue;      
+	}
+	#done{
+		background-color: LightSteelBlue;      
+	}
     </style>
     
     
@@ -357,96 +375,108 @@
                 <div class="related__products__slider owl-carousel">
                     <div class="col-lg-3">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="/furniture/img/3.jpg">
+                        <a href="/furniture/main/productView?id=12&pg=1">
+                            <div class="product__item__pic set-bg" data-setbg="/furniture/storage/VALLENTUNANA.jpg">
                                 <div class="product__label">
-                                    <span>${productDTO.product_category_name}</span>
+                                    <span>소파베드</span>
                                 </div>
                             </div>
+                        </a>
                             <div class="product__item__text">
-                                <h6><a href="#">${productDTO.product_name}</a></h6>
-                                <div class="product__item__price">${productDTO.product_price}</div>
+                                <h6><a href="/furniture/main/productView?id=12&pg=1">VALLENTUNANA</a></h6>
+                                <div class="product__item__price">₩ 660,000</div>
                                 <div class="cart_add">
-                                    <a href="#">Wish List</a>
+                                    <a href="/furniture/main/productView?id=12&pg=1">₩ 660,000</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="/furniture/img/4.jpg">
+                        <a href="/furniture/main/productView?id=139&pg=1">
+                            <div class="product__item__pic set-bg" data-setbg="/furniture/storage/HEJRYM_SO.jpg">
                                 <div class="product__label">
-                                    <span>${productDTO.product_category_name}</span>
+                                    <span>천연/인조가죽소파</span>
                                 </div>
                             </div>
+                        </a>
                             <div class="product__item__text">
-                                <h6><a href="#">${productDTO.product_name}</a></h6>
-                                <div class="product__item__price">${productDTO.product_price}</div>
+                                <h6><a href="/furniture/main/productView?id=139&pg=1">HEJRYM_SO</a></h6>
+                                <div class="product__item__price">₩ 1,069,000</div>
                                 <div class="cart_add">
-                                    <a href="#">Wish List</a>
+                                    <a href="/furniture/main/productView?id=139&pg=1">₩ 1,069,000</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="/furniture/img/5.jpg">
+                        <a href="/furniture/main/productView?id=211&pg=1">
+                            <div class="product__item__pic set-bg" data-setbg="/furniture/storage/BROR_UN.jpg">
                                 <div class="product__label">
-                                    <span>${productDTO.product_category_name}</span>
+                                    <span>수납/선반유닛</span>
                                 </div>
                             </div>
+                        </a>
                             <div class="product__item__text">
-                                <h6><a href="#">${productDTO.product_name}</a></h6>
-                                <div class="product__item__price">${productDTO.product_price}</div>
+                                <h6><a href="/furniture/main/productView?id=211&pg=1">HEJRYM_SO</a></h6>
+                                <div class="product__item__price">₩ 518,000</div>
                                 <div class="cart_add">
-                                    <a href="#">Wish List</a>
+                                    <a href="/furniture/main/productView?id=211&pg=1">₩ 518,000</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="/furniture/img/6.jpg">
+                        <a href="/furniture/main/productView?id=285&pg=1">
+                            <div class="product__item__pic set-bg" data-setbg="/furniture/storage/TORPINGOLF_DE.jpg">
                                 <div class="product__label">
-                                    <span>${productDTO.product_category_name}</span>
+                                    <span>식탁세트</span>
                                 </div>
                             </div>
+                        </a>
                             <div class="product__item__text">
-                                <h6><a href="#">${productDTO.product_name}</a></h6>
-                                <div class="product__item__price">${productDTO.product_price}</div>
+                                <h6><a href="/furniture/main/productView?id=285&pg=1">TORPINGOLF_DE</a></h6>
+                                <div class="product__item__price">₩ 1,045,000</div>
                                 <div class="cart_add">
-                                    <a href="#">Wish List</a>
+                                    <a href="/furniture/main/productView?id=285&pg=1">₩ 1,045,000</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="/furniture/img/7.jpg">
+                        <a href="/furniture/main/productView?id=401&pg=1">
+                            <div class="product__item__pic set-bg" data-setbg="/furniture/storage/HAUGA_STOR_DRES11_.jpg">
                                 <div class="product__label">
-                                    <span>${productDTO.product_category_name}</span>
+                                    <span>서랍장</span>
                                 </div>
                             </div>
+                        </a>
                             <div class="product__item__text">
-                                <h6><a href="#">${productDTO.product_name}</a></h6>
-                                <div class="product__item__price">${productDTO.product_price}</div>
+                                <h6><a href="/furniture/main/productView?id=401&pg=1">HAUGA_STOR_DRES11_</a></h6>
+                                <div class="product__item__price">₩ 229,000</div>
                                 <div class="cart_add">
-                                    <a href="#">Wish List</a>
+                                    <a href="/furniture/main/productView?id=401&pg=1">₩ 229,000</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="/furniture/img/8.jpg">
+                        <a href="/furniture/main/productView?id=438&pg=1">
+                            <div class="product__item__pic set-bg" data-setbg="/furniture/storage/PAX_CLOS_SLID8_.jpg">
                                 <div class="product__label">
-                                    <span>${productDTO.product_category_name}</span>
+                                    <span>미닫이옷장</span>
                                 </div>
                             </div>
+                        </a>
                             <div class="product__item__text">
-                                <h6><a href="#">${productDTO.product_name}</a></h6>
-                                <div class="product__item__price">${productDTO.product_price}</div>
+                                <h6><a href="/furniture/main/productView?id=438&pg=1">PAX_CLOS_SLID8_</a></h6>
+                                <div class="product__item__price">₩ 985,000</div>
                                 <div class="cart_add">
-                                    <a href="#">Wish List</a>
+                                    <a href="/furniture/main/productView?id=438&pg=1">₩ 985,000</a>
                                 </div>
                             </div>
                         </div>
