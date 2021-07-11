@@ -120,8 +120,8 @@
 			)
 	</select>
 
-	<update id="updateOrderStatus" parameterType="int">
-		update orders_detail set order_status = 'FINISH' where id=#{id}
+	<update id="updateOrderStatus" parameterType="java.util.Map">
+		update orders_detail set order_status = 'FINISH' where id=#{odId}
 	</update>
 
 	<select id="getCartList" parameterType="java.util.Map" resultType="cart">
@@ -241,4 +241,10 @@
 		select transaction_id from payment where order_number=#{orderNumber}
 	</select>
 
- </mapper>
+	<update id="updateCumulativeAmount" parameterType="java.util.Map">
+		update member set amount =
+								  amount + (select product_amounts from orders_detail where id = #{odId})
+		where id = #{id}
+	</update>
+
+</mapper>

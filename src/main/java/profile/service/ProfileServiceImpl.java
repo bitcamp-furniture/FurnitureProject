@@ -149,8 +149,8 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public void updateOrderStatus(int id) {
-		profileDAO.updateOrderStatus(id);
+	public void updateOrderStatus(Map<String, Object> map) {
+		profileDAO.updateOrderStatus(map);
 	}
 
 	@Override
@@ -214,6 +214,11 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	public String gettId(String orderNumber) {
 		return profileDAO.gettId(orderNumber);
+	}
+
+	@Override
+	public void updateCumulativeAmount(Map<String, Object> map) {
+		profileDAO.updateCumulativeAmount(map);
 	}
 
 	@Override

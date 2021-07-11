@@ -282,8 +282,10 @@ public class ProfileController {
 //주문처리상태 수정
 	@RequestMapping(value="updateOrderStatus", method=RequestMethod.POST)
 	@ResponseBody
-	public void updateOrderStatus(@RequestParam int id) {
-		profileService.updateOrderStatus(id);
+	public void updateOrderStatus(@RequestParam Map<String, Object> map) {
+		System.out.println("map = " +map);
+		profileService.updateOrderStatus(map);
+		profileService.updateCumulativeAmount(map);
 	}
 
 //----------------------------------------------------------------

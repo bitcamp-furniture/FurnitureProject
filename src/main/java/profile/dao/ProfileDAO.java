@@ -39,7 +39,7 @@ public interface ProfileDAO {
 
 	public int getTotalOrderList(String id);
 
-	void updateOrderStatus(int id);
+	void updateOrderStatus(Map<String, Object> map);
 
     List<CartDTO> getCartList(Map<String, Object> map);
 
@@ -60,4 +60,6 @@ public interface ProfileDAO {
 	public void memberDelete(String id);
 
     String gettId(String orderNumber);
+
+	void updateCumulativeAmount(Map<String, Object> map);
 }

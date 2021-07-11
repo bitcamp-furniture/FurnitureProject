@@ -201,7 +201,9 @@ $(document).on('click', '.confirmBtn', function () {
     $.ajax({
         url: '/furniture/profile/updateOrderStatus',
         type: 'post',
-        data: 'id='+$(this).attr('class').slice(12),
+        data: {'id': $('#id').val(),
+               'odId': $(this).attr('class').slice(12)
+        },
         success: function () {
             $('#order-tap').trigger('click');
         },
