@@ -62,4 +62,5 @@ public interface ProfileDAO {
     String gettId(String orderNumber);
 
 	void updateCumulativeAmount(Map<String, Object> map);
+    public void paymentUpdate(String check);
 }

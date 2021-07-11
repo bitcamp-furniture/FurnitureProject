@@ -382,10 +382,15 @@
    
    	<!-- 운송장 발송 버튼 클릭 했을 때 -->
 	<update id="invoice" parameterType="java.util.Map">
-	Begin
-		update ordercontrol set delivery_number = #{delivery_number} from orders_detail where id = #{id};
+	begin
+		merge
+		into ordercontrol oc
+		using (select * from orders_detail)od
+		on(oc.order_number=od.order_number)
+		when matched then
+		update set oc.delivery_number = #{delivery_number} where od.id=#{id};
 		
-		update orders_detail set order_status = 'PROCESSING' where id = #{id};
+		update orders_detail set order_status = 'PROCESSING' where id=#{id};
 	end;
 	</update>
 	
@@ -423,7 +428,7 @@
 	
 	<!-- 주문취소 -->
 	<update id="cancelSales" parameterType="java.util.Map">
-		update orders_detail set order_status = 'CANCEL' where order_number in
+		update orders_detail set order_status = 'CANCEL' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -447,7 +452,7 @@
 	
 	<!-- 구매확정 2 -->
 	<update id="membeCumulativerAmount" parameterType="java.util.Map">
-		update ordercontrol set delivery_number = delivery_number + #{delivery_number} where order_number = #{order_number};
+		update ordercontrol set delivery_number = delivery_number + #{delivery_number} where id = #{id};
 	</update>
 	
 	<!-- 주문검색 -->

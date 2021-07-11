@@ -180,4 +180,8 @@ public class ProfileDAOMybatis implements ProfileDAO {
 		sqlSession.update("profileSQL.updateCumulativeAmount", map);
 	}
 
+	public void paymentUpdate(String check) {
+		sqlSession.update("profileSQL.paymentUpdate", check);
+	}
+
 }

@@ -61,4 +61,6 @@ public interface ProfileService {
 	public String gettId(String orderNumber);
 
 	public void updateCumulativeAmount(Map<String, Object> map);
+
+    public void paymentUpdate(String check);
 }

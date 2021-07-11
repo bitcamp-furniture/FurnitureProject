@@ -247,4 +247,10 @@
 		where id = #{id}
 	</update>
 
-</mapper>
+
+	<update id="paymentUpdate" parameterType="String">
+		update payment set response_msg = '주문취소', updated_at = sysdate where order_number=#{checkId}
+	</update>
+
+
+ </mapper>
