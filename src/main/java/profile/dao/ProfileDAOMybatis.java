@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import furniture.bean.ReviewDTO;
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.CartDTO;
@@ -182,6 +183,11 @@ public class ProfileDAOMybatis implements ProfileDAO {
 
 	public void paymentUpdate(String check) {
 		sqlSession.update("profileSQL.paymentUpdate", check);
+	}
+
+	@Override
+	public void reviewWrite(ReviewDTO reviewDTO) {
+		sqlSession.insert("profileSQL.reviewWrite", reviewDTO);
 	}
 
 }
