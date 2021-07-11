@@ -416,7 +416,7 @@ function deliverComplete(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: iitems.product_price
+               text: items.product_price
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -478,7 +478,7 @@ function orderCancle(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',
@@ -695,9 +695,10 @@ $('#check_all6').click(function(){
 
 /*운송장 발송 버튼 클릭 시*/
 $(document).on('click', '#invoiceBtn',function(){
-	var id = $(this).parent().prev().prev().prev().prev().prev().prev().prev().prev().prev().val();
+	var id = $(this).parent().prev().prev().prev().prev().prev().prev().prev().prev().prev().children().val();
 	var delivery_number = $(this).prev().val();
-	
+	alert(id);
+	alert(delivery_number);
 	$.ajax({
         type: 'post',
         url: '/furniture/admin/product/invoice',
