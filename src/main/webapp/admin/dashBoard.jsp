@@ -4,11 +4,6 @@
 #wholeDivChart div{
 	margin: 5px;
 }
-#dailyToDO{
-	border: 2px solid blue;
-	height: 200px;
-	width: 90%;
-}
 #chart1{
 	float: left;
 	width: 45%;
@@ -86,11 +81,6 @@
 </style>
 
 <div id="wholeDivChart">
-	
-	<div id="dailyToDO">
-		todo 요약본
-	</div>
-
 
 	<div id="chart1" align="center">
 		<!--차트가 그려질 부분-->
