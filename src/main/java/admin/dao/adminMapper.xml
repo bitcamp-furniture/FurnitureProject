@@ -451,8 +451,22 @@
 	</update>
 	
 	<!-- 구매확정 2 -->
-	<update id="membeCumulativerAmount" parameterType="java.util.Map">
-		update ordercontrol set delivery_number = delivery_number + #{delivery_number} where id = #{id};
+	<update id="memberCumulativerAmount" parameterType="java.util.Map">
+		update member set amount =
+			amount + (select distinct product_amounts from orders_detail where id in
+			<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+			</foreach>)
+			
+			where id = 
+	        (select distinct member_id 
+	            from orders o
+	                inner join orders_detail od
+	                    on o.order_number=od.order_number
+	         where od.id in
+	         <foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+			</foreach>)
 	</update>
 	
 	<!-- 주문검색 -->

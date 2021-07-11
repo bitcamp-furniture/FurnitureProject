@@ -40,7 +40,6 @@ public interface AdminProductDAO {
 
 	public List<AdminProductDTO> getPurchaseConfirmed(Map<String, Integer> map);
 
-	public void membeCumulativerAmount(Map<String, String> map);
-
+	public void memberCumulativerAmount(Map<String, String[]> map);
 
 }
