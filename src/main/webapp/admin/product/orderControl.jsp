@@ -85,7 +85,7 @@
 				    	<br>
 						<table class="table" id="deliveryTable">
 						  <tr>
-						    <th><input type='checkbox' id="check_all"/></th>
+						    <th><input type='checkbox' id="check_all2"/></th>
 						     <th>주문정보</th>
 		                     <th>주문번호</th>
 		                     <th>주문자</th>
@@ -115,7 +115,7 @@
 				    	<br>
 						<table class="table" id="duringDeliverTable">
 						  <tr>
-						    <th><input type='checkbox' id="check_all"/></th>
+						    <th><input type='checkbox' id="check_all3"/></th>
 						     <th>주문정보</th>
 		                     <th>주문번호</th>
 		                     <th>주문자</th>
@@ -145,7 +145,7 @@
 				    	<br>
 						<table class="table" id="deliverCompleteTable">
 						  <tr>
-						    <th><input type='checkbox' id="check_all"/></th>
+						    <th><input type='checkbox' id="check_all4"/></th>
 						     <th>주문정보</th>
 		                     <th>주문번호</th>
 		                     <th>주문자</th>
@@ -174,7 +174,7 @@
 				    	<br>
 						<table class="table" id="purchaseConfirmedTable">
 						  <tr>
-						    <th><input type='checkbox' id="check_all"/></th>
+						    <th><input type='checkbox' id="check_all5"/></th>
 						     <th>주문정보</th>
 		                     <th>주문번호</th>
 		                     <th>주문자</th>
@@ -203,7 +203,7 @@
 				    	<br>
 						<table class="table" id="orderCancleTable">
 						  <tr>
-						    <th><input type='checkbox' id="check_all"/></th>
+						    <th><input type='checkbox' id="check_all6"/></th>
 						     <th>주문정보</th>
 		                     <th>주문번호</th>
 		                     <th>주문자</th>
