@@ -16,7 +16,7 @@ $('#order-tap').click(function() {
                 let $td = $('<td/>', {
                     align: 'center',
                     style: 'vertical-align: middle',
-                    text: OrderStatusType[item.order_status].value,
+                    text: OrderStatusType[item.order_status].value
                 });
 
                 if (item.order_status === OrderStatusType.PROCESSING.name
@@ -114,7 +114,7 @@ function orderPaging(orderPg) {
                 let $td = $('<td/>', {
                     align: 'center',
                     style: 'vertical-align: middle',
-                    text: OrderStatusType[item.order_status].value,
+                    text: OrderStatusType[item.order_status].value
                 });
 
                 if (item.order_status === OrderStatusType.PROCESSING.name

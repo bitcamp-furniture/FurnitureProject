@@ -259,3 +259,4 @@ CREATE TABLE payment(
 	updated_at date -- 수정된 일자
 );
 create sequence seq_payment nocycle nocache;
+ 
