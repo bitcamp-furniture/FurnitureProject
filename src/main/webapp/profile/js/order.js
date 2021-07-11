@@ -30,7 +30,7 @@ $('#order-tap').click(function() {
                     $td.append($('<button/>', {
                         type: 'button',
                         text: '리뷰쓰기',
-                        class: 'reviewBtn _' + item.id
+                        class: 'reviewBtn _' + item.product_id_A
                     }))
                 } //if
 
@@ -128,7 +128,7 @@ function orderPaging(orderPg) {
                     $td.append($('<button/>', {
                         type: 'button',
                         text: '리뷰쓰기',
-                        class: 'reviewBtn _' + item.id
+                        class: 'reviewBtn _' + item.product_id_A
                     }))
                 } //if
 
@@ -201,7 +201,9 @@ $(document).on('click', '.confirmBtn', function () {
     $.ajax({
         url: '/furniture/profile/updateOrderStatus',
         type: 'post',
-        data: 'id='+$(this).attr('class').slice(12),
+        data: {'id': $('#id').val(),
+               'odId': $(this).attr('class').slice(12)
+        },
         success: function () {
             $('#order-tap').trigger('click');
         },
@@ -209,4 +211,11 @@ $(document).on('click', '.confirmBtn', function () {
             console.log(err);
         }
     }); //ajax
+}); //confirmBtn click
+//-------------------------------------------------------------------------------
+//리뷰쓰기 버튼
+$(document).on('click', '.reviewBtn', function () {
+	var product_id = $(this).attr('class').slice(11);
+	window.open("reviewWriteForm?id="+product_id, "리뷰 작성", "width=800, height=500, left=100, top=50");
+
 }); //confirmBtn click

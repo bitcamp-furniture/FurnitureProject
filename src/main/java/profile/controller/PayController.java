@@ -188,9 +188,6 @@ public class PayController {
     public ModelAndView cancel(@RequestParam Map<String, String> map) {
         String tId = profileService.gettId(map.get("check"));
 
-        System.out.println("orderNumber = con" + map.get("check"));
-        System.out.println("tId = con" + tId);
-
         ModelAndView mav = new ModelAndView();
 
 
@@ -201,7 +198,7 @@ public class PayController {
 
             Map<String, Object> cancelMap = new HashMap<String, Object>();
             cancelMap.put("transactionId", tId);
-            String signature = Sha256("test_kakao|"+map.get("transactionId")+"|5a594647c79a45deb579ff5c96cfb4cf");
+            String signature = Sha256("test_kakao|"+tId+"|5a594647c79a45deb579ff5c96cfb4cf");
             cancelMap.put("signature", signature);
             cancelMap.put("cancelReason", "1");
 
@@ -241,6 +238,18 @@ public class PayController {
 
             mav.addObject("Response", cancelOutputMap);
             mav.setViewName("jsonView");
+
+
+
+
+            profileService.paymentUpdate(map.get("check"));
+
+
+
+
+
+
+
             return mav;
         } catch (Exception e) {
             e.printStackTrace();

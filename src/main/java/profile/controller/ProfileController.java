@@ -23,6 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import furniture.bean.ProductDTO;
+import furniture.bean.ReviewDTO;
+import furniture.service.FurnitureService;
 import member.bean.MemberDTO;
 import profile.bean.*;
 import profile.service.ProfileService;
@@ -33,6 +36,8 @@ import profile.service.ProfileService;
 public class ProfileController {
 	@Autowired
 	ProfileService profileService;
+	@Autowired
+	FurnitureService furnitureService;
 	
 	@RequestMapping(value="profile", method=RequestMethod.GET)
 	public String profile(Model model, HttpSession session) {
@@ -282,8 +287,10 @@ public class ProfileController {
 //주문처리상태 수정
 	@RequestMapping(value="updateOrderStatus", method=RequestMethod.POST)
 	@ResponseBody
-	public void updateOrderStatus(@RequestParam int id) {
-		profileService.updateOrderStatus(id);
+	public void updateOrderStatus(@RequestParam Map<String, Object> map) {
+		System.out.println("map = " +map);
+		profileService.updateOrderStatus(map);
+		profileService.updateCumulativeAmount(map);
 	}
 
 //----------------------------------------------------------------
@@ -392,6 +399,47 @@ public String orderComplete(Model model, HttpSession session, OrderDetailDTO ord
 		profileService.memberDelete(id);
 		session.invalidate();
 	}
+	
+	
+	// 리뷰 작성 폼
+	@RequestMapping(value="reviewWriteForm", method=RequestMethod.GET)
+	public String reviewWrite(@RequestParam int id, Model model, HttpSession session) {
+		ProductDTO productDTO = furnitureService.getIdToOneData(id);
+		String email = (String) session.getAttribute("memEmail");
+		
+		model.addAttribute("productDTO", productDTO);
+		model.addAttribute("email", email);
+		model.addAttribute("id", id);
+		return "/profile/reviewWriteForm";
+	}
+	
+	// 리뷰 write
+	@RequestMapping(value="reviewWrite", method=RequestMethod.POST)
+	@ResponseBody
+	public void reviewWrite(@ModelAttribute ReviewDTO reviewDTO, @RequestParam("review__Image") MultipartFile review__Image, HttpSession session) {
+		//MultipartFile 이 이미지를 보내주는 역할
+		String filePath = "C:\\code\\Spring\\workspace\\FurnitureProject\\src\\main\\webapp\\storage\\review";
+		String fileName = review__Image.getOriginalFilename();
+		File file = new File(filePath, fileName);
+
+		String email = (String) session.getAttribute("memEmail");
+
+		//파일 복사
+		try {
+			FileCopyUtils.copy(review__Image.getInputStream(), new FileOutputStream(file));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		reviewDTO.setReview_image(fileName);
+		reviewDTO.setEmail(email);
+		//DB
+		profileService.reviewWrite(reviewDTO);
+	}
+
+	
+	
+	
 }
 
 

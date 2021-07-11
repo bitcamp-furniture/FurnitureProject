@@ -8,6 +8,8 @@ import profile.bean.*;
 
 import javax.servlet.http.HttpSession;
 
+import furniture.bean.ReviewDTO;
+
 public interface ProfileService {
 
 	public void askWrite(AskDTO askDTO);
@@ -38,7 +40,7 @@ public interface ProfileService {
 
     public OrderPaging orderPaging(String id, String orderPg);
 
-	public void updateOrderStatus(int id);
+	public void updateOrderStatus(Map<String, Object> map);
 
 	public List<CartDTO> getCartList(String id, String cartPg);
 
@@ -59,4 +61,10 @@ public interface ProfileService {
 	public void memberDelete(String id);
 
 	public String gettId(String orderNumber);
+
+	public void updateCumulativeAmount(Map<String, Object> map);
+
+    public void paymentUpdate(String check);
+
+	public void reviewWrite(ReviewDTO reviewDTO);
 }

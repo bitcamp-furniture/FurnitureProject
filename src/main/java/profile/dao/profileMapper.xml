@@ -85,6 +85,7 @@
 					od.product_color,
 					od.product_qty,
 					od.product_amounts,
+					p.id as product_id_A,
 					od.order_status
 			 from orders o
 					  inner join orders_detail od
@@ -120,8 +121,8 @@
 			)
 	</select>
 
-	<update id="updateOrderStatus" parameterType="int">
-		update orders_detail set order_status = 'FINISH' where id=#{id}
+	<update id="updateOrderStatus" parameterType="java.util.Map">
+		update orders_detail set order_status = 'FINISH' where id=#{odId}
 	</update>
 
 	<select id="getCartList" parameterType="java.util.Map" resultType="cart">
@@ -240,5 +241,21 @@
 	<select id="gettId"  parameterType="String" resultType="String">
 		select transaction_id from payment where order_number=#{orderNumber}
 	</select>
+
+	<update id="updateCumulativeAmount" parameterType="java.util.Map">
+		update member set amount =
+								  amount + (select product_amounts from orders_detail where id = #{odId})
+		where id = #{id}
+	</update>
+
+
+	<update id="paymentUpdate" parameterType="String">
+		update payment set response_msg = '주문취소', updated_at = sysdate where order_number=#{checkId}
+	</update>
+
+	<insert id="reviewWrite" parameterType="review">
+		insert into review values(seq_review.nextval, #{email}, #{product_id}, #{product_name},#{review_stars},#{review_content},
+								#{review_image},sysdate)
+	</insert>
 
  </mapper>

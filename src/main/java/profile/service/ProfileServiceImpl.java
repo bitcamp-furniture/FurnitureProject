@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import furniture.bean.ReviewDTO;
 import member.bean.MemberDTO;
 import profile.bean.*;
 import profile.dao.ProfileDAO;
@@ -149,8 +150,8 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public void updateOrderStatus(int id) {
-		profileDAO.updateOrderStatus(id);
+	public void updateOrderStatus(Map<String, Object> map) {
+		profileDAO.updateOrderStatus(map);
 	}
 
 	@Override
@@ -217,8 +218,23 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
+	public void updateCumulativeAmount(Map<String, Object> map) {
+		profileDAO.updateCumulativeAmount(map);
+	}
+
+	@Override
+	public void paymentUpdate(String check) {
+		profileDAO.paymentUpdate(check);
+	}
+
+	@Override
 	public void payment(Map outputMap) {
 		profileDAO.payment(outputMap);
+	}
+
+	@Override
+	public void reviewWrite(ReviewDTO reviewDTO) {
+		profileDAO.reviewWrite(reviewDTO);
 	}
 
 }
