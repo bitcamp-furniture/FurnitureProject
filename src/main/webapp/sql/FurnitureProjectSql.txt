@@ -168,9 +168,9 @@ name varchar2(30), -- 이름
 email varchar2(60), --  이메일
 subject varchar2(250), -- 제목
 content varchar2(4000), -- 내용
-reply number, -- 답변
-image1 varchar2(200),
-answer varchar2(4000),
+reply number, -- 답변상태
+image1 varchar2(200),사진1
+answer varchar2(4000),답변
 created_at date -- 생성일
 );
 create sequence seq_ask nocycle nocache;
@@ -226,7 +226,7 @@ create table orders_detail(
 id NUMBER primary key, -- 기본키
 product_price NUMBER,-- 상품별 금액--
 product_qty NUMBER,--상품별 구매수량--
-product_amounts NUMBER, --한 줄 총 금액(상품가격*수량)
+product_amounts NUMBER, --한 줄 총 금액(상품가격*수량)wna
 order_number VARCHAR2(30), --주문번호, orders 테이블의 기본키
 product_id VARCHAR2(30), --상품아이디--
 order_status VARCHAR2(30), --주문처리상태
