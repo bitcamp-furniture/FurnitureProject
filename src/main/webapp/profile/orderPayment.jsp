@@ -228,7 +228,7 @@
 
     <div class="paymentBtnDiv">
         <input type="button" value="결제하기" id="paymentBtn" >
-        <input type="button" value="취소하기" id="paymentCancelBtn">
+        <input type="button" value="취소하기" id="paymentCancelBtn" onclick="location.href='/furniture/profile/profile'">
     </div>
 
 

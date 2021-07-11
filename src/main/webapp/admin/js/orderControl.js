@@ -933,8 +933,6 @@ $('#cancelSales').click(function(){
 			dataType: 'json',
 			success: function(data) {
 			    console.log(JSON.stringify(data));
-				//alert('주문이 취소되었습니다.');
-				//location.reload()
 
 			},
 			error: function(err){
@@ -949,7 +947,7 @@ $('#cancelSales').click(function(){
             dataType: 'text',
             success: function() {
                 alert('주문이 취소되었습니다.');
-                //location.reload()
+                location.reload()
 
             },
             error: function(err){
