@@ -385,7 +385,7 @@ function deliverComplete(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',

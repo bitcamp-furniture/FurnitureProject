@@ -423,7 +423,7 @@
 	
 	<!-- 주문취소 -->
 	<update id="cancelSales" parameterType="java.util.Map">
-		update orders_detail set order_status = 'CANCEL' where order_number in
+		update orders_detail set order_status = 'CANCEL' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
