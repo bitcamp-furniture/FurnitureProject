@@ -46,11 +46,16 @@
       border: solid;
       border-color: #E5E9F5; 
    }
+   .product__item__pic__hover a{
+	cursor: pointer;
+}
    
 </style>
 
 <input type="hidden" value="${keyword }" id="keyword">
 <input type="hidden" value="${pg }" id="pg">
+<input type="hidden" value="${memId }" id="memid"/>
+<input type="hidden" value="${param.id }" id="id"/>
    <br>
    <div class="searchDiv" align="center">
       <input type="text" size="50" class="searchKeyword" value="${keyword }" onkeypress="if(event.keyCode == 13){goSearch();}"> &emsp;
@@ -67,6 +72,7 @@
     
     
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/furniture/category/js/productWishList.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
    searchPaging(1);
@@ -97,7 +103,7 @@ function searchPaging(pg){
                          .append($('<img>',{id:"product_img_thumb",alt:items.product_name,src: "/furniture/storage/"+items.product_img_thumb})))
                               .append($('<ul/>',{class:"product__item__pic__hover"})
                                     .append($('<li/>').append($('<a/>', {
-                       					href: "/furniture/main/productView?id="+items.id
+                                    	onclick: 'addWish('+items.id+')'                      					
                                     }).append($('<i/>',{class:"fa fa-heart"}))))                                  
                               
                               )).append($('<div/>',{class:"product__item__text"}).append($('<h6/>')
