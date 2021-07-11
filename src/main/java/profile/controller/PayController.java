@@ -188,9 +188,6 @@ public class PayController {
     public ModelAndView cancel(@RequestParam Map<String, String> map) {
         String tId = profileService.gettId(map.get("check"));
 
-        System.out.println("orderNumber = con" + map.get("check"));
-        System.out.println("tId = con" + tId);
-
         ModelAndView mav = new ModelAndView();
 
 
@@ -241,6 +238,18 @@ public class PayController {
 
             mav.addObject("Response", cancelOutputMap);
             mav.setViewName("jsonView");
+
+
+
+
+            profileService.paymentUpdate(map.get("check"));
+
+
+
+
+
+
+
             return mav;
         } catch (Exception e) {
             e.printStackTrace();

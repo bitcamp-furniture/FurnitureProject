@@ -176,4 +176,9 @@ public class ProfileDAOMybatis implements ProfileDAO {
 		return sqlSession.selectOne("profileSQL.gettId", orderNumber);
 	}
 
+	@Override
+	public void paymentUpdate(String check) {
+		sqlSession.update("profileSQL.paymentUpdate", check);
+	}
+
 }

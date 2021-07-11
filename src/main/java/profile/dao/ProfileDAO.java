@@ -60,4 +60,6 @@ public interface ProfileDAO {
 	public void memberDelete(String id);
 
     String gettId(String orderNumber);
+
+    public void paymentUpdate(String check);
 }

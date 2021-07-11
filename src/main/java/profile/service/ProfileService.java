@@ -59,4 +59,6 @@ public interface ProfileService {
 	public void memberDelete(String id);
 
 	public String gettId(String orderNumber);
+
+    public void paymentUpdate(String check);
 }
