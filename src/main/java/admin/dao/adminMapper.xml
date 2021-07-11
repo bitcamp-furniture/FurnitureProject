@@ -38,7 +38,7 @@
 	<select id="reviewList" parameterType="java.util.Map" resultType="review">
 		select * from 
 		(select rownum rn, tt.* from 
-		(select * from REVIEW order by id)tt
+		(select * from REVIEW order by id desc)tt
 		)where rn &gt;= #{startNum} and rn &lt;= #{endNum}
 	</select>
 	

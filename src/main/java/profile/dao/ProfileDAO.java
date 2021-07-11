@@ -3,6 +3,7 @@ package profile.dao;
 import java.util.List;
 import java.util.Map;
 
+import furniture.bean.ReviewDTO;
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.CartDTO;
@@ -62,5 +63,8 @@ public interface ProfileDAO {
     String gettId(String orderNumber);
 
 	void updateCumulativeAmount(Map<String, Object> map);
+	
     public void paymentUpdate(String check);
+
+	public void reviewWrite(ReviewDTO reviewDTO);
 }

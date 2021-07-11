@@ -8,6 +8,8 @@ import profile.bean.*;
 
 import javax.servlet.http.HttpSession;
 
+import furniture.bean.ReviewDTO;
+
 public interface ProfileService {
 
 	public void askWrite(AskDTO askDTO);
@@ -63,4 +65,6 @@ public interface ProfileService {
 	public void updateCumulativeAmount(Map<String, Object> map);
 
     public void paymentUpdate(String check);
+
+	public void reviewWrite(ReviewDTO reviewDTO);
 }
