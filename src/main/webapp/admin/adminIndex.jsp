@@ -286,5 +286,6 @@ $('#eventWriteShow').click(function(){
 </script>
 
 <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+<script src="/furniture/js/constant.js"></script>
 </body>
 </html>

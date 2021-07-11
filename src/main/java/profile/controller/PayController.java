@@ -188,6 +188,9 @@ public class PayController {
     public ModelAndView cancel(@RequestParam Map<String, String> map) {
         String tId = profileService.gettId(map.get("check"));
 
+        System.out.println("orderNumber = con" + map.get("check"));
+        System.out.println("tId = con" + tId);
+
         ModelAndView mav = new ModelAndView();
 
 
@@ -200,7 +203,7 @@ public class PayController {
             cancelMap.put("transactionId", tId);
             String signature = Sha256("test_kakao|"+map.get("transactionId")+"|5a594647c79a45deb579ff5c96cfb4cf");
             cancelMap.put("signature", signature);
-
+            cancelMap.put("cancelReason", "1");
 
             String jsonStr = gsonObj.toJson(cancelMap);
             System.out.println("MAP -> JSON 예제 : " + jsonStr);
@@ -228,7 +231,7 @@ public class PayController {
                 // 응답 Body
                 body = response.body();
 //                if (body != null) {
-//                    System.out.println("Response:" + body.string());
+                    //System.out.println("Response:" + body.string());
 //                }
             } else
                 System.err.println("Error Occurred");

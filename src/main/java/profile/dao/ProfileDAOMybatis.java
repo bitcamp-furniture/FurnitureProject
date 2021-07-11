@@ -172,6 +172,7 @@ public class ProfileDAOMybatis implements ProfileDAO {
 
 	@Override
 	public String gettId(String orderNumber) {
+		System.out.println("orderNumber = dao" + orderNumber);
 		return sqlSession.selectOne("profileSQL.gettId", orderNumber);
 	}
 

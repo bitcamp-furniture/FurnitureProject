@@ -6,7 +6,7 @@ $(function(){
       data: 'orderControlPg='+$('#orderControlPg').val(),
       dataType: 'json',
       success: function(data){
-         alert(JSON.stringify(data));
+         //alert(JSON.stringify(data));
 		 $('#newOrderTable tr:gt(0)').remove();
 		 $("input[name=check_all]").prop("checked", false);
          
@@ -67,7 +67,7 @@ $(function(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#newOrderTable'));
       });//each
          
@@ -157,7 +157,7 @@ function newOrder(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#newOrderTable'));
       });//each
          
@@ -250,7 +250,7 @@ $('#deliveryReady').click(function(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#deliveryTable'));
       });//each
          
@@ -344,7 +344,7 @@ function duringDeliver(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#duringDeliverTable'));
       });//each
          
@@ -437,7 +437,7 @@ function deliverComplete(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#deliverCompleteTable'));
       });//each
          
@@ -526,7 +526,7 @@ function orderCancle(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#orderCancleTable'));
       });//each
          
@@ -615,7 +615,7 @@ function purchaseConfirmed(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#purchaseConfirmedTable'));
       });//each
          
@@ -885,13 +885,28 @@ $('#cancelSales').click(function(){
 			success: function(data) {
 			    console.log(JSON.stringify(data));
 				//alert('주문이 취소되었습니다.');
-				location.reload()
+				//location.reload()
 
 			},
 			error: function(err){
 				console.log(err);
 			}
 		});
+
+        $.ajax({
+            type: 'post',
+            url: '/furniture/admin/product/cancelSales',
+            data: $('#orderForm').serialize(),
+            dataType: 'text',
+            success: function() {
+                alert('주문이 취소되었습니다.');
+                //location.reload()
+
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
 
 	}
 });
