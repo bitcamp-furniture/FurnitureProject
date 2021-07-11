@@ -212,6 +212,11 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
+	public String gettId(String orderNumber) {
+		return profileDAO.gettId(orderNumber);
+	}
+
+	@Override
 	public void payment(Map outputMap) {
 		profileDAO.payment(outputMap);
 	}

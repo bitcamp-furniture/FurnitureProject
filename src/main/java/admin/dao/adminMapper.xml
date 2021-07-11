@@ -143,7 +143,7 @@
 					inner join product_image pi
 						on p.id=pi.id
 					                        
-                    where od.order_status = 'READY'
+                    where od.order_status = 'PAYMENTCOMPLETED'
 				 order by order_date desc
 
 	</select>
