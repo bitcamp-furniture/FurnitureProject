@@ -123,7 +123,7 @@
 			</div>
 		</div>
 		<div class="chart3Recent" id="recentQnA">
-			<p><a class="reviewA" href="/furniture/admin/review">최신  문의</a></p>
+			<p><a class="reviewA" href="/furniture/admin/adminQNA">최신  문의</a></p>
 			<div id="recentQnADiv">
 			<table id="recentQnATbl" width="100%" ></table>			
 			</div>
