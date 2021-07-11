@@ -307,7 +307,7 @@
 					m.addr1,
 					m.addr2,
 					pi.product_img_thumb
-				
+
 				 from member m
                     inner join ordercontrol oc
 					    on m.id = oc.member_id
@@ -319,8 +319,7 @@
 						on od.product_id=p.id
 					inner join product_image pi
 						on p.id=pi.id
-                        
-                    where od.order_status = 'CANCLE'
+                    where od.order_status = 'CANCEL'
 				 order by order_date desc
 	</select>
 	
@@ -424,7 +423,7 @@
 	
 	<!-- 주문취소 -->
 	<update id="cancelSales" parameterType="java.util.Map">
-		update orders_detail set order_status = 'CANCLE' where id in
+		update orders_detail set order_status = 'CANCEL' where order_number in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>

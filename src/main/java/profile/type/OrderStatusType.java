@@ -2,5 +2,5 @@ package profile.type;
 
 public enum OrderStatusType {
 
-    READY, PROCESSING, COMPLETED, FINISH
+    PAYMENTCOMPLETED, READY, PROCESSING, COMPLETED, FINISH, CANCEL
 }

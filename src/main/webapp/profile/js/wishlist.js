@@ -99,7 +99,7 @@ $(document).on('click', '.wishlistDeletebutton_ ', function(){
 		type: 'post',
 		data: 'id=' + $(this).attr('class').slice(32),
 		success: function(){
-			alert('삭제 성공');
+        	swal("상품을 삭제하였습니다.", "");
 			$('#wishlist-tap').trigger('click');
 		},
 		error: function(err){
@@ -118,7 +118,7 @@ $('.wishlistTotalDeletebutton').click(function(){
 		type: 'post',
 		data: 'memberId=' +$('#id').val(),
 		success: function(){
-			alert('삭제 성공');
+        	swal("상품을 삭제하였습니다.", "");
 			$('#wishlist-tap').trigger('click');
 		},
 		error: function(err){

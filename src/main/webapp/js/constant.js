@@ -19,8 +19,8 @@ const OrderStatusType = {
         name: "FINISH",
         value: "구매확정"
     },
-    CANCLE: {
-        name: "CANCLE",
+    CANCEL: {
+        name: "CANCEL",
         value: "주문취소"
     },
     DELAY: {

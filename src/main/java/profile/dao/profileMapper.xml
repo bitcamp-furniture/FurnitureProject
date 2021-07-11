@@ -237,4 +237,8 @@
 			  )
 	</insert>
 
+	<select id="gettId"  parameterType="String" resultType="String">
+		select transaction_id from payment where order_number=#{orderNumber}
+	</select>
+
  </mapper>
