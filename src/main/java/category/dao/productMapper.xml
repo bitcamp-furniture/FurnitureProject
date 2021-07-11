@@ -70,7 +70,7 @@
                 p.PRODUCT_CATEGORY2, p.PRODUCT_CATEGORY_NAME, i.PRODUCT_IMG_THUMB, p.id from 
                   (
 		            select * from product 
-		            where product_name like '%'||#{keyword}||'%'
+		            where product_name like UPPER('%'||#{keyword}||'%')
 		            order by id desc
                    ) p   
               join product_image i

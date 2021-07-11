@@ -60,7 +60,7 @@ $(function(){
 				}).append($('<a/>',{
 					text: items.subject.substring(0, 12)+'...',
 					class: 'reviewA',
-					href: '/furniture/admin/review'
+					href: '/furniture/admin/adminQNA'
 				}))).append($('<td/>',{
 					width: '20%'
 				}).append($('<a/>',{
