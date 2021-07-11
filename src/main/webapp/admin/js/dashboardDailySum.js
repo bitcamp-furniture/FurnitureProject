@@ -13,7 +13,7 @@ $(function(){
 		    	})).append($('<td/>',{
 		    		
 		    	}).append($('<a/>',{
-		    		href: '/furniture/admin/주문관리',
+		    		href: '/furniture/admin/product/orderControl',
 		    		text: items.product_count
 		    	}))).append($('<td/>',{
 		    		text: items.product_price

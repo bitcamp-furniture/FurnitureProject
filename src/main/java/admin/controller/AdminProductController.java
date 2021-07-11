@@ -239,7 +239,9 @@ public class AdminProductController {
 	@ResponseBody
 	public ModelAndView purchaseConfirmed(@RequestParam String[] check, @RequestParam Map map) {
 		adminProductService.purchaseConfirmed(check);
-		adminProductService.membeCumulativerAmount(map);
+		adminProductService.memberCumulativerAmount(map);
+		
+		System.out.println(map);
 		
 		return new ModelAndView("redirect:/admin/product/orderControl");
 	}

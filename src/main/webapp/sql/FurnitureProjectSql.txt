@@ -243,7 +243,7 @@ delivery_number VARCHAR2(80)
 );
 create sequence seq_orderControl nocycle nocache;
 
-— 결제
+-- 결제
 CREATE TABLE payment(
 	id NUMBER PRIMARY KEY, -- 결제번호(아이디)
 	order_number VARCHAR2(20), -- 주문번호
@@ -259,3 +259,4 @@ CREATE TABLE payment(
 	updated_at date -- 수정된 일자
 );
 create sequence seq_payment nocycle nocache;
+ 

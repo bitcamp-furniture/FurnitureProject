@@ -6,6 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+.header{
+    background-color: white;
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index :99999;
+}
+</style>
 <title> IKEZKE </title>
 
     <!-- Google Font -->
@@ -166,9 +176,7 @@
     </header>
     <!-- Header Section End -->
 
-
-
-   <div id="section">
+   <div id="section" style="padding-top:160px;">
       <c:if test="${empty display }">
          <jsp:include page="/main/indexDisplay.jsp" />
       </c:if>
@@ -285,7 +293,6 @@
 <script src="/furniture/js/jquery.nicescroll.min.js"></script>
 <script src="/furniture/js/main.js"></script>
 <script src="/furniture/js/constant.js"></script>
-<script src="/furniture/js/storage.js"></script>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>   
 <script src="/furniture/js/search.js"></script>

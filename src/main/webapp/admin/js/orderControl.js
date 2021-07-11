@@ -6,7 +6,8 @@ $(function(){
       data: 'orderControlPg='+$('#orderControlPg').val(),
       dataType: 'json',
       success: function(data){
-         alert(JSON.stringify(data));
+         //alert(JSON.stringify(data));
+
 		 $('#newOrderTable tr:gt(0)').remove();
 		 $("input[name=check_all]").prop("checked", false);
          
@@ -17,7 +18,7 @@ $(function(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',
@@ -48,8 +49,8 @@ $(function(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
-            })).append($('<td>',{
+               text: items.product_price
+            })).append($('<td/>',{
             	
             }).append($('<input/>',{
                 type: 'hidden'
@@ -61,13 +62,14 @@ $(function(){
                //align:'center',
                text: items.name + '\n\n' + '/' + '\n\n' + items.phone
 	            }).append($('<td>',{
-	            	text:items.addr1 + items.addr2 + '\n\n' + '우)' + items.zipcode
+	            	text: items.addr1 + items.addr2 + '\n\n' + '우)' + items.zipcode
 	            }))
             ).append($('<td/>',{
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
+
             })).appendTo($('#newOrderTable'));
       });//each
          
@@ -108,7 +110,7 @@ function newOrder(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',
@@ -139,7 +141,7 @@ function newOrder(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: items.product_price
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -158,7 +160,7 @@ function newOrder(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#newOrderTable'));
       });//each
          
@@ -197,7 +199,7 @@ $('#deliveryReady').click(function(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',
@@ -228,7 +230,7 @@ $('#deliveryReady').click(function(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: items.product_price
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -251,7 +253,7 @@ $('#deliveryReady').click(function(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#deliveryTable'));
       });//each
          
@@ -290,7 +292,7 @@ function duringDeliver(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',
@@ -321,7 +323,7 @@ function duringDeliver(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: items.product_price
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -344,7 +346,7 @@ function duringDeliver(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#duringDeliverTable'));
       });//each
          
@@ -414,7 +416,7 @@ function deliverComplete(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: iitems.product_price
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -437,7 +439,7 @@ function deliverComplete(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#deliverCompleteTable'));
       });//each
          
@@ -507,7 +509,7 @@ function orderCancle(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: items.product_price
             })).append($('<td>',{
             	
             }).append($('<td/>',{
@@ -526,7 +528,7 @@ function orderCancle(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#orderCancleTable'));
       });//each
          
@@ -565,7 +567,7 @@ function purchaseConfirmed(){
                type: 'checkbox',
                class: 'normal',
                name: 'check',
-               value: items.order_number
+               value: items.id
             }))
             ).append($('<td/>',{
                //align:'center',
@@ -596,7 +598,7 @@ function purchaseConfirmed(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.total_amount
+               text: items.product_price
             })).append($('<td>',{
             	
             }).append($('<td/>',{
@@ -615,7 +617,7 @@ function purchaseConfirmed(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[items.order_status].value
             })).appendTo($('#purchaseConfirmedTable'));
       });//each
          
@@ -693,13 +695,13 @@ $('#check_all6').click(function(){
 
 /*운송장 발송 버튼 클릭 시*/
 $(document).on('click', '#invoiceBtn',function(){
-	var order_number = $(this).parent().prev().prev().prev().prev().prev().prev().prev().text();
+	var id = $(this).parent().prev().prev().prev().prev().prev().prev().prev().prev().prev().val();
 	var delivery_number = $(this).prev().val();
 	
 	$.ajax({
         type: 'post',
         url: '/furniture/admin/product/invoice',
-        data: {'order_number' : order_number, 'delivery_number' : delivery_number },
+        data: {'id' : id, 'delivery_number' : delivery_number },
         dataType: 'text',
         success: function() {
            alert('운송장 번호를 등록하였습니다.');
@@ -931,13 +933,28 @@ $('#cancelSales').click(function(){
 			success: function(data) {
 			    console.log(JSON.stringify(data));
 				//alert('주문이 취소되었습니다.');
-				location.reload()
+				//location.reload()
 
 			},
 			error: function(err){
 				console.log(err);
 			}
 		});
+
+        $.ajax({
+            type: 'post',
+            url: '/furniture/admin/product/cancelSales',
+            data: $('#orderForm').serialize(),
+            dataType: 'text',
+            success: function() {
+                alert('주문이 취소되었습니다.');
+                //location.reload()
+
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
 
 	}
 });
@@ -991,7 +1008,7 @@ $('#orderSearchBtn').click(function(){
 		               text: items.product_qty
 		            })).append($('<td/>',{
 		               //align:'center',
-		               text: items.total_amount
+		               text: items.product_price
 		            })).append($('<td/>',{
 		               //align:'center',
 		               text: items.zipcode
@@ -1003,7 +1020,7 @@ $('#orderSearchBtn').click(function(){
 		               text: items.addr2
 		            })).append($('<td/>',{
 		               //align:'center',
-		               text: items.order_status
+		               text: OrderStatusType[items.order_status].value
 		            })).appendTo($('#orderControlTable'));
 		      });//each
 				
@@ -1017,9 +1034,4 @@ $('#orderSearchBtn').click(function(){
 	}
 
 });
-
-
-
-
-
 

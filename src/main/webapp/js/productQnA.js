@@ -149,6 +149,15 @@ function product_qna_paging(pg) {
 			
 			$.each(data.productQnAList, function(index,items){
 				var writerEmail = items.email;
+				var replyStatus = 'wait';
+				var replyStatusTXT = '대기';
+				if(items.reply == 0){ 
+					replyStatus = 'wait';
+					replyStatusTXT = '대기';
+				}else{ 
+					replyStatus = 'done'; 
+					replyStatusTXT = '완료';
+				}
 				
 				$('<tr/>', {
 					style: 'background-color: #f5f7ff;'
@@ -168,10 +177,12 @@ function product_qna_paging(pg) {
 					align:'center',
 					text:items.created_atQ
 				})).append($('<td/>',{
-					align:'center',
-					text:items.reply
-					
-				})).appendTo($('.qna_list_table'));
+					align:'center'
+				}).append($('<a/>', {
+					class: 'productQnAreply',
+					id: replyStatus,
+					text: replyStatusTXT					
+				}))).appendTo($('.qna_list_table'));
 				
 				//내용
 				
