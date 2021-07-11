@@ -240,3 +240,6 @@ id NUMBER primary key,
 order_number VARCHAR2(80),
 member_id VARCHAR2(80),
 delivery_number VARCHAR2(80));
+
+
+create sequence seq_orderControl nocycle nocache;
