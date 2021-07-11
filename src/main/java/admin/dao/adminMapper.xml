@@ -144,7 +144,7 @@
 					inner join product_image pi
 						on p.id=pi.id
 					                        
-                    where od.order_status = 'READY'
+                    where od.order_status = 'PAYMENTCOMPLETED'
 				 order by order_date desc
 
 	</select>
@@ -180,7 +180,7 @@
 					inner join product_image pi
 						on p.id=pi.id
                         
-                    where od.order_status = '배송준비'
+                    where od.order_status = 'READY'
 				 order by order_date desc
 	</select>
 	
@@ -215,7 +215,7 @@
 					inner join product_image pi
 						on p.id=pi.id
                         
-                    where od.order_status = '배송중'
+                    where od.order_status = 'PROCESSING'
 				 order by order_date desc
 	</select>
 
@@ -250,7 +250,7 @@
 					inner join product_image pi
 						on p.id=pi.id
                         
-                    where od.order_status = '배송완료'
+                    where od.order_status = 'COMPLETED'
 				 order by order_date desc
 	</select>
 	
@@ -285,7 +285,7 @@
 					inner join product_image pi
 						on p.id=pi.id
                         
-                    where od.order_status = '구매확정'
+                    where od.order_status = 'FINISH'
 				 order by order_date desc
 	</select>
 	
@@ -320,7 +320,7 @@
 					inner join product_image pi
 						on p.id=pi.id
                         
-                    where od.order_status = '주문취소'
+                    where od.order_status = 'CANCLE'
 				 order by order_date desc
 	</select>
 	
@@ -386,13 +386,13 @@
 	Begin
 		update ordercontrol set delivery_number = #{delivery_number} from orders_detail where id = #{id};
 		
-		update orders_detail set order_status = '배송중' where id = #{id};
+		update orders_detail set order_status = 'PROCESSING' where id = #{id};
 	end;
 	</update>
 	
 	<!-- 배송준비 버튼 클릭 했을 때 -->
 	<update id="deliveryReady" parameterType="java.util.Map">
-		update orders_detail set order_status = '배송준비' where id in
+		update orders_detail set order_status = 'READY' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -400,7 +400,7 @@
 	
 	<!-- 입금확인 버튼 클릭 시 -->
 	<update id="paymentConfirm" parameterType="java.util.Map">
-		update orders_detail set order_status = '결제완료' where id in
+		update orders_detail set order_status = 'PAYMENTCOMPLETED' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -408,7 +408,7 @@
 	
 	<!-- 배송중 버튼 클릭 시 -->
 	<update id="delivery" parameterType="java.util.Map">
-		update orders_detail set order_status = '배송중' where id in
+		update orders_detail set order_status = 'PROCESSING' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -416,7 +416,7 @@
 	
 	<!-- 발송지연 -->
 	<update id="delay" parameterType="java.util.Map">
-		update orders_detail set order_status = '발송지연중' where id in
+		update orders_detail set order_status = 'DELAY' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -424,7 +424,7 @@
 	
 	<!-- 주문취소 -->
 	<update id="cancelSales" parameterType="java.util.Map">
-		update orders_detail set order_status = '주문취소' where id in
+		update orders_detail set order_status = 'CANCLE' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -432,7 +432,7 @@
 	
 	<!-- 배송완료 -->
 	<update id="deliveryComplete" parameterType="java.util.Map">
-		update orders_detail set order_status = '배송완료' where id in
+		update orders_detail set order_status = 'COMPLETED' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
@@ -440,7 +440,7 @@
 	
 	<!-- 구매확정 -->
 	<update id="purchaseConfirmed" parameterType="java.util.Map">
-		update orders_detail set order_status = '구매확정' where id in
+		update orders_detail set order_status = 'FINISH' where id in
 		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>

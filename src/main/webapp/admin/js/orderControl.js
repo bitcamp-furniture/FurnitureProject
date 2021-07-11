@@ -68,7 +68,7 @@ $(function(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[item.order_status].value
             })).appendTo($('#newOrderTable'));
       });//each
          
@@ -158,7 +158,7 @@ function newOrder(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[item.order_status].value
             })).appendTo($('#newOrderTable'));
       });//each
          
@@ -251,7 +251,7 @@ $('#deliveryReady').click(function(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[item.order_status].value
             })).appendTo($('#deliveryTable'));
       });//each
          
@@ -345,7 +345,7 @@ function duringDeliver(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[item.order_status].value
             })).appendTo($('#duringDeliverTable'));
       });//each
          
@@ -438,7 +438,7 @@ function deliverComplete(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[item.order_status].value
             })).appendTo($('#deliverCompleteTable'));
       });//each
          
@@ -527,7 +527,7 @@ function orderCancle(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[item.order_status].value
             })).appendTo($('#orderCancleTable'));
       });//each
          
@@ -616,7 +616,7 @@ function purchaseConfirmed(){
                //align:'center',
                id: 'order_status',
                name: 'order_status',
-               text: items.order_status
+               text: OrderStatusType[item.order_status].value
             })).appendTo($('#purchaseConfirmedTable'));
       });//each
          
@@ -973,7 +973,7 @@ $('#orderSearchBtn').click(function(){
 		               text: items.addr2
 		            })).append($('<td/>',{
 		               //align:'center',
-		               text: items.order_status
+		               text: OrderStatusType[item.order_status].value
 		            })).appendTo($('#orderControlTable'));
 		      });//each
 				

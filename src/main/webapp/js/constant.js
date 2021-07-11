@@ -5,7 +5,7 @@ const OrderStatusType = {
     },
     READY: {
         name: "READY",
-        value: "배송준비중"
+        value: "배송준비"
     },
     PROCESSING: {
         name: "PROCESSING",
@@ -22,6 +22,10 @@ const OrderStatusType = {
     CANCLE: {
         name: "CANCLE",
         value: "주문취소"
+    },
+    DELAY: {
+    	name: "DELAY",
+    	value: "발송지연"
     }
 }
 

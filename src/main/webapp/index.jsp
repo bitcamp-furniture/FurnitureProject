@@ -6,6 +6,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+.header{
+    background-color: white;
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index :99999;
+}
+</style>
 <title> IKEZKE </title>
 
     <!-- Google Font -->
@@ -166,9 +176,7 @@
     </header>
     <!-- Header Section End -->
 
-
-
-   <div id="section">
+   <div id="section" style="padding-top:160px;">
       <c:if test="${empty display }">
          <jsp:include page="/main/indexDisplay.jsp" />
       </c:if>
