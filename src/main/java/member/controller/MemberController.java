@@ -51,7 +51,7 @@ public class MemberController {
 		logger.info("인증번호 " + checkNum);
 	
 		// 이메일 보내기
-		String setFrom = "breadcream@naver.com"; //보내는 사람(내 이메일 -> 설정 두번해야함 controller와 servlet)
+		String setFrom = "ikezke@naver.com"; //보내는 사람(내 이메일 -> 설정 두번해야함 controller와 servlet)
 		String toMail = email; //받는 사람
 		String title = "회원가입 인증 이메일 입니다.";
 		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
