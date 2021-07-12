@@ -90,6 +90,9 @@ $('#deliveryReady').click(function(){
 	
 	$('#dropdown').css('pointer-events', 'auto');
 	$('#dropdown').css('opacity', '1');
+	$('#cancelSales').show();
+	$('#paymentConfirmBtn').show();
+	$('#deliveryReadyBtn').hide();
 	
 });
 

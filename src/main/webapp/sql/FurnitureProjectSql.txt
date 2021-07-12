@@ -132,9 +132,10 @@ addr2 varchar2(200), -- 주소2
 bir_yy varchar2(10), -- 생일 연도
 bir_mm varchar2(10), -- 생일 월
 bir_dd varchar2(10), -- 생일 일
-point NUMBER, -- 포인트
+<<<<<<< HEAD
+point number(38), -- 포인트
 verify varchar2(10), -- 관리자 계정 확인 값
-amount varchar2(50), -- 누적 총금액
+amount number(38), -- 누적 총금액
 kakaoId varchar2(20), -- 카카오아이디
 created_at date -- 생성일
 );
@@ -168,9 +169,9 @@ name varchar2(30), -- 이름
 email varchar2(60), --  이메일
 subject varchar2(250), -- 제목
 content varchar2(4000), -- 내용
-reply number, -- 답변
-image1 varchar2(200),
-answer varchar2(4000),
+reply number, -- 답변상태
+image1 varchar2(200),사진1
+answer varchar2(4000),답변
 created_at date -- 생성일
 );
 create sequence seq_ask nocycle nocache;
@@ -225,7 +226,7 @@ create sequence seq_orders nocycle nocache;
 create table orders_detail(
 id NUMBER primary key, -- 기본키
 product_price NUMBER,-- 상품별 금액--
-product_qty NUMBER,--상품별 구매수량--
+product_qty NUMBER,--상품별 구매수량
 product_amounts NUMBER, --한 줄 총 금액(상품가격*수량)
 order_number VARCHAR2(30), --주문번호, orders 테이블의 기본키
 product_id VARCHAR2(30), --상품아이디--
@@ -259,4 +260,4 @@ CREATE TABLE payment(
 	updated_at date -- 수정된 일자
 );
 create sequence seq_payment nocycle nocache;
- 
+

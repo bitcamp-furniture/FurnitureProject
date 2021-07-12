@@ -15,9 +15,11 @@ insert into review values(seq_review.nextval,'sefsd', '123','소파',3,'넘 좋�
 
 
 
+insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, created_at
+) values (seq_member.nextval, '111', '김지현', '111', '01012341234', '12345', '서울특별시 강남구', '서초본원 비트캠프', '2001', '12', '20', 5000, sysdate);
 
-
-
+insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, verify,created_at
+) values (seq_member.nextval, '11', '김지현', '11', '01012341234', '12345', '서울특별시 강남구', '서초본원 비트캠프', '2001', '12', '20', 5000, '1',sysdate);
 
 
 
