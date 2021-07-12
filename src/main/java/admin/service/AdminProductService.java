@@ -63,7 +63,7 @@ public interface AdminProductService {
 
 	public void cancleAmount(String[] check);
 
-	public void cancelSalesComplete(String[] check);
+	public void cancelSalesComplete(String odId);
 
 	public void memberPointUpdate(String[] check);
 
