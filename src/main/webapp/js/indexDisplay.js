@@ -1,3 +1,46 @@
+//이벤트 이미지 배너
+$(function(){
+   $.ajax({
+      type:'post',
+      url:'/furniture/admin/event/getEventList',
+      dataType:'json',
+      success:function(data){
+    	 //console.log(JSON.stringify(data))
+         //console.log(data);
+         $.each(data.eventList, function(index,items){
+            var id = items.id;
+            $('.set-bg'+(index+1)).css({'background-image': 'url("/furniture/storage/'+items.event_img_banner + '")',
+            							'background-size' : '100% 100%'});
+           // $('.set-bg'+(index+1)).prop('href', '/furniture/main/eventView?id='+items.id+'&pg=1');
+            $('.primary-btn'+(index+1)).attr('href', '/furniture/main/eventView?id='+items.id+'&pg=1')
+         });//each 
+         
+      },
+      error: function(err){
+         console.log(err);
+      }
+   });
+   
+});
+
+
+
+$('#eventViewIndex').click(function(pg){
+	$.ajax({
+		url :"/furniture/admin/event/getEventList",
+	    type:'post',
+		data:{'pg' :pg},
+		success : function(data){
+			alert("성공!");
+		},
+		error : function(){
+			alert("실패 :");
+		}
+	});
+});
+
+
+
 function addWish(id) {
 	if($('#memId').val() == '0'){
 		alert("로그인이 필요한 서비스입니다.");

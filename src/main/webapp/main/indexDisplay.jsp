@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <style type="text/css">
 .cart_add{
@@ -31,29 +32,61 @@ cursor: pointer;
 <!-- Hero Section Begin 큰 배너사진-->
     <section class="hero">
     <input type="hidden" value="${memId }" id="memId"/>
-    
+   
+                           
+                          
         <div class="hero__slider owl-carousel">
-            <div class="hero__item set-bg" data-setbg="/furniture/image/123.jpg" style="cursor:pointer;">
-                <div class="container">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-8">
-                            <a href="/furniture/main/eventView?id=46"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero__item set-bg" data-setbg="/furniture/image/1234.jpg">
+		         <a class="primary-btn1" id="eventViewIndex">
+		            <div class="hero__item set-bg1" style="cursor:pointer;">
+		                <div class="container">
+		                    <div class="row d-flex justify-content-center">
+		                        <div class="col-lg-8">
+		                        
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </a>
+             
+              <a class="primary-btn2" id="eventViewIndex">
+		            <div class="hero__item set-bg2" style="cursor:pointer;">
+		                <div class="container">
+		                    <div class="row d-flex justify-content-center">
+		                        <div class="col-lg-8">
+		                        
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </a>
+		            
+		       <a class="primary-btn3" id="eventViewIndex">
+		            <div class="hero__item set-bg3" style="cursor:pointer;">
+		                <div class="container">
+		                    <div class="row d-flex justify-content-center">
+		                        <div class="col-lg-8">
+		                        
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </a>     
+		            
+           <!--  <div class="hero__item set-bg" data-setbg="/furniture/image/1234.jpg">
                 <div class="container">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-8">
                             <div class="hero__text">
                                 <h2>침실가구 기획전</h2>
-                                <a href="/furniture/main/eventView?id=47" class="primary-btn">보러가기</a>
+                                <a href="/furniture/main/eventView?id=47" class="primary-btn">이벤트 보러가기</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            
+            
+            
         </div>
     </section>
     <!-- Hero Section End -->
