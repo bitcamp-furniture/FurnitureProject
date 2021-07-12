@@ -390,7 +390,7 @@ function review_paging(pg) {
                colspan: 2
             }).append($('<pre/>', {
                align: 'left',
-               text: items.review_content
+               html: items.review_content 
             }))).appendTo($('#review_list_table'));
             
             $('<tr/>').append($('<td/>', {
