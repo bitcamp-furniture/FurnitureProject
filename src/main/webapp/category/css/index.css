@@ -456,10 +456,10 @@ ol {
   margin-right: -5px;
 }
 .header__menu ul li.active a {
-  background: #140949;
+  background: white;
 }
 .header__menu ul li:hover a {
-  background: #140949;
+  background: white;
 }
 .header__menu ul li:hover .dropdown {
   top: 62px;

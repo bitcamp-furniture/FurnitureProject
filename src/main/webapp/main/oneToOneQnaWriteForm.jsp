@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <title>1:1 상품 QnA</title>
 <style type="text/css">
+body {
+	font-family: "AppleSDGothicNeoM00", serif;
+}
+
 div#subjectDiv, div#contentDiv {
 	color:red;
 	font-size: 8pt;

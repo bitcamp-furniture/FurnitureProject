@@ -461,10 +461,6 @@ ol {
   background: #140949;
   color: white;
 }
-.header__menu ul li:hover a {
-  background: #140949;
-  color: white;
-}
 .header__menu ul li:hover .dropdown {
   top: 62px;
   opacity: 1;

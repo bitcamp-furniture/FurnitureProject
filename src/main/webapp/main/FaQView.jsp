@@ -13,6 +13,10 @@
 
 
 <style type="text/css">
+body {
+	font-family: "AppleSDGothicNeoM00", serif;
+}
+
 #wholeDiv {
 	margin: 0 auto;
 	align-items: center;

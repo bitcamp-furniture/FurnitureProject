@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <style type="text/css">
+body {
+	font-family: "AppleSDGothicNeoM00", serif;
+}
+
 a{
 	text-decoration: none;
 }
