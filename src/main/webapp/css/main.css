@@ -30,7 +30,7 @@
 html,
 body {
   height: 100%;
-  font-family: "Montserrat", sans-serif;
+  font-family: "AppleSDGothicNeoM00", serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -43,7 +43,7 @@ h6 {
   margin: 0;
   color: #11111194;
   font-weight: 400;
-  font-family: "Montserrat", sans-serif;
+  font-family: "AppleSDGothicNeoM00", serif;
 }
 
 h1 {
@@ -72,7 +72,7 @@ h6 {
 
 p {
   font-size: 16px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "AppleSDGothicNeoM00", serif;
   color: #111111;
   font-weight: 400;
   line-height: 28px;
@@ -93,12 +93,12 @@ textarea:focus {
 a:hover{
   text-decoration: none;
   outline: none;
-} /* color: white를 지웠음!*/
+} /* color: white瑜� 吏��썱�쓬!*/
 a:focus {
   text-decoration: none;
   outline: none;
   color: #140949;
-} /* color: white를 지웠음!*/
+} /* color: white瑜� 吏��썱�쓬!*/
 
 ul,
 ol {
@@ -127,7 +127,7 @@ ol {
   line-height: 60px;
   font-weight: 700;
   font-style: italic;
-  font-family: "Playfair Display", serif;
+  font-family: "AppleSDGothicNeoM00", serif;
 }
 
 .set-bg {
@@ -953,8 +953,8 @@ ol {
   color: #444444;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-weight: 600;
   margin-bottom: 10px;
+  font-family: "AppleSDGothicNeoM00", serif;
 }
 .about__bar .about__bar__item .barfiller {
   width: 100%;

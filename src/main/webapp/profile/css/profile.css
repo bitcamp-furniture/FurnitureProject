@@ -1,3 +1,7 @@
+body {
+	font-family: "AppleSDGothicNeoM00", serif;
+}
+
 .profile {
     padding: 10px;    
     border-radius: 7px;;        
@@ -38,7 +42,7 @@
     color: #2e9cdf;
     cursor: pointer;}
 
-/*input 클릭시, label 스타일*/
+/*input �겢由��떆, label �뒪���씪*/
 #profile-tap1:checked + label,
 #profile-tap2:checked + label,
 #profile-tap3:checked + label,

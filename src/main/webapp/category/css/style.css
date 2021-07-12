@@ -20,11 +20,10 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
-
 html,
 body {
    height: 100%;
-   font-family: "Cairo", sans-serif;
+   font-family: "AppleSDGothicNeoM00", serif;
    -webkit-font-smoothing: antialiased;
    font-smoothing: antialiased;
 }
@@ -38,7 +37,7 @@ h6 {
    margin: 0;
    color: #111111;
    font-weight: 400;
-   font-family: "Cairo", sans-serif;
+   font-family: "AppleSDGothicNeoM00", serif;
 }
 
 h1 {
@@ -67,7 +66,7 @@ h6 {
 
 p {
    font-size: 16px;
-   font-family: "Cairo", sans-serif;
+   font-family: "AppleSDGothicNeoM00", serif;
    color: #6f6f6f;
    font-weight: 400;
    line-height: 26px;
@@ -129,7 +128,7 @@ ol {
    margin-bottom: 0;
 }
 
- /*카테고리 침대*/
+ /*移댄뀒怨좊━ 移⑤�*/
 .hero__categories__bed {
    position: relative;
    padding: 10px 10px 10px 5px;
@@ -150,11 +149,11 @@ ol {
    right: 18px;
    top:px;
    content: "3";
-   font-family: "ElegantIcons";
+   font-family: "AppleSDGothicNeoM00", serif;
    font-size: 18px;
    color: #000000;
 } 
- /*카테고리 소파*/
+ /*移댄뀒怨좊━ �냼�뙆*/
 .hero__categories__sofa {
    position: relative;
    padding: 10px 10px 10px 5px;
@@ -172,14 +171,14 @@ ol {
    right: 18px;
    top:px;
    content: "3";
-   font-family: "ElegantIcons";
+   font-family: "AppleSDGothicNeoM00", serif;
    font-size: 18px;
    color: #000000;
 }
 .hero__categories__sofa ul li:hover {
   text-decoration: underline;
 } 
-/*카테고리 책장/선반유닛*/
+/*移댄뀒怨좊━ 梨낆옣/�꽑諛섏쑀�떅*/
 .hero__categories__bookshelf {
    position: relative;
    padding: 10px 10px 10px 5px;
@@ -204,7 +203,7 @@ ol {
 .hero__categories__bookshelf ul li:hover {
   text-decoration: underline;
 } 
-/*카테고리 식탁/책상*/
+/*移댄뀒怨좊━ �떇�긽/梨낆긽*/
 .hero__categories__desk {
    position: relative;
    padding: 10px 10px 10px 5px;
@@ -229,7 +228,7 @@ ol {
 .hero__categories__desk ul li:hover {
   text-decoration: underline;
 } 
-/*카테고리 수납장 /장식장*/
+/*移댄뀒怨좊━ �닔�궔�옣 /�옣�떇�옣*/
 .hero__categories__closet {
    position: relative;
    padding: 10px 10px 10px 5px;
@@ -254,7 +253,7 @@ ol {
 .hero__categories__closet ul li:hover {
   text-decoration: underline;
 } 
-/*카테고리 옷장*/
+/*移댄뀒怨좊━ �샆�옣*/
 .hero__categories__clothes {
    position: relative;
    padding: 10px 10px 10px 5px;
@@ -279,7 +278,7 @@ ol {
 .hero__categories__clothes ul li:hover {
   text-decoration: underline;
 }
- /*의자*/
+ /*�쓽�옄*/
 .hero__categories__chair {
    position: relative;
    padding: 10px 10px 10px 5px;
@@ -297,7 +296,7 @@ ol {
    right: 18px;
    top:px;
    content: "3";
-   font-family: "ElegantIcons";
+   font-family: "AppleSDGothicNeoM00", serif;
    font-size: 18px;
    color: #000000;
 }
@@ -710,7 +709,7 @@ ol {
    color: #252525;
    font-weight: 700;
 }
-/* 사이즈관련으로 뭐 추가해야하는데 딥빡 상태이니 머리좀 식히자*/
+/* �궗�씠利덇��젴�쑝濡� 萸� 異붽��빐�빞�븯�뒗�뜲 �뵦鍮� �긽�깭�씠�땲 癒몃━醫� �떇�엳�옄*/
 #product_list{
 	
 	
@@ -1261,7 +1260,7 @@ ol {
 .product__item__pic__hover li:last-child {
    margin-right: 0;
 }
-/*마우스를 올렸을 때 하트 색깔 변하는곳*/
+/*留덉슦�뒪瑜� �삱�졇�쓣 �븣 �븯�듃 �깋源� 蹂��븯�뒗怨�*/
 .product__item__pic__hover li:hover a {
    background: #0000ff;
    border-color: #0000ff;
