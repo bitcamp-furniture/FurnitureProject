@@ -566,10 +566,9 @@
 	
 	<!-- 주문취소 (구매확정 외의 탭에 있는 주문취소 버튼) -->
 	<update id="cancelSalesComplete" parameterType="java.util.Map">
-		update orders_detail set order_status = 'CANCEL' where id in
-		<foreach collection="array" item="item" open="(" close=")" separator=",">
-			#{item}
-		</foreach>
+		update orders_detail set order_status = 'CANCEL' where order_number = (
+		select order_number from orders_detail where id=#{odId}
+		)
 	</update>
 	
 	<!-- 배송완료 -->

@@ -2,7 +2,7 @@
 $('.qna_write_btn').click(function() {
    $('.qna_write_div').empty();
    if($('#memEmail').val() ==''){
-	   alert('로그인후 문의 등록 부탁드립니다~')
+	   swal('로그인후 문의 등록 부탁드립니다~')
    }
    
    if($('.qna_write_subject').val() == ''){

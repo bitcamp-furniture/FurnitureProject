@@ -314,9 +314,9 @@ public class AdminProductServiceImpl implements AdminProductService{
 	
 	//판매취소 처리 (구매확정 외의 탭에 있는 주문취소 버튼)
 	@Override
-	public void cancelSalesComplete(String[] check) {
-		Map<String, String[]> map = new HashMap<String, String[]>();
-		map.put("array", check);
+	public void cancelSalesComplete(String odId) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("odId", odId);
 		adminProductDAO.cancelSalesComplete(map);
 		
 	}
