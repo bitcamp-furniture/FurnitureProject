@@ -199,7 +199,7 @@ function reviewPaging(pg)
 					//내용(짤려져 나올지 안나올지 봐야함)
 					align: 'center',
 					//width: '300',
-					text: items.review_content
+					html: items.review_content
 				})).append($('<td/>',{
 					//작성자
 					align: 'center',
