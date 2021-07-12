@@ -490,6 +490,7 @@
     	<input type="hidden" value="${memId }" id="memid"/>
     	<input type="hidden" value="${param.id }" id="id"/>
      <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+	 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   
 
      <script src="/furniture/js/productQnA.js"></script>

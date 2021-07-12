@@ -417,8 +417,16 @@ function review_paging(pg) {
 $('#addCartBtn').click(function(){
 
 	if($('#memId').val()==='0'){
-		alert("로그인 후 이용해주시기 바랍니다.");
-		location.href = "/furniture/member/loginForm"
+		swal({
+            title: "",
+            text: "로그인 후 이용해주시기 바랍니다.", 
+            type: " "
+         }).then(function(){
+        	location.href = "/furniture/member/loginForm";
+         });
+		
+		//swal("로그인 후 이용해주시기 바랍니다.");
+		//location.href = "/furniture/member/loginForm"
 
 	}else{
 		$.ajax({
@@ -430,7 +438,7 @@ $('#addCartBtn').click(function(){
 				   'product_count': $('#product_qty').val()
 			},
 			success: function(){
-				alert('성공');
+				swal("상품을 장바구니에 등록하였습니다.");
 			},
 			error: function(err){
 				console.log(err);
