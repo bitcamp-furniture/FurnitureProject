@@ -186,6 +186,7 @@ public class PayController {
     @RequestMapping(value = "/pay/cancel")
     @org.springframework.web.bind.annotation.ResponseBody
     public ModelAndView cancel(@RequestParam Map<String, String> map) {
+        System.out.println("map = " + map);
         String tId = profileService.gettId(map.get("check"));
 
         ModelAndView mav = new ModelAndView();
@@ -198,7 +199,7 @@ public class PayController {
 
             Map<String, Object> cancelMap = new HashMap<String, Object>();
             cancelMap.put("transactionId", tId);
-            String signature = Sha256("test_kakao|"+tId+"|5a594647c79a45deb579ff5c96cfb4cf");
+            String signature = Sha256("test_kakao|"+tId+"|845bc48d79844d9ca3f42dbbc4abcfab");
             cancelMap.put("signature", signature);
             cancelMap.put("cancelReason", "1");
 

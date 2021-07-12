@@ -172,8 +172,8 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
-	public String gettId(String orderNumber) {
-		return sqlSession.selectOne("profileSQL.gettId", orderNumber);
+	public String gettId(String odId) {
+		return sqlSession.selectOne("profileSQL.gettId", odId);
 	}
 
 	@Override
@@ -181,8 +181,8 @@ public class ProfileDAOMybatis implements ProfileDAO {
 		sqlSession.update("profileSQL.updateCumulativeAmount", map);
 	}
 
-	public void paymentUpdate(String check) {
-		sqlSession.update("profileSQL.paymentUpdate", check);
+	public void paymentUpdate(String odId) {
+		sqlSession.update("profileSQL.paymentUpdate", odId);
 	}
 
 	@Override

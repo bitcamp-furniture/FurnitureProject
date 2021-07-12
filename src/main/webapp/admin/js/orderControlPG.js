@@ -26,6 +26,10 @@ function newOrder(){
             })).append($('<td/>',{
                //align:'center',
                text: items.order_number
+            })).append($('<input/>',{
+                type: 'hidden',
+                class: 'order_number '+items.order_number,
+                value: items.order_number
             })).append($('<td/>',{
             	//align:'center',
             	text: items.name
@@ -49,7 +53,7 @@ function newOrder(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.product_price
+               text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -141,7 +145,7 @@ function duringDeliver(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.product_price
+               text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -237,7 +241,7 @@ function deliverComplete(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.product_price
+               text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -333,7 +337,7 @@ function orderCancle(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.product_price
+               text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             })).append($('<td>',{
             	
             }).append($('<td/>',{
@@ -403,6 +407,10 @@ function purchaseConfirmed(){
             })).append($('<td/>',{
                //align:'center',
                text: items.order_number
+            })).append($('<input/>',{
+                type: 'hidden',
+                class: 'order_number '+items.order_number,
+                value: items.order_number
             })).append($('<td/>',{
             	//align:'center',
             	text: items.name
@@ -426,7 +434,7 @@ function purchaseConfirmed(){
                text: items.product_qty
             })).append($('<td/>',{
                 //align:'center',
-                text: items.product_price
+                text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
              })).append($('<td>',{
              	
              }).append($('<input/>',{
@@ -526,7 +534,7 @@ $('#orderSearchBtn').click(function(){
 		                text: items.product_qty
 		             })).append($('<td/>',{
 		                //align:'center',
-		                text: items.product_price
+		                text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 		             })).append($('<td/>',{
 		             	
 		             }).append($('<input/>',{
@@ -619,7 +627,7 @@ function orderControlPaging(pg){
 		               text: items.product_qty
 		            })).append($('<td/>',{
 		               //align:'center',
-		               text: items.product_price
+		               text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 		            })).append($('<td/>',{
 		            	
 		            }).append($('<input/>',{

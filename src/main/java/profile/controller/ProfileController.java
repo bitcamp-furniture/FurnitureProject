@@ -411,7 +411,7 @@ public String orderComplete(Model model, HttpSession session, OrderDetailDTO ord
 	
 	// 리뷰 작성 폼
 	@RequestMapping(value="reviewWriteForm", method=RequestMethod.GET)
-	public String reviewWrite(@RequestParam int id, Model model, HttpSession session) {
+	public String reviewWriteForm(@RequestParam int id, Model model, HttpSession session) {
 		ProductDTO productDTO = furnitureService.getIdToOneData(id);
 		String email = (String) session.getAttribute("memEmail");
 		

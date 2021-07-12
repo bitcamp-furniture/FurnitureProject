@@ -60,11 +60,11 @@ public interface ProfileDAO {
 
 	public void memberDelete(String id);
 
-    String gettId(String orderNumber);
+    String gettId(String odId);
 
 	void updateCumulativeAmount(Map<String, Object> map);
 	
-    public void paymentUpdate(String check);
+    public void paymentUpdate(String odId);
 
 	public void reviewWrite(ReviewDTO reviewDTO);
 

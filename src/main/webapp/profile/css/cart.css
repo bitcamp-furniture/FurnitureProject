@@ -109,4 +109,6 @@ table{
 	text-align:center;
 	
 }
-
+#qty_select {
+    border:white;
+}

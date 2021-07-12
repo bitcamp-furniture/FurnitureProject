@@ -12,7 +12,12 @@
 #chart2{
 	float: left;
 	width: 45%;
+	height: 430px;
 	display: inline-block;
+}
+#dailySummaryTbl{
+	font-size: 1.3em;
+	height: 440px;
 }
 .clearing{
 	clear: both;
@@ -20,13 +25,16 @@
 #chart3{
 	float: left;
 	width: 45%;
+	font-size: 1.3em;
 	display: inline-block;
+	padding: 3px;
+	margin: 10px;
 }
 .chart3Recent{
 	border: 1px solid lightgray;
 	display: inline-block;
 	float: left;
-	height: 230px;
+	height: 400px;
 	width: 47%;
 	background: white;
 }
@@ -35,7 +43,7 @@
 	text-align: center;
 }
 .chart3Recent div{
-	height: 80%;
+	height: 100%;
 }
 #chart4{
 	border: 1px solid lightgray;
@@ -69,7 +77,7 @@
 }
 #dailySummaryDiv{
 	width: 100%;
-	height: 180px;
+	height: 420px;
 	border: 1px solid lightgray;
 	background: white;
 }
