@@ -5,6 +5,17 @@
 #reviewWriteForm{
 	width: 100%;
 }
+.reviewBtn {
+   border-radius:5px;
+   border: 1px solid darkblue; 
+   background-color: rgba(0,0,0,0); 
+   color: darkblue; 
+   padding: 5px;
+}
+.reviewBtn:hover {
+   color:white;
+   background-color: darkblue;
+}
 </style>
 
 <br>
@@ -44,8 +55,8 @@
 		<tr>
 			<td colspan="2" align="right">
 			<div id="reviewFormDiv"></div>
-			<input type="button" value="등록" id="reviewWriteBtn"> 
-			<input type="reset" value="다시작성">
+			<input type="button" value="등록" id="reviewWriteBtn" class="reviewBtn"> 
+			<input type="reset" value="다시작성"  class="reviewBtn">
 			</td>
 		</tr>
 	</table>

@@ -237,4 +237,9 @@ public class ProfileServiceImpl implements ProfileService {
 		profileDAO.reviewWrite(reviewDTO);
 	}
 
+	@Override
+	public int getProductAmounts(Map<String, Object> map) {
+		return profileDAO.getProductAmounts(map);
+	}
+
 }
