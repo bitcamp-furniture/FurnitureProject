@@ -9,7 +9,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-6);
 
 insert into ask values(seq_ask.nextval
 , '반품교환'
@@ -21,7 +21,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-6);
 
 insert into ask values(seq_ask.nextval
 , '취소'
@@ -33,7 +33,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-6);
 
 insert into ask values(seq_ask.nextval
 , '배송'
@@ -45,7 +45,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-6);
 
 insert into ask values(seq_ask.nextval
 , '기타'
@@ -57,7 +57,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-5);
 
 insert into ask values(seq_ask.nextval
 , '기타'
@@ -69,7 +69,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-4);
 
 insert into ask values(seq_ask.nextval
 , '기타'
@@ -81,7 +81,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-4);
 
 insert into ask values(seq_ask.nextval
 , '반품교환'
@@ -93,7 +93,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-5);
 
 insert into ask values(seq_ask.nextval
 , '기타'
@@ -105,7 +105,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-4);
 
 insert into ask values(seq_ask.nextval
 , '기타'
@@ -117,7 +117,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-4);
 
 insert into ask values(seq_ask.nextval
 , '배송'
@@ -129,7 +129,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-3);
 
 insert into ask values(seq_ask.nextval
 , '회원정보'
@@ -141,7 +141,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-4);
 
 insert into ask values(seq_ask.nextval
 , '취소'
@@ -153,7 +153,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-2);
 
 insert into ask values(seq_ask.nextval
 , '배송'
@@ -165,7 +165,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-2);
 
 insert into ask values(seq_ask.nextval
 , '취소'
@@ -177,7 +177,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-2);
 
 insert into ask values(seq_ask.nextval
 , '배송'
@@ -189,7 +189,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-2);
 
 insert into ask values(seq_ask.nextval
 , '반품교환'
@@ -213,7 +213,7 @@ insert into ask values(seq_ask.nextval
 , 0
 , ''
 , ''
-, sysdate);
+, sysdate-1);
 
 insert into ask values(seq_ask.nextval
 , '기타'
@@ -240,8 +240,7 @@ insert into ask values(seq_ask.nextval
 , sysdate);
 
 --member table insert
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'qkrdmsdud@naver.com',
 '박은영',
 '11',
@@ -252,13 +251,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1994',
 '11',
 '6',
-'5000',
-0,
+105800,
 '',
-sysdate);
+17949800,
+'',
+sysdate-7);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'dheorms@naver.com',
 '오대근',
 '11',
@@ -269,13 +268,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1990',
 '10',
 '21',
-'5000',
-0,
+40500,
 '',
-sysdate);
+2794000,
+'',
+sysdate-7);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'dldPthf@naver.com',
 '이예솔',
 '11',
@@ -286,13 +285,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1993',
 '7',
 '3',
-'5000',
-0,
+10200,
 '',
-sysdate);
+795800,
+'',
+sysdate-6);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'rlawltn@naver.com',
 '김지수',
 '11',
@@ -303,13 +302,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1989',
 '7',
 '28',
-'5000',
-0,
+29700,
 '',
-sysdate);
+989000,
+'',
+sysdate-6);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'rlawlgus@naver.com',
 '김지현',
 '11',
@@ -320,13 +319,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1989',
 '1',
 '1',
-'5000',
-0,
+7800,
 '',
-sysdate);
+1290000,
+'',
+sysdate-5);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'dlguswl@naver.com',
 '이현지',
 '11',
@@ -337,13 +336,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1989',
 '1',
 '1',
-'5000',
-0,
+6500,
 '',
-sysdate);
+2180000,
+'',
+sysdate-4);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'rlatmfrl@naver.com',
 '김슬기',
 '11',
@@ -354,13 +353,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '2002',
 '2',
 '2',
-'5000',
-0,
+19000,
 '',
-sysdate);
+750000,
+'',
+sysdate-4);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'dlalswjd@naver.com',
 '이민정',
 '11',
@@ -371,16 +370,16 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1993',
 '4',
 '30',
-'5000',
-0,
+38550,
 '',
-sysdate);
+2825000,
+'',
+sysdate-3);
 
 
 
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'shwkdgur@naver.com',
 '노장혁',
 '11',
@@ -391,13 +390,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1996',
 '3',
 '9',
-'5000',
-0,
+35000,
 '',
-sysdate);
+2945000,
+'',
+sysdate-3);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'dksrudtn@naver.com',
 '안경수',
 '11',
@@ -408,13 +407,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1996',
 '7',
 '22',
-'5000',
-0,
+4500,
 '',
-sysdate);
+2294900,
+'',
+sysdate-3);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'wkdwodyd@naver.com',
 '장재용',
 '11',
@@ -425,13 +424,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1993',
 '6',
 '6',
-'5000',
-0,
+59000,
 '',
-sysdate);
+699000,
+'',
+sysdate-2);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'rlaalrud@naver.com',
 '김미경',
 '11',
@@ -442,13 +441,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1990',
 '9',
 '10',
-'5000',
-0,
+27600,
 '',
-sysdate);
+2699000,
+'',
+sysdate-3);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'dhdusdml@naver.com',
 '오연의',
 '11',
@@ -459,13 +458,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '2000',
 '7',
 '7',
-'5000',
-0,
+56000,
 '',
-sysdate);
+2580200,
+'',
+sysdate-2);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'rlagusdo@naver.com',
 '김현애',
 '11',
@@ -476,13 +475,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '2000',
 '7',
 '3',
-'5000',
-0,
+75520,
 '',
-sysdate);
+7354800,
+'',
+sysdate-2);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'rkdtnqls@naver.com',
 '강수빈',
 '11',
@@ -493,13 +492,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '2012',
 '6',
 '28',
-'5000',
-0,
+19560,
 '',
-sysdate);
+628000,
+'',
+sysdate-1);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'rlawogus@naver.com',
 '김재현',
 '11',
@@ -510,13 +509,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1987',
 '2',
 '28',
-'5000',
-0,
+5000,
 '',
-sysdate);
+159000,
+'',
+sysdate-1);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'dbghkddlf@naver.com',
 '유황일',
 '11',
@@ -527,13 +526,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1987',
 '2',
 '6',
-'5000',
+5000,
+'',
 0,
 '',
-sysdate);
+sysdate-1);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'gkseotjr@naver.com',
 '한대석',
 '11',
@@ -544,13 +543,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1987',
 '4',
 '25',
-'5000',
-0,
+856000,
 '',
-sysdate);
+2599000,
+'',
+sysdate-3);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'rlawlsdud@naver.com',
 '김진영',
 '11',
@@ -561,13 +560,13 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1994',
 '9',
 '10',
-'5000',
-0,
+48900,
 '',
-sysdate);
+6795000,
+'',
+sysdate-1);
 
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'dhwlgP@naver.com',
 '오지혜',
 '11',
@@ -578,14 +577,14 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '1994',
 '1',
 '18',
-'5000',
-0,
+38500,
+'',
+693000,
 '',
 sysdate);
 
 --관리자 계정
-insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir_yy, bir_mm, bir_dd, point, amount, verify, created_at)values
-(seq_member.nextval,
+insert into member values (seq_member.nextval,
 'ikezke',
 'Admin',
 '11',
@@ -596,7 +595,8 @@ insert into member (id, email, name, password, phone, zipcode, addr1, addr2, bir
 '2021',
 '11',
 '6',
-'5000',
 0,
 '1',
-sysdate);
+'',
+'',
+sysdate-10);

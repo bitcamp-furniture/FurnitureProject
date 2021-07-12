@@ -86,6 +86,9 @@ function newOrder(){
 	
 	$('#dropdown').css('pointer-events', 'none');
 	$('#dropdown').css('opacity', '0.6');
+	$('#cancelSales').show();
+	$('#paymentConfirmBtn').hide();
+	$('#deliveryReadyBtn').show();
 }
 
 /*배송중 탭을 눌렀을 때*/
@@ -179,6 +182,9 @@ function duringDeliver(){
 	
 	$('#dropdown').css('pointer-events', 'auto');
 	$('#dropdown').css('opacity', '1');
+	$('#cancelSales').show();
+	$('#paymentConfirmBtn').show();
+	$('#deliveryReadyBtn').show();
 }
 
 /*배송완료 탭을 눌렀을 때*/
@@ -272,6 +278,9 @@ function deliverComplete(){
 	
 	$('#dropdown').css('pointer-events', 'auto');
 	$('#dropdown').css('opacity', '1');
+	$('#cancelSales').show();
+	$('#paymentConfirmBtn').show();
+	$('#deliveryReadyBtn').show();
 }
 
 /*취소처리 탭을 눌렀을 때*/
@@ -355,12 +364,16 @@ function orderCancle(){
             console.log(err);
         }
     });//ajax
-    
-	$('#deliveryReadyBtn').attr('disabled', false);
-	$('#paymentConfirmBtn').attr('disabled', false);
 	
-	$('#dropdown').css('pointer-events', 'auto');
-	$('#dropdown').css('opacity', '1');
+	$('#cancelSales').show();
+	$('#paymentConfirmBtn').show();
+	$('#deliveryReadyBtn').show();
+	
+	$('#deliveryReadyBtn').attr('disabled', true);
+	$('#paymentConfirmBtn').attr('disabled', true);
+	
+	$('#dropdown').css('pointer-events', 'none');
+	$('#dropdown').css('opacity', '0.6');
 }
 
 /*구매확정 탭을 눌렀을 때*/
@@ -412,27 +425,31 @@ function purchaseConfirmed(){
                //align:'center',
                text: items.product_qty
             })).append($('<td/>',{
-               //align:'center',
-               text: items.product_price
-            })).append($('<td>',{
-            	
-            }).append($('<td/>',{
-
-            })).append($('<input/>',{
-                type: 'hidden',
-                id: 'invoiceBtn'
-            }))
-            ).append($('<td/>',{
-               //align:'center',
-               text: items.name + '\n\n' + '/' + '\n\n' + items.phone
-	            }).append($('<td>',{
-	            	text:items.addr1 + items.addr2 + '\n\n' + '우)' + items.zipcode
-	            }))
-            ).append($('<td/>',{
-               //align:'center',
-               id: 'order_status',
-               name: 'order_status',
-               text: OrderStatusType[items.order_status].value
+                //align:'center',
+                text: items.product_price
+             })).append($('<td>',{
+             	
+             }).append($('<input/>',{
+                 type: 'search',
+                 name: 'delivery_number',
+                 value: items.delivery_number,
+                 style: 'width:100px;'
+             })).append($('<input/>',{
+                 type: 'button',
+                 value: '발송처리',
+                 id: 'invoiceBtn'
+             }))
+             ).append($('<td/>',{
+                //align:'center',
+                text: items.name + '\n\n' + '/' + '\n\n' + items.phone
+ 	            }).append($('<td>',{
+ 	            	text:items.addr1 + items.addr2 + '\n\n' + '우)' + items.zipcode
+ 	            }))
+             ).append($('<td/>',{
+                //align:'center',
+                id: 'order_status',
+                name: 'order_status',
+                text: OrderStatusType[items.order_status].value
             })).appendTo($('#purchaseConfirmedTable'));
       });//each
          
@@ -450,11 +467,11 @@ function purchaseConfirmed(){
 	
 	$('#dropdown').css('pointer-events', 'none');
 	$('#dropdown').css('opacity', '0.6');
+	$('#cancelSales').hide();
+	$('#paymentConfirmBtn').show();
+	
     
 }
-
-
-
 
 /*검색*/
 $('#orderSearchBtn').click(function(){

@@ -52,4 +52,12 @@ public interface AdminProductDAO {
 
 	public void memberCumulativerAmount(Map<String, String[]> map);
 
+	public void canclePoint(Map<String, String[]> map);
+
+	public void cancleAmount(Map<String, String[]> map);
+
+	public void cancelSalesComplete(Map<String, String[]> map);
+
+	public void memberPointUpdate(Map<String, String[]> map);
+
 }
