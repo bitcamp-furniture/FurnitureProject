@@ -11,11 +11,11 @@ $('#orderPaymentBtn').click(function(){
 
 //포인트 전액 사용 버튼
 $('#pointCheckbox').click(function(){
-	$('#pointText').val($('#memberpoint').val().slice(0,-2));
+	$('#pointText').val($('#memberpoint').val());
 	$('#totalPay').text(($('#total').val()-$('#pointText').val()).toLocaleString());
 
 	$('#memberpointval').text('0');
-	$('#pointUsing').text($('#memberpoint').val().slice(0,-2));
+	$('#pointUsing').text($('#memberpoint').val());
 
 //	var totalPay=$('#total').val()-$('#pointText').val()
 });
@@ -27,7 +27,7 @@ $('#pointText').change(function(){
 	//alert(parseInt($('#pointText').val()) +parseInt($('#memberpoint').val()))
 	if(parseInt($('#pointText').val()) > parseInt($('#memberpoint').val())){
 		alert('보유 금액 이상 사용은 불가능합니다.')
-		$('#pointText').val('0');
+		$('#pointText').val('0').toLocaleString();
 	}else{
 		$('#pointUsing').text($('#pointText').val());
 		$('#totalPay').text(($('#total').val()-$('#pointText').val()).toLocaleString());
