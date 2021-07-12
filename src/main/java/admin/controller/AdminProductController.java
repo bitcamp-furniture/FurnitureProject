@@ -220,7 +220,6 @@ public class AdminProductController {
 	@RequestMapping(value="product/cancelSales", method=RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView cancelSales(@RequestParam String check) {
-		System.out.println(check);
 		adminProductService.cancelSales(check);
 		return new ModelAndView("redirect:/admin/product/orderControl");
 	}
@@ -246,7 +245,7 @@ public class AdminProductController {
 	//판매취소 처리 (구매확정 탭 외에 있는 버튼)
 	@RequestMapping(value="product/cancelSalesComplete", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView cancelSalesComplete(@RequestParam String[] check) {
+	public ModelAndView cancelSalesComplete(@RequestParam String check) {
 		adminProductService.cancelSalesComplete(check);
 		
 		return new ModelAndView("redirect:/admin/product/orderControl");
