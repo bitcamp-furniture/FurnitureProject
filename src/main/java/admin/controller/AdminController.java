@@ -158,5 +158,33 @@ public class AdminController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/tongye", method = RequestMethod.GET)
+	public String tongye(Model model) {
+		model.addAttribute("display", "/admin/tongye.jsp");
+
+		return "/admin/adminIndex";
+	}
+	
+	//라인 차트그리기 : 매출 1위 2위 3위 4위 카테고리  
+	@RequestMapping(value = "/tongyeChart", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView tongyeChart(Model model) {
+		List<Integer> orderCateFirst = adminService.orderCateFirst();	
+		List<Integer> orderCateSecond = adminService.orderCateSecond();	
+		List<Integer> orderCateThird = adminService.orderCateThird();	
+		List<Integer> orderCateFourth = adminService.orderCateFourth();	
+		
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("orderCateFirst",orderCateFirst);
+		mav.addObject("orderCateSecond",orderCateSecond);
+		mav.addObject("orderCateThird",orderCateThird);
+		mav.addObject("orderCateFourth",orderCateFourth);
+		mav.setViewName("jsonView");
+
+		return mav;
+	}
+	
+	
 }
 

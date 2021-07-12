@@ -367,7 +367,7 @@
       where rownum <= 6
    ]]>
    </select>
-   
+    <!-- 카테고리별 매출 높은 순 이름만으로  -->
    <select id="orderCateName" resultType="String">
    <![CDATA[
       select * from(
@@ -377,6 +377,54 @@
       group by p.product_category_name,o.product_amounts
       order by sum(o.product_amounts) desc)
       where rownum <= 6
+   ]]>
+   </select>
+   <!-- 카테고리별 매출 높은 순으로  첫번째 것만-->
+   <select id="orderCateFirst" resultType="int">
+   <![CDATA[
+	select b.amount from(     
+	select sum(o.product_amounts)as amount,
+	RANK() OVER (ORDER BY sum(o.product_amounts) desc)AS RANKING
+	from orders_detail o,product p
+	where o.product_id = p.id
+	group by p.product_category_name,o.product_amounts)b
+	where b.RANKING = 1  
+   ]]>
+   </select>
+   <!-- 카테고리별 매출 높은 순으로  두번째 것만-->
+   <select id="orderCateSecond" resultType="int">
+   <![CDATA[
+	select b.amount from(     
+	select sum(o.product_amounts)as amount,
+	RANK() OVER (ORDER BY sum(o.product_amounts) desc)AS RANKING
+	from orders_detail o,product p
+	where o.product_id = p.id
+	group by p.product_category_name,o.product_amounts)b
+	where b.RANKING = 2
+   ]]>
+   </select>
+   <!-- 카테고리별 매출 높은 순으로  셋번째 것만-->
+   <select id="orderCateThird" resultType="int">
+   <![CDATA[
+	select b.amount from(     
+	select sum(o.product_amounts)as amount,
+	RANK() OVER (ORDER BY sum(o.product_amounts) desc)AS RANKING
+	from orders_detail o,product p
+	where o.product_id = p.id
+	group by p.product_category_name,o.product_amounts)b
+	where b.RANKING = 3
+   ]]>
+   </select>
+   <!-- 카테고리별 매출 높은 순으로  넷번째 것만-->
+   <select id="orderCateFourth" resultType="int">
+   <![CDATA[
+	select b.amount from(     
+	select sum(o.product_amounts)as amount,
+	RANK() OVER (ORDER BY sum(o.product_amounts) desc)AS RANKING
+	from orders_detail o,product p
+	where o.product_id = p.id
+	group by p.product_category_name,o.product_amounts)b
+	where b.RANKING = 4
    ]]>
    </select>
    

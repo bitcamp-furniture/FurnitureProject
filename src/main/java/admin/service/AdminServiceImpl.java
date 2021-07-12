@@ -133,4 +133,24 @@ public class AdminServiceImpl implements AdminService {
 	public List<DailysummaryDTO> dailySummary() {
 		return adminDAO.dailySummary();
 	}
+
+	@Override
+	public List<Integer> orderCateFirst() {
+		return adminDAO.orderCateFirst();
+	}
+
+	@Override
+	public List<Integer> orderCateSecond() {
+		return adminDAO.orderCateSecond();
+	}
+
+	@Override
+	public List<Integer> orderCateThird() {
+		return adminDAO.orderCateThird();
+	}
+
+	@Override
+	public List<Integer> orderCateFourth() {
+		return adminDAO.orderCateFourth();
+	}
 }

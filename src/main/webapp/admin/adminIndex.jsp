@@ -210,12 +210,11 @@ body {
                             <li><a href="/furniture/admin/productRegistrationView">상품등록</a></li>
                         </ul>
                     </ul>
-                    <ul class="big_menu">
-                        <li><ion-icon name="analytics" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;통계 &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
-                        <ul class="small_menu">
-                            <li><a href="#">매출</a></li>
-                            <li><a href="#">정산</a></li>
-                        </ul>
+                     <ul class="big_menu">
+                        <li><a href="/furniture/admin/tongye">
+						<ion-icon name="analytics" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;통계 &nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                       </a></li>                   
+                    </ul>
                     </ul>
                     <ul class="big_menu">
                         <li><ion-icon name="create" style="color:#8f8f8f; font-size:16px;"></ion-icon>&emsp;&emsp;컨텐츠 관리 &emsp;&emsp;&emsp;<ion-icon name="caret-down" style="color:#8f8f8f;"></ion-icon></li>
