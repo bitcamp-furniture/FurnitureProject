@@ -21,7 +21,7 @@
 @font-face { font-family: '국립박물관문화재단클래식L'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식L.woff') format('woff'); font-weight: normal; font-style: normal; }
 
 html {
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "AppleSDGothicNeoM00", serif;
 }
 
 /* 노말라이즈 */
@@ -30,19 +30,19 @@ html {
 /*     margin:0;
     padding:0; */
     list-style:none;
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "AppleSDGothicNeoM00", serif;
 }
 
 .phoneTitle {
 	position:absolute;
 	top:155px;
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "AppleSDGothicNeoM00", serif;
 }
 
 .addTitle {
 	position:absolute;
 	top:280px;
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "AppleSDGothicNeoM00", serif;
 }
 
 /* 라이브러리 */
@@ -153,11 +153,11 @@ input::placeholder {
 }
 
 .font-museum-l {
-    font-family:'국립박물관문화재단클래식L';
+    font-family: "AppleSDGothicNeoM00", serif;
 }
 
 .font-museum-m {
-    font-family:'국립박물관문화재단클래식M';
+    font-family: "AppleSDGothicNeoM00", serif;
 }
 
 /* 커스텀 */

@@ -46,19 +46,6 @@ cursor: pointer;
 		                </div>
 		            </div>
 		        </a>
-             
-              <a class="primary-btn2" id="eventViewIndex">
-		            <div class="hero__item set-bg2" style="cursor:pointer;">
-		                <div class="container">
-		                    <div class="row d-flex justify-content-center">
-		                        <div class="col-lg-8">
-		                        
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-		        </a>
-		            
 		       <a class="primary-btn3" id="eventViewIndex">
 		            <div class="hero__item set-bg3" style="cursor:pointer;">
 		                <div class="container">

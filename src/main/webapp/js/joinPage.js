@@ -135,7 +135,7 @@ $('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns').click(function
 function checkAgree(){
 	//체크 시 폰트 두께 변경
 	//체크
-	if($("#check_all").is(":checked")){
+/*	if($("#check_all").is(":checked")){
 			$('#check_allAgr').css('font-weight','bold');
 		}
 	
@@ -153,7 +153,7 @@ function checkAgree(){
 	
 	if($("#check_4").is(":checked")){
 			$('#check_mac').css('font-weight','bold');
-		}
+		}*/
 	
 	//체크 해제
 	if(!$("#check_all").is(":checked")){

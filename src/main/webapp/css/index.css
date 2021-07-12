@@ -306,7 +306,8 @@ ol {
   Header
 -----------------------*/
 .header {
-  background: #1E379A;
+  background: white;
+  height: auto; width: 100%; border:1px solid gray;
 }
 
 .header__top {
@@ -458,9 +459,11 @@ ol {
 }
 .header__menu ul li.active a {
   background: #140949;
+  color: white;
 }
 .header__menu ul li:hover a {
   background: #140949;
+  color: white;
 }
 .header__menu ul li:hover .dropdown {
   top: 62px;
@@ -501,7 +504,7 @@ ol {
 }
 .header__menu ul li a {
   font-size: 15px;
-  color: #ffffff;
+  color: black;
   display: block;
   font-weight: 600;
   padding: 20px 18px 18px;
@@ -509,6 +512,7 @@ ol {
   -webkit-transition: all, 0.3s;
   -o-transition: all, 0.3s;
   transition: all, 0.3s;
+  font-family: "Montserrat", sans-serif;
 }
 
 .offcanvas-menu-wrapper {

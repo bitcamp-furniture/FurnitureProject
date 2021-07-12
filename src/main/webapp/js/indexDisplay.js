@@ -10,7 +10,8 @@ $(function(){
          $.each(data.eventList, function(index,items){
             var id = items.id;
             $('.set-bg'+(index+1)).css({'background-image': 'url("/furniture/storage/'+items.event_img_banner + '")',
-            							'background-size' : '100% 100%'});
+            							'background-size' : 'cover',
+            							'object-fit': 'cover'});
            // $('.set-bg'+(index+1)).prop('href', '/furniture/main/eventView?id='+items.id+'&pg=1');
             $('.primary-btn'+(index+1)).attr('href', '/furniture/main/eventView?id='+items.id+'&pg=1')
          });//each 

@@ -1,3 +1,8 @@
+body {
+	font-family: "AppleSDGothicNeoM00", serif;
+}
+
+
 .loginDiv {
     margin-left: 45px;
 }
@@ -7,11 +12,11 @@
 }
 .snsLable {
     font-size: 15px;
-    margin: 5% 0 0 19%;
+    margin: 5% 0 0 90px;
 }
 #kakaoImg {
     font-size: 15px;
-    margin: 2% 0 0 16%;
+    margin: 2% 0 0 70px;
 }
 .loginBtn {
     background: #223894;
@@ -29,7 +34,7 @@
     color: black;
     border-color: black;
     height: 50px;
-    width: 165%;
+    width: 170%;
     outline: 0;
 }
 .writeDiv {

@@ -17,6 +17,7 @@
     left:0;
     z-index :99999;
 }
+
 </style>
 <title> IKEZKE </title>
 
@@ -223,7 +224,7 @@
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="/furniture/img/logo.png" alt=""  width="120px" height="52px"></a>
+                            <a href="#"><img src="/furniture/img/logo-(3).png" alt=""  width="120px" height="52px"></a>
                         </div>
 <!--                         <p>Lorem ipsum dolor amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore dolore magna aliqua.</p>
