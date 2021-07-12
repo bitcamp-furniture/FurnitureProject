@@ -34,8 +34,8 @@ public class AdminProductController {
 	
 	//주문관리 창 띄우기
 	@RequestMapping(value = "product/orderControl", method = RequestMethod.GET)
-	public String eventList(@RequestParam(required = false, defaultValue = "1") String orderControlPg, Model model) {
-		model.addAttribute("orderControlPg", orderControlPg);
+	public String eventList(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
+		model.addAttribute("pg", pg);
 		model.addAttribute("display", "/admin/product/orderControl.jsp");
 
 		return "/admin/adminIndex";
@@ -55,7 +55,7 @@ public class AdminProductController {
 				
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("orderControlPaging", orderControlPaging);
-		mav.addObject("pg", orderControlPg);
+		mav.addObject("orderControlPg", orderControlPg);
 		mav.addObject("list", list);
 		
 		mav.setViewName("jsonView");
@@ -69,14 +69,14 @@ public class AdminProductController {
 	public ModelAndView getdeliveryReady(@RequestParam(required = false, defaultValue = "1") String deliveryPg,
 		   HttpSession session, HttpServletResponse response) {
 		//1페이지당 5개씩
-		List<AdminProductDTO> list = adminProductService.getdeliveryReady(deliveryPg);
+		List<AdminProductDTO> list = adminProductService.getDeliveryReady(deliveryPg);
 		
 		//페이징 처리
 		DeliveryPaging deliveryPaging = adminProductService.deliveryPaging(deliveryPg);
 				
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("deliveryPaging", deliveryPaging);
-		mav.addObject("pg", deliveryPg);
+		mav.addObject("deliveryPg", deliveryPg);
 		mav.addObject("list", list);
 		
 		mav.setViewName("jsonView");
@@ -97,7 +97,7 @@ public class AdminProductController {
 				
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("duringDeliverPaging", duringDeliverPaging);
-		mav.addObject("pg", duringDeliverPg);
+		mav.addObject("duringDeliverPg", duringDeliverPg);
 		mav.addObject("list", list);
 		
 		mav.setViewName("jsonView");
@@ -259,20 +259,38 @@ public class AdminProductController {
 	//주문관련 검색
 	@RequestMapping(value="product/getSearchOrderList", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView getSearchOrderList(@RequestParam Map map) {
+	public ModelAndView getSearchOrderList(@RequestParam Map<String, String> map) {
 		List<AdminProductDTO> list = adminProductService.getSearchOrderList(map);
 		
-		//MemberListPaging memberListPaging = adminProductService.memberListSearchPaging(map);
+		OrderControlPaging orderControlPaging = adminProductService.searchOrderControlPaging(map);
+
 		
 		ModelAndView mav = new ModelAndView();
-		//mav.addObject("memberListPaging", memberListPaging);
+		mav.addObject("orderControlPaging",orderControlPaging);
 		mav.addObject("orderControlPg", map.get("orderControlPg"));
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
-
 		
 		return mav;
 	}
+	@RequestMapping(value="product/getSearchDeliveryReady", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView getSearchDeliveryReady(@RequestParam Map<String, String> map) {
+		List<AdminProductDTO> list = adminProductService.getSearchDeliveryReady(map);
+		
+		DeliveryPaging deliveryPaging = adminProductService.searchDeliveryReadyPaging(map);
+
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("deliveryPaging",deliveryPaging);
+		mav.addObject("deliveryPg", map.get("deliveryPg"));
+		mav.addObject("list", list);
+		mav.setViewName("jsonView");
+		
+		return mav;
+	}
+	
+	
 	
 
 }

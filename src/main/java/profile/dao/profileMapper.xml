@@ -258,4 +258,8 @@
 								#{review_image},sysdate)
 	</insert>
 
+	<select id="getProductAmounts"  parameterType="java.util.Map" resultType="int">
+		select product_amounts from orders_detail where id=#{odId}
+	</select>
+
  </mapper>
