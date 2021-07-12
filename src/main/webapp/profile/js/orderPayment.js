@@ -11,11 +11,11 @@ $('#orderPaymentBtn').click(function(){
 
 //포인트 전액 사용 버튼
 $('#pointCheckbox').click(function(){
-	$('#pointText').val($('#memberpoint').val().slice(0,-2));
+	$('#pointText').val($('#memberpoint').val());
 	$('#totalPay').text(($('#total').val()-$('#pointText').val()).toLocaleString());
 
 	$('#memberpointval').text('0');
-	$('#pointUsing').text($('#memberpoint').val().slice(0,-2));
+	$('#pointUsing').text($('#memberpoint').val());
 
 //	var totalPay=$('#total').val()-$('#pointText').val()
 });
@@ -27,7 +27,7 @@ $('#pointText').change(function(){
 	//alert(parseInt($('#pointText').val()) +parseInt($('#memberpoint').val()))
 	if(parseInt($('#pointText').val()) > parseInt($('#memberpoint').val())){
 		alert('보유 금액 이상 사용은 불가능합니다.')
-		$('#pointText').val('0');
+		$('#pointText').val('0').toLocaleString();
 	}else{
 		$('#pointUsing').text($('#pointText').val());
 		$('#totalPay').text(($('#total').val()-$('#pointText').val()).toLocaleString());
@@ -52,7 +52,7 @@ $('#paymentBtn').click(function(){
         },
         dataType: 'json',
         success:function(data){
-            alert(JSON.stringify(data));
+            //alert(JSON.stringify(data));
             $('input[name=ordr_idxx]').val(data.Response.ordr_idxx);
             $('input[name=good_name]').val(data.Response.good_name);
             $('input[name=good_mny]').val(data.Response.good_mny);
@@ -68,27 +68,6 @@ $('#paymentBtn').click(function(){
         }
     });//ajax
 
-});
-
-//결제취소하기 버튼 클릭 시
-$('#paymentCancelBtn').click(function(){
-    $.ajax({
-        type:'post',
-        url:'/furniture/pay/cancel',
-        data: {'transactionId':$('#transactionId').val()
-        },
-        dataType: 'json',
-        success:function(data){
-            alert(JSON.stringify(data));
-            $('input[name=responseCode]').val(data.Response.responseCode);
-            $('input[name=responseMsg]').val(data.Response.responseMsg);
-            $('input[name=cancelDateTime]').val(data.Response.cancelDateTime);
-
-        },
-        errer:function(err){
-            console.log(err);
-        }
-    });//ajax
 });
 
 

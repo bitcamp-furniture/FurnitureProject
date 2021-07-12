@@ -67,6 +67,7 @@ $('#order-tap').click(function() {
                     align: 'center',
                     style: 'vertical-align: middle',
                     text: item.product_amounts.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")
+
                 })).append($td).append($('<td/>', {
                         align: 'center',
                         style: 'vertical-align: middle',
@@ -79,6 +80,8 @@ $('#order-tap').click(function() {
                         id: 'inquiryBtn'
                     }))
                 ).appendTo($('#orderListTable'));
+
+
 
             });//each
 
@@ -204,8 +207,26 @@ $(document).on('click', '.confirmBtn', function () {
         data: {'id': $('#id').val(),
                'odId': $(this).attr('class').slice(12)
         },
-        success: function () {
+        dataType: 'text',
+        success: function (data) {
+            let productAmounts = (data*0.01);
+
+            //포인트적립
+            $.ajax({
+                type:'post',
+                url:'/furniture/member/pointUpdate',
+                data:{'point':productAmounts},
+                success:function(){
+                    alert(productAmounts+"원이 적립되었습니다");
+                },
+                errer:function(err){
+                    console.log(err);
+                }
+            });//ajax
+
             $('#order-tap').trigger('click');
+
+
         },
         error: function (err) {
             console.log(err);

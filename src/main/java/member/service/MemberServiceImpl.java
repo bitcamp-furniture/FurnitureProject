@@ -95,7 +95,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void pointUpdate(Map<String, String> map) {
+	public void pointUpdate(Map<String, Object> map) {
 		memberDAO.pointUpdate(map);		
 	}
 

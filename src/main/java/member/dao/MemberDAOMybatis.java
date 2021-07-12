@@ -61,7 +61,7 @@ public class MemberDAOMybatis implements MemberDAO{
 	}
 
 	@Override
-	public void pointUpdate(Map<String, String> map) {
+	public void pointUpdate(Map<String, Object> map) {
 		sqlSession.update("memberSQL.pointUpdate", map);		
 	}
 

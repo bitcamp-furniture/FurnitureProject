@@ -190,4 +190,9 @@ public class ProfileDAOMybatis implements ProfileDAO {
 		sqlSession.insert("profileSQL.reviewWrite", reviewDTO);
 	}
 
+	@Override
+	public int getProductAmounts(Map<String, Object> map) {
+		return sqlSession.selectOne("profileSQL.getProductAmounts", map);
+	}
+
 }

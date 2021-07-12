@@ -163,7 +163,7 @@ $('#kakaoImg').click(function(){
                                'birth': response.kakao_account.birthday
                         },
                         success: function(){
-                            alert('성공');
+                            //alert('성공');
 
                             location.href='/furniture/index.jsp';
                         },

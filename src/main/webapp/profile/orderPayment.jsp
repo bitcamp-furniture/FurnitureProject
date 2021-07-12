@@ -228,7 +228,7 @@
 
     <div class="paymentBtnDiv">
         <input type="button" value="결제하기" id="paymentBtn" >
-        <input type="button" value="취소하기" id="paymentCancelBtn">
+        <input type="button" value="취소하기" id="paymentCancelBtn" onclick="location.href='/furniture/profile/profile'">
     </div>
 
 
@@ -274,6 +274,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="text/javascript" src="js/orderPayment.js"></script>
+    <script type="text/javascript" src="js/order.js"></script>
 
     <script>
         /*****************/ /*m_Completepayment 설명 */ /************************/
@@ -313,17 +314,6 @@
                            'total': $('#total').val()
                     },
                     success:function(){
-                        //포인트적립
-                        $.ajax({
-                            type:'post',
-                            url:'/furniture/member/pointUpdate',
-                            data:{'point':$('#savingPoint').val()},
-                            success:function(){},
-                            errer:function(err){
-                                console.log(err);
-                            }
-                        });//ajax
-
                         location.href='/furniture/profile/orderComplete'
 
                     },
