@@ -28,7 +28,7 @@ $(function(){
 				.appendTo($('#recentReviewTbl'));
 				
 				$('<tr/>').append($('<td/>').append($('<a/>',{
-					text: items.review_content.substring(0, 12)+'...',
+					text: items.review_content.substring(0, 18)+'...',
 					class: 'reviewA',
 					href: '/furniture/admin/review'
 				})))
@@ -58,7 +58,7 @@ $(function(){
 					width: '80%',
 					height: '35px'
 				}).append($('<a/>',{
-					text: items.subject.substring(0, 12)+'...',
+					text: items.subject.substring(0, 18)+'...',
 					class: 'reviewA',
 					href: '/furniture/admin/adminQNA'
 				}))).append($('<td/>',{

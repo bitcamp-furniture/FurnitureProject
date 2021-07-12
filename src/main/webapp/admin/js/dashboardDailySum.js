@@ -16,7 +16,7 @@ $(function(){
 		    		href: '/furniture/admin/product/orderControl',
 		    		text: items.product_count
 		    	}))).append($('<td/>',{
-		    		text: items.product_price
+		    		text: '₩ '+items.product_price.toLocaleString()
 		    		
 		    	})).append($('<td/>',{
 		    		text: items.join_count
