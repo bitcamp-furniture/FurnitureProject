@@ -1,7 +1,7 @@
 
 
 function selectListAjax(categoryName){
-   alert(categoryName);
+   //alert(categoryName);
    $.ajax({
       type:'post',
       url:'/furniture/category/view/SelectList',
