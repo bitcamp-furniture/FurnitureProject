@@ -75,7 +75,7 @@
          <tr>   
           <td align="center">상품상세설명</td>
           <td>
-              <textarea name="product_memo" id="product_memo" cols="100" rows="20" >상품 상세 설명 입력</textarea>
+              <textarea name="product_memo" id="product_memo" cols="100" rows="20" placeholder="상품 상세 설명 입력"></textarea>
               <div id="stockDiv"></div>
               
           </td>
