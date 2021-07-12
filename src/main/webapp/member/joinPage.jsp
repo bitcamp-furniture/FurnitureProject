@@ -526,8 +526,8 @@ input::placeholder {
 										</ul><br>
 										<img id="coupon" src="/furniture/img/coupon.png" alt="kakao" width="440" height="396" style="align:center;"><br><br><br>
 			                        <div class="page-btn">
-			                        	<div class="page-btn7" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block">추천상품 보러가기</div>
-			                        	<div class="page-btn8" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block">쇼핑하러가기</div>
+			                        	<div class="page-btn7" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block"><a style="text-decoration-line: none;" href="/furniture/category/view/category">추천상품 보러가기</a></div>
+			                        	<div class="page-btn8" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block"><a style="text-decoration-line: none;" href="/furniture/">쇼핑하러가기</a></div>
 			                        </div>
 			                    </div>
 			                </div>
@@ -540,7 +540,7 @@ input::placeholder {
 			  </div>
 			</div>
 		</div>
-			  
+			    
 			           <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 			           <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 			        <script type="text/javascript" src="../js/joinPage.js"></script>
