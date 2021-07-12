@@ -96,7 +96,7 @@
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul  style="margin-bottom: 0px;">
-                        <li><a href="/furniture/category/view/category">All FURNITURE</a>
+                        <li><a href="/furniture/category/view/category">FURNITURE</a>
                                 
                             </li>
                              <li><a href="/furniture/category/view/selectList?category=침대">BED</a>
@@ -134,7 +134,7 @@
                                 </ul>
                             </li>
                         
-                             <li><a href="/furniture/category/view/selectList?category=수납장/장식장">STORAGE CLOSET</a>
+                             <li><a href="/furniture/category/view/selectList?category=수납장/장식장">STORAGE</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=거실장/찬장">거실장/찬장</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=장식장">장식장</a></li>
@@ -163,7 +163,7 @@
                                 </ul>
                             </li>
                             
-                            <li><a href="#">CUSTOMER SUPPORT</a>
+                            <li><a href="#">CUSTOMER</a>
                             <ul class="dropdown">
                                     <li><a href="/furniture/main/notice">공지</a></li>
                                     <li><a href="/furniture/main/FaQ">FAQ</a></li>
