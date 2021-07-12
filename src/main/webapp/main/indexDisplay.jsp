@@ -27,10 +27,9 @@ cursor: pointer;
     <link rel="stylesheet" href="/furniture/css/main.css" type="text/css">
     <link rel="stylesheet" href="/furniture/css/index.css" type="text/css">
     
-    
-    
 <!-- Hero Section Begin 큰 배너사진-->
     <section class="hero">
+
     <input type="hidden" value="${memId }" id="memId"/>
    
                            
@@ -73,6 +72,21 @@ cursor: pointer;
 		        </a>     
 		            
            <!--  <div class="hero__item set-bg" data-setbg="/furniture/image/1234.jpg">
+
+        <div class="hero__slider owl-carousel">
+            <div class="hero__item set-bg" data-setbg="/furniture/image/10.png">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="hero__text">
+                                <a href="/furniture/main/eventView?id=46" class="primary-btn">보러가기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="/furniture/image/1234.jpg">
+
                 <div class="container">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-8">

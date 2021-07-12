@@ -59,6 +59,14 @@ public interface AdminProductService {
 
 	public void memberCumulativerAmount(String[] check);
 
+	public void canclePoint(String[] check);
+
+	public void cancleAmount(String[] check);
+
+	public void cancelSalesComplete(String[] check);
+
+	public void memberPointUpdate(String[] check);
+
 	public OrderControlPaging searchOrderControlPaging(Map<String, String> map);
 
 	public List<AdminProductDTO> getSearchDeliveryReady(Map<String, String> map);
