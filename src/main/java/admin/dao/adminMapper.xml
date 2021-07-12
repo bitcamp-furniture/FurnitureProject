@@ -99,7 +99,7 @@
 	<![CDATA[
 		select * from (
 			select * from review order by created_at desc
-		) where rownum <= 3
+		) where rownum <= 5
 	]]>
 	</select>
 
@@ -437,6 +437,46 @@
 		)
 	</update>
 	
+	<!-- 주문취소 2 (포인트 회수) -->
+	<update id="canclePoint" parameterType="java.util.Map">
+		update member set point = point - (select distinct sum (product_amounts) * 0.01 from orders_detail where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+			</foreach>)
+			where id = 
+	        (select distinct member_id 
+	            from orders o
+	                inner join orders_detail od
+	                    on o.order_number=od.order_number
+	         where od.id in <foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+			</foreach>)
+	</update>
+	
+	<!-- 주문취소 3 (누적금액 회수) -->
+	<update id="cancleAmount" parameterType="java.util.Map">
+		update member set amount = amount - (select distinct sum (product_amounts) from orders_detail where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+			</foreach>)
+			where id = 
+	        (select distinct member_id 
+	            from orders o
+	                inner join orders_detail od
+	                    on o.order_number=od.order_number
+	         where od.id in <foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+			</foreach>)
+	</update>
+	
+	<!-- 주문취소 (구매확정 외의 탭에 있는 주문취소 버튼) -->
+	<update id="cancelSalesComplete" parameterType="java.util.Map">
+		update orders_detail set order_status = 'CANCEL' where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</update>
+	
 	<!-- 배송완료 -->
 	<update id="deliveryComplete" parameterType="java.util.Map">
 		update orders_detail set order_status = 'COMPLETED' where id in
@@ -455,19 +495,32 @@
 	
 	<!-- 구매확정 2 -->
 	<update id="memberCumulativerAmount" parameterType="java.util.Map">
-		update member set amount =
-			amount + (select distinct product_amounts from orders_detail where id in
-			<foreach collection="array" item="item" open="(" close=")" separator=",">
+		update member set amount = amount + (select distinct sum (product_amounts) from orders_detail where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 			</foreach>)
-			
 			where id = 
 	        (select distinct member_id 
 	            from orders o
 	                inner join orders_detail od
 	                    on o.order_number=od.order_number
-	         where od.id in
-	         <foreach collection="array" item="item" open="(" close=")" separator=",">
+	         where od.id in <foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+			</foreach>)
+	</update>
+	
+	<!-- 구매확정 3 (포인트 지급)-->
+	<update id="memberPointUpdate" parameterType="java.util.Map">
+		update member set point = point + (select distinct sum (product_amounts) * 0.01 from orders_detail where id in
+		<foreach collection="array" item="item" open="(" close=")" separator=",">
+			#{item}
+			</foreach>)
+			where id = 
+	        (select distinct member_id 
+	            from orders o
+	                inner join orders_detail od
+	                    on o.order_number=od.order_number
+	         where od.id in <foreach collection="array" item="item" open="(" close=")" separator=",">
 			#{item}
 			</foreach>)
 	</update>

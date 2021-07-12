@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 .header{
     background-color: white;
     position:fixed;
@@ -94,10 +96,10 @@
                 <div class="col-lg-12">
                     <nav class="header__menu mobile-menu">
                         <ul  style="margin-bottom: 0px;">
-                        <li><a href="/furniture/category/view/category">전체상품보기</a>
+                        <li><a href="/furniture/category/view/category">FURNITURE</a>
                                 
                             </li>
-                             <li><a href="/furniture/category/view/selectList?category=침대">침대</a>
+                             <li><a href="/furniture/category/view/selectList?category=침대">BED</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=소파베드">소파베드</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=수납형침대">수납형 침대</a></li>
@@ -105,7 +107,7 @@
                                 </ul>
                             </li>
                         
-                             <li><a href="/furniture/category/view/selectList?category=소파">소파</a>
+                             <li><a href="/furniture/category/view/selectList?category=소파">SOFA</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=패브릭소파">패브릭소파</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=모듈식소파">모듈식소파</a></li>
@@ -113,7 +115,7 @@
                                 </ul>
                             </li>
                         
-                             <li><a href="/furniture/category/view/selectList?category=책장/선반유닛">책장/선반</a>
+                             <li><a href="/furniture/category/view/selectList?category=책장/선반유닛">UNIT</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=큐브형수납">큐브형수납</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=선반유닛">선반유닛</a></li>
@@ -122,7 +124,7 @@
                                 </ul>
                             </li>
 
-                             <li><a href="/furniture/category/view/selectList?category=식탁/책상">식탁/책상</a>
+                             <li><a href="/furniture/category/view/selectList?category=식탁/책상">TABLE</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=책상/컴퓨터책상">책상/컴퓨터 책상</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=침대협탁">침대 협탁</a></li>
@@ -132,7 +134,7 @@
                                 </ul>
                             </li>
                         
-                             <li><a href="/furniture/category/view/selectList?category=수납장/장식장">수납장/장식장</a>
+                             <li><a href="/furniture/category/view/selectList?category=수납장/장식장">STORAGE</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=거실장/찬장">거실장/찬장</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=장식장">장식장</a></li>
@@ -141,7 +143,7 @@
                                 </ul>
                             </li>
                         
-                      		<li><a href="/furniture/category/view/selectList?category=옷장">옷장</a>
+                      		<li><a href="/furniture/category/view/selectList?category=옷장">WARDROBE</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=여닫이옷장">여닫이 옷장</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=미닫이옷장">미닫이 옷장</a></li>
@@ -151,7 +153,7 @@
                                 </ul>
                             </li>
                         
-                             <li><a href="/furniture/category/view/selectList?category=의자">의자</a>
+                             <li><a href="/furniture/category/view/selectList?category=의자">CHAIR</a>
                                 <ul class="dropdown">
                                     <li><a href="/furniture/category/view/selectList?category=사무용의자">사무용 의자</a></li>
                                     <li><a href="/furniture/category/view/selectList?category=식탁의자">식탁의자</a></li>
@@ -161,7 +163,7 @@
                                 </ul>
                             </li>
                             
-                            <li><a href="#">고객지원</a>
+                            <li><a href="#">CUSTOMER</a>
                             <ul class="dropdown">
                                     <li><a href="/furniture/main/notice">공지</a></li>
                                     <li><a href="/furniture/main/FaQ">FAQ</a></li>

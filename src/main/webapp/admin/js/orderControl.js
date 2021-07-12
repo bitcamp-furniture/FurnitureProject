@@ -1,101 +1,102 @@
 /*신규주문 목록 띄우기*/
 $(function(){
-	$.ajax({
-		type: 'post',
-		url: '/furniture/admin/product/getOrderControl',
-		data: 'pg='+$('#pg').val(),
-		dataType: 'json',
-		success: function(data){
-			//alert(JSON.stringify(data));
+    $.ajax({
+      type: 'post',
+      url: '/furniture/admin/product/getOrderControl',
+      data: 'pg='+$('#pg').val(),
+      dataType: 'json',
+      success: function(data){
+         //alert(JSON.stringify(data));
 
-			$('#newOrderTable tr:gt(0)').remove();
-			$("input[name=check_all]").prop("checked", false);
+		 $('#newOrderTable tr:gt(0)').remove();
+		 $("input[name=check_all]").prop("checked", false);
 
-			$.each(data.list, function(index, items){
-				$('<tr/>').append($('<td/>',{
-					}).append($('<input/>',{
-						align: 'center',
-						type: 'checkbox',
-						class: 'normal',
-						name: 'check',
-						value: items.id
-					}))
-				).append($('<td/>',{
-					//align:'center',
-					text: items.order_date
-				})).append($('<td/>',{
-					//align:'center',
-					text: items.order_number
-				})).append($('<input/>',{
-					type: 'hidden',
-					class: 'order_number '+items.order_number,
-					value: items.order_number
-				})).append($('<td/>',{
-					//align:'center',
-					text: items.name
-				})).append($('<td/>',{
-						align: 'center',
-					}).append($('<img/>',{
-						//align:'center',
-						src: '/furniture/storage/' + items.product_img_thumb,
-						width: '80px',
-						height: '80px'
-						//height="20px" width="20px"
-					}))
-				).append($('<td/>',{
-					//align:'center',
-					text: items.product_name
-				})).append($('<td/>',{
-					//align:'center',
-					text: items.product_color
-				})).append($('<td/>',{
-					//align:'center',
-					text: items.product_qty
-				})).append($('<td/>',{
-					//align:'center',
-					text: items.product_price
-				})).append($('<td/>',{
+         $.each(data.list, function(index, items){
+            $('<tr/>').append($('<td/>',{
+            }).append($('<input/>',{
+               align: 'center',
+               type: 'checkbox',
+               class: 'normal',
+               name: 'check',
+               value: items.id
+            }))
+            ).append($('<td/>',{
+               //align:'center',
+               text: items.order_date
+            })).append($('<td/>',{
+               //align:'center',
+               text: items.order_number
+            })).append($('<input/>',{
+				type: 'hidden',
+				class: 'order_number '+items.order_number,
+				value: items.order_number
+			})).append($('<td/>',{
+            	//align:'center',
+            	text: items.name
+            })).append($('<td/>',{
+            	align: 'center',
+            }).append($('<img/>',{
+               //align:'center',
+            	src: '/furniture/storage/' + items.product_img_thumb,
+            	width: '80px',
+            	height: '80px'
+            	//height="20px" width="20px"
+            }))
+            ).append($('<td/>',{
+               //align:'center',
+               text: items.product_name
+            })).append($('<td/>',{
+               //align:'center',
+               text: items.product_color
+            })).append($('<td/>',{
+               //align:'center',
+               text: items.product_qty
+            })).append($('<td/>',{
+               //align:'center',
+               text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+               name: 'product_price'
+            })).append($('<td/>',{
 
-					}).append($('<input/>',{
-						type: 'hidden'
-					})).append($('<input/>',{
-						type: 'hidden',
-						id: 'invoiceBtn'
-					}))
-				).append($('<td/>',{
-						//align:'center',
-						text: items.name + '\n\n' + '/' + '\n\n' + items.phone
-					}).append($('<td>',{
-						text: items.addr1 + items.addr2 + '\n\n' + '우)' + items.zipcode
-					}))
-				).append($('<td/>',{
-					//align:'center',
-					id: 'order_status',
-					name: 'order_status',
-					text: OrderStatusType[items.order_status].value
+            }).append($('<input/>',{
+                type: 'hidden'
+            })).append($('<input/>',{
+                type: 'hidden',
+                id: 'invoiceBtn'
+            }))
+            ).append($('<td/>',{
+               //align:'center',
+               text: items.name + '\n\n' + '/' + '\n\n' + items.phone
+	            }).append($('<td>',{
+	            	text: items.addr1 + items.addr2 + '\n\n' + '우)' + items.zipcode
+	            }))
+            ).append($('<td/>',{
+               //align:'center',
+               id: 'order_status',
+               name: 'order_status',
+               text: OrderStatusType[items.order_status].value
 
-				})).appendTo($('#newOrderTable'));
-			});//each
+            })).appendTo($('#newOrderTable'));
+      });//each
 
-			//페이징 처리
-			$('#orderControlPagingDiv').html(data.orderControlPaging.pagingHTML);
+           //페이징 처리
+            $('#orderControlPagingDiv').html(data.orderControlPaging.pagingHTML);
 
-		}, //success
-		error: function (err) {
-			console.log(err);
-		}
-	});//ajax
+        }, //success
+        error: function (err) {
+            console.log(err);
+        }
+    });//ajax
 
 	$('#deliveryReadyBtn').attr('disabled', false);
 	$('#paymentConfirmBtn').attr('disabled', false);
 
 	$('#dropdown').css('pointer-events', 'none');
 	$('#dropdown').css('opacity', '0.6');
-
+	$('#cancelSales').show();
+	$('#paymentConfirmBtn').hide();
+	$('#deliveryReadyBtn').show();
 
 });
-
-
 
 /*신규주문 전체 선택 or 해체*/
 $('#check_all').click(function(){
@@ -278,12 +279,32 @@ $('#purchaseConfirmedBtn').click(function(){
 
 });
 
-/*구매확정 버튼 클릭 시*/
-$('#purchaseConfirmedBtn').click(function(){
+		
+		//포인트 지급
+		$.ajax({
+			type: 'post',
+			url: '/furniture/admin/product/memberPointUpdate',
+			data: $('#orderForm').serialize(),
+			dataType: 'text',
+			success: function() {
+>>>>>>> c10da9c69d7fe4c2480b393cb01f992a96da8943
 
-	alert($('#orderForm').serialize());
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
+		
+		//alert($('#orderForm').serialize());
+		//누적금액 추가
+		$.ajax({
+			type: 'post',
+			url: '/furniture/admin/product/memberCumulativerAmount',
+			data: $('#orderForm').serialize(),
+			success: function() {
+				location.reload()
 
-	$.ajax({
+$.ajax({
 		type: 'post',
 		url: '/furniture/admin/product/memberCumulativerAmount',
 		data: $('#orderForm').serialize(),
@@ -296,9 +317,17 @@ $('#purchaseConfirmedBtn').click(function(){
 			console.log(err);
 		}
 	});
+=======
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
+		
+	}
+>>>>>>> c10da9c69d7fe4c2480b393cb01f992a96da8943
 
 });
-
 
 /*배송준비중으로 되돌리기*/
 function deliveryReadyBtn(){
@@ -377,6 +406,34 @@ function deliveryBtn(){
 
 /*발송지연 처리*/
 function delayBtn(){
+<<<<<<< HEAD
+=======
+	   var count = $('input[name=check]:checked').length;
+	   
+	   if(count == 0){
+	      alert("선택한 주문이 없습니다.");
+	   }else{
+	      $.ajax({
+	         type: 'post',
+	         url: '/furniture/admin/product/delay',
+	         data: $('#orderForm').serialize(),
+	         dataType: 'text',
+	         success: function() {
+	            alert('발송지연으로 수정되었습니다.');
+	            location.reload()
+
+	         },
+	         error: function(err){
+	            console.log(err);
+	         }
+	      });
+	      
+	 }
+}
+
+/*판매취소 버튼 클릭 시 (구매확정부분에서 누르면)*/
+$('#cancelSales_complete').click(function(){
+>>>>>>> c10da9c69d7fe4c2480b393cb01f992a96da8943
 	var count = $('input[name=check]:checked').length;
 
 	if(count == 0){
@@ -396,6 +453,52 @@ function delayBtn(){
 				console.log(err);
 			}
 		});
+<<<<<<< HEAD
+=======
+        //주문 취소
+        $.ajax({
+            type: 'post',
+            url: '/furniture/admin/product/cancelSalesComplete',
+            data: $('#orderForm').serialize(),
+            dataType: 'text',
+            success: function() {
+                alert('주문이 취소되었습니다.');
+                location.reload()
+
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+        
+        //포인트 회수
+        $.ajax({
+            type: 'post',
+            url: '/furniture/admin/product/canclePoint',
+            data: $('#orderForm').serialize(),
+            dataType: 'text',
+            success: function() {
+
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+        
+        //누적금액 회수
+        $.ajax({
+            type: 'post',
+            url: '/furniture/admin/product/cancleAmount',
+            data: $('#orderForm').serialize(),
+            dataType: 'text',
+            success: function() {
+
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+>>>>>>> c10da9c69d7fe4c2480b393cb01f992a96da8943
 
 	}
 }
@@ -404,15 +507,27 @@ function delayBtn(){
 $(document).on('click', '#cancelSales', function () {
 	var count = $('input[name=check]:checked').length;
 
+<<<<<<< HEAD
 	if(count == 0){
 		alert("선택한 주문이 없습니다.");
 	}else if(count == 1){
 		$.ajax({
+=======
+/*판매취소 버튼 클릭 시 (구매확정 외 모든 탭에 있는 버튼 해당)*/
+$('#cancelSales').click(function(){
+	var count = $('input[name=check]:checked').length;
+	
+	if(count == 0){
+		alert("선택한 주문이 없습니다.");
+	}else{
+        $.ajax({
+>>>>>>> c10da9c69d7fe4c2480b393cb01f992a96da8943
 			type: 'post',
 			url: '/furniture/pay/cancel',
 			data: $('#orderForm').serialize(),
 			dataType: 'json',
 			success: function(data) {
+<<<<<<< HEAD
 				console.log(JSON.stringify(data));
 			},
 			error: function(err){
@@ -434,6 +549,35 @@ $(document).on('click', '#cancelSales', function () {
 				console.log(err);
 			}
 		});
+=======
+				alert('주문이 취소되었습니다.');
+				//console.log(JSON.stringify(data));
+				//location.reload()
+
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
+        
+        //주문 취소
+        $.ajax({
+            type: 'post',
+            url: '/furniture/admin/product/cancelSales',
+            data: $('#orderForm').serialize(),
+            dataType: 'text',
+            success: function() {
+                //alert('주문이 취소되었습니다.');
+                //location.reload()
+
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+	}
+});
+>>>>>>> c10da9c69d7fe4c2480b393cb01f992a96da8943
 
 	}else {
 		alert("판매취소는 한 씩만 가능합니다.");

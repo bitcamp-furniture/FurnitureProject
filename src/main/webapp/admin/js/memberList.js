@@ -31,10 +31,10 @@ $(function(){
 					text: items.created_at
 				})).append($('<td/>',{
 					align: 'center',
-					text: items.point					
+					text: items.point.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")				
 				})).append($('<td/>',{
 					align: 'center',
-					text: items.amount					
+					text: items.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 				})).appendTo($('#memberListTable'));
 				
 			});

@@ -11,7 +11,7 @@ $(function(){
 				$('<tr/>').append($('<td/>',{
 					rowspan: 2,
 					width: '55px',
-					height: '55px',
+					height: '65px',
 				}).append($('<a/>', {
 					class: 'reviewA',
 					href: '/furniture/admin/review'
@@ -28,7 +28,7 @@ $(function(){
 				.appendTo($('#recentReviewTbl'));
 				
 				$('<tr/>').append($('<td/>').append($('<a/>',{
-					text: items.review_content.substring(0, 12)+'...',
+					text: items.review_content.substring(0, 15)+'...',
 					class: 'reviewA',
 					href: '/furniture/admin/review'
 				})))
@@ -56,13 +56,13 @@ $(function(){
 				
 				$('<tr/>').append($('<td/>',{
 					width: '80%',
-					height: '35px'
+					height: '65px'
 				}).append($('<a/>',{
-					text: items.subject.substring(0, 12)+'...',
+					text: items.subject.substring(0, 24)+'...',
 					class: 'reviewA',
 					href: '/furniture/admin/adminQNA'
 				}))).append($('<td/>',{
-					width: '20%'
+					width: '13%'
 				}).append($('<a/>',{
 					class: 'qnaListCate',
 					id: status,
