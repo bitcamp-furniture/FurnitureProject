@@ -11,10 +11,10 @@ a{
 #subjectA:active {  text-decoration: none; }
 #list a:hover{  text-decoration: underline; }
 #sort1{
-	font-size: 20px;
+	font-size: 15px;
 }
 #sort2{
-	font-size: 20px;
+	font-size: 15px;
 }
 
 #choiceDeleteBtn {
@@ -53,12 +53,12 @@ a{
 }
 #reviewSortTable{
 	width: 80%;
-	font-size: 20px;
+	font-size: 15px;
 	text-align: center;
 }
 #reviewListTable{
 	width: 80%;
-	font-size: 20px;
+	font-size: 15px;
 	text-align: center;
 
 }
@@ -66,7 +66,10 @@ a{
 	text-align: center;
 
 }
-
+#reviewListTable a{
+	text-decoration: none;
+	color: black;
+}
 
 </style>
 
@@ -88,8 +91,8 @@ a{
 			<option value="review_stars">평점순</option>
 		</select> 
 		<select id="sort2" onchange="reviewAdminSort2()">
-			<option value="asc">오름차순</option>
 			<option value="desc">내림차순</option>
+			<option value="asc">오름차순</option>
 		</select>
 		</td>
 	</tr>
@@ -179,10 +182,12 @@ function reviewPaging(pg)
 				})).append($('<td/>',{
 					//상품명
 					align: 'center',
-					//width: '100',
-					text: items.product_name
+					width: '100'
 					
-				})).append($('<td/>',{
+				}).append($('<a/>',{
+					href: '/furniture/main/productView?id='+items.product_id,
+					text: items.product_name
+				}))).append($('<td/>',{
 					//상품 이미지
 					align: 'center',
 					//width: '100',

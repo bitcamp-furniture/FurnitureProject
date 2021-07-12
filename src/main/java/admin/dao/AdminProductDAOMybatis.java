@@ -103,10 +103,10 @@ public class AdminProductDAOMybatis implements AdminProductDAO {
 	public List<AdminProductDTO> getPurchaseConfirmed(Map<String, Integer> map) {
 		return sqlSession.selectList("adminSQL.getPurchaseConfirmed", map);
 	}
-
+	
 	@Override
-	public void membeCumulativerAmount(Map<String, String> map) {
-		sqlSession.update("adminSQL.membeCumulativerAmount", map);
+	public void memberCumulativerAmount(Map<String, String[]> map) {
+		sqlSession.update("adminSQL.memberCumulativerAmount", map);
 		
 	}
 
@@ -135,7 +135,5 @@ public class AdminProductDAOMybatis implements AdminProductDAO {
 		return sqlSession.selectOne("adminSQL.getSearchDeliveryTotal", map);
 	}
 	
-	
-
 
 }

@@ -10,6 +10,7 @@ import java.util.Date;
 public class OrderDTO {
     private int order_number;
     private int id; //order_detail_id
+    private int product_id_A; //order_detail_id
     private String product_color;
     private int product_qty;
     private int product_amounts;

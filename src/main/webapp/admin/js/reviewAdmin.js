@@ -18,8 +18,8 @@ function reviewAdminSortPaging(pg)
 	var sort1 = document.getElementById("sort1");
 	sort1 = sort1.options[sort1.selectedIndex].value;
 	var sort2 = document.getElementById("sort2");
-	sort2 = sort2.options[sort2.selectedIndex].value;
-
+	sort2 = sort2.options[sort2.selectedIndex].value;	
+	
 	//여기서 오름차순 내림차순으로 나눠서 보내
 	if(sort2 == "asc")
 	{
@@ -50,10 +50,12 @@ function reviewAdminSortPaging(pg)
 					})).append($('<td/>',{
 						//상품명
 						align: 'center',
-						width: '100',
-						text: items.product_name
+						width: '100'
 						
-					})).append($('<td/>',{
+					}).append($('<a/>',{
+						href: '/furniture/main/productView?id='+items.product_id,
+						text: items.product_name
+					}))).append($('<td/>',{
 						//상품 이미지
 						align: 'center',
 						width: '100',
@@ -126,10 +128,12 @@ function reviewAdminSortPaging(pg)
 					})).append($('<td/>',{
 						//상품명
 						align: 'center',
-						width: '100',
-						text: items.product_name
+						width: '100'
 						
-					})).append($('<td/>',{
+					}).append($('<a/>',{
+						href: '/furniture/main/productView?id='+items.product_id, 
+						text: items.product_name
+					}))).append($('<td/>',{
 						//상품 이미지
 						align: 'center',
 						width: '100',

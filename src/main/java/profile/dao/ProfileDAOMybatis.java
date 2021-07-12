@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import furniture.bean.ReviewDTO;
 import member.bean.MemberDTO;
 import profile.bean.AskDTO;
 import profile.bean.CartDTO;
@@ -96,8 +97,8 @@ public class ProfileDAOMybatis implements ProfileDAO {
 	}
 
 	@Override
-	public void updateOrderStatus(int id) {
-		sqlSession.update("profileSQL.updateOrderStatus", id);
+	public void updateOrderStatus(Map<String, Object> map) {
+		sqlSession.update("profileSQL.updateOrderStatus", map);
 	}
 
 	@Override
@@ -172,13 +173,21 @@ public class ProfileDAOMybatis implements ProfileDAO {
 
 	@Override
 	public String gettId(String orderNumber) {
-		System.out.println("orderNumber = dao" + orderNumber);
 		return sqlSession.selectOne("profileSQL.gettId", orderNumber);
 	}
 
 	@Override
+	public void updateCumulativeAmount(Map<String, Object> map) {
+		sqlSession.update("profileSQL.updateCumulativeAmount", map);
+	}
+
 	public void paymentUpdate(String check) {
 		sqlSession.update("profileSQL.paymentUpdate", check);
+	}
+
+	@Override
+	public void reviewWrite(ReviewDTO reviewDTO) {
+		sqlSession.insert("profileSQL.reviewWrite", reviewDTO);
 	}
 
 }

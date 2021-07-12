@@ -49,7 +49,8 @@ $(function(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.product_price
+               text: items.product_price,
+               name: 'product_price'
             })).append($('<td/>',{
             	
             }).append($('<input/>',{
@@ -90,7 +91,6 @@ $(function(){
 
 
 });
-
 
 
 
@@ -153,8 +153,9 @@ $('#check_all6').click(function(){
 $(document).on('click', '#invoiceBtn',function(){
 	var id = $(this).parent().prev().prev().prev().prev().prev().prev().prev().prev().prev().children().val();
 	var delivery_number = $(this).prev().val();
-	alert(id);
-	alert(delivery_number);
+	//alert(id);
+	//alert(delivery_number);
+	
 	$.ajax({
         type: 'post',
         url: '/furniture/admin/product/invoice',
@@ -251,7 +252,7 @@ $('#paymentConfirmBtn').click(function(){
 /*구매확정 버튼 클릭 시*/
 $('#purchaseConfirmedBtn').click(function(){
 	var count = $('input[name=check]:checked').length;
-	
+
 	if(count == 0){
 		alert("선택한 주문이 없습니다.");
 	}else{
@@ -271,6 +272,27 @@ $('#purchaseConfirmedBtn').click(function(){
 		});
 		
 	}
+
+});
+
+/*구매확정 버튼 클릭 시*/
+$('#purchaseConfirmedBtn').click(function(){
+
+	alert($('#orderForm').serialize());
+	
+	$.ajax({
+		type: 'post',
+		url: '/furniture/admin/product/memberCumulativerAmount',
+		data: $('#orderForm').serialize(),
+		success: function() {
+			alert('구매확정.');
+			location.reload()
+
+		},
+		error: function(err){
+			console.log(err);
+		}
+	});
 
 });
 
@@ -415,7 +437,6 @@ $('#cancelSales').click(function(){
 
 	}
 });
-
 
 
 

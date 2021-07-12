@@ -359,7 +359,7 @@ function review_paging(pg) {
                rowspan: 5
             }).append($('<img/>',{
                width: '250',
-               src: '/furniture/storage/' + items.review_image // +
+               src: '/furniture/storage/review/' + items.review_image 
             }))).appendTo($('#review_list_table'));
             
             $('<tr/>', {

@@ -57,7 +57,7 @@ public interface AdminProductService {
 
 	public PurchaseConfirmedPaging purchaseConfirmedPaging(String purchaseConfirmedPg);
 
-	public void memberCumulativerAmount(Map map);
+	public void memberCumulativerAmount(String[] check);
 
 	public OrderControlPaging searchOrderControlPaging(Map<String, String> map);
 

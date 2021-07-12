@@ -198,7 +198,7 @@ public class PayController {
 
             Map<String, Object> cancelMap = new HashMap<String, Object>();
             cancelMap.put("transactionId", tId);
-            String signature = Sha256("test_kakao|"+map.get("transactionId")+"|5a594647c79a45deb579ff5c96cfb4cf");
+            String signature = Sha256("test_kakao|"+tId+"|5a594647c79a45deb579ff5c96cfb4cf");
             cancelMap.put("signature", signature);
             cancelMap.put("cancelReason", "1");
 
