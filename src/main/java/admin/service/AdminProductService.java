@@ -17,7 +17,7 @@ public interface AdminProductService {
 
 	public List<AdminProductDTO> getOrderControl(String orderControlPg);
 	
-	public OrderControlPaging orderControlPaging(String orderControlPg);
+	public OrderControlPaging orderControlPaging(String pg);
 	
 	public DeliveryPaging deliveryPaging(String deliveryPg);
 	
@@ -39,7 +39,7 @@ public interface AdminProductService {
 
 	public void purchaseConfirmed(String[] check);
 
-	public List<AdminProductDTO> getdeliveryReady(String deliveryPg);
+	public List<AdminProductDTO> getDeliveryReady(String deliveryPg);
 
 	public List<AdminProductDTO> getduringDeliver(String duringDeliverPg);
 
@@ -66,6 +66,12 @@ public interface AdminProductService {
 	public void cancelSalesComplete(String[] check);
 
 	public void memberPointUpdate(String[] check);
+
+	public OrderControlPaging searchOrderControlPaging(Map<String, String> map);
+
+	public List<AdminProductDTO> getSearchDeliveryReady(Map<String, String> map);
+
+	public DeliveryPaging searchDeliveryReadyPaging(Map<String, String> map);
 
 
 	

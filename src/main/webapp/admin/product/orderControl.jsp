@@ -17,6 +17,8 @@
 		<div class="memberList row">
 			<div class="col-lg-12">
 				<div role="tabpanel">
+					<input type="hidden" id="pg" value="${pg }">
+					<input type="hidden" name="pg" value="1">
 		
 				  <!-- Nav tabs -->
 				  <ul class="nav nav-tabs" role="tablist">
@@ -235,6 +237,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/furniture/admin/js/orderControl.js"></script>
+<script src="/furniture/admin/js/orderControlPG.js"></script>
+<script src="/furniture/admin/js/deliveryReadyPG.js"></script>
+<script src="/furniture/admin/js/duringDeliverPG.js"></script>
+<script src="/furniture/admin/js/deliverCompletePG.js"></script>
+<script src="/furniture/admin/js/purchaseConfirmedPG.js"></script>
 <script type="text/javascript">
 /*조회 버튼 클릭 시*/
 $(document).on('click', '#checkBtn',function(){
