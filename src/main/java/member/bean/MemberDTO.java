@@ -21,6 +21,7 @@ public class MemberDTO {
     private String bir_dd;
     private String verify;
     private String point;
+    private String amount;
     private String kakaoId;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy.MM.dd")
     private Date created_at;
