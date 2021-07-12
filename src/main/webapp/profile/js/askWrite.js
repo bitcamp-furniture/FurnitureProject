@@ -53,9 +53,19 @@ $('#askWriteBtn').click(function(){
 		contentType:false,
 		data: formData,
 		success: function(){
-			alert('문의가 등록되었습니다');
-			window.opener.location.reload();
-			self.close();
+			swal({
+	             title: "",
+	             text: "문의가 등록되었습니다", 
+	             type: ""
+	          }).then(function(){
+	        	  window.opener.location.reload();
+	          }).then(function(){
+	        	  self.close();
+	          });
+			
+//			alert('문의가 등록되었습니다');
+//			window.opener.location.reload();
+//			self.close();
 			
 		},
 		error: function(err){
