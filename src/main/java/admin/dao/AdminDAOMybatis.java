@@ -112,5 +112,47 @@ public class AdminDAOMybatis implements AdminDAO{
 			list.add(temp);
 		}
 		return list;
+	}
+
+	@Override
+	public List<Integer> orderCateFirst() {
+		return sqlSession.selectList("adminSQL.orderCateFirst");
+	}
+
+	@Override
+	public List<Integer> orderCateSecond() {
+		return sqlSession.selectList("adminSQL.orderCateSecond");
+	}
+
+	@Override
+	public List<Integer> orderCateThird() {
+		return sqlSession.selectList("adminSQL.orderCateThird");
+	}
+
+	@Override
+	public List<Integer> orderCateFourth() {
+		return sqlSession.selectList("adminSQL.orderCateFourth");
+	}
+	
+	@Override
+	public List<Integer> orderCateFifth() {
+		return sqlSession.selectList("adminSQL.orderCateFifth");
+	}
+
+	@Override
+	public List<Integer> orderCateSixth() {
+		return sqlSession.selectList("adminSQL.orderCateSixth");
+	}
+
+	@Override
+	public List<Integer> orderCateSeventh() {
+		return sqlSession.selectList("adminSQL.orderCateSeventh");
 	}	
+
+	@Override
+	public List<String> ordeCaterDay() {
+		return sqlSession.selectList("adminSQL.orderDay");
+	}
+
+	
 }

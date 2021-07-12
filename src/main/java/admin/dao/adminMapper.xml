@@ -332,7 +332,7 @@
 	<![CDATA[
 	   select TO_CHAR(order_date,'MM/DD')
 	   from orders
-	   where sysdate-order_date <= 7
+	   where sysdate-order_date > 1 and sysdate-order_date <= 7
 	   GROUP BY TO_CHAR(order_date,'MM/DD')
 	   order by TO_CHAR(order_date,'MM/DD')
 	]]>
@@ -342,7 +342,7 @@
 	<select id="orderCount" resultType="int">
 	<![CDATA[
 	   select count(*) from orders 
-	   where sysdate-order_date <= 7
+	   where sysdate-order_date > 1 and sysdate-order_date <= 7
 	   GROUP BY TO_CHAR(order_date,'MM/DD')
 	   order by TO_CHAR(order_date,'MM/DD')
 	]]>
@@ -353,7 +353,7 @@
 	<![CDATA[
 	   select sum(total_amount)/1000000 
 	   from orders
-	   where sysdate-order_date <= 7
+	   where sysdate-order_date > 1 and sysdate-order_date <= 7
 	   GROUP BY TO_CHAR(order_date,'MM/DD')
 	   order by TO_CHAR(order_date,'MM/DD')   
 	]]>
@@ -371,7 +371,7 @@
       where rownum <= 6
    ]]>
    </select>
-   
+    <!-- 카테고리별 매출 높은 순 이름만으로  -->
    <select id="orderCateName" resultType="String">
    <![CDATA[
       select * from(
@@ -381,6 +381,101 @@
       group by p.product_category_name,o.product_amounts
       order by sum(o.product_amounts) desc)
       where rownum <= 6
+   ]]>
+   </select>
+   <!-- 카테고리별 매출 높은 순으로  첫번째 것만-->
+   <select id="orderCateFirst" resultType="int">
+   <![CDATA[
+		select sum(od.product_amounts)as amount
+		from orders_detail od
+		JOIN orders o 
+		ON o.order_number = od.order_number
+		JOIN product p
+		ON p.id = od.product_id
+		where (sysdate-o.order_date > 1 and sysdate-o.order_date <= 7) and p.product_category2 = 100
+		group by  p.product_category2,o.order_date
+		order by o.order_date asc
+   ]]>
+   </select>
+   <!-- 카테고리별 매출 높은 순으로  두번째 것만-->
+   <select id="orderCateSecond" resultType="int">
+   <![CDATA[
+		select sum(od.product_amounts)as amount
+		from orders_detail od
+		JOIN orders o 
+		ON o.order_number = od.order_number
+		JOIN product p
+		ON p.id = od.product_id
+		where(sysdate-o.order_date > 1 and sysdate-o.order_date <= 7) and p.product_category2 = 200
+		group by  p.product_category2,o.order_date
+		order by o.order_date asc
+   ]]>
+   </select>
+   <!-- 카테고리별 매출 높은 순으로  셋번째 것만-->
+   <select id="orderCateThird" resultType="int">
+   <![CDATA[
+		select sum(od.product_amounts) as amount
+		from orders_detail od
+		JOIN orders o 
+		ON o.order_number = od.order_number
+		JOIN product p
+		ON p.id = od.product_id
+		where (sysdate-o.order_date > 1 and sysdate-o.order_date <= 7) and p.product_category2 = 300
+		group by  p.product_category2,o.order_date
+		order by o.order_date asc
+   ]]>
+   </select>
+   <!-- 카테고리별 매출 높은 순으로  넷번째 것만-->
+   <select id="orderCateFourth" resultType="int">
+   <![CDATA[
+		select sum(od.product_amounts)as amount
+		from orders_detail od
+		JOIN orders o 
+		ON o.order_number = od.order_number
+		JOIN product p
+		ON p.id = od.product_id
+		where (sysdate-o.order_date > 1 and sysdate-o.order_date <= 7) and p.product_category2 = 400
+		group by  p.product_category2,o.order_date
+		order by o.order_date asc
+   ]]>
+   </select>
+   <select id="orderCateFifth" resultType="int">
+   <![CDATA[
+		select sum(od.product_amounts)as amount
+		from orders_detail od
+		JOIN orders o 
+		ON o.order_number = od.order_number
+		JOIN product p
+		ON p.id = od.product_id
+		where (sysdate-o.order_date > 1 and sysdate-o.order_date <= 7) and p.product_category2 = 500
+		group by  p.product_category2,o.order_date
+		order by o.order_date asc
+   ]]>
+   </select>
+   <select id="orderCateSixth" resultType="int">
+   <![CDATA[
+		select sum(od.product_amounts) as amount
+		from orders_detail od
+		JOIN orders o 
+		ON o.order_number = od.order_number
+		JOIN product p
+		ON p.id = od.product_id
+		where (sysdate-o.order_date > 1 and sysdate-o.order_date <= 7) and p.product_category2 = 600
+		group by  p.product_category2,o.order_date
+		order by o.order_date asc
+   ]]>
+   </select>
+   <select id="orderCateSeventh" resultType="int">
+   <![CDATA[
+		select sum(od.product_amounts)as amount
+		from orders_detail od
+		JOIN orders o 
+		ON o.order_number = od.order_number
+		JOIN product p
+		ON p.id = od.product_id
+		where (sysdate-o.order_date > 1 and sysdate-o.order_date <= 7) and p.product_category2 = 700
+		group by  p.product_category2,o.order_date
+		order by o.order_date asc
    ]]>
    </select>
    
