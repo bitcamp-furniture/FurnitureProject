@@ -46,5 +46,13 @@ public interface AdminService {
 
 	public List<Integer> orderCateFourth();
 
+	public List<String> ordeCaterDay();
+
+	public List<Integer> orderCateFifth();
+
+	public List<Integer> orderCateSixth();
+
+	public List<Integer> orderCateSeventh();
+
 
 }

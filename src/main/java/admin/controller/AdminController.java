@@ -172,7 +172,11 @@ public class AdminController {
 		List<Integer> orderCateFirst = adminService.orderCateFirst();	
 		List<Integer> orderCateSecond = adminService.orderCateSecond();	
 		List<Integer> orderCateThird = adminService.orderCateThird();	
-		List<Integer> orderCateFourth = adminService.orderCateFourth();	
+		List<Integer> orderCateFourth = adminService.orderCateFourth();
+		List<Integer> orderCateFifth = adminService.orderCateFifth();
+		List<Integer> orderCateSixth = adminService.orderCateSixth();
+		List<Integer> orderCateSeventh = adminService.orderCateSeventh();
+		List<String> ordeCaterDay = adminService.ordeCaterDay();	
 		
 		
 		ModelAndView mav = new ModelAndView();
@@ -180,6 +184,10 @@ public class AdminController {
 		mav.addObject("orderCateSecond",orderCateSecond);
 		mav.addObject("orderCateThird",orderCateThird);
 		mav.addObject("orderCateFourth",orderCateFourth);
+		mav.addObject("orderCateFifth",orderCateFifth);
+		mav.addObject("orderCateSixth",orderCateSixth);
+		mav.addObject("orderCateSeventh",orderCateSeventh);
+		mav.addObject("ordeCaterDay",ordeCaterDay);
 		mav.setViewName("jsonView");
 
 		return mav;

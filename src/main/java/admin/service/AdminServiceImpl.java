@@ -153,4 +153,25 @@ public class AdminServiceImpl implements AdminService {
 	public List<Integer> orderCateFourth() {
 		return adminDAO.orderCateFourth();
 	}
+	
+	@Override
+	public List<Integer> orderCateFifth() {
+		return adminDAO.orderCateFifth();
+	}
+	
+	@Override
+	public List<Integer> orderCateSixth() {
+		return adminDAO.orderCateSixth();
+	}
+	
+	@Override
+	public List<Integer> orderCateSeventh() {
+		return adminDAO.orderCateSeventh();
+	}
+
+	@Override
+	public List<String> ordeCaterDay() {
+		return adminDAO.ordeCaterDay();
+	}
+
 }

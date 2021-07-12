@@ -116,7 +116,6 @@ public class AdminDAOMybatis implements AdminDAO{
 
 	@Override
 	public List<Integer> orderCateFirst() {
-		System.out.println("디에이어");
 		return sqlSession.selectList("adminSQL.orderCateFirst");
 	}
 
@@ -133,5 +132,27 @@ public class AdminDAOMybatis implements AdminDAO{
 	@Override
 	public List<Integer> orderCateFourth() {
 		return sqlSession.selectList("adminSQL.orderCateFourth");
+	}
+	
+	@Override
+	public List<Integer> orderCateFifth() {
+		return sqlSession.selectList("adminSQL.orderCateFifth");
+	}
+
+	@Override
+	public List<Integer> orderCateSixth() {
+		return sqlSession.selectList("adminSQL.orderCateSixth");
+	}
+
+	@Override
+	public List<Integer> orderCateSeventh() {
+		return sqlSession.selectList("adminSQL.orderCateSeventh");
 	}	
+
+	@Override
+	public List<String> ordeCaterDay() {
+		return sqlSession.selectList("adminSQL.orderDay");
+	}
+
+	
 }

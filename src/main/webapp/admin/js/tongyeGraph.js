@@ -11,10 +11,11 @@ window.onload = function(){
             var tongyeChart = new Chart(tongye,{
             	  type: 'line',
             	  data: {      
-                      labels:["Red"],
+                      labels:data.ordeCaterDay,
                       datasets:[{
                          type:'line',
-                         label:'일간 주문건수2',
+                         //100
+                         label:'침대',
                          data:data.orderCateFirst,
                          backgroundColor:"rgb(255,215,0)",                     
                          borderColor: "rgb(255,215,0)",
@@ -23,31 +24,65 @@ window.onload = function(){
                             //borderWidth: 1
                       },{
                           type:'line',
-                          label:'일간매출1(백만원단위)',
+                          //200
+                          label:'소파',
                           data:data.orderCateSecond,
-                          backgroundColor:"rgb(30,144,225)",
-                          borderColor:"rgb(30,144,225)",
+                          backgroundColor:"rgba(52, 31, 151, 1)",
+                          borderColor:"rgba(52, 31, 151, 1)",
                           fill:false,
                           lineTension:0                        
                        },
                        {
                            type:'line',
-                           label:'일간매출2(백만원단위)',
+                           //300                      
+                           label:'책장/선반',
                            data:data.orderCateThird,
-                           backgroundColor:"rgb(30,144,235)",
-                           borderColor:"rgb(30,144,235)",
+                           backgroundColor:"rgba(16, 172, 132, 1)",
+                           borderColor:"rgba(16, 172, 132, 1)",
                            fill:false,
                            lineTension:0                        
                         },
                         {
                             type:'line',
-                            label:'4순위',
+                            //400
+                            label:'식탁/책상',
                             data:data.orderCateFourth,
-                            backgroundColor:"rgb(30,144,245)",
-                            borderColor:"rgb(30,144,245)",
+                            backgroundColor:"rgba(10, 189, 227, 1)",
+                            borderColor:"rgba(10, 189, 227, 1)",
                             fill:false,
                             lineTension:0                        
-                         }
+                         },
+                         {
+                             type:'line',
+                             //500
+                             label:'수납장/장식장',
+                             data:data.orderCateFifth,
+                             backgroundColor:"rgba(238, 82, 83, 1)",
+                             borderColor:"rgba(238, 82, 83, 1)",
+                             fill:false,
+                             lineTension:0                        
+                          }
+                         ,
+                         {
+                             type:'line',
+                             //600
+                             label:'옷장',
+                             data:data.orderCateSixth,
+                             backgroundColor:"rgba(243, 104, 224, 1)",
+                             borderColor:"rgba(243, 104, 224, 1)",
+                             fill:false,
+                             lineTension:0                        
+                          },
+                          {
+                              type:'line',
+                              //700
+                              label:'의자',
+                              data:data.orderCateSeventh,
+                              backgroundColor:"rgba(255, 159, 67, 1)",
+                              borderColor:"rgba(255, 159, 67, 1)",
+                              fill:false,
+                              lineTension:0                        
+                           }
                        ]
                    }
             	});
