@@ -110,4 +110,28 @@ public class AdminProductDAOMybatis implements AdminProductDAO {
 		
 	}
 
+	@Override
+	public void canclePoint(Map<String, String[]> map) {
+		sqlSession.update("adminSQL.canclePoint", map);
+		
+	}
+
+	@Override
+	public void cancleAmount(Map<String, String[]> map) {
+		sqlSession.update("adminSQL.cancleAmount", map);
+		
+	}
+
+	@Override
+	public void cancelSalesComplete(Map<String, String[]> map) {
+		sqlSession.update("adminSQL.cancelSalesComplete", map);
+		
+	}
+
+	@Override
+	public void memberPointUpdate(Map<String, String[]> map) {
+		sqlSession.update("adminSQL.memberPointUpdate", map);
+		
+	}
+
 }

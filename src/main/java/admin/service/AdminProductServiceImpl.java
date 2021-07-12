@@ -265,6 +265,16 @@ public class AdminProductServiceImpl implements AdminProductService{
 		map.put("array", check);
 		adminProductDAO.purchaseConfirmed(map);
 	}
+	
+	//포인트 지급
+	@Override
+	public void memberPointUpdate(String[] check) {
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("array", check);
+		adminProductDAO.memberPointUpdate(map);
+		
+	}
+
 
 	//발송지연 처리
 	@Override
@@ -281,6 +291,33 @@ public class AdminProductServiceImpl implements AdminProductService{
 		Map<String, String[]> map = new HashMap<String, String[]>();
 		map.put("array", check);
 		adminProductDAO.cancelSales(map);
+		
+	}
+	
+	//판매취소 처리 -- 포인트 회수
+	@Override
+	public void canclePoint(String[] check) {
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("array", check);
+		adminProductDAO.canclePoint(map);
+		
+	}
+	
+	//판매취소 처리 -- 누적금액 회수
+	@Override
+	public void cancleAmount(String[] check) {
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("array", check);
+		adminProductDAO.cancleAmount(map);
+		
+	}
+	
+	//판매취소 처리 (구매확정 외의 탭에 있는 주문취소 버튼)
+	@Override
+	public void cancelSalesComplete(String[] check) {
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("array", check);
+		adminProductDAO.cancelSalesComplete(map);
 		
 	}
 
@@ -309,6 +346,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	
 		
 	}
+
 
 
 }

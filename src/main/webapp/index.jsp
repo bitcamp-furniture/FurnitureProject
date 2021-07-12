@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 .header{
     background-color: white;
     position:fixed;

@@ -180,6 +180,7 @@ function newOrder(){
 	
 	$('#dropdown').css('pointer-events', 'none');
 	$('#dropdown').css('opacity', '0.6');
+	$('#cancelSales').show();
 }
 
 /*배송준비중 탭을 눌렀을 때*/
@@ -274,6 +275,7 @@ $('#deliveryReady').click(function(){
 	
 	$('#dropdown').css('pointer-events', 'auto');
 	$('#dropdown').css('opacity', '1');
+	$('#cancelSales').show();
 	
 });
 /*배송중 탭을 눌렀을 때*/
@@ -368,6 +370,7 @@ function duringDeliver(){
 	
 	$('#dropdown').css('pointer-events', 'auto');
 	$('#dropdown').css('opacity', '1');
+	$('#cancelSales').show();
 }
 
 /*배송완료 탭을 눌렀을 때*/
@@ -462,6 +465,7 @@ function deliverComplete(){
 	
 	$('#dropdown').css('pointer-events', 'auto');
 	$('#dropdown').css('opacity', '1');
+	$('#cancelSales').show();
 }
 
 /*취소처리 탭을 눌렀을 때*/
@@ -552,10 +556,13 @@ function orderCancle(){
 	
 	$('#dropdown').css('pointer-events', 'auto');
 	$('#dropdown').css('opacity', '1');
+	$('#cancelSales').show();
 }
 
 /*구매확정 탭을 눌렀을 때*/
 function purchaseConfirmed(){
+	$('#cancelSales').hide();
+	
     $.ajax({
       type: 'post',
       url: '/furniture/admin/product/getPurchaseConfirmed',
@@ -822,31 +829,38 @@ $('#purchaseConfirmedBtn').click(function(){
 			}
 		});
 		
+		//포인트 지급
+		$.ajax({
+			type: 'post',
+			url: '/furniture/admin/product/memberPointUpdate',
+			data: $('#orderForm').serialize(),
+			dataType: 'text',
+			success: function() {
+
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
+		
+		//alert($('#orderForm').serialize());
+		//누적금액 추가
+		$.ajax({
+			type: 'post',
+			url: '/furniture/admin/product/memberCumulativerAmount',
+			data: $('#orderForm').serialize(),
+			success: function() {
+				location.reload()
+
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
+		
 	}
 
 });
-
-/*구매확정 버튼 클릭 시*/
-$('#purchaseConfirmedBtn').click(function(){
-
-	alert($('#orderForm').serialize());
-	
-	$.ajax({
-		type: 'post',
-		url: '/furniture/admin/product/memberCumulativerAmount',
-		data: $('#orderForm').serialize(),
-		success: function() {
-			alert('구매확정.');
-			location.reload()
-
-		},
-		error: function(err){
-			console.log(err);
-		}
-	});
-
-});
-
 
 /*배송준비중으로 되돌리기*/
 function deliveryReadyBtn(){
@@ -948,8 +962,8 @@ function delayBtn(){
 	 }
 }
 
-/*판매취소 버튼 클릭 시*/
-$('#cancelSales').click(function(){
+/*판매취소 버튼 클릭 시 (구매확정부분에서 누르면)*/
+$('#cancelSales_complete').click(function(){
 	var count = $('input[name=check]:checked').length;
 	
 	if(count == 0){
@@ -970,10 +984,10 @@ $('#cancelSales').click(function(){
 				console.log(err);
 			}
 		});
-
+        //주문 취소
         $.ajax({
             type: 'post',
-            url: '/furniture/admin/product/cancelSales',
+            url: '/furniture/admin/product/cancelSalesComplete',
             data: $('#orderForm').serialize(),
             dataType: 'text',
             success: function() {
@@ -985,7 +999,76 @@ $('#cancelSales').click(function(){
                 console.log(err);
             }
         });
+        
+        //포인트 회수
+        $.ajax({
+            type: 'post',
+            url: '/furniture/admin/product/canclePoint',
+            data: $('#orderForm').serialize(),
+            dataType: 'text',
+            success: function() {
 
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+        
+        //누적금액 회수
+        $.ajax({
+            type: 'post',
+            url: '/furniture/admin/product/cancleAmount',
+            data: $('#orderForm').serialize(),
+            dataType: 'text',
+            success: function() {
+
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+
+	}
+});
+
+/*판매취소 버튼 클릭 시 (구매확정 외 모든 탭에 있는 버튼 해당)*/
+$('#cancelSales').click(function(){
+	var count = $('input[name=check]:checked').length;
+	
+	if(count == 0){
+		alert("선택한 주문이 없습니다.");
+	}else{
+        $.ajax({
+			type: 'post',
+			url: '/furniture/pay/cancel',
+			data: $('#orderForm').serialize(),
+			dataType: 'json',
+			success: function(data) {
+				alert('주문이 취소되었습니다.');
+				//console.log(JSON.stringify(data));
+				//location.reload()
+
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
+        
+        //주문 취소
+        $.ajax({
+            type: 'post',
+            url: '/furniture/admin/product/cancelSales',
+            data: $('#orderForm').serialize(),
+            dataType: 'text',
+            success: function() {
+                //alert('주문이 취소되었습니다.');
+                //location.reload()
+
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
 	}
 });
 
@@ -1063,6 +1146,8 @@ $('#orderSearchBtn').click(function(){
 			}
 		});
 	}
+	
+	$('#cancelSales').show();
 
 });
 

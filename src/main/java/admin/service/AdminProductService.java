@@ -59,6 +59,14 @@ public interface AdminProductService {
 
 	public void memberCumulativerAmount(String[] check);
 
+	public void canclePoint(String[] check);
+
+	public void cancleAmount(String[] check);
+
+	public void cancelSalesComplete(String[] check);
+
+	public void memberPointUpdate(String[] check);
+
 
 	
 }

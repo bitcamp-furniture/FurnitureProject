@@ -225,6 +225,33 @@ public class AdminProductController {
 		return new ModelAndView("redirect:/admin/product/orderControl");
 	}
 	
+	//판매취소 처리2 -- 포인트
+	@RequestMapping(value="product/canclePoint", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView canclePoint(@RequestParam String[] check) {
+		adminProductService.canclePoint(check);
+		
+		return new ModelAndView("redirect:/admin/product/orderControl");
+	}
+	
+	//판매취소 처리3 -- 누적금액
+	@RequestMapping(value="product/cancleAmount", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView cancleAmount(@RequestParam String[] check) {
+		adminProductService.cancleAmount(check);
+		
+		return new ModelAndView("redirect:/admin/product/orderControl");
+	}
+	
+	//판매취소 처리 (구매확정 탭 외에 있는 버튼)
+	@RequestMapping(value="product/cancelSalesComplete", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView cancelSalesComplete(@RequestParam String[] check) {
+		adminProductService.cancelSalesComplete(check);
+		
+		return new ModelAndView("redirect:/admin/product/orderControl");
+	}
+	
 	//발송완료 처리
 	@RequestMapping(value="product/deliveryComplete", method=RequestMethod.POST)
 	@ResponseBody
@@ -248,12 +275,20 @@ public class AdminProductController {
 	@ResponseBody
 	public void memberCumulativerAmount(@RequestParam String[] check) {
 		adminProductService.memberCumulativerAmount(check);
-		for(int i=0; i<check.length; i++) {
-			System.out.println("check: " + check[i]);
-			
-		}
+//		for(int i=0; i<check.length; i++) {
+//			System.out.println("check: " + check[i]);
+//			
+//		}
 		
+	}
+	
+	//구매확정 처리3
+	@RequestMapping(value="product/memberPointUpdate", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView memberPointUpdate(@RequestParam String[] check) {
+		adminProductService.memberPointUpdate(check);
 		
+		return new ModelAndView("redirect:/admin/product/orderControl");
 	}
 	
 	//주문관련 검색
@@ -270,7 +305,6 @@ public class AdminProductController {
 		mav.addObject("list", list);
 		mav.setViewName("jsonView");
 
-		
 		return mav;
 	}
 	

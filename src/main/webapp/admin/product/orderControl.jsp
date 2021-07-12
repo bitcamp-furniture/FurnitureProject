@@ -166,6 +166,7 @@
 				    
 				    <!-- 구매확정 -->
 				    <div role="tabpanel" class="tab-pane" id="purchaseConfirmed">
+				    <button type="button" id="cancelSales_complete">판매취소</button>
 						<!-- search start -->
 						<div class="search">
 							<input type="search" name="keyword5" id="keyword5" value="${keyword5 }">
