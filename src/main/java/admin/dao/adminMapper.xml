@@ -114,8 +114,9 @@
 	
 	<!-- 주문내역 띄우기 -->
  	<select id="getOrderControl" parameterType="java.util.Map" resultType="adminProduct">
- 		<!-- 	select name, phone, zipcode, addr1, addr2 from member -->
-		select distinct 	
+ 		<!-- 	select name, phone, zipcode, addr1, addr2 from member -->	
+ 		select * from(select rownum rn, tt.* from
+		(select distinct 	
                     oc.delivery_number,
                     o.order_number,
 					o.order_date,
@@ -145,20 +146,22 @@
 						on p.id=pi.id
 					                        
                     where od.order_status = 'PAYMENTCOMPLETED'
-				 order by order_date desc
+				 order by order_date desc)tt)
+				 where <![CDATA[rn>= #{startNum}]]> and  <![CDATA[rn<= #{endNum}]]>
 
 	</select>
 	
 	<!-- 배송준비중 띄우기 -->
  	<select id="getDeliveryReady" parameterType="java.util.Map" resultType="adminProduct">
-		select distinct 	
+ 	 		select * from(select rownum rn, tt.* from
+		(select distinct 	
                     oc.delivery_number,
                     o.order_number,
 					o.order_date,
 					p.product_name,
 					od.product_color,
 					od.product_qty,
-					od.product_price,
+					od.product_price, 
 					od.order_status,
 					od.id,
                     m.name,
@@ -179,9 +182,10 @@
 						on od.product_id=p.id
 					inner join product_image pi
 						on p.id=pi.id
-                        
+					                        
                     where od.order_status = 'READY'
-				 order by order_date desc
+				 order by order_date desc)tt)
+				 where <![CDATA[rn>= #{startNum}]]> and  <![CDATA[rn<= #{endNum}]]>			 
 	</select>
 	
 	<!-- 배송중 띄우기 -->
@@ -457,9 +461,39 @@
 	
 	<!-- 주문검색 -->
 	<select id="getSearchOrderList" parameterType="java.util.Map" resultType="adminProduct">
-         select * from(select rownum rn, tt. * from
-          (select * from orders where order_number like '%'||#{keyword}||'%' order by order_date desc)tt) 
-          where <![CDATA[rn >= #{startNum}]]> and <![CDATA[rn <= #{endNum}]]>
+          		select * from(select rownum rn, tt.* from
+		(select distinct 	
+                    oc.delivery_number,
+                    o.order_number,
+					o.order_date,
+					p.product_name,
+					od.product_color,
+					od.product_qty,
+					od.product_price, 
+					od.order_status,
+					od.id,
+                    m.name,
+                    m.phone,
+					m.zipcode,
+					m.addr1,
+					m.addr2,
+					pi.product_img_thumb
+				
+				 from member m
+                    inner join ordercontrol oc
+					    on m.id = oc.member_id
+                    inner join orders o
+                        on oc.order_number=o.order_number
+					inner join orders_detail od
+						on o.order_number=od.order_number
+					inner join product p
+						on od.product_id=p.id
+					inner join product_image pi
+						on p.id=pi.id
+					                        
+                    where od.order_status = 'PAYMENTCOMPLETED' and o.order_number like '%'||#{keyword}||'%'
+				 order by order_date desc)tt)
+				 where <![CDATA[rn>= #{startNum}]]> and  <![CDATA[rn<= #{endNum}]]>
     </select>
 
 	<!-- ////////////////////////////////////////// 대시보드 ... 일간 요약표 -->
@@ -486,5 +520,58 @@
 	<select id="dailySummaryDate" parameterType="int" resultType="java.sql.Date">
 		select sysdate-${i} from dual
    </select>
+   
+   	<select id="getOrderTotal" resultType="int">
+		select count(*) from orders_detail where order_status = 'PAYMENTCOMPLETED'
+	</select>
+	
+	<select id="getSearchOrderTotal" parameterType="java.util.Map" resultType="int">
+		select count(*) from orders_detail where order_status = 'PAYMENTCOMPLETED' and order_number like '%'||#{keyword}||'%'
+	</select>
+	
+   	<select id="getDeliveryTotal" resultType="int">
+		select count(*) from orders_detail where order_status = 'READY'
+	</select>
+	
+	 <select id="getSearchDeliveryReady" parameterType="java.util.Map" resultType="adminProduct">
+          		select * from(select rownum rn, tt.* from
+		(select distinct 	
+                    oc.delivery_number,
+                    o.order_number,
+					o.order_date,
+					p.product_name,
+					od.product_color,
+					od.product_qty,
+					od.product_price, 
+					od.order_status,
+					od.id,
+                    m.name,
+                    m.phone,
+					m.zipcode,
+					m.addr1,
+					m.addr2,
+					pi.product_img_thumb
+				
+				 from member m
+                    inner join ordercontrol oc
+					    on m.id = oc.member_id
+                    inner join orders o
+                        on oc.order_number=o.order_number
+					inner join orders_detail od
+						on o.order_number=od.order_number
+					inner join product p
+						on od.product_id=p.id
+					inner join product_image pi
+						on p.id=pi.id
+					                        
+                    where od.order_status = 'READY' and o.order_number like '%'||#{keyword2}||'%'
+				 order by order_date desc)tt)
+				 where <![CDATA[rn>= #{startNum}]]> and  <![CDATA[rn<= #{endNum}]]>
+	</select>
+	
+	<select id="getSearchDeliveryTotal" parameterType="java.util.Map" resultType="int">
+		select count(*) from orders_detail where order_status = 'READY' and order_number like '%'||#{keyword2}||'%'
+	</select>
+	
 
 </mapper>

@@ -30,7 +30,7 @@ public interface AdminProductDAO {
 
 	public List<AdminProductDTO> getSearchOrderList(Map<String, String> map);
 
-	public List<AdminProductDTO> getdeliveryReady(Map<String, Integer> map);
+	public List<AdminProductDTO> getDeliveryReady(Map<String, Integer> map);
 
 	public List<AdminProductDTO> getduringDeliver(Map<String, Integer> map);
 
@@ -41,6 +41,16 @@ public interface AdminProductDAO {
 	public List<AdminProductDTO> getPurchaseConfirmed(Map<String, Integer> map);
 
 	public void membeCumulativerAmount(Map<String, String> map);
+
+	public int getOrderTotal();
+
+	public int getSearchOrderTotal(Map<String, String> map);
+
+	public int getDeliveryTotal();
+
+	public List<AdminProductDTO> getSearchDeliveryReady(Map<String, String> map);
+
+	public int getSearchDeliveryTotal(Map<String, String> map);
 
 
 }

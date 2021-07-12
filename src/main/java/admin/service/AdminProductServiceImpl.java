@@ -37,8 +37,8 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//신규주문 띄우기
 	@Override
 	public List<AdminProductDTO> getOrderControl(String orderControlPg) {
-		int endNum = Integer.parseInt(orderControlPg)*15;
-		int startNum = endNum-14;
+		int endNum = Integer.parseInt(orderControlPg)*8;
+		int startNum = endNum-7;
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startNum", startNum);
@@ -52,12 +52,12 @@ public class AdminProductServiceImpl implements AdminProductService{
 
 	//신규주문 페이징
 	@Override
-	public OrderControlPaging orderControlPaging(String orderControlPg) {
-		int totalA = adminProductDAO.getTotalA();
+	public OrderControlPaging orderControlPaging(String pg) {
+		int totalA = adminProductDAO.getOrderTotal();
 		
-		orderControlPaging.setCurrentPage(Integer.parseInt(orderControlPg));
+		orderControlPaging.setCurrentPage(Integer.parseInt(pg));
 		orderControlPaging.setPageBlock(5);
-		orderControlPaging.setPageSize(15);
+		orderControlPaging.setPageSize(8);
 		orderControlPaging.setTotalA(totalA);
 		orderControlPaging.makePagingHTML();
 		
@@ -66,16 +66,16 @@ public class AdminProductServiceImpl implements AdminProductService{
 	
 	//배송준비 목록 띄우기
 	@Override
-	public List<AdminProductDTO> getdeliveryReady(String deliveryPg) {
-		int endNum = Integer.parseInt(deliveryPg)*15;
-		int startNum = endNum-14;
+	public List<AdminProductDTO> getDeliveryReady(String deliveryPg) {
+		int endNum = Integer.parseInt(deliveryPg)*8;
+		int startNum = endNum-7;
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
 		
 		//DB
-		List<AdminProductDTO> list = adminProductDAO.getdeliveryReady(map);
+		List<AdminProductDTO> list = adminProductDAO.getDeliveryReady(map);
 		
 		return list;
 	}
@@ -83,11 +83,11 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//배송준비 페이징
 	@Override
 	public DeliveryPaging deliveryPaging(String deliveryPg) {
-		int totalA = adminProductDAO.getTotalA();
+		int totalA = adminProductDAO.getDeliveryTotal();
 		
 		deliveryPaging.setCurrentPage(Integer.parseInt(deliveryPg));
 		deliveryPaging.setPageBlock(5);
-		deliveryPaging.setPageSize(15);
+		deliveryPaging.setPageSize(8);
 		deliveryPaging.setTotalA(totalA);
 		deliveryPaging.makePagingHTML();
 		
@@ -287,8 +287,8 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//주문 검색
 	@Override
 	public List<AdminProductDTO> getSearchOrderList(Map<String, String> map) {
-		int endNum = Integer.parseInt(map.get("orderControlPg"))*15;
-		int startNum = endNum-14;
+		int endNum = Integer.parseInt(map.get("orderControlPg"))*8;
+		int startNum = endNum-7;
 		
 		map.put("startNum", startNum+"");
 		map.put("endNum", endNum+"");
@@ -303,6 +303,45 @@ public class AdminProductServiceImpl implements AdminProductService{
 	public void memberCumulativerAmount(Map map) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public OrderControlPaging searchOrderControlPaging(Map<String, String> map) {
+		int totalA = adminProductDAO.getSearchOrderTotal(map);
+		
+		orderControlPaging.setCurrentPage(Integer.parseInt(map.get("pg")));
+		orderControlPaging.setPageBlock(5);
+		orderControlPaging.setPageSize(8);
+		orderControlPaging.setTotalA(totalA);
+		orderControlPaging.makePagingHTML();
+		
+		return orderControlPaging;
+	}
+
+	@Override
+	public List<AdminProductDTO> getSearchDeliveryReady(Map<String, String> map) {
+		int endNum = Integer.parseInt(map.get("deliveryPg"))*8;
+		int startNum = endNum-7;
+		
+		map.put("startNum", startNum+"");
+		map.put("endNum", endNum+"");
+		
+		List<AdminProductDTO> list = adminProductDAO.getSearchDeliveryReady(map);
+		
+		return list;
+	}
+
+	@Override
+	public DeliveryPaging searchDeliveryReadyPaging(Map<String, String> map) {
+		int totalA = adminProductDAO.getSearchDeliveryTotal(map);
+		
+		deliveryPaging.setCurrentPage(Integer.parseInt(map.get("deliveryPg")));
+		deliveryPaging.setPageBlock(5);
+		deliveryPaging.setPageSize(8);
+		deliveryPaging.setTotalA(totalA);
+		deliveryPaging.makePagingHTML();
+		
+		return deliveryPaging;
 	}
 
 
