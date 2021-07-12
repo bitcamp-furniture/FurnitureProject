@@ -16,7 +16,7 @@
 	display: inline-block;
 }
 #dailySummaryTbl{
-	font-size: 1.5em;
+	font-size: 1.3em;
 	height: 440px;
 }
 .clearing{
@@ -34,7 +34,7 @@
 	border: 1px solid lightgray;
 	display: inline-block;
 	float: left;
-	height: 430px;
+	height: 400px;
 	width: 47%;
 	background: white;
 }

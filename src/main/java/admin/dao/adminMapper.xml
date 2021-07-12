@@ -99,7 +99,7 @@
 	<![CDATA[
 		select * from (
 			select * from review order by created_at desc
-		) where rownum <= 3
+		) where rownum <= 5
 	]]>
 	</select>
 
