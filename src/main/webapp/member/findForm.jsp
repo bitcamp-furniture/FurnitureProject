@@ -254,6 +254,7 @@
 
 <div style="margin-bottom: 500px;"></div>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     var code = "";
 
@@ -390,7 +391,13 @@
 				},
 				dataType: 'text',
 				success: function(){
-					alert('비밀번호가 변경되었습니다.');
+                    swal({
+                        title: "",
+                        text: '비밀번호가 변경되었습니다.',
+                        type: ""
+                    }).then(function(){
+                        location.href = "/furniture/member/loginForm";
+                    });
 					location.href='/furniture/member/loginForm';
 				},
 				error: function(err){

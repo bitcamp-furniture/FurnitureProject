@@ -150,7 +150,7 @@ $('#kakaoImg').click(function(){
         success: function (response) {
             Kakao.API.request({
                 url: '/v2/user/me',
-                s: function (response) {
+                success: function (response) {
                     //console.log(Kakao.Auth.getAccessToken());
                     console.log(response);
                     Kakao.Auth.setAccessToken(Kakao.Auth.getAccessToken());
