@@ -22,6 +22,11 @@
 	border-radius: 5px;
 	cursor: pointer;
 }
+
+body {
+	font-family: "AppleSDGothicNeoM00", serif;
+}
+
 </style>
 
 
