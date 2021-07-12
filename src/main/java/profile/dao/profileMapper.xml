@@ -239,7 +239,9 @@
 	</insert>
 
 	<select id="gettId"  parameterType="String" resultType="String">
-		select transaction_id from payment where order_number=#{orderNumber}
+		select transaction_id from payment where order_number=(
+			select order_number from orders_detail where id=#{odId}
+		)
 	</select>
 
 	<update id="updateCumulativeAmount" parameterType="java.util.Map">
@@ -250,7 +252,9 @@
 
 
 	<update id="paymentUpdate" parameterType="String">
-		update payment set response_msg = '주문취소', updated_at = sysdate where order_number=#{checkId}
+		update payment set response_msg = '주문취소', updated_at = sysdate where order_number=(
+			select order_number from orders_detail where id=#{odId}
+		)
 	</update>
 
 	<insert id="reviewWrite" parameterType="review">

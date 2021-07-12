@@ -970,8 +970,7 @@ $('.main-bn > .slider > .slides > .bn > .inner-txt > .page-btns > .page-btn6').c
 		type: 'post',
 		data: $('#joinForm').serialize(),
 		success: function(){
-			alert("회원가입성공")
-
+			
 		},
 		error: function(err){
 			console.log(err);

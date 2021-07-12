@@ -44,11 +44,12 @@ $('#cart-tap').click(function() {
                     text: color
                 })).appendTo($('.cartTable'));
 
-                $('<tr/>').append($('<td/>').append($('<input/>',{                
+                $('<tr/>').append($('<td/>').append($('<input/>',{
                     id: "qty_select",
                     type: 'text',
-                    value: item.product_count,
+                    value: item.product_count+'개',
                     width: 30
+
                 })).append($('<button/>',{
                     type: 'button',
                     text: '삭제',

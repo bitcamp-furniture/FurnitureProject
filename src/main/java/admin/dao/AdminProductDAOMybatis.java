@@ -57,7 +57,7 @@ public class AdminProductDAOMybatis implements AdminProductDAO {
 	}
 
 	@Override
-	public void cancelSales(Map<String, String[]> map) {
+	public void cancelSales(Map<String, String> map) {
 		sqlSession.update("adminSQL.cancelSales", map);
 		
 	}
@@ -123,7 +123,7 @@ public class AdminProductDAOMybatis implements AdminProductDAO {
 	}
 
 	@Override
-	public void cancelSalesComplete(Map<String, String[]> map) {
+	public void cancelSalesComplete(Map<String, String> map) {
 		sqlSession.update("adminSQL.cancelSalesComplete", map);
 		
 	}

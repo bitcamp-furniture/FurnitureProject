@@ -527,7 +527,7 @@ input::placeholder {
 										<img id="coupon" src="/furniture/img/coupon.png" alt="kakao" width="440" height="396" style="align:center;"><br><br><br>
 			                        <div class="page-btn">
 			                        	<div class="page-btn7" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block"><a style="text-decoration-line: none;" href="/furniture/category/view/category">추천상품 보러가기</a></div>
-			                        	<div class="page-btn8" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block"><a style="text-decoration-line: none;" href="/furniture/">쇼핑하러가기</a></div>
+			                        	<div class="page-btn8" style="font-size:15.3px;width:216px; height:50px; text-align:center; line-height:50px; border:1px solid black; display: inline-block"><a style="text-decoration-line: none;" href="/furniture/member/loginForm">로그인하러 가기</a></div>
 			                        </div>
 			                    </div>
 			                </div>

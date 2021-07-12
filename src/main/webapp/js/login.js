@@ -186,7 +186,7 @@ $('#kakaoImg').click(function(){
 });
 
 //---------------------------------------------------------------------------------
-//자동 로그인
+//로그인 저장하기
 $(document).ready(function(){
     // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
     const userInputId = getCookie("userInputId");
