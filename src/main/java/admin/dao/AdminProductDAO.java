@@ -20,7 +20,7 @@ public interface AdminProductDAO {
 
 	public void delay(Map<String, String[]> map);
 
-	public void cancelSales(Map<String, String[]> map);
+	public void cancelSales(Map<String, String> map);
 
 	public void deliveryComplete(Map<String, String[]> map);
 	
@@ -56,7 +56,7 @@ public interface AdminProductDAO {
 
 	public void cancleAmount(Map<String, String[]> map);
 
-	public void cancelSalesComplete(Map<String, String[]> map);
+	public void cancelSalesComplete(Map<String, String> map);
 
 	public void memberPointUpdate(Map<String, String[]> map);
 

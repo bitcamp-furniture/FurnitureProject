@@ -26,6 +26,10 @@ function newOrder(){
             })).append($('<td/>',{
                //align:'center',
                text: items.order_number
+            })).append($('<input/>',{
+                type: 'hidden',
+                class: 'order_number '+items.order_number,
+                value: items.order_number
             })).append($('<td/>',{
             	//align:'center',
             	text: items.name
@@ -403,6 +407,10 @@ function purchaseConfirmed(){
             })).append($('<td/>',{
                //align:'center',
                text: items.order_number
+            })).append($('<input/>',{
+                type: 'hidden',
+                class: 'order_number '+items.order_number,
+                value: items.order_number
             })).append($('<td/>',{
             	//align:'center',
             	text: items.name

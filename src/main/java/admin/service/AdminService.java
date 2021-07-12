@@ -38,4 +38,21 @@ public interface AdminService {
 
 	public List<DailysummaryDTO> dailySummary();
 
+	public List<Integer> orderCateFirst();
+	
+	public List<Integer> orderCateSecond();
+	
+	public List<Integer> orderCateThird();
+
+	public List<Integer> orderCateFourth();
+
+	public List<String> ordeCaterDay();
+
+	public List<Integer> orderCateFifth();
+
+	public List<Integer> orderCateSixth();
+
+	public List<Integer> orderCateSeventh();
+
+
 }

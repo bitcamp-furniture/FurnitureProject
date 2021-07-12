@@ -62,6 +62,7 @@
 
     <!-- Js Plugins -->
     <script src="/furniture/category/js/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="/furniture/category/js/bootstrap.min.js"></script>
     <script src="/furniture/category/js/jquery.nice-select.min.js"></script>
     <script src="/furniture/category/js/jquery-ui.min.js"></script>
@@ -126,8 +127,15 @@ window.onload=(function() {
 <script type="text/javascript">
 function addWish(id) {
 	if($('#memId').val() == '0'){
-		alert("로그인이 필요한 서비스입니다.");
-		location.href = "/furniture/member/loginForm";
+		swal({
+            title: "",
+            text: "로그인이 필요한 서비스입니다.", 
+            type: ""
+         }).then(function(){
+        	 location.href = "/furniture/member/loginForm";
+         });
+		//alert("로그인이 필요한 서비스입니다.");
+		//location.href = "/furniture/member/loginForm";
 	}else{
 
 		$.ajax({

@@ -213,8 +213,8 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public String gettId(String orderNumber) {
-		return profileDAO.gettId(orderNumber);
+	public String gettId(String odId) {
+		return profileDAO.gettId(odId);
 	}
 
 	@Override
@@ -223,8 +223,8 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public void paymentUpdate(String check) {
-		profileDAO.paymentUpdate(check);
+	public void paymentUpdate(String odId) {
+		profileDAO.paymentUpdate(odId);
 	}
 
 	@Override
