@@ -217,7 +217,7 @@ $(document).on('click', '.confirmBtn', function () {
                 url:'/furniture/member/pointUpdate',
                 data:{'point':productAmounts},
                 success:function(){
-                    alert(productAmounts+"원이 적립되었습니다");
+                    swal("성공!", productAmounts+"원이 적립되었습니다", "success");
                 },
                 errer:function(err){
                     console.log(err);

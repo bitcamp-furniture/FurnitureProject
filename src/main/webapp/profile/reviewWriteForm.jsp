@@ -61,6 +61,7 @@
 		</tr>
 	</table>
 </form>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $('#reviewWriteBtn').click(function() {
@@ -81,8 +82,13 @@ $('#reviewWriteBtn').click(function() {
 			contentType : false,
 			data : reviewWriteData,
 			success : function() {
-	        	alert("작성해 주셔서 감사합니다!");
-				window.close();
+	        	swal({
+					title: "",
+					text: "작성해 주셔서 감사합니다!",
+					type: ""
+				}).then(function(){
+					window.close();
+				});
 			},
 			error : function(err) {
 				console.log(err);
