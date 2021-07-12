@@ -49,7 +49,7 @@ $(function(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.product_price,
+               text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
                name: 'product_price'
             })).append($('<td/>',{
             	

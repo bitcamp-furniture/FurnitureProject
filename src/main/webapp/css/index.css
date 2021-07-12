@@ -30,7 +30,8 @@
 html,
 body {
   height: 100%;
-  font-family: "Montserrat", sans-serif;
+  font-family: "AppleSDGothicNeoM00", serif;
+
   -webkit-font-smoothing: antialiased;
 }
 
@@ -40,7 +41,7 @@ h6 {
   margin: 0;
   color: #111111;
   font-weight: 400;
-  font-family: "Montserrat", sans-serif;
+  font-family: "AppleSDGothicNeoM00", sans-serif;
 }
 
 h1 {
@@ -69,7 +70,7 @@ h6 {
 
 p {
   font-size: 16px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "AppleSDGothicNeoM00", serif;
   color: #111111;
   font-weight: 400;
   line-height: 28px;
@@ -121,7 +122,7 @@ ol {
   line-height: 60px;
   font-weight: 700;
   font-style: italic;
-  font-family: "Playfair Display", serif;
+  font-family: "AppleSDGothicNeoM00", serif;
 }
 
 .set-bg {

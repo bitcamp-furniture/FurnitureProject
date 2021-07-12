@@ -48,7 +48,7 @@ $('#deliveryReady').click(function(){
                text: items.product_qty
             })).append($('<td/>',{
                //align:'center',
-               text: items.product_price
+               text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             })).append($('<td>',{
             	
             }).append($('<input/>',{
@@ -150,7 +150,7 @@ $('#orderSearchBtn2').click(function(){
 		               text: items.product_qty
 		            })).append($('<td/>',{
 		               //align:'center',
-		               text: items.product_price
+		               text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 		            })).append($('<td>',{
 		            	
 		            }).append($('<input/>',{
@@ -245,7 +245,7 @@ function deliveryPaging(pg){
 		               text: items.product_qty
 		            })).append($('<td/>',{
 		               //align:'center',
-		               text: items.product_price
+		               text: items.product_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 		            })).append($('<td/>',{
 		            	
 		            }).append($('<input/>',{
