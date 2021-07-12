@@ -113,7 +113,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//배송중 페이징
 	@Override
 	public DuringDeliverPaging duringDeliverPaging(String duringDeliverPg) {
-		int totalA = adminProductDAO.getTotalA();
+		int totalA = adminProductDAO.getOrderTotal();
 		
 		duringDeliverPaging.setCurrentPage(Integer.parseInt(duringDeliverPg));
 		duringDeliverPaging.setPageBlock(5);
@@ -143,7 +143,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//배송완료 페이징
 	@Override
 	public DeliverCompletePaging deliverCompletePaging(String deliverCompletePg) {
-		int totalA = adminProductDAO.getTotalA();
+		int totalA = adminProductDAO.getOrderTotal();
 		
 		deliverCompletePaging.setCurrentPage(Integer.parseInt(deliverCompletePg));
 		deliverCompletePaging.setPageBlock(5);
@@ -173,7 +173,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//취소처리 페이징
 	@Override
 	public OrderCanclePaging orderCanclePaging(String orderCanclePg) {
-		int totalA = adminProductDAO.getTotalA();
+		int totalA = adminProductDAO.getOrderTotal();
 		
 		orderCanclePaging.setCurrentPage(Integer.parseInt(orderCanclePg));
 		orderCanclePaging.setPageBlock(5);
@@ -203,7 +203,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//구매확정 페이징
 	@Override
 	public PurchaseConfirmedPaging purchaseConfirmedPaging(String purchaseConfirmedPg) {
-		int totalA = adminProductDAO.getTotalA();
+		int totalA = adminProductDAO.getOrderTotal();
 		
 		purchaseConfirmedPaging.setCurrentPage(Integer.parseInt(purchaseConfirmedPg));
 		purchaseConfirmedPaging.setPageBlock(5);
