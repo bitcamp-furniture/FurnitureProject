@@ -32,8 +32,8 @@
 				  
 				  <!-- Tab panes -->
 				  <div class="tab-content">
-					<button type="button" id="deliveryReadyBtn">배송준비 처리</button>
-					<button type="button" id="paymentConfirmBtn">입금확인 처리</button>
+					<button type="button" id="deliveryReadyBtn" class="btn btn-default">배송준비 처리</button>
+					<button type="button" id="paymentConfirmBtn" class="btn btn-default">입금확인 처리</button>
 					<!-- Single button -->
 					<div class="btn-group">
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -46,30 +46,31 @@
 					    <li><a href="#" onclick="delayBtn()">발송 지연처리</a></li>
 					  </ul>
 					</div>
-					<button type="button" id="cancelSales">판매취소</button>
+					<button type="button" id="cancelSales" class="btn btn-default" class="btn btn-default">판매취소</button>
 					
 					<!-- 신규주문 -->
 				    <div role="tabpanel" class="tab-pane active" id="newOrder">
+				    	<br>
 						<!-- search start -->
 						<div class="search">
 							<input type="search" name="keyword" id="keyword" value="${keyword }">
-							<input type="button" value="검색" id="orderSearchBtn">
+							<button type="button" id="orderSearchBtn" class="btn btn-default" class="btn btn-default">검색</button>
 						</div>
 				    	<br>
 						<table class="table" id="newOrderTable">
 						  <tr>
-						    <th><input type='checkbox' id="check_all"/></th>
-						     <th>주문정보</th>
-		                     <th>주문번호</th>
-		                     <th>주문자</th>
-		                     <th>주문상품</th>
-		                     <th></th>
-		                     <th>옵션</th>
-		                     <th>수량</th>
-		                     <th>결제금액</th>
-		                     <th>운송장번호</th>
-		                     <th>배송정보</th>
-		                     <th>상태</th>
+						  	 <th style="width:30px;"><input type='checkbox' id="check_all"/></th>
+						     <th style="width:60px;">주문정보</th>
+		                     <th style="width:80px;">주문번호</th>
+		                     <th style="width:80px;">주문자</th>
+		                     <th style="width:80px;">주문상품</th>
+		                     <th style="width:70px;"></th>
+		                     <th style="width:80px;">옵션</th>
+		                     <th style="width:80px;">수량</th>
+		                     <th style="width:80px;">결제금액</th>
+		                     <th style="width:90px;">운송장번호</th>
+		                     <th style="width:80px;">배송정보</th>
+		                     <th style="width:80px;">상태</th>
 						  </tr>
 						</table>
 						<input type="hidden" id="orderControlPg" value="${orderControlPg }">
@@ -79,26 +80,27 @@
 				    
 				    <!-- 배송준비중 -->
 				    <div role="tabpanel" class="tab-pane" id="delivery">
+				    	<br>
 						<!-- search start -->
 						<div class="search">
 							<input type="search" name="keyword2" id="keyword2" value="${keyword2 }">
-							<input type="button" value="검색" id="orderSearchBtn2">
+							<button type="button" id="orderSearchBtn2" class="btn btn-default" class="btn btn-default">검색</button>
 						</div>
 				    	<br>
 						<table class="table" id="deliveryTable">
 						  <tr>
-						    <th><input type='checkbox' id="check_all2"/></th>
-						     <th>주문정보</th>
-		                     <th>주문번호</th>
-		                     <th>주문자</th>
-		                     <th>주문상품</th>
-		                     <th></th>
-		                     <th>옵션</th>
-		                     <th>수량</th>
-		                     <th>결제금액</th>
-		                     <th>운송장번호</th>
-		                     <th>배송정보</th>
-		                     <th>상태</th>
+						     <th style="width:30px;"><input type='checkbox' id="check_all2"/></th>
+						     <th style="width:60px;">주문정보</th>
+		                     <th style="width:80px;">주문번호</th>
+		                     <th style="width:80px;">주문자</th>
+		                     <th style="width:80px;">주문상품</th>
+		                     <th style="width:70px;"></th>
+		                     <th style="width:80px;">옵션</th>
+		                     <th style="width:80px;">수량</th>
+		                     <th style="width:80px;">결제금액</th>
+		                     <th style="width:80px;">운송장번호</th>
+		                     <th style="width:80px;">배송정보</th>
+		                     <th style="width:80px;">상태</th>
 						  </tr>
 						</table>
 						<input type="hidden" id="deliveryPg" value="${deliveryPg }">
@@ -108,27 +110,28 @@
 				    
 				    <!-- 배송중 -->
 				    <div role="tabpanel" class="tab-pane" id="duringDeliver">
-				    	<button type="button" id="deliveryCompleteBtn">배송완료 처리</button>
+				    	<br>
 						<!-- search start -->
 						<div class="search">
 							<input type="search" name="keyword3" id="keyword3" value="${keyword3 }">
-							<input type="button" value="검색" id="orderSearchBtn3">
+							<button type="button" id="orderSearchBtn3" class="btn btn-default" class="btn btn-default">검색</button>
+					    	<button type="button" id="deliveryCompleteBtn" class="btn btn-default">배송완료 처리</button>
 						</div>
 				    	<br>
 						<table class="table" id="duringDeliverTable">
 						  <tr>
-						    <th><input type='checkbox' id="check_all3"/></th>
-						     <th>주문정보</th>
-		                     <th>주문번호</th>
-		                     <th>주문자</th>
-		                     <th>주문상품</th>
-		                     <th></th>
-		                     <th>옵션</th>
-		                     <th>수량</th>
-		                     <th>결제금액</th>
-		                     <th>운송장번호</th>
-		                     <th>배송정보</th>
-		                     <th>상태</th>
+						  	 <th style="width:30px;"><input type='checkbox' id="check_all3"/></th>
+						     <th style="width:60px;">주문정보</th>
+		                     <th style="width:80px;">주문번호</th>
+		                     <th style="width:80px;">주문자</th>
+		                     <th style="width:80px;">주문상품</th>
+		                     <th style="width:70px;"></th>
+		                     <th style="width:80px;">옵션</th>
+		                     <th style="width:80px;">수량</th>
+		                     <th style="width:80px;">결제금액</th>
+		                     <th style="width:80px;">운송장번호</th>
+		                     <th style="width:80px;">배송정보</th>
+		                     <th style="width:80px;">상태</th>
 						  </tr>
 						</table>
 						<input type="hidden" id="duringDeliverPg" value="${duringDeliverPg }">
@@ -138,27 +141,28 @@
 				    
 				    <!-- 배송완료 -->
 				    <div role="tabpanel" class="tab-pane" id="deliverComplete">
-				    	<button type="button" id="purchaseConfirmedBtn">구매확정</button>
+				    	<br>
 						<!-- search start -->
 						<div class="search">
 							<input type="search" name="keyword4" id="keyword4" value="${keyword4 }">
-							<input type="button" value="검색" id="orderSearchBtn4">
+							<button type="button" id="orderSearchBtn4" class="btn btn-default" class="btn btn-default">검색</button>
+							<button type="button" id="purchaseConfirmedBtn" class="btn btn-default">구매확정</button>
 						</div>
 				    	<br>
 						<table class="table" id="deliverCompleteTable">
 						  <tr>
-						    <th><input type='checkbox' id="check_all4"/></th>
-						     <th>주문정보</th>
-		                     <th>주문번호</th>
-		                     <th>주문자</th>
-		                     <th>주문상품</th>
-		                     <th></th>
-		                     <th>옵션</th>
-		                     <th>수량</th>
-		                     <th>결제금액</th>
-		                     <th>운송장번호</th>
-		                     <th>배송정보</th>
-		                     <th>상태</th>
+		                     <th style="width:30px;"><input type='checkbox' id="check_all4"/></th>
+						     <th style="width:60px;">주문정보</th>
+		                     <th style="width:80px;">주문번호</th>
+		                     <th style="width:80px;">주문자</th>
+		                     <th style="width:80px;">주문상품</th>
+		                     <th style="width:70px;"></th>
+		                     <th style="width:80px;">옵션</th>
+		                     <th style="width:80px;">수량</th>
+		                     <th style="width:80px;">결제금액</th>
+		                     <th style="width:80px;">운송장번호</th>
+		                     <th style="width:80px;">배송정보</th>
+		                     <th style="width:80px;">상태</th>
 						  </tr>
 						</table>
 						<input type="hidden" id="deliverCompletePg" value="${deliverCompletePg }">
@@ -168,27 +172,28 @@
 				    
 				    <!-- 구매확정 -->
 				    <div role="tabpanel" class="tab-pane" id="purchaseConfirmed">
-				    <button type="button" id="cancelSales_complete">판매취소</button>
+				    <br>
 						<!-- search start -->
 						<div class="search">
 							<input type="search" name="keyword5" id="keyword5" value="${keyword5 }">
-							<input type="button" value="검색" id="orderSearchBtn5">
+							<button type="button" id="orderSearchBtn5" class="btn btn-default" class="btn btn-default">검색</button>
+							<button type="button" id="cancelSales_complete" class="btn btn-default">판매취소</button>
 						</div>
 				    	<br>
 						<table class="table" id="purchaseConfirmedTable">
 						  <tr>
-						    <th><input type='checkbox' id="check_all5"/></th>
-						     <th>주문정보</th>
-		                     <th>주문번호</th>
-		                     <th>주문자</th>
-		                     <th>주문상품</th>
-		                     <th></th>
-		                     <th>옵션</th>
-		                     <th>수량</th>
-		                     <th>결제금액</th>
-		                     <th>운송장번호</th>
-		                     <th>배송정보</th>
-		                     <th>상태</th>
+						  	 <th style="width:30px;"><input type='checkbox' id="check_all5"/></th>
+						     <th style="width:60px;">주문정보</th>
+		                     <th style="width:80px;">주문번호</th>
+		                     <th style="width:80px;">주문자</th>
+		                     <th style="width:80px;">주문상품</th>
+		                     <th style="width:70px;"></th>
+		                     <th style="width:80px;">옵션</th>
+		                     <th style="width:80px;">수량</th>
+		                     <th style="width:80px;">결제금액</th>
+		                     <th style="width:80px;">운송장번호</th>
+		                     <th style="width:80px;">배송정보</th>
+		                     <th style="width:80px;">상태</th>
 						  </tr>
 						</table>
 						<input type="hidden" id="purchaseConfirmedPg" value="${purchaseConfirmedPg }">
@@ -198,26 +203,27 @@
 				    
 				    <!-- 취소처리 -->
 				    <div role="tabpanel" class="tab-pane" id="orderCancle">
+				    <br>
 						<!-- search start -->
 						<div class="search">
 							<input type="search" name="keyword6" id="keyword6" value="${keyword6 }">
-							<input type="button" value="검색" id="orderSearchBtn6">
+							<button type="button" id="orderSearchBtn6" class="btn btn-default" class="btn btn-default">검색</button>
 						</div>
 				    	<br>
 						<table class="table" id="orderCancleTable">
 						  <tr>
-						    <th><input type='checkbox' id="check_all6"/></th>
-						     <th>주문정보</th>
-		                     <th>주문번호</th>
-		                     <th>주문자</th>
-		                     <th>주문상품</th>
-		                     <th></th>
-		                     <th>옵션</th>
-		                     <th>수량</th>
-		                     <th>결제금액</th>
-		                     <th>운송장번호</th>
-		                     <th>배송정보</th>
-		                     <th>상태</th>
+						  	 <th style="width:30px;"><input type='checkbox' id="check_all6"/></th>
+						     <th style="width:60px;">주문정보</th>
+		                     <th style="width:80px;">주문번호</th>
+		                     <th style="width:80px;">주문자</th>
+		                     <th style="width:80px;">주문상품</th>
+		                     <th style="width:70px;"></th>
+		                     <th style="width:80px;">옵션</th>
+		                     <th style="width:80px;">수량</th>
+		                     <th style="width:80px;">결제금액</th>
+		                     <th style="width:80px;">운송장번호</th>
+		                     <th style="width:80px;">배송정보</th>
+		                     <th style="width:80px;">상태</th>
 						  </tr>
 						</table>
 						<input type="hidden" id="orderCanclePg" value="${orderCanclePg }">

@@ -89,6 +89,8 @@ $(function(){
 	$('#dropdown').css('pointer-events', 'none');
 	$('#dropdown').css('opacity', '0.6');
 	$('#cancelSales').show();
+	$('#paymentConfirmBtn').hide();
+	$('#deliveryReadyBtn').show();
 
 });
 
