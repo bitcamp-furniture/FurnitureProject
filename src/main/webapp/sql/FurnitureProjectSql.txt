@@ -132,7 +132,6 @@ addr2 varchar2(200), -- 주소2
 bir_yy varchar2(10), -- 생일 연도
 bir_mm varchar2(10), -- 생일 월
 bir_dd varchar2(10), -- 생일 일
-<<<<<<< HEAD
 point number(38), -- 포인트
 verify varchar2(10), -- 관리자 계정 확인 값
 amount number(38), -- 누적 총금액
