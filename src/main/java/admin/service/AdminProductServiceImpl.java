@@ -277,9 +277,9 @@ public class AdminProductServiceImpl implements AdminProductService{
 
 	//판매취소 처리
 	@Override
-	public void cancelSales(String[] check) {
-		Map<String, String[]> map = new HashMap<String, String[]>();
-		map.put("array", check);
+	public void cancelSales(String odId) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("odId", odId);
 		adminProductDAO.cancelSales(map);
 		
 	}

@@ -29,7 +29,7 @@ public interface AdminProductService {
 
 	public void delay(String[] check);
 
-	public void cancelSales(String[] check);
+	public void cancelSales(String odId);
 
 	public List<AdminProductDTO> getSearchOrderList(Map<String, String> map);
 

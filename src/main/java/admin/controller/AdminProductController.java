@@ -219,9 +219,9 @@ public class AdminProductController {
 	//판매취소 처리
 	@RequestMapping(value="product/cancelSales", method=RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView cancelSales(@RequestParam String[] check) {
+	public ModelAndView cancelSales(@RequestParam String check) {
+		System.out.println(check);
 		adminProductService.cancelSales(check);
-		
 		return new ModelAndView("redirect:/admin/product/orderControl");
 	}
 	

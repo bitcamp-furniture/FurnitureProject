@@ -60,11 +60,11 @@ public interface ProfileService {
 
 	public void memberDelete(String id);
 
-	public String gettId(String orderNumber);
+	public String gettId(String odId);
 
 	public void updateCumulativeAmount(Map<String, Object> map);
 
-    public void paymentUpdate(String check);
+    public void paymentUpdate(String odId);
 
 	public void reviewWrite(ReviewDTO reviewDTO);
 
