@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="/furniture/css/main.css" type="text/css">
     
     <style type="text/css">
+    body {
+	font-family: "AppleSDGothicNeoM00", serif;
+	}
+    
      #paging, #currentPaging{
         cursor: pointer;
      }
