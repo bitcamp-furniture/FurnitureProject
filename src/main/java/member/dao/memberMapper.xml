@@ -63,6 +63,6 @@
 	
 	<!-- 포인트 적립 -->
 	<update id="pointUpdate" parameterType="java.util.Map">
-		update member set point=#{point} where email=#{email}
+		update member set point=point+#{point} where email=#{email}
 	</update>
 </mapper>

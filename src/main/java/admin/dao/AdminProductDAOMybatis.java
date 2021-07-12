@@ -80,7 +80,7 @@ public class AdminProductDAOMybatis implements AdminProductDAO {
 	}
 
 	@Override
-	public List<AdminProductDTO> getdeliveryReady(Map<String, Integer> map) {
+	public List<AdminProductDTO> getDeliveryReady(Map<String, Integer> map) {
 		return sqlSession.selectList("adminSQL.getDeliveryReady", map);
 	}
 
@@ -103,12 +103,37 @@ public class AdminProductDAOMybatis implements AdminProductDAO {
 	public List<AdminProductDTO> getPurchaseConfirmed(Map<String, Integer> map) {
 		return sqlSession.selectList("adminSQL.getPurchaseConfirmed", map);
 	}
-
+	
 	@Override
-	public void membeCumulativerAmount(Map<String, String> map) {
-		sqlSession.update("adminSQL.membeCumulativerAmount", map);
+	public void memberCumulativerAmount(Map<String, String[]> map) {
+		sqlSession.update("adminSQL.memberCumulativerAmount", map);
 		
 	}
 
+	@Override
+	public int getOrderTotal() {
+		return sqlSession.selectOne("adminSQL.getOrderTotal");
+	}
+
+	@Override
+	public int getSearchOrderTotal(Map<String, String> map) {
+		return sqlSession.selectOne("adminSQL.getSearchOrderTotal", map);
+	}
+
+	@Override
+	public int getDeliveryTotal() {
+		return sqlSession.selectOne("adminSQL.getDeliveryTotal");
+	}
+
+	@Override
+	public List<AdminProductDTO> getSearchDeliveryReady(Map<String, String> map) {
+		return sqlSession.selectList("adminSQL.getSearchDeliveryReady", map);
+	}
+
+	@Override
+	public int getSearchDeliveryTotal(Map<String, String> map) {
+		return sqlSession.selectOne("adminSQL.getSearchDeliveryTotal", map);
+	}
+	
 
 }

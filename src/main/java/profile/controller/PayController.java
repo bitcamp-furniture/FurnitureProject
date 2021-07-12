@@ -202,6 +202,9 @@ public class PayController {
             cancelMap.put("signature", signature);
             cancelMap.put("cancelReason", "1");
 
+            System.out.println(tId);
+            System.out.println(signature);
+
             String jsonStr = gsonObj.toJson(cancelMap);
             System.out.println("MAP -> JSON 예제 : " + jsonStr);
 

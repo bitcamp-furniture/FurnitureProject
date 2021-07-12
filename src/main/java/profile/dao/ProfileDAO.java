@@ -67,4 +67,6 @@ public interface ProfileDAO {
     public void paymentUpdate(String check);
 
 	public void reviewWrite(ReviewDTO reviewDTO);
+
+	public int getProductAmounts(Map<String, Object> map);
 }

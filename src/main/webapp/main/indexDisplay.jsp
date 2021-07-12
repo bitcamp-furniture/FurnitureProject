@@ -33,14 +33,11 @@ cursor: pointer;
     <input type="hidden" value="${memId }" id="memId"/>
     
         <div class="hero__slider owl-carousel">
-            <div class="hero__item set-bg" data-setbg="/furniture/image/123.jpg">
+            <div class="hero__item set-bg" data-setbg="/furniture/image/123.jpg" style="cursor:pointer;">
                 <div class="container">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-8">
-                            <div class="hero__text">
-                                <h2>주방가구 기획전 </h2>
-                                <a href="/furniture/main/eventView?id=46" class="primary-btn">보러가기</a>
-                            </div>
+                            <a href="/furniture/main/eventView?id=46"></a>
                         </div>
                     </div>
                 </div>

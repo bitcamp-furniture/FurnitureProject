@@ -325,10 +325,6 @@
                                 <button type="button" class="orderPaymentBtn" id="orderPaymentBtn">주문하기</button>
                             </div>
                             <br>
-                            <div class="kakaoPayBtn-wrap">
-                                <button type="button" class="kakaoPayBtn"><img src="/furniture/img/kakaoPayBtn.png"
-                                                                               alt="kakaoPay"></button>
-                            </div>
                         </div>
 
                         <%--cart__checkout end --%>

@@ -211,10 +211,10 @@ public class MemberController {
 		//포인트적립
 		@RequestMapping(value="/pointUpdate", method=RequestMethod.POST)
 		@ResponseBody	
-		public void pointUpdate(@RequestParam String point
+		public void pointUpdate(@RequestParam int point
 								,HttpSession session
 								,MemberDTO memberDTO
-								,Map<String, String> map) {
+								,Map<String, Object> map) {
 
 			String email = ((String)session.getAttribute("memEmail"));
 			

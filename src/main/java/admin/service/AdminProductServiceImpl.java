@@ -37,8 +37,8 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//신규주문 띄우기
 	@Override
 	public List<AdminProductDTO> getOrderControl(String orderControlPg) {
-		int endNum = Integer.parseInt(orderControlPg)*15;
-		int startNum = endNum-14;
+		int endNum = Integer.parseInt(orderControlPg)*8;
+		int startNum = endNum-7;
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startNum", startNum);
@@ -52,12 +52,12 @@ public class AdminProductServiceImpl implements AdminProductService{
 
 	//신규주문 페이징
 	@Override
-	public OrderControlPaging orderControlPaging(String orderControlPg) {
-		int totalA = adminProductDAO.getTotalA();
+	public OrderControlPaging orderControlPaging(String pg) {
+		int totalA = adminProductDAO.getOrderTotal();
 		
-		orderControlPaging.setCurrentPage(Integer.parseInt(orderControlPg));
+		orderControlPaging.setCurrentPage(Integer.parseInt(pg));
 		orderControlPaging.setPageBlock(5);
-		orderControlPaging.setPageSize(15);
+		orderControlPaging.setPageSize(8);
 		orderControlPaging.setTotalA(totalA);
 		orderControlPaging.makePagingHTML();
 		
@@ -66,16 +66,16 @@ public class AdminProductServiceImpl implements AdminProductService{
 	
 	//배송준비 목록 띄우기
 	@Override
-	public List<AdminProductDTO> getdeliveryReady(String deliveryPg) {
-		int endNum = Integer.parseInt(deliveryPg)*15;
-		int startNum = endNum-14;
+	public List<AdminProductDTO> getDeliveryReady(String deliveryPg) {
+		int endNum = Integer.parseInt(deliveryPg)*8;
+		int startNum = endNum-7;
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startNum", startNum);
 		map.put("endNum", endNum);
 		
 		//DB
-		List<AdminProductDTO> list = adminProductDAO.getdeliveryReady(map);
+		List<AdminProductDTO> list = adminProductDAO.getDeliveryReady(map);
 		
 		return list;
 	}
@@ -83,11 +83,11 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//배송준비 페이징
 	@Override
 	public DeliveryPaging deliveryPaging(String deliveryPg) {
-		int totalA = adminProductDAO.getTotalA();
+		int totalA = adminProductDAO.getDeliveryTotal();
 		
 		deliveryPaging.setCurrentPage(Integer.parseInt(deliveryPg));
 		deliveryPaging.setPageBlock(5);
-		deliveryPaging.setPageSize(15);
+		deliveryPaging.setPageSize(8);
 		deliveryPaging.setTotalA(totalA);
 		deliveryPaging.makePagingHTML();
 		
@@ -113,7 +113,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//배송중 페이징
 	@Override
 	public DuringDeliverPaging duringDeliverPaging(String duringDeliverPg) {
-		int totalA = adminProductDAO.getTotalA();
+		int totalA = adminProductDAO.getOrderTotal();
 		
 		duringDeliverPaging.setCurrentPage(Integer.parseInt(duringDeliverPg));
 		duringDeliverPaging.setPageBlock(5);
@@ -143,7 +143,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//배송완료 페이징
 	@Override
 	public DeliverCompletePaging deliverCompletePaging(String deliverCompletePg) {
-		int totalA = adminProductDAO.getTotalA();
+		int totalA = adminProductDAO.getOrderTotal();
 		
 		deliverCompletePaging.setCurrentPage(Integer.parseInt(deliverCompletePg));
 		deliverCompletePaging.setPageBlock(5);
@@ -173,7 +173,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//취소처리 페이징
 	@Override
 	public OrderCanclePaging orderCanclePaging(String orderCanclePg) {
-		int totalA = adminProductDAO.getTotalA();
+		int totalA = adminProductDAO.getOrderTotal();
 		
 		orderCanclePaging.setCurrentPage(Integer.parseInt(orderCanclePg));
 		orderCanclePaging.setPageBlock(5);
@@ -203,7 +203,7 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//구매확정 페이징
 	@Override
 	public PurchaseConfirmedPaging purchaseConfirmedPaging(String purchaseConfirmedPg) {
-		int totalA = adminProductDAO.getTotalA();
+		int totalA = adminProductDAO.getOrderTotal();
 		
 		purchaseConfirmedPaging.setCurrentPage(Integer.parseInt(purchaseConfirmedPg));
 		purchaseConfirmedPaging.setPageBlock(5);
@@ -287,8 +287,8 @@ public class AdminProductServiceImpl implements AdminProductService{
 	//주문 검색
 	@Override
 	public List<AdminProductDTO> getSearchOrderList(Map<String, String> map) {
-		int endNum = Integer.parseInt(map.get("orderControlPg"))*15;
-		int startNum = endNum-14;
+		int endNum = Integer.parseInt(map.get("orderControlPg"))*8;
+		int startNum = endNum-7;
 		
 		map.put("startNum", startNum+"");
 		map.put("endNum", endNum+"");
@@ -300,9 +300,53 @@ public class AdminProductServiceImpl implements AdminProductService{
 
 	//membertable의 컬럼 amount -- 구매확정 버튼 클릭 시 소비자가 구매한 가구 가격 누적금액에 추가 
 	@Override
-	public void memberCumulativerAmount(Map map) {
-		// TODO Auto-generated method stub
+	public void memberCumulativerAmount(String[] check) {
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("array", check);
+		adminProductDAO.memberCumulativerAmount(map);
+		System.out.println(map.get("array"));
 		
+	
+		
+	}
+
+	@Override
+	public OrderControlPaging searchOrderControlPaging(Map<String, String> map) {
+		int totalA = adminProductDAO.getSearchOrderTotal(map);
+		
+		orderControlPaging.setCurrentPage(Integer.parseInt(map.get("pg")));
+		orderControlPaging.setPageBlock(5);
+		orderControlPaging.setPageSize(8);
+		orderControlPaging.setTotalA(totalA);
+		orderControlPaging.makePagingHTML();
+		
+		return orderControlPaging;
+	}
+
+	@Override
+	public List<AdminProductDTO> getSearchDeliveryReady(Map<String, String> map) {
+		int endNum = Integer.parseInt(map.get("deliveryPg"))*8;
+		int startNum = endNum-7;
+		
+		map.put("startNum", startNum+"");
+		map.put("endNum", endNum+"");
+		
+		List<AdminProductDTO> list = adminProductDAO.getSearchDeliveryReady(map);
+		
+		return list;
+	}
+
+	@Override
+	public DeliveryPaging searchDeliveryReadyPaging(Map<String, String> map) {
+		int totalA = adminProductDAO.getSearchDeliveryTotal(map);
+		
+		deliveryPaging.setCurrentPage(Integer.parseInt(map.get("deliveryPg")));
+		deliveryPaging.setPageBlock(5);
+		deliveryPaging.setPageSize(8);
+		deliveryPaging.setTotalA(totalA);
+		deliveryPaging.makePagingHTML();
+		
+		return deliveryPaging;
 	}
 
 
