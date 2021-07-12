@@ -41,7 +41,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td align="center">이벤트 내용</td>
+			<td align="center">리뷰 내용</td>
 			<td>
 				<textarea cols="50" rows="15" name="review_content" id="review_content" placeholder="받으신 상품은 어떠셨나요? 당신의 경험을 공유해 주세요."></textarea>
 			</td>
