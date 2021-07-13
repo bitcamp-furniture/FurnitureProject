@@ -199,6 +199,7 @@ public class MemberController {
 		@RequestMapping(value="kakaoWrite", method=RequestMethod.POST)
 		@ResponseBody
 		public void kakaoWrite(@RequestParam Map<String, String> map, HttpSession session) {
+			System.out.println("map = "+map);
 			//member table에 이메일이 없으면 table에 정보 저장
 			if(memberService.checkEmail(map, session)==false) {
 				memberService.kakaoWrite(map, session);

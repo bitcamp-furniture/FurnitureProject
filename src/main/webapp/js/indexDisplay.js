@@ -44,8 +44,13 @@ $('#eventViewIndex').click(function(pg){
 
 function addWish(id) {
 	if($('#memId').val() == '0'){
-		alert("로그인이 필요한 서비스입니다.");
-		location.href = "/furniture/member/loginForm";
+		swal({
+            title: "",
+            text: "로그인이 필요한 서비스입니다.", 
+            type: ""
+         }).then(function(){
+        	location.href = "/furniture/member/loginForm";
+         });
 	}else{
 
 		$.ajax({
